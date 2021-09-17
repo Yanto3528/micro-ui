@@ -1,24 +1,59 @@
 import styled, { css } from 'styled-components'
-import { Colors, regularFont } from '../../styles'
-import Animation from '../animation'
+import { regularFont } from '../../styles'
+import Animation from '../../animations'
+import { resolveColor } from '../../utils'
 
-const StyledButton = styled.button.attrs(({ type, className }) => ({
+const solidStyles = css`
+  background-color: ${({ bg }) => resolveColor(bg)};
+  color: ${({ textColor }) => resolveColor(textColor)};
+  border: 1px solid ${({ bg }) => resolveColor(bg)};
+  ${LoadingIcon} {
+    border-color: ${({ textColor }) => resolveColor(textColor)};
+  }
+`
+
+const outlineStyles = css`
+  background-color: transparent;
+  color: ${({ bg }) => resolveColor(bg)};
+  border: 1px solid ${({ bg }) => resolveColor(bg)};
+  &:hover {
+    background-color: ${({ bg }) => resolveColor(bg)};
+    color: ${({ textColor }) => resolveColor(textColor)};
+    .aia-now-button-spinner {
+      border-color: ${({ textColor }) => resolveColor(textColor)};
+      border-top-color: transparent;
+    }
+  }
+  .aia-now-button-spinner {
+    border-color: ${({ bg }) => resolveColor(bg)};
+    border-top-color: transparent;
+  }
+`
+
+const resolveVariant = ({ variant }) => {
+  switch (variant) {
+    case 'outline':
+      return outlineStyles
+    default:
+      return solidStyles
+  }
+}
+
+export const StyledButton = styled.button.attrs(({ type, className }) => ({
   type: type || '',
-  className: className + ' aia-now-button',
+  className: className ? className + ' aia-now-button' : 'aia-now-button',
 }))`
   text-align: center;
   ${regularFont()};
-  color: white;
-  box-sizing: border-box;
   border: none;
-  border-radius: ${({ rounded }) => (rounded ? '26px' : '4px')};
-  background-color: ${Colors.Primary};
+  border-radius: ${({ rounded, radius }) => (rounded ? '26px' : radius || '4px')};
   outline: none;
   cursor: pointer;
   padding: 12px 32px;
-  box-shadow: rgba(170, 8, 54, 0.5) 1px 2px 5px 0px;
-  transition: transform 0.2s;
+  transition: all 0.2s;
   line-height: 1;
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  height: ${({ height }) => height};
 
   :hover:not(:disabled) {
     opacity: 0.95;
@@ -32,17 +67,21 @@ const StyledButton = styled.button.attrs(({ type, className }) => ({
     cursor: not-allowed;
   }
 
+  ${resolveVariant};
+
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-const IconContainer = styled.span`
+export const IconContainer = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 `
 
-const LoadingIcon = styled.span`
+export const LoadingIcon = styled.span.attrs(({ className }) => ({
+  className: className + ' aia-now-button-spinner',
+}))`
   height: 1em;
   width: 1em;
   border: 3px solid white;
@@ -50,5 +89,3 @@ const LoadingIcon = styled.span`
   border-radius: 50%;
   animation: ${Animation.spinning} 1s infinite linear;
 `
-
-export { StyledButton, IconContainer, LoadingIcon }

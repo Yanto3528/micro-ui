@@ -1,18 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Colors } from '../../styles'
 import { StyledButton, IconContainer, LoadingIcon } from './views'
 
-const Button = ({ icon, disabled, loading, children, ...otherProps }) => {
+const Button = ({ icon, disabled, loading, children, bg, textColor, ...otherProps }, ref) => {
   return (
     <StyledButton
-      // className={className}
-      // type={type}
-      // rounded={rounded}
       disabled={disabled || loading}
-      // customStyle={customStyle}
-      // onClick={onClick}
-      // data-test={dataTest}
+      ref={ref}
+      bg={bg || Colors.Primary}
+      textColor={textColor || 'white'}
       {...otherProps}
     >
       {loading ? (
@@ -30,12 +28,14 @@ const Button = ({ icon, disabled, loading, children, ...otherProps }) => {
 }
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  dataTest: PropTypes.string,
+  bg: PropTypes.string,
+  textColor: PropTypes.string,
+  radius: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fluid: PropTypes.bool,
+  variant: PropTypes.oneOf(['solid', 'outline']),
   icon: PropTypes.element,
-  onClick: PropTypes.func,
-  type: PropTypes.string,
   rounded: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
@@ -43,14 +43,19 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  bg: 'Primary',
+  textColor: 'white',
+  radius: '',
+  width: '',
+  height: '',
+  fluid: false,
+  variant: 'solid',
   icon: null,
-  onClick: () => {},
   type: '',
-  dataTest: '',
   rounded: false,
   disabled: false,
   loading: false,
   customStyle: null,
 }
 
-export default Button
+export default React.forwardRef(Button)
