@@ -1,4 +1,4 @@
-import {keyframes} from 'styled-components'
+import { keyframes } from 'styled-components'
 
 export default {
   shake: keyframes`
@@ -61,5 +61,5 @@ export default {
     100% {
       transform: rotate(360deg)
     }
-  `
+  `,
 }

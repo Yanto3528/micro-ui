@@ -1,5 +1,5 @@
-import {css} from 'styled-components'
-import {ComponentTheme} from '../enums'
+import { css } from 'styled-components'
+import { ComponentTheme } from '../enums'
 
 export const GlobalFontSize = 16
 
@@ -18,7 +18,7 @@ export const Colors = {
   Error: '#D31145',
   Complete: '#0086C8',
   Approved: '#9DC869',
-  DarkBlueGray: '#596C80'
+  DarkBlueGray: '#596C80',
 }
 
 export const FontSize = {
@@ -35,8 +35,8 @@ export const FontSize = {
 }
 
 export const PixelTo = {
-  EM: (p) => p/GlobalFontSize + 'em',
-  EM_SPACING: (p, fsz) => p/fsz + 'em'
+  EM: (p) => p / GlobalFontSize + 'em',
+  EM_SPACING: (p, fsz) => p / fsz + 'em',
 }
 
 export const Default = {
@@ -106,7 +106,7 @@ export const extractTheme = (theme) => {
       return css`
         border: 1px solid ${Colors.Primary};
         background-color: transparent;
-      `;
+      `
     case ComponentTheme.Gray:
       return css`
         border: 1px solid rgb(238, 240, 242);

@@ -1,17 +1,17 @@
-import styled, {css} from 'styled-components'
-import {Colors, regularFont} from '../../styles'
+import styled, { css } from 'styled-components'
+import { Colors, regularFont } from '../../styles'
 import Animation from '../animation'
 
-const StyledButton = styled.button.attrs(({type, className}) => ({
+const StyledButton = styled.button.attrs(({ type, className }) => ({
   type: type || '',
-  className: className + ' aia-now-button'
+  className: className + ' aia-now-button',
 }))`
   text-align: center;
   ${regularFont()};
   color: white;
   box-sizing: border-box;
   border: none;
-  border-radius: ${({rounded}) => rounded ? '26px' : '4px'};
+  border-radius: ${({ rounded }) => (rounded ? '26px' : '4px')};
   background-color: ${Colors.Primary};
   outline: none;
   cursor: pointer;
@@ -20,10 +20,10 @@ const StyledButton = styled.button.attrs(({type, className}) => ({
   transition: transform 0.2s;
   line-height: 1;
 
-  :hover:not(:disabled){
+  :hover:not(:disabled) {
     opacity: 0.95;
   }
-  :active:not(:disabled){
+  :active:not(:disabled) {
     transform: scale(0.95);
   }
 
@@ -32,7 +32,7 @@ const StyledButton = styled.button.attrs(({type, className}) => ({
     cursor: not-allowed;
   }
 
-  ${({customStyle}) => customStyle && css(customStyle)};
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 const IconContainer = styled.span`
@@ -51,8 +51,4 @@ const LoadingIcon = styled.span`
   animation: ${Animation.spinning} 1s infinite linear;
 `
 
-export {
-  StyledButton,
-  IconContainer,
-  LoadingIcon
-}
+export { StyledButton, IconContainer, LoadingIcon }

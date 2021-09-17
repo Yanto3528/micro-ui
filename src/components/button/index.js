@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {StyledButton, IconContainer, LoadingIcon} from "./views"
+import { StyledButton, IconContainer, LoadingIcon } from './views'
 
-const Button = ({icon, disabled, loading, children, ...otherProps}) => {
+const Button = ({ icon, disabled, loading, children, ...otherProps }) => {
   return (
     <StyledButton
       // className={className}
@@ -15,9 +15,11 @@ const Button = ({icon, disabled, loading, children, ...otherProps}) => {
       // data-test={dataTest}
       {...otherProps}
     >
-      {loading ? <IconContainer>
-        <LoadingIcon />
-      </IconContainer> : (
+      {loading ? (
+        <IconContainer>
+          <LoadingIcon />
+        </IconContainer>
+      ) : (
         <>
           {icon && icon}
           {children}
@@ -37,7 +39,7 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  customStyle: PropTypes.object
+  customStyle: PropTypes.object,
 }
 
 Button.defaultProps = {
@@ -48,7 +50,7 @@ Button.defaultProps = {
   rounded: false,
   disabled: false,
   loading: false,
-  customStyle: null
+  customStyle: null,
 }
 
 export default Button

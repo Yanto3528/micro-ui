@@ -1,5 +1,5 @@
 import keyMirror from 'keymirror'
-import {css} from 'styled-components'
+import { css } from 'styled-components'
 
 export const AnchorPosition = keyMirror({
   TOP_LEFT: null,
@@ -24,12 +24,12 @@ export const ComponentTheme = keyMirror({
 
 export const CrossComponentZIndex = {
   DEFAULT: 10,
-  ACTIVE_COMPONENT: 11
+  ACTIVE_COMPONENT: 11,
 }
 
 export const SliderSpacing = {
   DESKTOP: 30,
-  MOBILE: 10
+  MOBILE: 10,
 }
 
 export const ScreenSizeLimit = {
@@ -44,7 +44,7 @@ export const ScreenSizeLimit = {
   DOUBLE_SMALLEST: 640,
   PHABLET: 426,
   PHONE: 375,
-  SMALLEST: 320
+  SMALLEST: 320,
 }
 
 export const MediaQuery = Object.keys(ScreenSizeLimit).reduce((finalObject, currentKey) => {
@@ -57,10 +57,9 @@ export const MediaQuery = Object.keys(ScreenSizeLimit).reduce((finalObject, curr
   return finalObject
 }, {})
 
-
 export const YesNoType = keyMirror({
   SQUARE: null,
-  BUTTON: null
+  BUTTON: null,
 })
 
 export const AddRemoveStyle = keyMirror({
