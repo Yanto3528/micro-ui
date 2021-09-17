@@ -1,0 +1,22 @@
+@import './assets/fonts/AIAEverest/index.css';
+@import './assets/fonts/icomoon/index.css';
+@import './assets/fonts/cancercover/style.css';
+@import './assets/fonts/pet/style.css';
+@import './assets/fonts/circlearrow/style.css';
+@import './assets/fonts/bubbleplus/style.css';
+@import './assets/fonts/bubblecircular/style.css';
+@import './assets/fonts/bubbleedit/style.css';
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+}
