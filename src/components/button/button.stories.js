@@ -1,5 +1,6 @@
 import React from 'react'
-import Button from './index'
+import { Button } from './index'
+import { theme } from '../theme'
 
 export default {
   title: 'Forms/Button',
@@ -11,21 +12,23 @@ const Template = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  rounded: false,
+  ...theme.default.component.button,
   loading: false,
   disabled: false,
-  variant: 'solid',
-  radius: '',
   width: '',
   height: '',
-  bg: 'Primary',
-  fluid: false,
-  textColor: 'white',
   children: 'Submit',
 }
 
-export const ButtonWithIcon = Template.bind({})
-ButtonWithIcon.args = {
+export const Outline = Template.bind({})
+Outline.args = {
+  ...Primary.args,
+  children: 'Submit',
+  variant: 'outline',
+}
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
   ...Primary.args,
   children: null,
   icon: <span>icon</span>,

@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "env": {
     "browser": true,
     "es6": true,
@@ -7,20 +7,29 @@
   },
   "globals": {
     "__OS__": true,
-    "__ENV__": true
+    "__ENV__": true,
+    "__ADOBE_ANALYTIC_SCRIPT__": true,
+    "__ADOBE_ANALYTIC_ENV__": true,
+    "__PRODUCT_SERVICE_HOST__": true,
+    "__REFERENCE_SERVICE_HOST__": true,
+    "__CUSTOMER_SERVICE_HOST__": true,
+    "__CONFIG_SERVICE_HOST__": true,
+    "__CAMPAIGN_SERVICE_HOST__": true,
+    "__QUOTATION_SERVICE_HOST__": true,
+    "__PAYMENT_SERVICE_HOST__": true,
+    "__DOCUMENT_SERVICE_HOST__": true,
+    "__ORDER_SERVICE_HOST__": true,
+    "__MYINFO_SERVICE_HOST__": true
   },
-  "plugins": [
-    "react",
-    "import",
-    "react-hooks"
-  ],
+  "extends": ["prettier"],
+  "plugins": ["react", "react-hooks", "import", "prettier"],
   "settings": {
     "react": {
       "version": "999.999.999"
     }
   },
   "rules": {
-    "template-curly-spacing" : "off",
+    "template-curly-spacing": "off",
     "no-console": "warn",
     "no-eval": "off",
     "eqeqeq": "off",
@@ -30,14 +39,12 @@
     "no-useless-escape": "error",
     "no-unused-vars": ["error", { "args": "after-used" }],
     "no-undef": "error",
-    "indent": ["error", 2, { "SwitchCase": 1, "VariableDeclarator": "first", "ignoredNodes": ["TemplateLiteral"] }],
-    "max-len": ["error", {"code": 120, "ignoreUrls": true}],
     "array-bracket-spacing": ["error", "never"],
     "no-param-reassign": "off",
     "arrow-body-style": "off",
 
     "import/no-extraneous-dependencies": "off",
-    "import/no-unresolved": ["error", {"commonjs": true, "amd": true}],
+    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
     "import/named": "off",
     "import/namespace": "off",
     "import/default": "off",
@@ -51,14 +58,13 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
-    "react/jsx-indent-props": [2,2],
+    "react/jsx-indent-props": [2, 2],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": "off",
-    "react/jsx-max-props-per-line": [1, {"maximum": 3, "when": "always"}],
     "react/jsx-boolean-value": "error",
     "react/jsx-no-undef": 2,
     "react/jsx-closing-bracket-location": [1, "tag-aligned"],
-    "react/jsx-no-bind": [2, {"allowArrowFunctions": true}],
+    "react/jsx-no-bind": [2, { "allowArrowFunctions": true }],
     "react/jsx-no-duplicate-props": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
@@ -68,12 +74,10 @@
     "react/no-multi-comp": 2,
     "react/no-unknown-property": 2,
     "react/no-set-state": 0,
-    "react/prop-types": [2, {"ignore": ["children"]}],
-    "react/react-in-jsx-scope": 2,
+    "react/prop-types": [2, { "ignore": ["children"] }],
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/no-unused-prop-types": 2,
     "react/no-unused-state": 2
   }
 }
-
