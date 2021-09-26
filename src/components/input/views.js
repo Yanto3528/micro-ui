@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '../../utils'
+import { resolveColor, resolveFontFamily } from '../../utils'
 
 const solidStyles = css`
   border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
@@ -48,8 +48,8 @@ export const StyledInput = styled.input.attrs(() => ({
   color: ${({ theme, color }) => resolveColor(theme, color)};
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
-  font-family: ${({ fontFamily }) => fontFamily}, sans-serif;
-  font-size: 1.4rem;
+  font-family: ${resolveFontFamily};
+  font-size: ${({ fontSize }) => fontSize};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
 

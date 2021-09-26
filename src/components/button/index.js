@@ -44,6 +44,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   customStyle: PropTypes.object,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
 }
 
 if (isDev) {

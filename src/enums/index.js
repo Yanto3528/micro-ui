@@ -47,15 +47,18 @@ export const ScreenSizeLimit = {
   SMALLEST: 320,
 }
 
-export const MediaQuery = Object.keys(ScreenSizeLimit).reduce((finalObject, currentKey) => {
-  const value = ScreenSizeLimit[currentKey]
-  finalObject[currentKey] = (...args) => css`
-    @media (max-width: ${value}px) {
-      ${css(...args)}
-    }
-  `
-  return finalObject
-}, {})
+export const MediaQuery = Object.keys(ScreenSizeLimit).reduce(
+  (finalObject, currentKey) => {
+    const value = ScreenSizeLimit[currentKey]
+    finalObject[currentKey] = (...args) => css`
+      @media (max-width: ${value}px) {
+        ${css(...args)}
+      }
+    `
+    return finalObject
+  },
+  {}
+)
 
 export const YesNoType = keyMirror({
   SQUARE: null,

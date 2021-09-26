@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { regularFont } from '../../styles'
 import Animation from '../../animations'
-import { resolveColor } from '../../utils'
+import { resolveColor, resolveFontFamily } from '../../utils'
 
 const solidStyles = css`
   background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
@@ -45,9 +44,8 @@ export const StyledButton = styled.button.attrs(() => ({
   className: 'aia-button',
 }))`
   text-align: center;
-  /* ${regularFont()}; */
-  font-family: ${({ fontFamily }) => fontFamily}, sans-serif;
-  font-size: 1.4rem;
+  font-family: ${resolveFontFamily};
+  font-size: ${({ fontSize }) => fontSize};
   font-weight: 700;
   border: none;
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};

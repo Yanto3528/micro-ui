@@ -43,6 +43,8 @@ Input.propTypes = {
   rightElement: React.element,
   width: PropTypes.string,
   height: PropTypes.string,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
   /** Give input a full width of the current container */
   fluid: PropTypes.bool,
   /** Padding left for when leftElement is specified */

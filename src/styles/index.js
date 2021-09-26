@@ -53,7 +53,8 @@ export const Default = {
   GutterHorizontal: '10px',
   BoxShadow: 'box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);',
   RedShadow: 'box-shadow: 2px 0 10px 0 rgba(170, 8, 54, 0.32)',
-  RedGradient: 'linear-gradient(to right, #e84974 0%, #cd4960 52%, #c1375b 100%);',
+  RedGradient:
+    'linear-gradient(to right, #e84974 0%, #cd4960 52%, #c1375b 100%);',
 }
 
 export const absoluteCenter = () => css`

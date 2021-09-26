@@ -1,4 +1,6 @@
 import React from 'react'
+import { Plus } from 'react-feather'
+
 import { Button } from './index'
 import { theme } from '../theme'
 
@@ -31,5 +33,5 @@ export const WithIcon = Template.bind({})
 WithIcon.args = {
   ...Primary.args,
   children: null,
-  icon: <span>icon</span>,
+  icon: <Plus size='1.2rem' />,
 }

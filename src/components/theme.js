@@ -18,6 +18,11 @@ export const theme = {
     white: '#fff',
     black: '#000',
   },
+  radius: {
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+  },
   default: {
     component: {
       button: {
@@ -29,6 +34,7 @@ export const theme = {
         fluid: false,
         variant: 'solid',
         fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
       },
       input: {
         bg: 'lightGray',
@@ -38,11 +44,20 @@ export const theme = {
         rounded: false,
         fluid: false,
         fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
         paddingleftElement: '36px',
         paddingRightElement: '36px',
+      },
+      checkbox: {
+        activeColor: 'primary',
+        borderColor: 'primary',
+        color: 'secondary',
+        radius: '4px',
+        fontSize: '1.4rem',
+        fontFamily: 'AIARegular',
       },
     },
   },
