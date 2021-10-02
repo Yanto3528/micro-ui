@@ -110,7 +110,7 @@ export const Title = styled.h3.attrs(() => ({
 }))`
   font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${({ fontSize }) => fontSize};
-  font-family: ${({fontFamily}) => resolveFontFamily(fontFamily)};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   margin: ${({ margin }) => margin};
 `
 

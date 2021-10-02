@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { getProps } from '../../utils'
 import { Label, Check, Checkmark, LabelText } from './views'
@@ -28,11 +29,18 @@ export const Checkbox = React.forwardRef(({ label, id, ...props }, ref) => {
 })
 
 Checkbox.propTypes = {
+  /** Label for checkbox */
   label: PropTypes.string,
+  /** Border color for checkbox */
   borderColor: PropTypes.string,
+  /** Border radius for checkbox */
   radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   color: PropTypes.string,
   id: PropTypes.string.isRequired,
+}
+
+if (isDev) {
+  Checkbox.displayName = 'Checkbox'
 }

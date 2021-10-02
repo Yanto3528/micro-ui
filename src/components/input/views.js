@@ -48,7 +48,7 @@ export const StyledInput = styled.input.attrs(() => ({
   color: ${({ theme, color }) => resolveColor(theme, color)};
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
-  font-family: ${({fontFamily}) => resolveFontFamily(fontFamily)};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};

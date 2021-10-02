@@ -26,7 +26,9 @@ export const Input = React.forwardRef(
 )
 
 Input.propTypes = {
+  /** Background color for input */
   bg: PropTypes.string,
+  /** Text color for input */
   color: PropTypes.string,
   padding: PropTypes.string,
   radius: PropTypes.string,
@@ -38,8 +40,11 @@ Input.propTypes = {
   borderColor: PropTypes.string,
   /** Border color when focusing on the input, only applicable for outline variant */
   focusBorderColor: PropTypes.string,
+  /** Show "danger" color as border color */
   hasError: PropTypes.bool,
+  /** Left element for input, for example email icon */
   leftElement: React.element,
+  /** Right element for input, useful for creating password eye */
   rightElement: React.element,
   width: PropTypes.string,
   height: PropTypes.string,

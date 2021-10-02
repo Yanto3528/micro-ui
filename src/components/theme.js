@@ -60,6 +60,52 @@ export const theme = {
         fontSize: '1.4rem',
         fontFamily: 'AIARegular',
       },
+      divider: {
+        bg: 'gray',
+        margin: '10px 0',
+      },
+      modal: {
+        wrapper: {
+          fontFamily: 'AIARegular',
+          bg: 'white',
+          radius: '15px',
+          width: '450px',
+        },
+        content: {
+          padding: '30px',
+          alignment: 'center',
+        },
+        header: {
+          bgImage:
+            'linear-gradient(to right, rgb(232, 73, 116) 0%, rgb(205, 73, 96) 52%, rgb(193, 55, 91) 100%)',
+          iconWrapperStyle: {
+            bg: 'white',
+            boxShadow: 'rgb(170 8 54 / 32%) 2px 0px 10px 0px',
+            padding: '15px',
+          },
+        },
+        title: {
+          fontSize: '1.5rem',
+          fontWeight: 400,
+          margin: '0 0 20px 0',
+          fontFamily: 'AIAMedium',
+        },
+        body: {
+          color: 'secondary',
+          margin: '0 0 20px 0',
+          fontSize: '1.5rem',
+          fontFamily: 'AIARegular',
+        },
+        close: {
+          bg: 'transparent',
+          color: 'white',
+          radius: '4px',
+        },
+        actions: {
+          spacing: '10px',
+          position: 'center',
+        },
+      },
     },
   },
 }
