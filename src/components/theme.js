@@ -103,7 +103,7 @@ export const theme = {
         },
         actions: {
           spacing: '10px',
-          position: 'center',
+          alignment: 'center',
         },
       },
     },

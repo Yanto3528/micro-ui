@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
+import { useModalContext } from './utils/context'
 import { CloseWrapper, CloseIcon } from './views'
-import { useModalContext } from './index'
 
 export const ModalClose = React.forwardRef(({ icon, ...props }, ref) => {
   const { onClose } = useModalContext()

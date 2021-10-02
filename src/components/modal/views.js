@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '../../utils'
-import { Position } from './actions'
-import { Alignment } from './content'
+import { Alignment } from './utils/constants'
 
 const getColor = ({ theme, color }) => resolveColor(theme, color)
 const getBgColor = ({ theme, bg }) => resolveColor(theme, bg)
@@ -139,7 +138,7 @@ export const ActionsWrapper = styled.div.attrs(() => ({
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: ${({ position }) => Position[position]};
+  justify-content: ${({ alignment }) => Alignment[alignment]};
   margin-top: 20px;
   > *:not(:last-child) {
     margin-right: ${({ spacing }) => spacing};

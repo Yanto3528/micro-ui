@@ -4,12 +4,7 @@ import PropTypes from 'prop-types'
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { ActionsWrapper } from './views'
-
-export const Position = {
-  left: 'flex-start',
-  center: 'center',
-  right: 'flex-end',
-}
+import { Alignment } from './utils/constants'
 
 export const ModalActions = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
@@ -25,8 +20,8 @@ export const ModalActions = React.forwardRef(({ children, ...props }, ref) => {
 })
 
 ModalActions.propTypes = {
-  /** specify the position for the alignment of buttons */
-  position: PropTypes.oneOf(Object.keys(Position)),
+  /** specify the alignment of buttons */
+  alignment: PropTypes.oneOf(Object.keys(Alignment)),
   /** Spacing for each of the button */
   spacing: PropTypes.string,
 }

@@ -3,13 +3,8 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
+import { Alignment } from './utils/constants'
 import { Content } from './views'
-
-export const Alignment = {
-  left: 'flex-start',
-  center: 'center',
-  right: 'flex-end',
-}
 
 export const ModalContent = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()

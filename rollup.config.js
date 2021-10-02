@@ -38,11 +38,11 @@ const config = defineConfig({
       extensions,
     }),
     commonjs(),
-    size(),
     visualizer({
       gzipSize: true,
       brotliSize: true,
     }),
+    size(),
   ],
 })
 

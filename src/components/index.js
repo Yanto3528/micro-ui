@@ -1,3 +1,7 @@
 export * from './button'
 export * from './input'
+export * from './checkbox'
+export * from './divider'
+export * from './modal'
+export * from './portal'
 export * from './theme'

@@ -1,9 +1,11 @@
-import React, { createContext, useContext, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Portal } from '../portal'
+import { ModalContext } from './utils/context'
+
 import { ModalContent } from './content'
 import { ModalHeader } from './header'
 import { ModalTitle } from './title'
@@ -11,17 +13,6 @@ import { ModalClose } from './close'
 import { ModalBody } from './body'
 import { ModalActions } from './actions'
 import { Wrapper, Overlay } from './views'
-
-const ModalContext = createContext({})
-
-export const useModalContext = () => {
-  const context = useContext(ModalContext)
-  if (!context) {
-    throw new Error('useModalContext should be used within Modal')
-  }
-
-  return context
-}
 
 export const Modal = React.forwardRef(
   ({ children, isOpen, onClose, ...props }, ref) => {

@@ -1,6 +1,6 @@
 import { merge } from 'lodash-es'
 
-import { theme as baseTheme } from '../components'
+import { theme as baseTheme } from '../components/theme'
 
 export const noop = () => {}
 
