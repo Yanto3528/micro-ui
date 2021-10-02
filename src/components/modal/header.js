@@ -1,0 +1,35 @@
+import PropTypes from 'prop-types'
+
+import { useTheme } from '../../hooks'
+import { HeaderWrapper, HeaderIconWrapper } from './views'
+
+export const ModalHeader = ({ icon, iconWrapperStyle, ...props }) => {
+  const theme = useTheme()
+  const headerIconProps = theme.default.component.modal.header.iconWrapperStyle
+
+  return (
+    <HeaderWrapper {...theme.default.component.modal.header} {...props}>
+      {icon && (
+        <HeaderIconWrapper {...headerIconProps} {...iconWrapperStyle}>
+          {icon}
+        </HeaderIconWrapper>
+      )}
+    </HeaderWrapper>
+  )
+}
+
+ModalHeader.propTypes = {
+  /** Any element for this icon */
+  icon: Element,
+  /** By default it has linear-gradient color */
+  bgImage: PropTypes.string,
+  /** Style for the icon wrapper */
+  iconWrapperStyle: PropTypes.shape({
+    /** background color for icon wrapper */
+    bg: PropTypes.string,
+    /** box shadow for icon wrapper */
+    boxShadow: PropTypes.string,
+    /** padding for icon wrapper */
+    padding: PropTypes.string,
+  }),
+}
