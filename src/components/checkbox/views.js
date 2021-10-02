@@ -10,7 +10,7 @@ export const Label = styled.label.attrs(() => ({
   margin-bottom: 12px;
   cursor: pointer;
   font-size: ${({ fontSize }) => fontSize};
-  font-family: ${resolveFontFamily};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   color: ${({ theme, color }) => resolveColor(theme, color)};
   -webkit-user-select: none;
   -moz-user-select: none;

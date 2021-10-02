@@ -8,8 +8,8 @@ export const resolveColor = (theme, color) => {
   return theme.colors[color] || color
 }
 
-export const resolveFontFamily = ({ fontFamily }) => {
-  return fontFamily ? `${fontFamily}, sans serif` : 'sans-serif'
+export const resolveFontFamily = (fontFamily) => {
+  return fontFamily ? `${fontFamily}, sans-serif` : 'sans-serif'
 }
 
 export const extendTheme = (newTheme) => {

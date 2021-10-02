@@ -11,17 +11,25 @@ import { withPropsTable } from 'storybook-addon-react-docgen'
 addDecorator(withPropsTable)
 
 const theme = extendTheme({
-  // default: {
-  //   component: {
-  //     button: {
-  //       bg: 'primary',
-  //       rounded: false,
-  //       radius: '4px',
-  //       padding: '8px 24px',
-  //       variant: 'outline',
-  //     },
-  //   },
-  // },
+  default: {
+    component: {
+      // button: {
+      //   bg: 'primary',
+      //   rounded: false,
+      //   radius: '4px',
+      //   padding: '0.5em 1.5em',
+      //   variant: 'outline',
+      // },
+      // input: {
+      //   variant: 'outline',
+      //   borderColor: 'gray',
+      //   fontFamily: 'AIAMedium',
+      //   fontSize: '1.6rem',
+      //   radius: '4px',
+      //   padding: '8px 32px',
+      // },
+    },
+  },
 })
 
 export const parameters = {

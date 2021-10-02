@@ -35,9 +35,10 @@ export const theme = {
         variant: 'solid',
         fontFamily: 'AIARegular',
         fontSize: '1.4rem',
+        fontWeight: 400,
       },
       input: {
-        bg: 'lightGray',
+        bg: 'gray',
         color: 'secondary',
         padding: '12px 16px',
         radius: '15px',

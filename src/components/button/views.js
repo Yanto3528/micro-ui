@@ -44,9 +44,9 @@ export const StyledButton = styled.button.attrs(() => ({
   className: 'aia-button',
 }))`
   text-align: center;
-  font-family: ${resolveFontFamily};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
-  font-weight: 700;
+  font-weight: ${({ fontWeight }) => fontWeight};
   border: none;
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   outline: none;
@@ -88,7 +88,7 @@ export const LoadingIcon = styled.span.attrs(() => ({
 }))`
   height: 1em;
   width: 1em;
-  border: 3px solid white;
+  border: 0.15em solid white;
   border-top-color: transparent;
   border-radius: 50%;
   animation: ${Animation.spinning} 1s infinite linear;
