@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
-import { DividerWrapper, Line, Text } from './views'
 import { getProps } from '../../utils'
+import { DividerWrapper, Line, Text } from './views'
 
 export const Divider = ({ text, textPadding, ...props }) => {
   const theme = useTheme()
