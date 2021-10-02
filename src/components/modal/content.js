@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Content } from './views'
 
@@ -22,4 +23,8 @@ ModalContent.propTypes = {
   padding: PropTypes.string,
   /** Alignment of the content, left | center | right */
   alignment: PropTypes.oneOf(Object.keys(Alignment)),
+}
+
+if (isDev) {
+  ModalContent.displayName = 'ModalContent'
 }

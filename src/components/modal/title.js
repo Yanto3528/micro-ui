@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Title } from './views'
 
@@ -17,4 +18,8 @@ ModalTitle.propTypes = {
   fontWeight: PropTypes.string,
   fontFamily: PropTypes.string,
   margin: PropTypes.string,
+}
+
+if (isDev) {
+  ModalTitle.displayName = 'ModalTitle'
 }

@@ -38,7 +38,7 @@ export const theme = {
         fontWeight: 400,
       },
       input: {
-        bg: 'gray',
+        bg: 'lightGray',
         color: 'secondary',
         padding: '12px 16px',
         radius: '15px',

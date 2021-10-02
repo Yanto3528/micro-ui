@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { ActionsWrapper } from './views'
 
@@ -23,4 +24,8 @@ ModalActions.propTypes = {
   position: PropTypes.oneOf(Object.keys(Position)),
   /** Spacing for each of the button */
   spacing: PropTypes.string,
+}
+
+if (isDev) {
+  ModalActions.displayName = 'ModalActions'
 }

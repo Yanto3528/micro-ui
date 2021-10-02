@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { HeaderWrapper, HeaderIconWrapper } from './views'
 
@@ -32,4 +33,8 @@ ModalHeader.propTypes = {
     /** padding for icon wrapper */
     padding: PropTypes.string,
   }),
+}
+
+if (isDev) {
+  ModalHeader.displayName = 'ModalHeader'
 }

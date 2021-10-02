@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Portal } from '../portal'
 import { ModalContent } from './content'
@@ -65,3 +66,7 @@ Modal.Title = ModalTitle
 Modal.Close = ModalClose
 Modal.Body = ModalBody
 Modal.Actions = ModalActions
+
+if (isDev) {
+  Modal.displayName = 'Modal'
+}

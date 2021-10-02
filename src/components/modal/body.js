@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Body } from './views'
 
@@ -17,4 +18,8 @@ ModalBody.propTypes = {
   fontSize: PropTypes.string,
   fontFamily: PropTypes.string,
   margin: PropTypes.string,
+}
+
+if (isDev) {
+  ModalBody.displayName = 'ModalBody'
 }

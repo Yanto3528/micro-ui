@@ -49,11 +49,3 @@ WithLeftAndRightElement.args = {
   leftElement: <Mail size='1.4rem' color='gray' />,
   rightElement: <Eye size='1.4rem' color='gray' />,
 }
-
-export const WithPercent = Template.bind({})
-WithPercent.args = {
-  ...Primary.args,
-  type: 'text',
-  // leftElement: <Mail size='1.4rem' color='gray' />,
-  rightElement: <span style={{ color: 'dodgerblue' }}>%</span>,
-}
