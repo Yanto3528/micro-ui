@@ -44,10 +44,7 @@ export const Default = () => {
           following condition(s). Please approach your insurance representative
           for other options or call our customer service centre 1800-248-8000.
         </Modal.Body>
-        <Modal.Actions>
-          <Button bg='secondary'>Cancel</Button>
-          <Button>Confirm</Button>
-        </Modal.Actions>
+        <Button>Back to Home</Button>
       </Modal.Content>
     </BaseModal>
   )

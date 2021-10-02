@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
@@ -10,14 +11,18 @@ export const Position = {
   right: 'flex-end',
 }
 
-export const ModalActions = ({ children, ...props }) => {
+export const ModalActions = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
   return (
-    <ActionsWrapper {...theme.default.component.modal.actions} {...props}>
+    <ActionsWrapper
+      {...theme.default.component.modal.actions}
+      {...props}
+      ref={ref}
+    >
       {children}
     </ActionsWrapper>
   )
-}
+})
 
 ModalActions.propTypes = {
   /** specify the position for the alignment of buttons */

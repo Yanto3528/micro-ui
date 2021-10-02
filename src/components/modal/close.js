@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
@@ -5,7 +6,7 @@ import { useTheme } from '../../hooks'
 import { CloseWrapper, CloseIcon } from './views'
 import { useModalContext } from './index'
 
-export const ModalClose = ({ icon, ...props }) => {
+export const ModalClose = React.forwardRef(({ icon, ...props }, ref) => {
   const { onClose } = useModalContext()
   const theme = useTheme()
   return (
@@ -13,11 +14,12 @@ export const ModalClose = ({ icon, ...props }) => {
       {...theme.default.component.modal.close}
       onClick={onClose}
       {...props}
+      ref={ref}
     >
       {icon ? icon : <CloseIcon />}
     </CloseWrapper>
   )
-}
+})
 
 ModalClose.propTypes = {
   /** Any element, svg, span, etc */

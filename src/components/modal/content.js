@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
@@ -10,14 +11,14 @@ export const Alignment = {
   right: 'flex-end',
 }
 
-export const ModalContent = ({ children, ...props }) => {
+export const ModalContent = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
   return (
-    <Content {...theme.default.component.modal.content} {...props}>
+    <Content {...theme.default.component.modal.content} {...props} ref={ref}>
       {children}
     </Content>
   )
-}
+})
 
 ModalContent.propTypes = {
   padding: PropTypes.string,

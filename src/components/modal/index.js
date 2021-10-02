@@ -23,33 +23,36 @@ export const useModalContext = () => {
   return context
 }
 
-export const Modal = ({ children, isOpen, onClose, ...props }) => {
-  const theme = useTheme()
+export const Modal = React.forwardRef(
+  ({ children, isOpen, onClose, ...props }, ref) => {
+    const theme = useTheme()
 
-  const onStopPropagation = (event) => {
-    event.stopPropagation()
+    const onStopPropagation = (event) => {
+      event.stopPropagation()
+    }
+
+    const value = useMemo(() => {
+      return { isOpen, onClose }
+    }, [isOpen, onClose])
+
+    return isOpen ? (
+      <ModalContext.Provider value={value}>
+        <Portal>
+          <Overlay onClick={onClose}>
+            <Wrapper
+              onClick={onStopPropagation}
+              {...theme.default.component.modal.wrapper}
+              {...props}
+              ref={ref}
+            >
+              {children}
+            </Wrapper>
+          </Overlay>
+        </Portal>
+      </ModalContext.Provider>
+    ) : null
   }
-
-  const value = useMemo(() => {
-    return { isOpen, onClose }
-  }, [isOpen, onClose])
-
-  return isOpen ? (
-    <ModalContext.Provider value={value}>
-      <Portal>
-        <Overlay onClick={onClose}>
-          <Wrapper
-            onClick={onStopPropagation}
-            {...theme.default.component.modal.wrapper}
-            {...props}
-          >
-            {children}{' '}
-          </Wrapper>
-        </Overlay>
-      </Portal>
-    </ModalContext.Provider>
-  ) : null
-}
+)
 
 Modal.propTypes = {
   width: PropTypes.string,

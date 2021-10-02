@@ -1,23 +1,31 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { HeaderWrapper, HeaderIconWrapper } from './views'
 
-export const ModalHeader = ({ icon, iconWrapperStyle, ...props }) => {
-  const theme = useTheme()
-  const headerIconProps = theme.default.component.modal.header.iconWrapperStyle
+export const ModalHeader = React.forwardRef(
+  ({ icon, iconWrapperStyle, ...props }, ref) => {
+    const theme = useTheme()
+    const headerIconProps =
+      theme.default.component.modal.header.iconWrapperStyle
 
-  return (
-    <HeaderWrapper {...theme.default.component.modal.header} {...props}>
-      {icon && (
-        <HeaderIconWrapper {...headerIconProps} {...iconWrapperStyle}>
-          {icon}
-        </HeaderIconWrapper>
-      )}
-    </HeaderWrapper>
-  )
-}
+    return (
+      <HeaderWrapper
+        {...theme.default.component.modal.header}
+        {...props}
+        ref={ref}
+      >
+        {icon && (
+          <HeaderIconWrapper {...headerIconProps} {...iconWrapperStyle}>
+            {icon}
+          </HeaderIconWrapper>
+        )}
+      </HeaderWrapper>
+    )
+  }
+)
 
 ModalHeader.propTypes = {
   /** Any element for this icon */
