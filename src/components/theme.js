@@ -63,6 +63,7 @@ export const theme = {
       divider: {
         bg: 'gray',
         margin: '10px 0',
+        textPadding: '0 20px',
       },
       modal: {
         wrapper: {

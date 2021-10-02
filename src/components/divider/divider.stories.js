@@ -13,3 +13,10 @@ export const Default = Template.bind({})
 Default.args = {
   ...theme.default.component.divider,
 }
+
+export const WithText = Template.bind({})
+WithText.args = {
+  ...theme.default.component.divider,
+  text: 'Today',
+  textPadding: '0 20px',
+}

@@ -3,16 +3,38 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
-import { DividerWrapper } from './views'
+import { DividerWrapper, Line, Text } from './views'
+import { getProps } from '../../utils'
 
-export const Divider = (props) => {
+export const Divider = ({ text, textPadding, ...props }) => {
   const theme = useTheme()
-  return <DividerWrapper {...theme.default.component.divider} {...props} />
+  const defaultTextProps = getProps(props, theme.default.component.divider, [
+    'textPadding',
+  ])
+
+  const textProps = { padding: textPadding }
+  return (
+    <DividerWrapper>
+      {text ? (
+        <>
+          <Line {...theme.default.component.divider} {...props} />
+          <Text {...defaultTextProps} {...textProps}>
+            {text}
+          </Text>
+          <Line {...theme.default.component.divider} {...props} />
+        </>
+      ) : (
+        <Line {...theme.default.component.divider} {...props} />
+      )}
+    </DividerWrapper>
+  )
 }
 
 Divider.propTypes = {
   bg: PropTypes.string,
   margin: PropTypes.string,
+  text: PropTypes.string,
+  textPadding: PropTypes.string,
 }
 
 if (isDev) {
