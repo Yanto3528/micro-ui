@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '../../utils'
+import { checklistStyles, checkedChecklistStyles } from '../../styles'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-checkbox-wrapper',
@@ -54,9 +55,7 @@ export const Check = styled.input.attrs(() => ({
   }
 
   &:checked ~ .aia-checkbox-checkmark:after {
-    -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
-    -ms-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
-    transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
+    ${checkedChecklistStyles};
   }
 `
 
@@ -79,13 +78,7 @@ export const Checkmark = styled.span.attrs(() => ({
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 0.3em;
-    height: 0.5em;
-    border: solid white;
-    border-width: 0 0.1em 0.1em 0;
-    -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
-    -ms-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
-    transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
+    ${checklistStyles};
     transition: all 0.3s ease-out;
   }
 `

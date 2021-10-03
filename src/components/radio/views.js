@@ -1,17 +1,8 @@
 import styled, { css } from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '../../utils'
+import { checklistStyles, checkedChecklistStyles } from '../../styles'
 import { RadioType } from './utils/constants'
-
-const checklistStyles = css`
-  width: 0.3em;
-  height: 0.5em;
-  border: solid white;
-  border-width: 0 0.1em 0.1em 0;
-  -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
-  -ms-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
-  transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
-`
 
 const circularStyles = css`
   width: 0.5em;
@@ -33,11 +24,7 @@ const resolveVariant = ({ variant }) => {
 const resolveCheckedRadioType = ({ variant }) => {
   switch (variant) {
     case RadioType.check:
-      return css`
-        -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
-        -ms-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
-        transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
-      `
+      return checkedChecklistStyles
     default:
       return css`
         transform: translate(-50%, -50%) scale(1, 1);
