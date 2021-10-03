@@ -31,9 +31,11 @@ export const Divider = ({ text, textPadding, ...props }) => {
 }
 
 Divider.propTypes = {
+  /** Divider line color */
   bg: PropTypes.string,
   margin: PropTypes.string,
   text: PropTypes.string,
+  /** Padding for the text to separate the line */
   textPadding: PropTypes.string,
 }
 
