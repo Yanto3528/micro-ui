@@ -15,13 +15,13 @@ const config = defineConfig({
   input: 'src/index.js',
   output: [
     {
-      dir: 'dist/es',
-      format: 'es',
+      dir: 'dist/esm',
+      format: 'esm',
       preserveModules: true,
       sourcemap: true,
     },
     {
-      file: 'dist/index.cjs.js',
+      file: 'dist/cjs/index.js',
       format: 'cjs',
       sourcemap: true,
     },

@@ -2,16 +2,18 @@
   "name": "component-library",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write src/**/*.js",
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "sideEffects": false,
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -62,5 +64,8 @@
     "react-dom": "^16.8.0",
     "styled-components": ">=5.0.0",
     "prop-types": ">=15.0.0"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
