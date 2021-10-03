@@ -3,19 +3,23 @@ import { keyframes } from 'styled-components'
 export const slideIn = keyframes`
   from {
     transform: translateY(-40px);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 `
 
 export const slideOut = keyframes`
   from {
+    opacity: 1;
     transform: translateY(0);
   }
 
   to {
     transform: translateY(-40px);
+    opacity: 0;
   }
 `
 

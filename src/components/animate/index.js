@@ -32,10 +32,19 @@ export const Animate = ({ show, onEnter, onExit, children, ...props }) => {
 }
 
 Animate.propTypes = {
+  /**
+   * if set to true, then children will show onEnter animation,
+   * if set to false, then children will show onExit animation
+   */
   show: PropTypes.bool.isRequired,
+  /** Keyframes from styled-components for when component enter */
   onEnter: PropTypes.object.isRequired,
+  /** Keyframes from styled-components for when component exit */
   onExit: PropTypes.object.isRequired,
+  /** CSS timing */
   timing: PropTypes.string,
+  /** Alias for CSS animation-iteration-count */
   repeat: PropTypes.string,
+  /** Animation duration */
   duration: PropTypes.number,
 }
