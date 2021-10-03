@@ -15,4 +15,6 @@ Primary.args = {
   ...theme.default.component.checkbox,
   label: 'Tick this checkbox',
   id: 'check',
+  disabled: false,
+  readOnly: false,
 }

@@ -1,6 +1,17 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '../../utils'
+
+export const Wrapper = styled.div.attrs(() => ({
+  className: 'aia-checkbox-wrapper',
+}))`
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.7;
+      cursor: not-allowed;
+    `}
+`
 
 export const Label = styled.label.attrs(() => ({
   className: 'aia-checkbox-label',
@@ -16,6 +27,8 @@ export const Label = styled.label.attrs(() => ({
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 `
 
 export const LabelText = styled.span.attrs(() => ({

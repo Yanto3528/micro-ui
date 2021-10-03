@@ -4,29 +4,44 @@ import PropTypes from 'prop-types'
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { getProps } from '../../utils'
-import { Label, Check, Checkmark, LabelText } from './views'
+import { Wrapper, Label, Check, Checkmark, LabelText } from './views'
 
-export const Checkbox = React.forwardRef(({ label, id, ...props }, ref) => {
-  const theme = useTheme()
-  const { checkbox: defaultCheckboxProps } = theme.default.component
-  const checkmarkProps = getProps(props, defaultCheckboxProps, [
-    'borderColor',
-    'radius',
-  ])
+export const Checkbox = React.forwardRef(
+  ({ label, id, disabled, readOnly, ...props }, ref) => {
+    const theme = useTheme()
+    const { checkbox: defaultCheckboxProps } = theme.default.component
+    const checkmarkProps = getProps(props, defaultCheckboxProps, [
+      'borderColor',
+      'radius',
+    ])
 
-  const labelProps = getProps(props, defaultCheckboxProps, [
-    'fontFamily',
-    'fontSize',
-  ])
+    const labelProps = getProps(props, defaultCheckboxProps, [
+      'fontFamily',
+      'fontSize',
+    ])
 
-  return (
-    <Label htmlFor={id} {...labelProps}>
-      <LabelText>{label}</LabelText>
-      <Check id={id} {...defaultCheckboxProps} {...props} ref={ref} />
-      <Checkmark {...checkmarkProps} />
-    </Label>
-  )
-})
+    return (
+      <Wrapper disabled={disabled || readOnly}>
+        <Label
+          htmlFor={id}
+          {...labelProps}
+          disabled={disabled || readOnly}
+          // readOnly={readOnly}
+        >
+          <LabelText>{label}</LabelText>
+          <Check
+            id={id}
+            {...defaultCheckboxProps}
+            {...props}
+            disabled={disabled}
+            ref={ref}
+          />
+          <Checkmark {...checkmarkProps} />
+        </Label>
+      </Wrapper>
+    )
+  }
+)
 
 Checkbox.propTypes = {
   /** Label for checkbox */
@@ -38,6 +53,8 @@ Checkbox.propTypes = {
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   color: PropTypes.string,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   id: PropTypes.string.isRequired,
 }
 
