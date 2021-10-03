@@ -9,7 +9,7 @@ export const resolveColor = (theme, color) => {
 }
 
 export const resolveFontFamily = (fontFamily) => {
-  return fontFamily ? `${fontFamily}, sans-serif` : 'sans-serif'
+  return fontFamily && `${fontFamily}, sans-serif`
 }
 
 export const extendTheme = (newTheme) => {
