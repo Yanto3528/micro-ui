@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
+import { slideIn, slideOut, fadeIn, fadeOut } from '../../animations'
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
 import { Portal } from '../portal'
 import { ModalContext } from './utils/context'
+import { Animate } from '../animate'
 
 import { ModalContent } from './content'
 import { ModalHeader } from './header'
@@ -26,22 +28,31 @@ export const Modal = React.forwardRef(
       return { isOpen, onClose }
     }, [isOpen, onClose])
 
-    return isOpen ? (
-      <ModalContext.Provider value={value}>
-        <Portal>
-          <Overlay onClick={onClose}>
-            <Wrapper
-              onClick={onStopPropagation}
-              {...theme.default.component.modal.wrapper}
-              {...props}
-              ref={ref}
-            >
-              {children}
-            </Wrapper>
-          </Overlay>
-        </Portal>
-      </ModalContext.Provider>
-    ) : null
+    return (
+      <Portal>
+        <Animate show={isOpen} onEnter={fadeIn} onExit={fadeOut} duration={0.5}>
+          <ModalContext.Provider value={value}>
+            <Overlay onClick={onClose}>
+              <Animate
+                show={isOpen}
+                onEnter={slideIn}
+                onExit={slideOut}
+                duration={0.5}
+              >
+                <Wrapper
+                  onClick={onStopPropagation}
+                  {...theme.default.component.modal.wrapper}
+                  {...props}
+                  ref={ref}
+                >
+                  {children}
+                </Wrapper>
+              </Animate>
+            </Overlay>
+          </ModalContext.Provider>
+        </Animate>
+      </Portal>
+    )
   }
 )
 
