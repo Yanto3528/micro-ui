@@ -60,6 +60,15 @@ export const theme = {
         fontSize: '1.4rem',
         fontFamily: 'AIARegular',
       },
+      radio: {
+        activeColor: 'primary',
+        borderColor: 'primary',
+        color: 'secondary',
+        radius: '4px',
+        fontSize: '1.4rem',
+        fontFamily: 'AIARegular',
+        variant: 'circular',
+      },
       divider: {
         bg: 'gray',
         margin: '10px 0',

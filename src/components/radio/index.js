@@ -6,16 +6,17 @@ import { useTheme } from '../../hooks'
 import { getProps } from '../../utils'
 import { Wrapper, Label, Check, Checkmark, LabelText } from './views'
 
-export const Checkbox = React.forwardRef(
+export const Radio = React.forwardRef(
   ({ label, id, disabled, readOnly, ...props }, ref) => {
     const theme = useTheme()
-    const { checkbox: defaultCheckboxProps } = theme.default.component
-    const checkmarkProps = getProps(props, defaultCheckboxProps, [
+    const { radio: defaultRadioProps } = theme.default.component
+    const checkmarkProps = getProps(props, defaultRadioProps, [
       'borderColor',
       'radius',
+      'variant',
     ])
 
-    const labelProps = getProps(props, defaultCheckboxProps, [
+    const labelProps = getProps(props, defaultRadioProps, [
       'fontFamily',
       'fontSize',
       'color',
@@ -27,7 +28,7 @@ export const Checkbox = React.forwardRef(
           <LabelText>{label}</LabelText>
           <Check
             id={id}
-            {...defaultCheckboxProps}
+            {...defaultRadioProps}
             {...props}
             disabled={disabled}
             ref={ref}
@@ -39,21 +40,22 @@ export const Checkbox = React.forwardRef(
   }
 )
 
-Checkbox.propTypes = {
-  /** Label for checkbox */
+Radio.propTypes = {
+  /** Label for radio */
   label: PropTypes.string,
-  /** Border color for checkbox */
+  /** Border color for radio */
   borderColor: PropTypes.string,
-  /** Border radius for checkbox */
+  /** Border radius for radio */
   radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  variant: PropTypes.oneOf(['check', 'circular']),
   id: PropTypes.string.isRequired,
 }
 
 if (isDev) {
-  Checkbox.displayName = 'Checkbox'
+  Radio.displayName = 'Radio'
 }
