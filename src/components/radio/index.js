@@ -42,7 +42,7 @@ export const Radio = React.forwardRef(
 
 Radio.propTypes = {
   /** Label for radio */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /** Border color for radio */
   borderColor: PropTypes.string,
   /** Border radius for radio */

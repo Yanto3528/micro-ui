@@ -16,9 +16,9 @@ const theme = extendTheme({
       // button: {
       //   bg: 'primary',
       //   rounded: false,
-      //   radius: '4px',
+      //   radius: '0px',
       //   padding: '0.5em 1.5em',
-      //   variant: 'outline',
+      //   variant: 'solid',
       // },
       // input: {
       //   variant: 'outline',

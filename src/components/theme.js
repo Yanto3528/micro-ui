@@ -29,7 +29,7 @@ export const theme = {
         bg: 'primary',
         color: 'white',
         rounded: true,
-        padding: '12px 32px',
+        padding: '0.8em 2em',
         radius: '4px',
         fluid: false,
         variant: 'solid',
@@ -68,6 +68,7 @@ export const theme = {
         fontSize: '1.4rem',
         fontFamily: 'AIARegular',
         variant: 'circular',
+        margin: '0 0 12px 0',
       },
       divider: {
         bg: 'gray',
@@ -114,6 +115,21 @@ export const theme = {
         actions: {
           spacing: '10px',
           alignment: 'center',
+        },
+      },
+      radioGroup: {
+        wrapper: {
+          direction: 'column',
+          gap: '10px',
+        },
+        radio: {
+          activeColor: 'primary',
+          borderColor: 'primary',
+          color: 'secondary',
+          radius: '4px',
+          fontSize: '1.4rem',
+          fontFamily: 'AIARegular',
+          variant: 'circular',
         },
       },
     },

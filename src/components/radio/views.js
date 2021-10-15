@@ -9,7 +9,7 @@ const circularStyles = css`
   height: 0.5em;
   background-color: white;
   border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0, 0);
+  transform: translate(-50%, -50%);
 `
 
 const resolveVariant = ({ variant }) => {
@@ -27,9 +27,9 @@ const resolveCheckedRadioType = ({ variant }) => {
       return checkedChecklistStyles
     default:
       return css`
-        transform: translate(-50%, -50%) scale(1, 1);
-        -webkit-transform: translate(-50%, -50%) scale(1, 1);
-        -ms-transform: translate(-50%, -50%) scale(1, 1);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
       `
   }
 }
@@ -50,7 +50,7 @@ export const Label = styled.label.attrs(() => ({
 }))`
   display: block;
   position: relative;
-  margin-bottom: 12px;
+  margin: ${({ margin }) => margin};
   cursor: pointer;
   font-size: ${({ fontSize }) => fontSize};
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
