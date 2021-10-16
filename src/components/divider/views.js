@@ -8,6 +8,7 @@ export const DividerWrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  width: 100%;
 `
 
 export const Line = styled.span.attrs(() => ({

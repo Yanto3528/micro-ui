@@ -4,6 +4,7 @@ import { RadioGroup } from './index'
 
 export default {
   title: 'Forms/RadioGroup',
+  subcomponents: { Radio: RadioGroup.Radio },
   component: RadioGroup,
 }
 
