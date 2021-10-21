@@ -5,5 +5,5 @@ export const ButtonType = {
 
 export const Variant = {
   solid: 'solid',
-  outline: 'outline'
+  outline: 'outline',
 }
