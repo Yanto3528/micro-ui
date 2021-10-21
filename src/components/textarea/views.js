@@ -43,7 +43,7 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
-  height: ${({ height }) => height};
+  rows: ${({ rows }) => rows};
   padding: ${({ padding }) => padding};
   resize: vertical;
 

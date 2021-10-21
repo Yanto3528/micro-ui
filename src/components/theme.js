@@ -144,7 +144,7 @@ export const theme = {
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
-        height: '200px',
+        rows: 5,
         width: '500px',
       },
     },

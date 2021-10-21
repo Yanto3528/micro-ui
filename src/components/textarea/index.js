@@ -37,7 +37,7 @@ Textarea.propTypes = {
   /** Show "danger" color as border color */
   hasError: PropTypes.bool,
   width: PropTypes.string,
-  height: PropTypes.string,
+  rows: PropTypes.string,
   fontSize: PropTypes.string,
   /** Give textarea  a full width of the current container*/
   fluid: PropTypes.bool,
