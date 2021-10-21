@@ -43,9 +43,8 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
-  rows: ${({ rows }) => rows};
   padding: ${({ padding }) => padding};
-  resize: vertical;
+  resize: ${({ resize }) => (resize ? resize : 'none')};
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */

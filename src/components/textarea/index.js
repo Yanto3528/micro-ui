@@ -41,6 +41,8 @@ Textarea.propTypes = {
   fontSize: PropTypes.string,
   /** Give textarea  a full width of the current container*/
   fluid: PropTypes.bool,
+  /** Ability to resize a textaerea, put "both" or "vertical" or "horizontal", or "none" */
+  resize: PropTypes.string,
 }
 
 if (isDev) {
