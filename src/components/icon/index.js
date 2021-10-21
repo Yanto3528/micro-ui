@@ -1,6 +1,5 @@
 import React from 'react'
 import { object, string, oneOf } from 'prop-types'
-import { Colors } from '../../styles'
 import { Component } from './views'
 
 export const Icon = (props) => {
@@ -19,6 +18,6 @@ Icon.propTypes = {
 Icon.defaultProps = {
   className: '',
   size: 's',
-  color: Colors.Primary,
+  color: 'primary',
   customStyle: {},
 }
