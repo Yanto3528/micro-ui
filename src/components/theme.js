@@ -89,6 +89,9 @@ export const theme = {
       divider: {
         bg: 'gray',
         margin: '10px 0',
+        fontFamily: 'AIARegular',
+        fontWeight: '400',
+        fontSize: '1.4rem',
         textPadding: '0 20px',
       },
       modal: {

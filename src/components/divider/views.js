@@ -7,7 +7,6 @@ export const DividerWrapper = styled.div.attrs(() => ({
 }))`
   display: flex;
   align-items: center;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   width: 100%;
 `
 
@@ -23,5 +22,8 @@ export const Line = styled.span.attrs(() => ({
 export const Text = styled.p.attrs(() => ({
   className: 'aia-divider-text',
 }))`
-  padding: ${({ padding }) => padding};
+  padding: ${({ textPadding }) => textPadding};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  font-weight: ${({ fontWeight }) => fontWeight};
+  font-size: ${({ fontSize }) => fontSize};
 `

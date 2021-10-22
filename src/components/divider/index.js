@@ -6,25 +6,23 @@ import { useTheme } from '../../hooks'
 import { getProps } from '../../utils'
 import { DividerWrapper, Line, Text } from './views'
 
-export const Divider = ({ text, textPadding, ...props }) => {
-  const theme = useTheme()
-  const defaultTextProps = getProps(props, theme.default.component.divider, [
-    'textPadding',
-  ])
+const textPropsData = ['textPadding', 'fontFamily', 'fontWeight', 'fontSize']
 
-  const textProps = { padding: textPadding }
+export const Divider = ({ text, ...props }) => {
+  const theme = useTheme()
+  const { divider: defaultDividerProps } = theme.default.component
+  const defaultTextProps = getProps(props, defaultDividerProps, textPropsData)
+
   return (
     <DividerWrapper>
       {text ? (
         <>
-          <Line {...theme.default.component.divider} {...props} />
-          <Text {...defaultTextProps} {...textProps}>
-            {text}
-          </Text>
-          <Line {...theme.default.component.divider} {...props} />
+          <Line {...defaultDividerProps} {...props} />
+          <Text {...defaultTextProps}>{text}</Text>
+          <Line {...defaultDividerProps} {...props} />
         </>
       ) : (
-        <Line {...theme.default.component.divider} {...props} />
+        <Line {...defaultDividerProps} {...props} />
       )}
     </DividerWrapper>
   )
@@ -37,6 +35,9 @@ Divider.propTypes = {
   text: PropTypes.string,
   /** Padding for the text to separate the line */
   textPadding: PropTypes.string,
+  fontFamily: PropTypes.string,
+  fontWeight: PropTypes.string,
+  fontSize: PropTypes.string,
 }
 
 if (isDev) {
