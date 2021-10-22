@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks'
 import { Wrapper } from './views'
 import { RadioGroupContext } from './utils/context'
 import { RadioGroupRadio } from './radio'
+import { RadioGroupButton } from './button'
 
 export const RadioGroup = React.forwardRef(
   ({ children, value, onChange, name, ...props }, ref) => {
@@ -46,3 +47,4 @@ if (isDev) {
 }
 
 RadioGroup.Radio = RadioGroupRadio
+RadioGroup.Button = RadioGroupButton
