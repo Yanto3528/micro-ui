@@ -23,11 +23,13 @@ Tag.propTypes = {
   /** Padding for Tag */
   padding: PropTypes.string,
   /** Round the Tag border radius */
-  uppercase: PropTypes.bool,
+  rounded: PropTypes.bool,
+  /** if not rounded, apply specific radius as Tag border radius */
+  radius: PropTypes.string,
+  textTransform: PropTypes.string,
   variant: PropTypes.oneOf(['solid', 'outline']),
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
-  radius: PropTypes.string,
   customStyle: PropTypes.object,
 }

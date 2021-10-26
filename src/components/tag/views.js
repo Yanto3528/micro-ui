@@ -25,16 +25,17 @@ const outlineStyles = css`
 export const StyledTag = styled.span.attrs(() => ({
   className: 'aia-tag',
 }))`
+  display: inline-block;
   text-align: center;
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
-  border-radius: ${({ radius }) => (radius ? radius : '4px')};
+  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   outline: none;
   padding: ${({ padding }) => padding};
   transition: all 0.2s;
   line-height: 1;
-  text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'lowercase')};
+  text-transform: ${({ textTransform }) => textTransform};
 
   ${resolveVariant};
 

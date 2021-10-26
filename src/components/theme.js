@@ -98,11 +98,12 @@ export const theme = {
         bg: 'primary',
         color: 'white',
         padding: '3px 10px',
-        variant: 'outline',
+        variant: 'solid',
+        radius: '4px',
         fontSize: '1.4rem',
         fontFamily: 'AIAMedium',
         fontWeight: '700',
-        uppercase: true,
+        textTransform: 'uppercase',
       },
       modal: {
         wrapper: {
