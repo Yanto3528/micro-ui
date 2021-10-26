@@ -1,6 +1,7 @@
 export * from './animate'
 export * from './button'
 export * from './checkbox'
+export * from './contact-input'
 export * from './divider'
 export * from './input'
 export * from './modal'
