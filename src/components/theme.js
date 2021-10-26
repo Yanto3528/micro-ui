@@ -94,6 +94,18 @@ export const theme = {
         fontSize: '1.4rem',
         textPadding: '0 20px',
       },
+      label: {
+        bg: 'primary',
+        color: 'white',
+        padding: '5px 20px',
+        rounded: true,
+        text: 'Label 1',
+        name: 'label',
+        fontSize: '1.4rem',
+        fontFamily: 'AIAMedium',
+        fontWeight: 500,
+        buttonType: 'default',
+      },
       modal: {
         wrapper: {
           fontFamily: 'AIARegular',
