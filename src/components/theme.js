@@ -118,6 +118,17 @@ export const theme = {
         fontSize: '1.4rem',
         textPadding: '0 20px',
       },
+      tag: {
+        bg: 'primary',
+        color: 'white',
+        padding: '3px 10px',
+        variant: 'solid',
+        radius: '4px',
+        fontSize: '1.4rem',
+        fontFamily: 'AIAMedium',
+        fontWeight: '700',
+        textTransform: 'uppercase',
+      },
       modal: {
         wrapper: {
           fontFamily: 'AIARegular',
