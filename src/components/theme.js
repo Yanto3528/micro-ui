@@ -94,17 +94,15 @@ export const theme = {
         fontSize: '1.4rem',
         textPadding: '0 20px',
       },
-      label: {
+      tag: {
         bg: 'primary',
         color: 'white',
-        padding: '5px 20px',
-        rounded: true,
-        text: 'Label 1',
-        name: 'label',
+        padding: '3px 10px',
+        variant: 'outline',
         fontSize: '1.4rem',
         fontFamily: 'AIAMedium',
-        fontWeight: 500,
-        buttonType: 'default',
+        fontWeight: '700',
+        uppercase: true,
       },
       modal: {
         wrapper: {
