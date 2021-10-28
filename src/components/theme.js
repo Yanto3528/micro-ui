@@ -202,6 +202,30 @@ export const theme = {
         width: '500px',
         resize: 'none',
       },
+      table: {
+        wrapper: {
+          width: '100%',
+          variant: 'striped',
+          borderSpacing: 0,
+        },
+        header: {
+          padding: '12px 15px 14px 15px',
+          bg: 'darkGray',
+          fontFamily: 'AIARegular',
+          fontSize: '1.4rem',
+          borer: 0,
+          cursor: 'auto'
+        },
+        data: {
+          padding: '11px 15px',
+          border: '1px solid',
+          borderColor: 'lightGray',
+          fontFamily: 'AIARegular',
+          fontSize: '1.4rem',
+          cursor: 'auto',
+          lineHeight: '18px'
+        },
+      },
     },
   },
 }
