@@ -210,7 +210,7 @@ export const theme = {
         },
         header: {
           padding: '12px 15px 14px 15px',
-          bg: 'darkGray',
+          bg: 'lightGray',
           fontFamily: 'AIARegular',
           fontSize: '1.4rem',
           borer: 0,
@@ -219,7 +219,7 @@ export const theme = {
         data: {
           padding: '11px 15px',
           border: '1px solid',
-          borderColor: 'lightGray',
+          borderColor: 'f2f2f2',
           fontFamily: 'AIARegular',
           fontSize: '1.4rem',
           cursor: 'auto',
