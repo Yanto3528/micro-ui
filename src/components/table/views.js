@@ -51,7 +51,7 @@ export const TableDataWrapper = styled.td.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
-  border-color: ${({ borderColor }) => borderColor};
+  border-color: ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
   font-size: ${({ fontSize }) => fontSize};
   cursor: ${({ cursor }) => cursor};

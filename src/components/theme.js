@@ -214,16 +214,16 @@ export const theme = {
           fontFamily: 'AIARegular',
           fontSize: '1.4rem',
           borer: 0,
-          cursor: 'auto'
+          cursor: 'auto',
         },
         data: {
           padding: '11px 15px',
           border: '1px solid',
-          borderColor: 'f2f2f2',
+          borderColor: 'lightGray2',
           fontFamily: 'AIARegular',
           fontSize: '1.4rem',
           cursor: 'auto',
-          lineHeight: '18px'
+          lineHeight: '18px',
         },
       },
     },
