@@ -19,7 +19,20 @@ const initialOptionsValue = (options, filter) =>
   generateOptions(options, filter)
 
 export const Select = React.forwardRef(
-  ({ options, filter, value, onChange, onBlur, searchable, ...props }, ref) => {
+  (
+    {
+      options,
+      filter,
+      value,
+      onChange,
+      onBlur,
+      searchable,
+      readOnly,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     const theme = useTheme()
     const { select: defaultSelectProps } = theme.default.component
     const wrapperProps = getProps(props, defaultSelectProps, wrapperPropsData)
@@ -78,13 +91,22 @@ export const Select = React.forwardRef(
     }
 
     const handleWrapperClick = () => {
+      if (readOnly || disabled) {
+        return
+      }
+
       if (!isOpen) {
         onOpen()
       }
     }
 
     return (
-      <Wrapper {...wrapperProps} onClick={handleWrapperClick} ref={clickRef}>
+      <Wrapper
+        {...wrapperProps}
+        onClick={handleWrapperClick}
+        ref={clickRef}
+        disabled={disabled || readOnly}
+      >
         <StyledInput
           {...defaultSelectProps}
           {...props}
@@ -92,7 +114,8 @@ export const Select = React.forwardRef(
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          readOnly={!searchable}
+          readOnly={readOnly || !searchable}
+          disabled={disabled}
         />
         <IconContainer>{iconContainerProps.icon}</IconContainer>
         {isOpen && filteredOptions.length > 0 && (
@@ -155,6 +178,10 @@ Select.propTypes = {
   onBlur: PropTypes.func,
   /** Determine whether select is searchable or not */
   searchable: PropTypes.bool,
+  /** Make this select option read only value */
+  readOnly: PropTypes.bool,
+  /** Make this select option disabled */
+  disabled: PropTypes.bool,
   /** Options for select. supports 3 types of data */
   options: PropTypes.oneOfType([
     PropTypes.arrayOf(

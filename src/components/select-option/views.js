@@ -57,6 +57,13 @@ export const Wrapper = styled.div.attrs(() => ({
       border-color: ${({ theme }) => theme.colors.danger};
     `}
 
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.7;
+      cursor: not-allowed;
+    `}
+
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
@@ -92,6 +99,9 @@ export const StyledInput = styled.input.attrs(() => ({
     /* Firefox 18- */
     font-weight: lighter;
   }
+
+  pointer-events: ${({ disabled, readOnly }) =>
+    disabled || readOnly ? 'none' : 'auto'};
 `
 
 export const OptionWrapper = styled.div.attrs(() => ({

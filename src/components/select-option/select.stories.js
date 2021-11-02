@@ -34,6 +34,8 @@ const Template = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   ...theme.default.component.select,
+  readOnly: false,
+  disabled: false,
   placeholder: 'Select your gender',
   options,
 }
