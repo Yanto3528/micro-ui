@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from 'react'
+import { useState, useEffect, useCallback, useRef, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 
 export const useTheme = () => {
@@ -13,27 +13,29 @@ export const useTheme = () => {
 export const useToggle = (defaultValue = false) => {
   const [isOpen, setIsOpen] = useState(defaultValue)
 
-  const onToggle = () => setIsOpen((currentOpen) => !currentOpen)
-  const onClose = () => setIsOpen(false)
-  const onOpen = () => setIsOpen(true)
+  const onToggle = useCallback(() => setIsOpen((curOpen) => !curOpen), [])
+  const onClose = useCallback(() => setIsOpen(false), [])
+  const onOpen = useCallback(() => setIsOpen(true), [])
 
   return [isOpen, { onToggle, onClose, onOpen }]
 }
 
 export const useClickOutside = (callback) => {
   const ref = useRef()
-  const handleClick = (e) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      callback()
-    }
-  }
 
   useEffect(() => {
+    const handleClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        callback()
+      }
+    }
+
     document.addEventListener('click', handleClick)
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  })
+    //eslint-disable-next-line
+  }, [])
 
   return ref
 }
