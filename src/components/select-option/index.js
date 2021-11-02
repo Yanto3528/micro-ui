@@ -26,7 +26,7 @@ export const Select = React.forwardRef(
     const iconContainerProps = getProps(props, defaultSelectProps, ['icon'])
 
     const optionsRef = useRef(normalizeOptionsData(options))
-    const optionsDataRef = useRef(generateOptions(options, filter))
+    const defaultOptionsRef = useRef(generateOptions(options, filter))
 
     const [isOpen, { onClose, onOpen }] = useToggle(false)
     const clickRef = useClickOutside(onClose)
@@ -46,11 +46,11 @@ export const Select = React.forwardRef(
     const handleInputChange = (event) => {
       setInputValue(event.target.value)
       if (event.target.value === '') {
-        return setFilteredOptions(optionsDataRef.current)
+        return setFilteredOptions(defaultOptionsRef.current)
       }
 
       const inputValueRegex = new RegExp(event.target.value, 'gi')
-      const data = optionsDataRef.current.filter((option) => {
+      const data = defaultOptionsRef.current.filter((option) => {
         return option.name.match(inputValueRegex)
       })
 
@@ -68,7 +68,7 @@ export const Select = React.forwardRef(
         setInputValue('')
       }
       onChange?.(optionValue || '', event)
-      setFilteredOptions(optionsDataRef.current)
+      setFilteredOptions(defaultOptionsRef.current)
       onBlur?.(event)
     }
 
