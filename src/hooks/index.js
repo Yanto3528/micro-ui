@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 
 export const useTheme = () => {
@@ -8,4 +8,32 @@ export const useTheme = () => {
   }
 
   return context
+}
+
+export const useToggle = (defaultValue = false) => {
+  const [isOpen, setIsOpen] = useState(defaultValue)
+
+  const onToggle = () => setIsOpen((currentOpen) => !currentOpen)
+  const onClose = () => setIsOpen(false)
+  const onOpen = () => setIsOpen(true)
+
+  return [isOpen, { onToggle, onClose, onOpen }]
+}
+
+export const useClickOutside = (callback) => {
+  const ref = useRef()
+  const handleClick = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      callback()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  })
+
+  return ref
 }

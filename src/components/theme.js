@@ -1,3 +1,5 @@
+import { Icon } from './icon'
+
 export const theme = {
   colors: {
     primary: '#D31145',
@@ -201,6 +203,25 @@ export const theme = {
         rows: 5,
         width: '500px',
         resize: 'none',
+      },
+      select: {
+        fluid: false,
+        width: '335px',
+        height: '40px',
+        padding: '10px 16px',
+        rounded: false,
+        radius: '15px',
+        fontFamily: 'AIARegular',
+        fontWeight: 'normal',
+        fontSize: '1.4rem',
+        icon: <Icon name='down' size='m' />,
+        bg: 'lightGray',
+        color: 'secondary',
+        borderColor: 'primary',
+        focusBorderColor: 'primary',
+        placeholderColor: 'darkGray',
+        variant: 'solid',
+        searchable: false,
       },
       table: {
         wrapper: {
