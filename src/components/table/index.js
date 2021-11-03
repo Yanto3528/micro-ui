@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
@@ -15,15 +15,15 @@ import { TableWrapper } from './views'
 
 export const Table = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
-  const { table: {wrapper: defaultTableWrapperProps}} = theme.default.component
+  const {
+    table: { wrapper: defaultTableWrapperProps },
+  } = theme.default.component
 
-  const variantProps = getProps(props, defaultTableWrapperProps, [
-    'variant',
-  ])
+  const variantProps = getProps(props, defaultTableWrapperProps, ['variant'])
 
   const value = useMemo(() => {
     return {
-      ...variantProps
+      ...variantProps,
     }
   }, [variantProps])
 
