@@ -145,7 +145,6 @@ Select.propTypes = {
   radius: PropTypes.string,
   /** Round the select border radius */
   rounded: PropTypes.bool,
-  fontFamily: PropTypes.string,
   variant: PropTypes.oneOf(['solid', 'outline']),
   /** Border color for outline variant */
   borderColor: PropTypes.string,
