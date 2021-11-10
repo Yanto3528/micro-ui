@@ -9,8 +9,7 @@ const sizeMapper = {
 }
 
 export const Component = styled.i`
-  /* color: ${(props) => props.color}; */
-  color: inherit;
-  font-size: ${(props) => props.size && sizeMapper[props.size]};
+  color: ${({ color }) => color || 'inherit'};
+  font-size: ${({ size }) => sizeMapper[size] || size};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `

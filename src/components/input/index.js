@@ -3,18 +3,32 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '../../constants'
 import { useTheme } from '../../hooks'
+import { getProps } from '../../utils'
 import { Wrapper, StyledInput, LeftElement, RightElement } from './views'
 
+const wrapperPropsData = [
+  'color',
+  'fluid',
+  'width',
+  'fontSize',
+  'fontFamily',
+  'fontWeight',
+]
+
 export const Input = React.forwardRef(
-  ({ leftElement, rightElement, fluid, ...props }, ref) => {
+  ({ leftElement, rightElement, ...props }, ref) => {
     const theme = useTheme()
+    const wrapperProps = getProps(
+      props,
+      theme.default.component.input,
+      wrapperPropsData
+    )
     return (
-      <Wrapper fluid={fluid}>
+      <Wrapper {...wrapperProps}>
         {leftElement && <LeftElement>{leftElement}</LeftElement>}
         <StyledInput
           {...theme.default.component.input}
           {...props}
-          fluid={fluid}
           leftElement={!!leftElement}
           rightElement={!!rightElement}
           ref={ref}
@@ -34,7 +48,6 @@ Input.propTypes = {
   radius: PropTypes.string,
   /** Round the input border radius */
   rounded: PropTypes.bool,
-  fontFamily: PropTypes.string,
   variant: PropTypes.oneOf(['solid', 'outline']),
   /** Border color for outline variant */
   borderColor: PropTypes.string,
@@ -43,13 +56,14 @@ Input.propTypes = {
   /** Show "danger" color as border color */
   hasError: PropTypes.bool,
   /** Left element for input, for example email icon */
-  leftElement: React.element,
+  leftElement: PropTypes.element,
   /** Right element for input, useful for creating password eye */
-  rightElement: React.element,
+  rightElement: PropTypes.element,
   width: PropTypes.string,
   height: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   /** Give input a full width of the current container */
   fluid: PropTypes.bool,
   /** Padding left for when leftElement is specified */

@@ -10,9 +10,33 @@ const outlineStyles = css`
   border: 1px solid
     ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
 
+  & + .aia-input-right-element,
+  & + .aia-input-left-element {
+    color: ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  }
+
   &:focus {
     border-color: ${({ theme, focusBorderColor, hasError }) =>
       !hasError && resolveColor(theme, focusBorderColor)};
+
+    & + .aia-input-right-element,
+    & + .aia-input-left-element {
+      color: ${({ theme, focusBorderColor, hasError }) =>
+        !hasError && resolveColor(theme, focusBorderColor)};
+    }
+  }
+`
+
+const iconElementStyles = css`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > * {
+    cursor: pointer;
+    transition: color 0.2s;
   }
 `
 
@@ -27,8 +51,8 @@ const resolveVariant = ({ variant }) => {
 
 const resolvePadding = ({ padding, leftElement, rightElement }) => css`
   padding: ${padding};
-  padding-left: ${({ paddingleftElement }) =>
-    leftElement && paddingleftElement};
+  padding-left: ${({ paddingLeftElement }) =>
+    leftElement && paddingLeftElement};
   padding-right: ${({ paddingRightElement }) =>
     rightElement && paddingRightElement};
 `
@@ -38,6 +62,10 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   position: relative;
   display: inline-block;
+  color: ${({ theme, color }) => resolveColor(theme, color)};
+  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
   width: ${({ fluid }) => fluid && '100%'};
 `
 
@@ -45,13 +73,11 @@ export const StyledInput = styled.input.attrs(() => ({
   className: 'aia-input',
 }))`
   outline: none;
-  color: ${({ theme, color }) => resolveColor(theme, color)};
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  font: inherit;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -90,23 +116,13 @@ export const StyledInput = styled.input.attrs(() => ({
 export const LeftElement = styled.span.attrs(() => ({
   className: 'aia-input-left-element',
 }))`
-  position: absolute;
-  top: 50%;
+  ${iconElementStyles};
   left: 15px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
 export const RightElement = styled.span.attrs(() => ({
   className: 'aia-input-right-element',
 }))`
-  position: absolute;
-  top: 50%;
+  ${iconElementStyles};
   right: 15px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
