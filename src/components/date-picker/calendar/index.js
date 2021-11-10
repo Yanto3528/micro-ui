@@ -7,7 +7,7 @@ import { isDev } from '../../../constants'
 import { useToggle } from '../../../hooks'
 import { DateAction, DaysOfWeek } from './utils/constant'
 import { dayjsType } from './utils/types'
-import { getDisableMonthData } from './utils/helpers'
+import { getDisabledMonthData } from './utils/helpers'
 import { CalendarYear } from './year'
 import { Month } from './month'
 import { Days } from './days'
@@ -20,8 +20,8 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
   const [date, setDate] = useState(value)
   const [selectedDate, setSelectedDate] = useState(value)
   const [disabledMonth, setDisabledMonth] = useState({
-    disableNextMonth: getDisableMonthData(endDate, selectedDate),
-    disablePrevMonth: getDisableMonthData(startDate, selectedDate),
+    disableNextMonth: getDisabledMonthData(endDate, selectedDate),
+    disablePrevMonth: getDisabledMonthData(startDate, selectedDate),
   })
 
   useEffect(() => {
@@ -48,8 +48,8 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
         break
     }
 
-    const disableNext = getDisableMonthData(endDate, newDate)
-    const disableBack = getDisableMonthData(startDate, newDate)
+    const disableNext = getDisabledMonthData(endDate, newDate)
+    const disableBack = getDisabledMonthData(startDate, newDate)
 
     setDate(newDate)
     setDisabledMonth({

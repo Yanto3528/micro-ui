@@ -1,4 +1,4 @@
-export const getDisableMonthData = (date, selectedDate) => {
+export const getDisabledMonthData = (date, selectedDate) => {
   if (!date) {
     return false
   }
