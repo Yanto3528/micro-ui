@@ -1,5 +1,5 @@
 import React from 'react'
-import { object, string, oneOf } from 'prop-types'
+import { object, string } from 'prop-types'
 import { Component } from './views'
 
 export const Icon = (props) => {
@@ -10,7 +10,7 @@ export const Icon = (props) => {
 Icon.propTypes = {
   className: string,
   name: string.isRequired,
-  size: oneOf(['xs', 's', 'm', 'l', 'xl']),
+  size: string.isRequired,
   color: string,
   customStyle: object,
 }

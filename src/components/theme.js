@@ -62,6 +62,43 @@ export const theme = {
           { value: '+60', name: '+60' },
         ],
       },
+      datePicker: {
+        bg: 'lightGray',
+        color: 'secondary',
+        padding: '12px 16px',
+        radius: '15px',
+        rounded: false,
+        fluid: false,
+        width: '335px',
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+        variant: 'solid',
+        borderColor: 'primary',
+        focusBorderColor: 'primary',
+        rightElement: <Icon name='calendar' size='1.3em' />,
+        paddingLeftElement: '36px',
+        paddingRightElement: '36px',
+        dateFormat: 'DD/MM/YYYY',
+        calendarProps: {
+          wrapperStyle: {
+            fontFamily: 'AIARegular',
+            fontSize: '1.4rem',
+          },
+          yearStyle: {
+            fontFamily: 'AIAMedium',
+            fontSize: '1.4rem',
+          },
+          monthStyle: {
+            fontFamily: 'AIAMedium',
+            fontSize: '1.4rem',
+          },
+          dayStyle: {
+            activeBg: 'primary',
+            activeColor: 'white',
+          },
+        },
+      },
       input: {
         bg: 'lightGray',
         color: 'secondary',
@@ -75,7 +112,7 @@ export const theme = {
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
-        paddingleftElement: '36px',
+        paddingLeftElement: '36px',
         paddingRightElement: '36px',
       },
       checkbox: {
