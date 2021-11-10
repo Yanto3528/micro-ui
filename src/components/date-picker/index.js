@@ -29,9 +29,15 @@ export const DatePicker = ({
   const theme = useTheme()
   const ref = useClickOutside(onClose)
 
-  const wrapperProps = getProps(props, theme.default.component.datePicker, [
+  const { datePicker: defaultDatePickerProps } = theme.default.component
+
+  const wrapperProps = getProps(props, defaultDatePickerProps, [
     'width',
     'fluid',
+  ])
+
+  const { calendarProps } = getProps(props, defaultDatePickerProps, [
+    'calendarProps',
   ])
 
   const handleInputChange = (event) => {
@@ -107,6 +113,7 @@ export const DatePicker = ({
           onChange={handleDateChange}
           startDate={startDate}
           endDate={endDate}
+          {...calendarProps}
         />
       )}
     </Wrapper>

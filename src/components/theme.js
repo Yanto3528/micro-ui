@@ -80,6 +80,24 @@ export const theme = {
         paddingLeftElement: '36px',
         paddingRightElement: '36px',
         dateFormat: 'DD/MM/YYYY',
+        calendarProps: {
+          wrapperStyle: {
+            fontFamily: 'AIARegular',
+            fontSize: '1.4rem',
+          },
+          yearStyle: {
+            fontFamily: 'AIAMedium',
+            fontSize: '1.4rem',
+          },
+          monthStyle: {
+            fontFamily: 'AIAMedium',
+            fontSize: '1.4rem',
+          },
+          dayStyle: {
+            activeBg: 'primary',
+            activeColor: 'white',
+          },
+        },
       },
       input: {
         bg: 'lightGray',

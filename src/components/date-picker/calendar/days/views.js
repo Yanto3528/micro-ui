@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components'
+import { resolveColor } from '../../../../utils'
 
 const activeDayStyles = ({ isDateInRange }) =>
   isDateInRange &&
   css`
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: white;
+    background-color: ${({ theme, activeBg }) => resolveColor(theme, activeBg)};
+    color: ${({ theme, activeColor }) => resolveColor(theme, activeColor)};
   `
 
 const daySelectedStyles = ({ isSelected }) => isSelected && activeDayStyles
@@ -42,4 +43,6 @@ export const SingleDay = styled.p.attrs(() => ({
   &:hover {
     ${activeDayStyles}
   }
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `

@@ -15,6 +15,7 @@ export const Days = ({
   startDate,
   endDate,
   onSelectDay,
+  ...props
 }) => {
   const handleSelectDay = (selectedDay, isDateInRange) => (event) => {
     if (!isDateInRange) {
@@ -63,6 +64,7 @@ export const Days = ({
           isSelected={daysOfMonth.isSame(selectedDate, 'day')}
           isDateInRange={isDateInRange}
           onClick={handleSelectDay(daysOfMonth, isDateInRange)}
+          {...props}
         >
           {dayValue}
         </SingleDay>
@@ -95,6 +97,11 @@ Days.propTypes = {
   startDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   endDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   onSelectDay: PropTypes.func.isRequired,
+  /** Background-color when hover or in selected state */
+  activeBg: PropTypes.string,
+  /** Text color when hover or in selected state */
+  activeColor: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

@@ -9,7 +9,9 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-calendar-year-wrapper',
 }))`
   text-align: center;
-  font-family: AIAMedium;
+  font-family: ${({ fontFamily }) => fontFamily};
+  font-size: ${({ fontSize }) => fontSize};
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Header = styled.div.attrs(() => ({

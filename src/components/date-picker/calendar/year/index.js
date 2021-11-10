@@ -9,7 +9,12 @@ import { Wrapper, Header, CurrentYear, YearList, Year } from './views'
 
 const limitYearShown = 20
 
-export const CalendarYear = ({ date, onToggleOpen, onYearSelect }) => {
+export const CalendarYear = ({
+  date,
+  onToggleOpen,
+  onYearSelect,
+  ...props
+}) => {
   const currentYear = Number(date.format('YYYY'))
   const startYear = currentYear - (currentYear % limitYearShown)
   const endYear = startYear + limitYearShown - 1
@@ -38,9 +43,9 @@ export const CalendarYear = ({ date, onToggleOpen, onYearSelect }) => {
     setToYear(endDecade)
   }
 
-  const onSelectYear = (yearValue) => () => {
+  const onSelectYear = (yearValue) => (event) => {
     onYearSelect(yearValue)
-    onToggleOpen()
+    onToggleOpen(event)
   }
 
   const generateYear = () => {
@@ -63,7 +68,7 @@ export const CalendarYear = ({ date, onToggleOpen, onYearSelect }) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Header>
         <NextBackButton onClick={onClickBack}>
           <BackIcon />
@@ -87,6 +92,10 @@ CalendarYear.propTypes = {
   onToggleOpen: PropTypes.func.isRequired,
   onYearSelect: PropTypes.func.isRequired,
   date: dayjsType.isRequired,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

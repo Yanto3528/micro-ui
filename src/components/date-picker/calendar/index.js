@@ -65,23 +65,30 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
     onChange(selectedDate, event)
   }
 
+  const onToggleShowYear = (event) => {
+    event.stopPropagation()
+    onToggle()
+  }
+
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props.wrapperStyle}>
       {isYearOpen ? (
         <CalendarYear
           date={date}
-          onToggleOpen={onToggle}
+          onToggleOpen={onToggleShowYear}
           onYearSelect={onYearSelect}
+          {...props.yearStyle}
         />
       ) : (
         <>
-          <YearDisplayWrapper onClick={onToggle}>
+          <YearDisplayWrapper onClick={onToggleShowYear}>
             <p>{date.format('YYYY')}</p>
           </YearDisplayWrapper>
           <Month
             date={date}
             onMonthAction={onMonthAction}
             disabledMonth={disabledMonth}
+            {...props.monthStyle}
           />
           <WeekDayWrapper>
             {DaysOfWeek.map((day, index) => (
@@ -94,6 +101,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
             onSelectDay={onSelectDay}
             startDate={startDate}
             endDate={endDate}
+            {...props.dayStyle}
           />
         </>
       )}
@@ -106,6 +114,10 @@ Calendar.propTypes = {
   value: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   startDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   endDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
+  wrapperStyle: PropTypes.object,
+  yearStyle: PropTypes.object,
+  monthStyle: PropTypes.object,
+  dayStyle: PropTypes.object,
 }
 
 if (isDev) {

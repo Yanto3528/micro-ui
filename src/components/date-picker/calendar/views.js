@@ -19,16 +19,17 @@ export const Wrapper = styled.div.attrs(() => ({
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: 12px;
   width: 100%;
-  font-family: AIARegular;
-  font-size: 1.4rem;
+  font-family: ${({ fontFamily }) => fontFamily};
+  font-size: ${({ fontSize }) => fontSize};
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const YearDisplayWrapper = styled.div.attrs(() => ({
   className: 'aia-calendar-year-display',
 }))`
   text-align: center;
-  font-family: AIAMedium;
-  font-size: 1.6rem;
+  font-size: 1.2em;
+  font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   p {
