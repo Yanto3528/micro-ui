@@ -299,18 +299,19 @@ export const theme = {
       unitNumber: {
         bg: 'lightGray',
         color: 'secondary',
-        padding: '12px 16px',
+        padding: '7px 16px',
+        width: '335px',
+        height: '40px',
         radius: '15px',
         rounded: false,
         fluid: false,
-        height: '40px',
-        width: '335px',
         fontFamily: 'AIARegular',
         fontSize: '1.4rem',
+        fontWeight: '400',
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
-        margin: '0px 5px'
+        alignment: 'center'
       }
     },
   },

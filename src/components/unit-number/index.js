@@ -3,14 +3,21 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
+import { getProps } from '@/utils'
 
+import { wrapperPropsData, inputPropsData } from './utils/constant'
 import { Separator, Wrapper, StyledInput } from './views'
 
 const MAX_LENGTH = "4"
 
-export const UnitNumber = ({ fluid, ...props }) => {
-  const theme = useTheme()
+export const UnitNumber = ({...props }) => {
   const secondPartRef = useRef(null)
+
+  const theme = useTheme()
+  const { unitNumber: defaultInputProps } = theme.default.component
+
+  const wrapperProps = getProps(props, defaultInputProps, wrapperPropsData)
+  const inputProps = getProps(props, defaultInputProps, inputPropsData)
 
   const firstPartChange = (e) => {
     if (e.currentTarget.value.length == MAX_LENGTH) {
@@ -19,19 +26,20 @@ export const UnitNumber = ({ fluid, ...props }) => {
   }
 
   return (
-    <Wrapper fluid={fluid}>
+    <Wrapper
+      {...wrapperProps}
+    >
       <StyledInput
-        {...theme.default.component.unitNumber}
+        {...inputProps}
         {...props}
-        fluid={fluid}
         maxLength={MAX_LENGTH}
         onChange={firstPartChange}
+        {...inputProps}
       />
       <Separator>-</Separator>
       <StyledInput
-        {...theme.default.component.unitNumber}
+        {...inputProps}
         {...props}
-        fluid={fluid}
         ref={secondPartRef}
         maxLength={MAX_LENGTH}
       />
@@ -45,8 +53,6 @@ UnitNumber.propTypes = {
   /** Text color for input */
   color: PropTypes.string,
   padding: PropTypes.string,
-  /** Margin for left and right input */
-  margin: PropTypes.string,
   radius: PropTypes.string,
   /** Round the input border radius */
   rounded: PropTypes.bool,
@@ -63,6 +69,9 @@ UnitNumber.propTypes = {
   fontSize: PropTypes.string,
   /** Give input a full width of the current container */
   fluid: PropTypes.bool,
+  placeholder: PropTypes.string,
+  /** Text-align for unit number */
+  alignment: PropTypes.oneOf(['left', 'center', 'right']),
 }
 
 if (isDev) {

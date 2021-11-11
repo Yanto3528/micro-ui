@@ -1,19 +1,26 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { resolveColor} from '@/utils'
+import { fontStyles } from '@/styles'
+
+const outlineFocusStyles = ({ hasError }) => {
+  if (!hasError) {
+    return css`
+      &:focus-within {
+        border-color: ${resolveColor('focusBorderColor')};
+      }
+    `
+  }
+}
 
 const solidStyles = css`
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  border: 1px solid ${resolveColor('bg')};
+  background-color: ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
 
-  &:focus {
-    border-color: ${({ theme, focusBorderColor, hasError }) =>
-      !hasError && resolveColor(theme, focusBorderColor)};
-  }
+  ${outlineFocusStyles};
 `
 
 const resolveVariant = ({ variant }) => {
@@ -28,33 +35,51 @@ const resolveVariant = ({ variant }) => {
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-unit-number-wrapper'
 }))`
-  position: relative;
-  width: ${({ fluid }) => fluid && '100%'};
-  height: ${({ height }) => height};
-  line-height: 40px;
-
   display: flex;
-  flex-direction: row;
-  flex: 1 1 auto;
+  align-items: center;
+  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  height: ${({ height }) => height};
+  padding: ${({ padding }) => padding};
+  ${fontStyles};
+  color: ${resolveColor('color')};
+  transition: border 0.2s;
+
+  ${resolveVariant};
+  ${({ hasError }) =>
+    hasError &&
+    css`
+      border-color: ${({ theme }) => theme.colors.danger};
+      .aia-contact-input-separator {
+        background-color: ${({ theme }) => theme.colors.danger};
+      }
+    `}
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.7;
+    `}
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Separator = styled.span.attrs(() => ({
   className: 'aia-unit-number-separator'
 }))`
-  margin: ${({ margin }) => margin};
+  margin-right: 10px;
 `
 
 export const StyledInput = styled.input.attrs(() => ({
   className: 'aia-unit-number-input'
 }))`
   outline: none;
-  color: ${({ theme, color }) => resolveColor(theme, color)};
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
-  transition: border 0.2s;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
-  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
-  height: ${({ height }) => height};
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: inherit;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -75,19 +100,9 @@ export const StyledInput = styled.input.attrs(() => ({
 
   &:disabled,
   &:read-only {
-    opacity: 0.7;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
+  text-align: ${({ alignment }) => alignment};
   padding: ${({ padding }) => padding};
-
-  ${resolveVariant}
-  ${({ hasError }) =>
-  hasError &&
-  css`
-    border-color: ${({ theme }) => theme.colors.danger};
-  `}
-
-  ${({ customStyle }) => customStyle && css(customStyle)};
-
 `

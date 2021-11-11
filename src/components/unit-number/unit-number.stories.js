@@ -10,10 +10,10 @@ export default {
 
 const Template = (args) => <UnitNumber {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
   ...theme.default.component.unitNumber,
-  placeholder: 'Unit number placeholder',
+  placeholder: 'xxxx',
   disabled: false,
   readOnly: false,
   hasError: false,
@@ -21,6 +21,6 @@ Primary.args = {
 
 export const Outline = Template.bind({})
 Outline.args = {
-  ...Primary.args,
+  ...Default.args,
   variant: 'outline',
 }
