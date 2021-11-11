@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../../../constants'
+import { isDev } from '@/constants'
+
 import { DateAction } from '../utils/constant'
 import { dayjsType } from '../utils/types'
 import { NextBackButton, NextIcon, BackIcon } from '../views'

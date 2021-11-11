@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '../../utils'
-import { checklistStyles, checkedChecklistStyles } from '../../styles'
+import { resolveColor, resolveFontFamily } from '@/utils'
+import { checklistStyles, checkedChecklistStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-checkbox-wrapper',

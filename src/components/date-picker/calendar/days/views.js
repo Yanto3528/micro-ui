@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '../../../../utils'
+import { resolveColor } from '@/utils'
 
 const activeDayStyles = ({ isDateInRange }) =>
   isDateInRange &&

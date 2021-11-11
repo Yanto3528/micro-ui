@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { resolveColor, resolveFontFamily } from '@/utils'
 import { ButtonType, Variant } from './utils/constants'
 
 const defaultStyles = css`

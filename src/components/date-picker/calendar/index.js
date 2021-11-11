@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
-import { isDev } from '../../../constants'
-import { useToggle } from '../../../hooks'
+import { isDev } from '@/constants'
+import { useToggle } from '@/hooks'
+
 import { DateAction, DaysOfWeek } from './utils/constant'
 import { dayjsType } from './utils/types'
 import { getDisabledMonthData } from './utils/helpers'

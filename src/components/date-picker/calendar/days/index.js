@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 
-import { isDev } from '../../../../constants'
+import { isDev } from '@/constants'
 import { dayjsType } from '../utils/types'
 import { Wrapper, SingleDay } from './views'
 

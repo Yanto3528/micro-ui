@@ -1,5 +1,6 @@
 import React from 'react'
 import { object, string } from 'prop-types'
+
 import { Component } from './views'
 
 export const Icon = (props) => {

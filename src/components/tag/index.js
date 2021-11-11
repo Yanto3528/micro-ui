@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { useTheme } from '../../hooks'
+import { useTheme } from '@/hooks'
 import { StyledTag } from './views'
 
 export const Tag = React.forwardRef(({ children, ...props }, ref) => {

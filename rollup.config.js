@@ -5,6 +5,7 @@ import size from 'rollup-plugin-sizes'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternalPlugin from 'rollup-plugin-peer-deps-external'
+import alias from '@rollup/plugin-alias'
 
 // Will use this later on
 // import { terser } from 'rollup-plugin-terser';
@@ -43,6 +44,11 @@ const config = defineConfig({
       brotliSize: true,
     }),
     size(),
+    alias({
+      entries: {
+        '@/*': './src/*',
+      },
+    }),
   ],
 })
 

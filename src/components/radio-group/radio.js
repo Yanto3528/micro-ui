@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
 import { useRadioGroupContext } from './utils/context'
 import { Radio } from '../radio'
 

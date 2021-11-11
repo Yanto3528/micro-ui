@@ -4,9 +4,10 @@ import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { isDev } from '../../constants'
-import { useTheme, useToggle, useClickOutside } from '../../hooks'
-import { getProps } from '../../utils'
+import { isDev } from '@/constants'
+import { useTheme, useToggle, useClickOutside } from '@/hooks'
+import { getProps } from '@/utils'
+
 import { dayjsType } from './calendar/utils/types'
 import { Input } from '../input'
 import { Calendar } from './calendar'
