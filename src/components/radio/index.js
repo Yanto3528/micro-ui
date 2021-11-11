@@ -50,6 +50,7 @@ Radio.propTypes = {
   radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,

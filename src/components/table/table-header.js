@@ -30,6 +30,7 @@ TableHeader.propTypes = {
   bg: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   /** Give TableHeader a full width of the current container*/
   fluid: PropTypes.bool,
 }

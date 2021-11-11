@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const outlineFocusStyles = ({ hasError }) => {
   if (!hasError) {
     return css`
       &:focus-within {
-        border-color: ${({ theme, focusBorderColor }) =>
-          resolveColor(theme, focusBorderColor)};
+        border-color: ${resolveColor('focusBorderColor')};
         .aia-contact-input-separator {
-          background-color: ${({ theme, focusBorderColor }) =>
-            resolveColor(theme, focusBorderColor)};
+          background-color: ${resolveColor('focusBorderColor')};
         }
       }
     `
@@ -17,16 +16,14 @@ const outlineFocusStyles = ({ hasError }) => {
 }
 
 const solidStyles = css`
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  border: 1px solid ${resolveColor('bg')};
+  background-color: ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
   .aia-contact-input-separator {
-    background-color: ${({ theme, borderColor }) =>
-      resolveColor(theme, borderColor)};
+    background-color: ${resolveColor('borderColor')};
   }
 
   ${outlineFocusStyles};
@@ -50,10 +47,8 @@ export const Wrapper = styled.div.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   padding: ${({ padding }) => padding};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${({ fontSize }) => fontSize};
-  color: ${({ theme, color }) => resolveColor(theme, color)};
+  ${fontStyles};
+  color: ${resolveColor('color')};
   transition: border 0.2s;
 
   ${resolveVariant};
@@ -134,7 +129,6 @@ export const Separator = styled.div.attrs(() => ({
   width: 2px;
   height: 100%;
   transition: background-color 0.2s;
-  background-color: ${({ theme, separatorColor }) =>
-    resolveColor(theme, separatorColor)};
+  background-color: ${resolveColor('separatorColor')};
   margin-right: 10px;
 `

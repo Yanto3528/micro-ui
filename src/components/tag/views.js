@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '@/utils'
+
+import { resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const resolveVariant = ({ variant }) => {
   switch (variant) {
@@ -11,15 +13,15 @@ const resolveVariant = ({ variant }) => {
 }
 
 const solidStyles = css`
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  color: ${({ theme, color }) => resolveColor(theme, color)};
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
+  background-color: ${resolveColor('bg')};
+  color: ${resolveColor('color')};
+  border: 1px solid ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
   background-color: transparent;
-  color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
+  color: ${resolveColor('bg')};
+  border: 1px solid ${resolveColor('bg')};
 `
 
 export const StyledTag = styled.span.attrs(() => ({
@@ -27,9 +29,7 @@ export const StyledTag = styled.span.attrs(() => ({
 }))`
   display: inline-block;
   text-align: center;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
+  ${fontStyles};
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   outline: none;
   padding: ${({ padding }) => padding};

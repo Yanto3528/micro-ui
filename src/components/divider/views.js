@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 export const DividerWrapper = styled.div.attrs(() => ({
   className: 'aia-divider-wrapper',
@@ -15,7 +16,7 @@ export const Line = styled.span.attrs(() => ({
 }))`
   flex: 1;
   height: 1px;
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  background-color: ${resolveColor('bg')};
   margin: ${({ margin }) => margin};
 `
 
@@ -23,7 +24,5 @@ export const Text = styled.p.attrs(() => ({
   className: 'aia-divider-text',
 }))`
   padding: ${({ textPadding }) => textPadding};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${({ fontSize }) => fontSize};
+  ${fontStyles};
 `

@@ -1,22 +1,23 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '@/utils'
+
+import { getColor, resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const solidStyles = css`
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  border: 1px solid ${resolveColor('bg')};
+  background-color: ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
 
   .aia-select-icon-container {
-    color: ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+    color: ${resolveColor('borderColor')};
   }
 
   &:focus-within {
     border-color: ${({ theme, focusBorderColor, hasError }) =>
-      !hasError && resolveColor(theme, focusBorderColor)};
+      !hasError && getColor(theme, focusBorderColor)};
   }
 `
 
@@ -41,14 +42,12 @@ export const Wrapper = styled.div.attrs(() => ({
   border-radius: ${({ radius, rounded }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
   cursor: pointer;
-  color: ${({ theme, color }) => resolveColor(theme, color)};
+  color: ${resolveColor('color')};
   ${resolveVariant};
-  font-family: ${({ fontFamily }) => fontFamily};
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${({ fontSize }) => fontSize};
+  ${fontStyles};
 
   option {
-    color: ${({ theme, color }) => resolveColor(theme, color)};
+    color: ${resolveColor('color')};
   }
 
   ${({ hasError }) =>
