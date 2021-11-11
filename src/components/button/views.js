@@ -95,7 +95,7 @@ export const LoadingIcon = styled.span.attrs(() => ({
 `
 
 export const LoadingText = styled.span.attrs(() => ({
-  className: 'loading-text',
+  className: 'aia-button-loading-text',
 }))`
   display: inline-block;
   margin: 0 5px;
