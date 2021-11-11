@@ -29,6 +29,14 @@ Outline.args = {
   variant: 'outline',
 }
 
+export const Loading = Template.bind({})
+Loading.args = {
+  ...Primary.args,
+  children: 'Submit',
+  loading: true,
+  loadingText: 'Loading...',
+}
+
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   ...Primary.args,

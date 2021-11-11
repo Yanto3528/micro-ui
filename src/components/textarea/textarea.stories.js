@@ -15,7 +15,7 @@ Primary.args = {
   ...theme.default.component.textarea,
   placeholder: 'Textarea placeholder',
   disabled: false,
-  readonly: false,
+  readOnly: false,
   hasError: false,
 }
 

@@ -1,12 +1,13 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
-import { Wrapper } from './views'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
 import { RadioGroupContext } from './utils/context'
 import { RadioGroupRadio } from './radio'
 import { RadioGroupButton } from './button'
+import { Wrapper } from './views'
 
 export const RadioGroup = React.forwardRef(
   ({ children, value, onChange, name, ...props }, ref) => {

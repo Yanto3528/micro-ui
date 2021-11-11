@@ -26,6 +26,13 @@
   "settings": {
     "react": {
       "version": "999.999.999"
+    },
+    "import/resolver": {
+      "babel-module": {},
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx"]
+      }
     }
   },
   "rules": {

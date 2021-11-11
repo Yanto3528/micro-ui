@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
-import { StyledButton, IconContainer, LoadingIcon } from './views'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
+import { StyledButton, IconContainer, LoadingIcon, LoadingText } from './views'
 
 export const Button = React.forwardRef(
-  ({ icon, disabled, loading, children, ...otherProps }, ref) => {
+  ({ icon, disabled, loading, children, loadingText, ...otherProps }, ref) => {
     const theme = useTheme()
     return (
       <StyledButton
@@ -17,7 +18,8 @@ export const Button = React.forwardRef(
       >
         {loading ? (
           <IconContainer>
-            <LoadingIcon />
+            <LoadingIcon />{' '}
+            {loadingText && <LoadingText>{loadingText}</LoadingText>}
           </IconContainer>
         ) : (
           <>
@@ -51,6 +53,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   /** Show loading icon for button and disabled it */
   loading: PropTypes.bool,
+  /** Text to show when in loading state */
+  loadingText: PropTypes.string,
   customStyle: PropTypes.object,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,

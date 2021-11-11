@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
 import { Title } from './views'
 
 export const ModalTitle = React.forwardRef(({ children, ...props }, ref) => {

@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
-import { getProps } from '../../utils'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+import { getProps } from '@/utils'
 
 import { TableContext } from './utils/context'
 import { THead } from './thead'

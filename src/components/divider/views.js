@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { resolveColor, resolveFontFamily } from '@/utils'
 
 export const DividerWrapper = styled.div.attrs(() => ({
   className: 'aia-divider-wrapper',

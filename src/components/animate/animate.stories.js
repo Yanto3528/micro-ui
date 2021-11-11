@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { fadeIn, fadeOut, slideIn, slideOut } from '../../animations'
+import { fadeIn, fadeOut, slideIn, slideOut } from '@/animations'
 import { Button } from '../button'
 import { Animate } from './index'
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { resolveColor, resolveFontFamily } from '@/utils'
 
 const stripedStyles = css`
   &:nth-child(even) {

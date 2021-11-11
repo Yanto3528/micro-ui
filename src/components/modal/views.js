@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { resolveColor, resolveFontFamily } from '@/utils'
+
 import { Alignment } from './utils/constants'
 
 const getColor = ({ theme, color }) => resolveColor(theme, color)
