@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components'
+
+import { fontStyles } from '@/styles'
 import { Icon } from '../../icon'
 
 const iconStyles = css`
@@ -19,8 +21,7 @@ export const Wrapper = styled.div.attrs(() => ({
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: 12px;
   width: 100%;
-  font-family: ${({ fontFamily }) => fontFamily};
-  font-size: ${({ fontSize }) => fontSize};
+  ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '@/utils'
-import { checklistStyles, checkedChecklistStyles } from '@/styles'
+import { resolveColor } from '@/utils'
+import { checklistStyles, checkedChecklistStyles, fontStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-checkbox-wrapper',
@@ -21,9 +21,8 @@ export const Label = styled.label.attrs(() => ({
   position: relative;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: ${({ fontSize }) => fontSize};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  color: ${({ theme, color }) => resolveColor(theme, color)};
+  ${fontStyles};
+  color: ${resolveColor('color')};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -48,10 +47,8 @@ export const Check = styled.input.attrs(() => ({
   cursor: pointer;
 
   &:checked ~ .aia-checkbox-checkmark {
-    background-color: ${({ theme, activeColor }) =>
-      resolveColor(theme, activeColor)};
-    border-color: ${({ theme, activeColor }) =>
-      resolveColor(theme, activeColor)};
+    background-color: ${resolveColor('activeColor')};
+    border-color: ${resolveColor('activeColor')};
   }
 
   &:checked ~ .aia-checkbox-checkmark:after {
@@ -68,8 +65,7 @@ export const Checkmark = styled.span.attrs(() => ({
   width: 1.2em;
   height: 1.2em;
   background-color: transparent;
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
   border-radius: ${({ radius }) => radius};
   transition: all 0.3s ease-out;
 

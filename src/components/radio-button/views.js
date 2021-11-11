@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { getColor, resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
+
 import { ButtonType, Variant } from './utils/constants'
 
 const defaultStyles = css`
@@ -22,25 +24,22 @@ const squareStyles = css`
 `
 
 const outlineStyles = css`
-  color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
+  color: ${resolveColor('bg')};
+  border: 1px solid ${resolveColor('bg')};
 
   &:hover {
-    background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
-    color: ${({ theme, activeTextColor }) =>
-      resolveColor(theme, activeTextColor)};
+    background-color: ${resolveColor('bg')};
+    color: ${resolveColor('activeTextColor')};
   }
 `
 
 const solidStyles = css`
-  color: ${({ theme, color }) => resolveColor(theme, color)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  color: ${resolveColor('color')};
+  background-color: ${resolveColor('bg')};
 
   &:hover {
-    background-color: ${({ theme, activeBGColor }) =>
-      resolveColor(theme, activeBGColor)};
-    color: ${({ theme, activeTextColor }) =>
-      resolveColor(theme, activeTextColor)};
+    background-color: ${resolveColor('activeBGColor')};
+    color: ${resolveColor('activeTextColor')};
   }
 `
 
@@ -85,8 +84,7 @@ export const Label = styled.label.attrs(() => ({
   padding: ${({ padding }) => padding};
   border-radius: ${({ radius }) => radius};
   cursor: pointer;
-  font-size: ${({ fontSize }) => fontSize};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  ${fontStyles};
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -112,10 +110,9 @@ export const Check = styled.input.attrs(() => ({
   &:checked + .aia-radio-button-label {
     background-color: ${({ theme, bg, variant, activeBGColor }) =>
       variant === Variant.outline
-        ? resolveColor(theme, bg)
-        : resolveColor(theme, activeBGColor)};
-    color: ${({ theme, activeTextColor }) =>
-      resolveColor(theme, activeTextColor)};
+        ? getColor(theme, bg)
+        : getColor(theme, activeBGColor)};
+    color: ${resolveColor('activeTextColor')};
   }
 `
 

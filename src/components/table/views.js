@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '@/utils'
+
+import { resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const stripedStyles = css`
   &:nth-child(even) {
@@ -30,9 +32,8 @@ export const TableHeaderWrapper = styled.th.attrs(() => ({
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
+  background-color: ${resolveColor('bg')};
+  ${fontStyles};
   border: ${({ border }) => border};
   text-align: ${({ alignment }) => alignment};
   ${({ customStyle }) => customStyle && css(customStyle)};
@@ -51,9 +52,8 @@ export const TableDataWrapper = styled.td.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
-  border-color: ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
+  border-color: ${resolveColor('borderColor')};
+  ${fontStyles};
   cursor: ${({ cursor }) => cursor};
   line-height: ${({ lineHeight }) => lineHeight};
   text-align: ${({ alignment }) => alignment};

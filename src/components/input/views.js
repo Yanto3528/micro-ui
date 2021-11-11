@@ -1,28 +1,28 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { getColor, resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const solidStyles = css`
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  border: 1px solid ${resolveColor('bg')};
+  background-color: ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
 
   & + .aia-input-right-element,
   & + .aia-input-left-element {
-    color: ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+    color: ${resolveColor('borderColor')};
   }
 
   &:focus {
     border-color: ${({ theme, focusBorderColor, hasError }) =>
-      !hasError && resolveColor(theme, focusBorderColor)};
+      !hasError && getColor(theme, focusBorderColor)};
 
     & + .aia-input-right-element,
     & + .aia-input-left-element {
       color: ${({ theme, focusBorderColor, hasError }) =>
-        !hasError && resolveColor(theme, focusBorderColor)};
+        !hasError && getColor(theme, focusBorderColor)};
     }
   }
 `
@@ -62,10 +62,8 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   position: relative;
   display: inline-block;
-  color: ${({ theme, color }) => resolveColor(theme, color)};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
+  color: ${resolveColor('color')};
+  ${fontStyles};
   width: ${({ fluid }) => fluid && '100%'};
 `
 

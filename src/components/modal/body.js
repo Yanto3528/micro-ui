@@ -19,6 +19,7 @@ ModalBody.propTypes = {
   color: PropTypes.string,
   fontSize: PropTypes.string,
   fontFamily: PropTypes.string,
+  fontWeight: PropTypes.string,
   margin: PropTypes.string,
 }
 

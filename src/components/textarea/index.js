@@ -29,7 +29,6 @@ Textarea.propTypes = {
   radius: PropTypes.string,
   /** Round the textarea border radius */
   rounded: PropTypes.bool,
-  fontFamily: PropTypes.string,
   variant: PropTypes.oneOf(['solid', 'outline']),
   /**Border color for outline variant */
   borderColor: PropTypes.string,
@@ -39,7 +38,9 @@ Textarea.propTypes = {
   hasError: PropTypes.bool,
   width: PropTypes.string,
   rows: PropTypes.string,
+  fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   /** Give textarea  a full width of the current container*/
   fluid: PropTypes.bool,
   /** Ability to resize a textaerea, put "both" or "vertical" or "horizontal", or "none" */

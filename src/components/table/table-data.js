@@ -31,6 +31,7 @@ TableData.propTypes = {
   /** Centering specifed TableData */
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   cursor: PropTypes.string,
   lineHeight: PropTypes.string,
   /** Alignment for the Tabledata, ex: center, left, right. */

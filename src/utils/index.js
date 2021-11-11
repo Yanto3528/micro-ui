@@ -4,8 +4,10 @@ import { theme as baseTheme } from '../components/theme'
 
 export const noop = () => {}
 
-export const resolveColor = (theme, color) => {
-  return theme.colors[color] || color
+export const getColor = (theme, color) => theme.colors[color] || color
+
+export const resolveColor = (key) => {
+  return ({ theme, ...props }) => getColor(theme, props[key])
 }
 
 export const resolveFontFamily = (fontFamily) => {

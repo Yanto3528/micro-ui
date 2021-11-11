@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { fontStyles } from '@/styles'
+
 const activeYearStyles = css`
   background-color: ${({ theme }) => theme.colors.primary};
   color: white;
@@ -9,8 +11,7 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-calendar-year-wrapper',
 }))`
   text-align: center;
-  font-family: ${({ fontFamily }) => fontFamily};
-  font-size: ${({ fontSize }) => fontSize};
+  ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 

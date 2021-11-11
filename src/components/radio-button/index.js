@@ -64,6 +64,7 @@ RadioButton.propTypes = {
   radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
   /** Text color, applicable for solid variant only */
   color: PropTypes.string,
   /** Text color for when radio is active */

@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '@/utils'
+import { fontStyles } from '@/styles'
 
 import { Alignment } from './utils/constants'
-
-const getColor = ({ theme, color }) => resolveColor(theme, color)
-const getBgColor = ({ theme, bg }) => resolveColor(theme, bg)
 
 export const Overlay = styled.div.attrs(() => ({
   className: 'aia-modal-overlay',
@@ -29,7 +27,7 @@ export const Wrapper = styled.div.attrs(() => ({
   exit: 'exit',
 }))`
   margin: 0 10px;
-  background-color: ${getBgColor};
+  background-color: ${resolveColor('bg')};
   border-radius: ${({ radius }) => radius};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -44,7 +42,7 @@ export const HeaderWrapper = styled.div.attrs(() => ({
 }))`
   height: 90px;
   background-image: ${({ bgImage }) => bgImage};
-  background-color: ${getBgColor};
+  background-color: ${resolveColor('bg')};
   position: relative;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 20px;
@@ -59,7 +57,7 @@ export const HeaderIconWrapper = styled.div.attrs(() => ({
   transform: translate(-50%, 50%);
   padding: ${({ padding }) => padding};
   border-radius: 50%;
-  background-color: ${getBgColor};
+  background-color: ${resolveColor('bg')};
   box-shadow: ${({ boxShadow }) => boxShadow};
 `
 
@@ -70,10 +68,10 @@ export const CloseWrapper = styled.div.attrs(() => ({
   z-index: 10;
   top: 10px;
   right: 10px;
-  background-color: ${getBgColor};
+  background-color: ${resolveColor('bg')};
   width: 2em;
   height: 2em;
-  color: ${getColor};
+  color: ${resolveColor('color')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,9 +79,9 @@ export const CloseWrapper = styled.div.attrs(() => ({
   cursor: pointer;
 
   .aia-modal-close-icon {
-    background-color: ${getColor};
+    background-color: ${resolveColor('color')};
     &:after {
-      background-color: ${getColor};
+      background-color: ${resolveColor('color')};
     }
   }
 `
@@ -108,9 +106,7 @@ export const CloseIcon = styled.span.attrs(() => ({
 export const Title = styled.h3.attrs(() => ({
   className: 'aia-modal-title',
 }))`
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${({ fontSize }) => fontSize};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  ${fontStyles};
   margin: ${({ margin }) => margin};
 `
 
@@ -127,10 +123,9 @@ export const Content = styled.div.attrs(() => ({
 export const Body = styled.p.attrs(() => ({
   className: 'aia-modal-body',
 }))`
-  color: ${getColor};
+  color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
-  font-size: ${({ fontSize }) => fontSize};
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  ${fontStyles};
 `
 
 export const ActionsWrapper = styled.div.attrs(() => ({

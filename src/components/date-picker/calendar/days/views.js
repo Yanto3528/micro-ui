@@ -4,8 +4,8 @@ import { resolveColor } from '@/utils'
 const activeDayStyles = ({ isDateInRange }) =>
   isDateInRange &&
   css`
-    background-color: ${({ theme, activeBg }) => resolveColor(theme, activeBg)};
-    color: ${({ theme, activeColor }) => resolveColor(theme, activeColor)};
+    background-color: ${resolveColor('activeBg')};
+    color: ${resolveColor('activeColor')};
   `
 
 const daySelectedStyles = ({ isSelected }) => isSelected && activeDayStyles

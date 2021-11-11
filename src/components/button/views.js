@@ -1,32 +1,33 @@
 import styled, { css } from 'styled-components'
 
 import { spinning } from '@/animations'
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const solidStyles = css`
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  color: ${({ theme, color }) => resolveColor(theme, color)};
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
+  background-color: ${resolveColor('bg')};
+  color: ${resolveColor('color')};
+  border: 1px solid ${resolveColor('bg')};
   .aia-button-spinner {
-    border-color: ${({ theme, color }) => resolveColor(theme, color)};
+    border-color: ${resolveColor('color')};
     border-top-color: transparent;
   }
 `
 
 const outlineStyles = css`
   background-color: transparent;
-  color: ${({ theme, bg }) => resolveColor(theme, bg)};
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
+  color: ${resolveColor('bg')};
+  border: 1px solid ${resolveColor('bg')};
   &:hover {
-    background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
-    color: ${({ theme, color }) => resolveColor(theme, color)};
+    background-color: ${resolveColor('bg')};
+    color: ${resolveColor('color')};
     .aia-button-spinner {
-      border-color: ${({ theme, color }) => resolveColor(theme, color)};
+      border-color: ${resolveColor('color')};
       border-top-color: transparent;
     }
   }
   .aia-button-spinner {
-    border-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+    border-color: ${resolveColor('bg')};
     border-top-color: transparent;
   }
 `
@@ -44,9 +45,6 @@ export const StyledButton = styled.button.attrs(() => ({
   className: 'aia-button',
 }))`
   text-align: center;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
   border: none;
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   outline: none;
@@ -56,6 +54,7 @@ export const StyledButton = styled.button.attrs(() => ({
   line-height: 1;
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  ${fontStyles}
 
   :hover:not(:disabled) {
     opacity: 0.95;

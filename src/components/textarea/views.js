@@ -1,18 +1,19 @@
 import styled, { css } from 'styled-components'
-import { resolveColor, resolveFontFamily } from '@/utils'
+
+import { getColor, resolveColor } from '@/utils'
+import { fontStyles } from '@/styles'
 
 const solidStyles = css`
-  border: 1px solid ${({ theme, bg }) => resolveColor(theme, bg)};
-  background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
+  border: 1px solid ${resolveColor('bg')};
+  background-color: ${resolveColor('bg')};
 `
 
 const outlineStyles = css`
-  border: 1px solid
-    ${({ theme, borderColor }) => resolveColor(theme, borderColor)};
+  border: 1px solid ${resolveColor('borderColor')};
 
   &:focus {
     border-color: ${({ theme, focusBorderColor, hasError }) =>
-      !hasError && resolveColor(theme, focusBorderColor)};
+      !hasError && getColor(theme, focusBorderColor)};
   }
 `
 
@@ -37,11 +38,10 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
   className: 'aia-textarea',
 }))`
   outline: none;
-  color: ${({ theme, color }) => resolveColor(theme, color)};
+  color: ${resolveColor('color')};
   border-radius: ${({ rounded, radius }) => (rounded ? '20px' : radius)};
   transition: border 0.2s;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
+  ${fontStyles};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
   resize: ${({ resize }) => (resize ? resize : 'none')};
