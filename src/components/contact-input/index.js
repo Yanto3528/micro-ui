@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
-import { getProps } from '../../utils'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+import { getProps } from '@/utils'
+
 import { wrapperPropsData } from './utils/constant'
 import { Wrapper, StyledInput, CountrySelect, Separator } from './views'
 

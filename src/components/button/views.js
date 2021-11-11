@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { spinning } from '../../animations'
-import { resolveColor, resolveFontFamily } from '../../utils'
+import { spinning } from '@/animations'
+import { resolveColor, resolveFontFamily } from '@/utils'
 
 const solidStyles = css`
   background-color: ${({ theme, bg }) => resolveColor(theme, bg)};
@@ -92,4 +92,11 @@ export const LoadingIcon = styled.span.attrs(() => ({
   border-top-color: transparent;
   border-radius: 50%;
   animation: ${spinning} 1s infinite linear;
+`
+
+export const LoadingText = styled.span.attrs(() => ({
+  className: 'loading-text',
+}))`
+  display: inline-block;
+  margin: 0 5px;
 `

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '../../utils'
-import { checklistStyles, checkedChecklistStyles } from '../../styles'
+import { resolveColor, resolveFontFamily } from '@/utils'
+import { checklistStyles, checkedChecklistStyles } from '@/styles'
+
 import { RadioType } from './utils/constants'
 
 const circularStyles = css`

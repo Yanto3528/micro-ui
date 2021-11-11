@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-import { slideIn, slideOut, fadeIn, fadeOut } from '../../animations'
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
+import { slideIn, slideOut, fadeIn, fadeOut } from '@/animations'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
 import { Portal } from '../portal'
-import { ModalContext } from './utils/context'
 import { Animate } from '../animate'
 
+import { ModalContext } from './utils/context'
 import { ModalContent } from './content'
 import { ModalHeader } from './header'
 import { ModalTitle } from './title'

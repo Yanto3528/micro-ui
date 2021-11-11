@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Divider } from './index'
 import { theme } from '../theme'
 

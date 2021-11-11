@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
-import { getProps } from '../../utils'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+import { getProps } from '@/utils'
+
 import { Wrapper, Label, Check, Checkmark, LabelText } from './views'
 
 export const Checkbox = React.forwardRef(
