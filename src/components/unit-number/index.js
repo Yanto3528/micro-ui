@@ -1,8 +1,9 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
-import { isDev } from '../../constants'
-import { useTheme } from '../../hooks'
+import { isDev } from '@/constants'
+import { useTheme } from '@/hooks'
+
 import { Separator, Wrapper, StyledInput } from './views'
 
 const MAX_LENGTH = "4"
