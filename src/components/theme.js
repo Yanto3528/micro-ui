@@ -28,6 +28,14 @@ export const theme = {
   },
   default: {
     component: {
+      accordion: {
+        title: 'Title',
+        arrowPosition: 'left',
+        defaultOpen: false,
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+      },
       button: {
         bg: 'primary',
         color: 'white',
