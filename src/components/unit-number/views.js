@@ -62,6 +62,7 @@ export const Wrapper = styled.div.attrs(() => ({
       opacity: 0.7;
     `}
 
+  padding: ${({ padding }) => padding};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
@@ -104,5 +105,4 @@ export const StyledInput = styled.input.attrs(() => ({
   }
 
   text-align: ${({ alignment }) => alignment};
-  padding: ${({ padding }) => padding};
 `

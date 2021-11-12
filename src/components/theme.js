@@ -307,7 +307,7 @@ export const theme = {
         fluid: false,
         fontFamily: 'AIARegular',
         fontSize: '1.4rem',
-        fontWeight: '400',
+        fontWeight: 'normal',
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
