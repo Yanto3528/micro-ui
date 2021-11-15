@@ -17,11 +17,9 @@ export const UnitNumber = ({
   secondInputRef,
   ...props
 }) => {
-  const [firstValue, secondValue] = extractValue(value)
-  let firstPartValue = firstValue
-  let secondPartValue = secondValue
-  const firstInput = useRef(null)
-  const secondInput = useRef(null)
+  let [firstValue, secondValue] = extractValue(value)
+  const firstInput = useRef(firstValue)
+  const secondInput = useRef(secondValue)
 
   const theme = useTheme()
   const { unitNumber: defaultInputProps } = theme.default.component
@@ -30,7 +28,7 @@ export const UnitNumber = ({
   const inputProps = getProps(props, defaultInputProps, inputPropsData)
 
   const firstPartChange = (event) => {
-    firstPartValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    firstValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === MAX_LENGTH) {
       secondInput.current.focus()
@@ -40,7 +38,7 @@ export const UnitNumber = ({
   }
 
   const secondPartChange = (event) => {
-    secondPartValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    secondValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === 0) {
       firstInput.current.focus()
@@ -50,9 +48,9 @@ export const UnitNumber = ({
   }
 
   const doChange = () => {
-    const value = firstPartValue.toString() + '-' + secondPartValue.toString()
+    const value = firstValue.toString() + '-' + secondValue.toString()
 
-    if (!firstPartValue && !secondPartValue)  {
+    if (!firstValue && !secondValue)  {
       onChange('')
       return
     } 
