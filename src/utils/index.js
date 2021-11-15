@@ -41,3 +41,18 @@ export const getProps = (componentProps, defaultThemeProps, selectedKeys) => {
     ...componentPropsResult,
   }
 }
+
+export const mergeRefs = (...refs) => {
+  const filteredRefs = refs.filter(Boolean);
+  if (!filteredRefs.length) return null;
+  if (filteredRefs.length === 0) return filteredRefs[0];
+  return innerRef => {
+    for (const ref of filteredRefs) {
+      if (typeof ref === 'function') {
+        ref(innerRef);
+      } else if (ref) {
+        ref.current = innerRef;
+      }
+    }
+  };
+};

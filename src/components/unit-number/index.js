@@ -3,19 +3,20 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
-import { getProps } from '@/utils'
+import { getProps, mergeRefs } from '@/utils'
 
 import { wrapperPropsData, inputPropsData } from './utils/constant'
 import { Separator, Wrapper, StyledInput } from './views'
 
 const MAX_LENGTH = 4
 
-export const UnitNumber = ({ value, onChange, ...props }) => {
+export const UnitNumber = ({ value, onChange, firstInputRef, secondInputRef, ...props }) => 
+{
   const [firstValue, secondValue] = extractValue(value)
   let firstPartValue = firstValue
   let secondPartValue = secondValue
-  const firstPartRef = useRef(null)
-  const secondPartRef = useRef(null)
+  const firstInput = useRef(null)
+  const secondInput = useRef(null)
 
   const theme = useTheme()
   const { unitNumber: defaultInputProps } = theme.default.component
@@ -27,7 +28,7 @@ export const UnitNumber = ({ value, onChange, ...props }) => {
     firstPartValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
     
     if (event.currentTarget.value.length === MAX_LENGTH) {
-      secondPartRef.current.focus()
+      secondInput.current.focus()
     }
 
     doChange()
@@ -37,7 +38,7 @@ export const UnitNumber = ({ value, onChange, ...props }) => {
     secondPartValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === 0) {
-      firstPartRef.current.focus()
+      firstInput.current.focus()
     }
 
     doChange()
@@ -46,9 +47,9 @@ export const UnitNumber = ({ value, onChange, ...props }) => {
   const doChange = () => {
     const value = firstPartValue.toString() + '-' + secondPartValue.toString()
 
-    if (!firstPartValue && !secondPartValue) return onChange(null)
+    if (!firstPartValue && !secondPartValue) return onChange('')
 
-    onChange({value})
+    onChange(value)
   }
 
   function extractValue(inputValue) {
@@ -69,7 +70,7 @@ export const UnitNumber = ({ value, onChange, ...props }) => {
       <StyledInput
         {...inputProps}
         {...props}
-        ref={firstPartRef}
+        ref={mergeRefs(firstInput, firstInputRef)}
         maxLength={MAX_LENGTH}
         onChange={firstPartChange}
       />
@@ -77,7 +78,7 @@ export const UnitNumber = ({ value, onChange, ...props }) => {
       <StyledInput
         {...inputProps}
         {...props}
-        ref={secondPartRef}
+        ref={mergeRefs(secondInput, secondInputRef)}
         maxLength={MAX_LENGTH}
         onChange={secondPartChange}
       />
@@ -118,6 +119,10 @@ UnitNumber.propTypes = {
   /** value to display for unit number, example : 1234-5678
    */
   value: PropTypes.string,
+  /** ref for first input */
+  firstInputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  /** ref for second input */
+  secondInputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 }
 
 if (isDev) {
