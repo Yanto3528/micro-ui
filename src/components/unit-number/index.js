@@ -10,8 +10,13 @@ import { Separator, Wrapper, StyledInput } from './views'
 
 const MAX_LENGTH = 4
 
-export const UnitNumber = ({ value, onChange, firstInputRef, secondInputRef, ...props }) => 
-{
+export const UnitNumber = ({
+  value,
+  onChange,
+  firstInputRef,
+  secondInputRef,
+  ...props
+}) => {
   const [firstValue, secondValue] = extractValue(value)
   let firstPartValue = firstValue
   let secondPartValue = secondValue
@@ -26,7 +31,7 @@ export const UnitNumber = ({ value, onChange, firstInputRef, secondInputRef, ...
 
   const firstPartChange = (event) => {
     firstPartValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
-    
+
     if (event.currentTarget.value.length === MAX_LENGTH) {
       secondInput.current.focus()
     }
@@ -47,22 +52,22 @@ export const UnitNumber = ({ value, onChange, firstInputRef, secondInputRef, ...
   const doChange = () => {
     const value = firstPartValue.toString() + '-' + secondPartValue.toString()
 
-    if (!firstPartValue && !secondPartValue) return onChange('')
+    if (!firstPartValue && !secondPartValue)  {
+      onChange('')
+      return
+    } 
 
     onChange(value)
   }
 
   function extractValue(inputValue) {
-    let result = ['', '']
+    if (inputValue && typeof inputValue !== 'string') {
+      throw new Error('value for unit-number must be a string')
+    }
 
-    if (typeof inputValue === 'object') {
-      const isStringValue = typeof inputValue?.value === 'string' && inputValue.value.includes('-')
-      result = isStringValue ? inputValue?.value.split('-') : result
-    }
-    if (typeof inputValue === 'string') {
-      result = inputValue ? inputValue.split('-') : result
-    }
-    return result;
+    const result = inputValue ? inputValue.split('-') : ['', '']
+
+    return result
   }
 
   return (
@@ -122,7 +127,7 @@ UnitNumber.propTypes = {
   /** ref for first input */
   firstInputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   /** ref for second input */
-  secondInputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+  secondInputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 }
 
 if (isDev) {
