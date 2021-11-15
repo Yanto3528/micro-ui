@@ -296,6 +296,23 @@ export const theme = {
           lineHeight: '18px',
         },
       },
+      unitNumber: {
+        bg: 'lightGray',
+        color: 'secondary',
+        padding: '7px 16px',
+        width: '335px',
+        height: '40px',
+        radius: '15px',
+        rounded: false,
+        fluid: false,
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+        variant: 'solid',
+        borderColor: 'primary',
+        focusBorderColor: 'primary',
+        alignment: 'center'
+      }
     },
   },
 }
