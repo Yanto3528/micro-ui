@@ -28,7 +28,7 @@ export const UnitNumber = ({
   const inputProps = getProps(props, defaultInputProps, inputPropsData)
 
   const firstPartChange = (event) => {
-    firstValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    firstInput.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === MAX_LENGTH) {
       secondInput.current.focus()
@@ -38,7 +38,7 @@ export const UnitNumber = ({
   }
 
   const secondPartChange = (event) => {
-    secondValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    secondInput.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === 0) {
       firstInput.current.focus()
@@ -48,9 +48,9 @@ export const UnitNumber = ({
   }
 
   const doChange = () => {
-    const value = firstValue.toString() + '-' + secondValue.toString()
+    const value = firstInput.current.toString() + '-' + secondInput.current.toString()
 
-    if (!firstValue && !secondValue)  {
+    if (!firstInput.current && !secondInput.current)  {
       onChange('')
       return
     } 
