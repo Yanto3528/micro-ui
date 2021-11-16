@@ -55,8 +55,8 @@ export const Wrapper = styled.div.attrs(() => ({
       }
     `}
 
-  ${({ disabled }) =>
-    disabled &&
+  ${({ disabled, readOnly }) =>
+    (disabled || readOnly) &&
     css`
       cursor: not-allowed;
       opacity: 0.7;

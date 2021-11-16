@@ -19,6 +19,5 @@ Icon.propTypes = {
 Icon.defaultProps = {
   className: '',
   size: 's',
-  color: 'primary',
   customStyle: {},
 }
