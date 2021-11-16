@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor} from '@/utils'
+import { resolveColor } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const outlineFocusStyles = ({ hasError }) => {
@@ -33,7 +33,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-unit-number-wrapper'
+  className: 'aia-unit-number-wrapper',
 }))`
   display: flex;
   align-items: center;
@@ -67,13 +67,13 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Separator = styled.span.attrs(() => ({
-  className: 'aia-unit-number-separator'
+  className: 'aia-unit-number-separator',
 }))`
   margin-right: 10px;
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-unit-number-input'
+  className: 'aia-unit-number-input',
 }))`
   outline: none;
   background-color: transparent;

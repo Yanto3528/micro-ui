@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components'
 
-export const AnimateWrapper = styled.div`
+export const AnimateWrapper = styled.div.attrs(() => ({
+  className: 'aia-animate-wrapper',
+}))`
+  width: ${({ width }) => width};
   ${({ animation, duration, timing, repeat }) =>
     animation &&
     css`

@@ -28,10 +28,12 @@ Outline.args = {
 export const Test = () => {
   const firstInputRef = React.useRef(null)
   const secondInputRef = React.useRef(null)
-  
+
   React.useEffect(() => {
     firstInputRef.current.focus()
   }, [])
 
-  return <UnitNumber firstInputRef={firstInputRef} secondInputRef={secondInputRef} />
+  return (
+    <UnitNumber firstInputRef={firstInputRef} secondInputRef={secondInputRef} />
+  )
 }

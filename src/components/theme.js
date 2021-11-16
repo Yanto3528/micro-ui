@@ -251,6 +251,19 @@ export const theme = {
         width: '500px',
         resize: 'none',
       },
+      tooltip: {
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+        placement: 'top',
+        padding: '10px',
+        radius: '4px',
+        width: '200px',
+        height: 'auto',
+        bg: 'secondary',
+        color: 'white',
+        hasArrow: true,
+      },
       select: {
         fluid: false,
         width: '335px',
@@ -311,8 +324,8 @@ export const theme = {
         variant: 'solid',
         borderColor: 'primary',
         focusBorderColor: 'primary',
-        alignment: 'center'
-      }
+        alignment: 'center',
+      },
     },
   },
 }

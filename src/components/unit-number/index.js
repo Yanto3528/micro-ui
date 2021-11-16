@@ -48,12 +48,13 @@ export const UnitNumber = ({
   }
 
   const doChange = () => {
-    const value = firstInput.current.toString() + '-' + secondInput.current.toString()
+    const value =
+      firstInput.current.toString() + '-' + secondInput.current.toString()
 
-    if (!firstInput.current && !secondInput.current)  {
+    if (!firstInput.current && !secondInput.current) {
       onChange('')
       return
-    } 
+    }
 
     onChange(value)
   }

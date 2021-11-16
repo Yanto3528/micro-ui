@@ -19,6 +19,4 @@ export const wrapperPropsData = [
   'hasError',
 ]
 
-export const inputPropsData = [
-  'placeholder'
-]
+export const inputPropsData = ['placeholder']
