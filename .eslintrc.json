@@ -21,8 +21,8 @@
     "__ORDER_SERVICE_HOST__": true,
     "__MYINFO_SERVICE_HOST__": true
   },
-  "extends": ["prettier"],
-  "plugins": ["react", "react-hooks", "import", "prettier"],
+  "extends": ["prettier", "plugin:jest/recommended"],
+  "plugins": ["react", "react-hooks", "import", "prettier", "jest"],
   "settings": {
     "react": {
       "version": "999.999.999"

@@ -18,7 +18,7 @@ export const Button = React.forwardRef(
       >
         {loading ? (
           <IconContainer>
-            <LoadingIcon />{' '}
+            <LoadingIcon data-testid='spinner' />{' '}
             {loadingText && <LoadingText>{loadingText}</LoadingText>}
           </IconContainer>
         ) : (
