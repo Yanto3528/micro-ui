@@ -17,9 +17,12 @@ export const UnitNumber = ({
   secondInputRef,
   ...props
 }) => {
-  let [firstValue, secondValue] = extractValue(value)
-  const firstInput = useRef(firstValue)
-  const secondInput = useRef(secondValue)
+  const [firstValue, secondValue] = extractValue(value)
+  const firstInputValue = useRef(firstValue)
+  const secondInputValue = useRef(secondValue)
+
+  const firstPartRef = useRef(null)
+  const secondPartRef = useRef(null)
 
   const theme = useTheme()
   const { unitNumber: defaultInputProps } = theme.default.component
@@ -28,30 +31,31 @@ export const UnitNumber = ({
   const inputProps = getProps(props, defaultInputProps, inputPropsData)
 
   const firstPartChange = (event) => {
-    firstInput.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    firstInputValue.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === MAX_LENGTH) {
-      secondInput.current.focus()
+      secondPartRef.current.focus()
     }
 
     doChange()
   }
 
   const secondPartChange = (event) => {
-    secondInput.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
+    secondInputValue.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
 
     if (event.currentTarget.value.length === 0) {
-      firstInput.current.focus()
+      firstPartRef.current.focus()
     }
 
     doChange()
   }
 
   const doChange = () => {
-    const value =
-      firstInput.current.toString() + '-' + secondInput.current.toString()
+    const firstPartValue = firstInputValue.current.toString()
+    const secondPartValue = secondInputValue.current.toString()
+    const value = firstPartValue + '-' + secondPartValue
 
-    if (!firstInput.current && !secondInput.current) {
+    if (!firstInputValue.current && !secondInputValue.current) {
       onChange('')
       return
     }
@@ -74,7 +78,7 @@ export const UnitNumber = ({
       <StyledInput
         {...inputProps}
         {...props}
-        ref={mergeRefs(firstInput, firstInputRef)}
+        ref={mergeRefs(firstPartRef, firstInputRef)}
         maxLength={MAX_LENGTH}
         onChange={firstPartChange}
       />
@@ -82,7 +86,7 @@ export const UnitNumber = ({
       <StyledInput
         {...inputProps}
         {...props}
-        ref={mergeRefs(secondInput, secondInputRef)}
+        ref={mergeRefs(secondPartRef, secondInputRef)}
         maxLength={MAX_LENGTH}
         onChange={secondPartChange}
       />
