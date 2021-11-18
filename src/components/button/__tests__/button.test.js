@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@/test-utils'
 
-import { theme } from '../theme'
-import { Icon } from '../icon'
-import { Button } from './index'
+import { theme } from '../../theme'
+import { Icon } from '../../icon'
+import { Button } from '../index'
 
 describe('components > button', () => {
   it('should render button with correct text', () => {
@@ -58,12 +58,22 @@ describe('components > button', () => {
   })
 
   it('should render button with outline variant styles', () => {
-    render(<Button variant='outline'>Submit</Button>)
-    const button = screen.getByRole('button', { name: /submit/i })
+    const { rerender } = render(<Button variant='outline'>Submit</Button>)
+    let button = screen.getByRole('button', { name: /submit/i })
     expect(button).toHaveStyle({
       'background-color': 'transparent',
       'border-color': theme.colors.primary,
       color: theme.colors.primary,
+    })
+
+    rerender(
+      <Button variant='outline' bg='secondary'>
+        Submit
+      </Button>
+    )
+    expect(button).toHaveStyle({
+      'border-color': theme.colors.secondary,
+      color: theme.colors.secondary,
     })
   })
 
@@ -96,8 +106,37 @@ describe('components > button', () => {
   it('should render button with icon', () => {
     render(<Button icon={<Icon name='add' />}>Add</Button>)
     const button = screen.getByRole('button', { name: /add/i })
-    screen.debug()
     expect(button).toHaveTextContent('Add')
     expect(button.children[0]).toHaveClass('icon-add')
+  })
+
+  it('should render button with fluid and width props', () => {
+    const { rerender } = render(<Button fluid>Submit</Button>)
+    let button = screen.getByRole('button', { name: /submit/i })
+    expect(button).toHaveStyle({
+      width: '100%',
+    })
+
+    rerender(
+      <Button fluid width='500px'>
+        Submit
+      </Button>
+    )
+    expect(button).toHaveStyle({
+      width: '100%',
+    })
+
+    rerender(<Button width='500px'>Submit</Button>)
+    expect(button).toHaveStyle({
+      width: '500px',
+    })
+  })
+
+  it('should render button with custom style', () => {
+    render(<Button customStyle={{ 'margin-top': '20px' }}>Submit</Button>)
+    let button = screen.getByRole('button', { name: /submit/i })
+    expect(button).toHaveStyle({
+      'margin-top': '20px',
+    })
   })
 })

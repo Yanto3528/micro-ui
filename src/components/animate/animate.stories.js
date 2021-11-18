@@ -17,7 +17,12 @@ export const FadeInOut = () => {
       <Button onClick={() => setShow((currentShow) => !currentShow)}>
         Toggle Show
       </Button>
-      <Animate onEnter={fadeIn} onExit={fadeOut} show={show} duration={0.4}>
+      <Animate
+        onEnter={fadeIn}
+        onExit={fadeOut}
+        show={show}
+        data-testid='animate-wrapper'
+      >
         <div style={{ marginTop: '20px' }}>Animated text</div>
       </Animate>
     </>
@@ -32,7 +37,13 @@ export const SlideInOut = () => {
       <Button onClick={() => setShow((currentShow) => !currentShow)}>
         Toggle Show
       </Button>
-      <Animate onEnter={slideIn} onExit={slideOut} show={show} duration={0.4}>
+      <Animate
+        onEnter={slideIn}
+        onExit={slideOut}
+        show={show}
+        duration={0.4}
+        data-testid='animate-wrapper'
+      >
         <div style={{ marginTop: '20px' }}>Animated text</div>
       </Animate>
     </>

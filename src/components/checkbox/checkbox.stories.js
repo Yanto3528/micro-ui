@@ -14,7 +14,12 @@ export const Primary = Template.bind({})
 Primary.args = {
   ...theme.default.component.checkbox,
   label: 'Tick this checkbox',
-  id: 'check',
   disabled: false,
   readOnly: false,
+}
+
+export const WithoutLabel = Template.bind({})
+WithoutLabel.args = {
+  ...Primary.args,
+  label: '',
 }

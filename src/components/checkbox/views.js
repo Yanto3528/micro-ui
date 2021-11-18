@@ -6,6 +6,13 @@ import { checklistStyles, checkedChecklistStyles, fontStyles } from '@/styles'
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-checkbox-wrapper',
 }))`
+  display: inline-block;
+  ${fontStyles};
+  color: ${resolveColor('color')};
+  margin: ${({ margin }) => margin};
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  height: ${({ height }) => height};
+  ${({ customStyle }) => customStyle && css(customStyle)};
   ${({ disabled }) =>
     disabled &&
     css`
@@ -17,12 +24,12 @@ export const Wrapper = styled.div.attrs(() => ({
 export const Label = styled.label.attrs(() => ({
   className: 'aia-checkbox-label',
 }))`
-  display: block;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  min-height: 1em;
   position: relative;
-  margin-bottom: 12px;
   cursor: pointer;
-  ${fontStyles};
-  color: ${resolveColor('color')};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -36,6 +43,8 @@ export const LabelText = styled.span.attrs(() => ({
 }))`
   padding-left: 1.8em;
   display: inline-block;
+  width: 100%;
+  height: 100%;
 `
 
 export const Check = styled.input.attrs(() => ({
@@ -43,6 +52,8 @@ export const Check = styled.input.attrs(() => ({
   type: 'checkbox',
 }))`
   position: absolute;
+  top: 0;
+  left: 0;
   opacity: 0;
   cursor: pointer;
 

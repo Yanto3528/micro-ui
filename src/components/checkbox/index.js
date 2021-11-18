@@ -7,25 +7,39 @@ import { getProps } from '@/utils'
 
 import { Wrapper, Label, Check, Checkmark, LabelText } from './views'
 
+const wrapperData = [
+  'width',
+  'height',
+  'fluid',
+  'fontFamily',
+  'fontSize',
+  'fontWeight',
+  'color',
+  'margin',
+  'customStyle',
+]
+
 export const Checkbox = React.forwardRef(
-  ({ label, id, disabled, readOnly, ...props }, ref) => {
+  (
+    { label, id = Date.now() + Math.random(), disabled, readOnly, ...props },
+    ref
+  ) => {
     const theme = useTheme()
     const { checkbox: defaultCheckboxProps } = theme.default.component
+    const wrapperProps = getProps(props, defaultCheckboxProps, wrapperData)
     const checkmarkProps = getProps(props, defaultCheckboxProps, [
       'borderColor',
       'radius',
     ])
 
-    const labelProps = getProps(props, defaultCheckboxProps, [
-      'fontFamily',
-      'fontSize',
-      'color',
-    ])
-
     return (
-      <Wrapper disabled={disabled || readOnly}>
-        <Label htmlFor={id} {...labelProps} disabled={disabled || readOnly}>
-          <LabelText>{label}</LabelText>
+      <Wrapper
+        {...wrapperProps}
+        disabled={disabled || readOnly}
+        data-testid='checkbox-wrapper'
+      >
+        <Label htmlFor={id} disabled={disabled || readOnly}>
+          {label && <LabelText data-testid='checkbox-label'>{label}</LabelText>}
           <Check
             id={id}
             {...defaultCheckboxProps}
@@ -49,10 +63,17 @@ Checkbox.propTypes = {
   radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fluid: PropTypes.bool,
+  margin: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  /** Custom style for checkbox wrapper */
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

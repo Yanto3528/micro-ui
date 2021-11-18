@@ -5,8 +5,9 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --ci --detectOpenHandles",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --detectOpenHandles",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write src/**/*.js",
     "build": "rimraf dist && rollup -c",
@@ -39,6 +40,7 @@
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
+    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
@@ -65,12 +67,14 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
     "axios": "^0.21.4",
+    "core-js": "^3.19.1",
     "dayjs": "^1.10.7",
     "keymirror": "^0.1.1",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "regenerator-runtime": "^0.13.9",
     "styled-components": "^5.3.1"
   },
   "peerDependencies": {

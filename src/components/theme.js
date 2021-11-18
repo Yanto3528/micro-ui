@@ -128,6 +128,9 @@ export const theme = {
         fontSize: '1.4rem',
         fontFamily: 'AIARegular',
         fontWeight: 'normal',
+        width: 'auto',
+        height: 'auto',
+        fluid: false,
       },
       radio: {
         activeColor: 'primary',
