@@ -103,6 +103,15 @@ export const theme = {
           },
         },
       },
+      divider: {
+        bg: 'gray',
+        marginBlock: '10px',
+        fontFamily: 'AIARegular',
+        fontWeight: 'normal',
+        fontSize: '1.4rem',
+        textPaddingInline: '20px',
+        orientation: 'horizontal',
+      },
       input: {
         bg: 'lightGray',
         color: 'secondary',
@@ -159,14 +168,6 @@ export const theme = {
         height: '40px',
         iconSpacing: '30px',
         size: '140px',
-      },
-      divider: {
-        bg: 'gray',
-        margin: '10px 0',
-        fontFamily: 'AIARegular',
-        fontWeight: 'normal',
-        fontSize: '1.4rem',
-        textPadding: '0 20px',
       },
       tag: {
         bg: 'primary',
