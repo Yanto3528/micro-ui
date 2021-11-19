@@ -8,17 +8,25 @@ import { getProps } from '@/utils'
 import { wrapperPropsData } from './utils/constant'
 import { Wrapper, StyledInput, CountrySelect, Separator } from './views'
 
+const defaultSupportedCode = [
+  { value: '+65', name: '+65' },
+  { value: '+62', name: '+62' },
+  { value: '+60', name: '+60' },
+]
+
 export const ContactInput = ({
   onChange,
-  supportedCode,
+  supportedCode = defaultSupportedCode,
   value,
   disabled,
   readOnly,
+  selectRef,
+  inputRef,
   ...props
 }) => {
   const inputData = extractValue(value)
   const [countryCode, setCountryCode] = useState(
-    value ? inputData.countryCode : supportedCode[0]?.value
+    value ? inputData.countryCode : supportedCode?.[0]?.value
   )
 
   const theme = useTheme()
@@ -31,7 +39,7 @@ export const ContactInput = ({
     const formattedValue = event.currentTarget.value.replace(/[^0-9]+/g, '')
     const finalValue = formattedValue ? countryCode + formattedValue : ''
 
-    onChange(finalValue, event)
+    onChange?.(finalValue, event)
   }
 
   const handleCountryCodeChange = (event) => {
@@ -40,12 +48,15 @@ export const ContactInput = ({
     const finalValue = countryCodeValue + inputData.phoneNumber
 
     setCountryCode(countryCodeValue)
-    onChange(finalValue, event)
+    onChange?.(finalValue, event)
   }
 
   function extractValue(inputValue) {
     if (!inputValue) {
-      return { countryCode, phoneNumber: '' }
+      return {
+        countryCode,
+        phoneNumber: typeof inputValue === 'string' ? '' : undefined,
+      }
     }
 
     const countryCodeLength = inputValue.indexOf('+') === 0 ? 3 : 2
@@ -63,11 +74,16 @@ export const ContactInput = ({
   }
 
   return (
-    <Wrapper {...wrapperProps} disabled={disabled || readOnly}>
+    <Wrapper
+      {...wrapperProps}
+      disabled={disabled || readOnly}
+      data-testid='contact-input-wrapper'
+    >
       <CountrySelect
         onChange={handleCountryCodeChange}
         disabled={disabled}
         readOnly={readOnly}
+        ref={selectRef}
       >
         {supportedCode.map((countryCode) => (
           <option key={countryCode.value} value={countryCode.value}>
@@ -80,9 +96,10 @@ export const ContactInput = ({
         {...defaultInputProps}
         {...props}
         onChange={handleInputChange}
-        value={inputData.phoneNumber || undefined}
+        value={inputData.phoneNumber}
         disabled={disabled}
         readOnly={readOnly}
+        ref={inputRef}
       />
     </Wrapper>
   )
@@ -131,6 +148,10 @@ ContactInput.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   customStyle: PropTypes.object,
+  /** Ref for country select option */
+  selectRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  /** Ref for input field */
+  inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 }
 
 if (isDev) {

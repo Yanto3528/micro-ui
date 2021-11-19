@@ -7,15 +7,22 @@ import { getProps } from '@/utils'
 
 import { DividerWrapper, Line, Text } from './views'
 
-const textPropsData = ['textPadding', 'fontFamily', 'fontWeight', 'fontSize']
+const textPropsData = [
+  'textPaddingInline',
+  'fontFamily',
+  'fontWeight',
+  'fontSize',
+]
+const wrapperPropsData = ['orientation']
 
 export const Divider = ({ text, ...props }) => {
   const theme = useTheme()
   const { divider: defaultDividerProps } = theme.default.component
   const defaultTextProps = getProps(props, defaultDividerProps, textPropsData)
+  const wrapperProps = getProps(props, defaultDividerProps, wrapperPropsData)
 
   return (
-    <DividerWrapper>
+    <DividerWrapper {...wrapperProps}>
       {text ? (
         <>
           <Line {...defaultDividerProps} {...props} />
@@ -32,13 +39,26 @@ export const Divider = ({ text, ...props }) => {
 Divider.propTypes = {
   /** Divider line color */
   bg: PropTypes.string,
-  margin: PropTypes.string,
+  /** margin-block for divider
+   *
+   * (margin top and bottom for horizontal)
+   *
+   * (margin left and right for vertical)
+   * */
+  marginBlock: PropTypes.string,
   text: PropTypes.string,
-  /** Padding for the text to separate the line */
-  textPadding: PropTypes.string,
+  /** padding-inline for the text to separate the line (left and right for horizontal)
+   *
+   *  (up and down for vertical)
+   * */
+  textPaddingInline: PropTypes.string,
   fontFamily: PropTypes.string,
   fontWeight: PropTypes.string,
   fontSize: PropTypes.string,
+  /** Define the orientation of the divider line */
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+  /** Custom style for the divider line */
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {
