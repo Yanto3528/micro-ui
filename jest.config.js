@@ -4,7 +4,7 @@ module.exports = {
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
   },
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: ['<rootDir>/src/test-utils/setupTests.js'],
   moduleNameMapper: {
     '^lodash-es$': 'lodash',
   },
