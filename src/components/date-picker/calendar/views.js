@@ -45,6 +45,7 @@ export const YearDisplayWrapper = styled.div.attrs(() => ({
 
 export const NextBackButton = styled.div.attrs(() => ({
   className: 'aia-calendar-next-back-wrapper',
+  'data-testid': 'next-back-wrapper',
 }))`
   opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};

@@ -5,6 +5,7 @@ import isBetween from 'dayjs/plugin/isBetween'
 
 import { isDev } from '@/constants'
 import { dayjsType } from '../utils/types'
+import { checkDateRange } from '../utils/helpers'
 import { Wrapper, SingleDay } from './views'
 
 dayjs.extend(isBetween)
@@ -53,8 +54,9 @@ export const Days = ({
     while (!done) {
       const dayValue = daysOfMonth.date()
       const isCurrentMonth = daysOfMonth.month() === date.month()
+
       const isDateInRange = checkMethod
-        ? daysOfMonth[checkMethod](startDate, endDate)
+        ? checkDateRange[checkMethod](daysOfMonth, startDate, endDate)
         : true
 
       days.push(

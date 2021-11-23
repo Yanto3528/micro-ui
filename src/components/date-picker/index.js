@@ -3,18 +3,21 @@ import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import utc from 'dayjs/plugin/utc'
 
 import { isDev } from '@/constants'
 import { useTheme, useToggle, useClickOutside } from '@/hooks'
 import { getProps } from '@/utils'
 
 import { dayjsType } from './calendar/utils/types'
+import { checkDateRange } from './calendar/utils/helpers'
 import { Input } from '../input'
 import { Calendar } from './calendar'
 import { Wrapper } from './views'
 
 dayjs.extend(isBetween)
 dayjs.extend(customParseFormat)
+dayjs.extend(utc)
 
 export const DatePicker = ({
   value,
@@ -53,7 +56,7 @@ export const DatePicker = ({
     const utcDate = dayjs(selectedDate).utc(true)
     setInputValue(utcDate.format(dateFormat))
     setDateValue(utcDate)
-    onChange(utcDate.toDate())
+    onChange?.(utcDate.toDate())
     onClose()
   }
 
@@ -65,39 +68,46 @@ export const DatePicker = ({
 
   const handleKeyUp = (event) => {
     if (event.key === 'Enter') {
-      const formattedDate = dayjs(inputValue, 'DD/MM/YYYY')
-      if (dayjs.isDayjs(formattedDate)) {
-        const checkMethod =
-          !!startDate && !!endDate
-            ? 'isBetween'
-            : !!startDate
-            ? 'isAfter'
-            : !!endDate
-            ? 'isBefore'
-            : ''
+      const formattedDate = dayjs(inputValue, dateFormat).utc(true)
+      const checkMethod =
+        !!startDate && !!endDate
+          ? 'isBetween'
+          : !!startDate
+          ? 'isAfter'
+          : !!endDate
+          ? 'isBefore'
+          : ''
 
-        const inDateRange = checkMethod
-          ? formattedDate[checkMethod](startDate, endDate)
-          : true
-        const dateResult = inDateRange ? formattedDate : dateValue
+      const inDateRange = checkMethod
+        ? checkDateRange[checkMethod](formattedDate, startDate, endDate)
+        : true
+      const dateResult = inDateRange ? formattedDate : dateValue
 
-        if (!dateResult.isValid()) {
-          return
-        }
-
-        // Convert to UTC to match server time
-        const utcDate = dayjs(dateResult).utc(true)
-
-        onChange(utcDate.toDate())
+      if (!dateResult.isValid()) {
+        const utcDate = dateValue.utc(true)
+        onChange?.(utcDate)
         setInputValue(utcDate.format(dateFormat))
         setDateValue(utcDate)
-        onClose()
+        return
       }
+
+      // Convert to UTC to match server time
+      const utcDate = dayjs(dateResult).utc(true)
+
+      onChange?.(utcDate.toDate())
+      setInputValue(utcDate.format(dateFormat))
+      setDateValue(utcDate)
+      onClose()
     }
   }
 
   return (
-    <Wrapper ref={ref} onClick={onOpen} {...wrapperProps}>
+    <Wrapper
+      ref={ref}
+      onClick={onOpen}
+      {...wrapperProps}
+      data-testid='date-picker-wrapper'
+    >
       <Input
         {...theme.default.component.datePicker}
         {...props}
@@ -106,7 +116,7 @@ export const DatePicker = ({
         onChange={handleInputChange}
         onKeyUp={handleKeyUp}
         onKeyDown={handleKeyDown}
-        maxLength={10}
+        maxLength={dateValue.format(dateFormat).length}
       />
       {isOpen && (
         <Calendar

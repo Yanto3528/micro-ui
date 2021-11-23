@@ -31,7 +31,7 @@ export const Month = ({
           <BackIcon />
           <BackIcon />
         </NextBackButton>
-        <CurrentMonth>{currentMonth}</CurrentMonth>
+        <CurrentMonth data-testid='current-month'>{currentMonth}</CurrentMonth>
         <NextBackButton
           onClick={onIconClick(DateAction.NEXT)}
           disabled={disableNextMonth}

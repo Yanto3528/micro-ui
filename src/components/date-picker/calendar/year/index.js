@@ -69,13 +69,13 @@ export const CalendarYear = ({
   }
 
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} data-testid='calendar-year'>
       <Header>
         <NextBackButton onClick={onClickBack}>
           <BackIcon />
           <BackIcon />
         </NextBackButton>
-        <CurrentYear onClick={onToggleOpen}>
+        <CurrentYear onClick={onToggleOpen} data-testid='current-year'>
           {`${fromYear}-${toYear}`}
         </CurrentYear>
         <NextBackButton onClick={onClickNext}>

@@ -63,7 +63,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
     event.stopPropagation()
 
     setSelectedDate(selectedDate)
-    onChange(selectedDate, event)
+    onChange?.(selectedDate, event)
   }
 
   const onToggleShowYear = (event) => {
@@ -72,7 +72,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
   }
 
   return (
-    <Wrapper {...props.wrapperStyle}>
+    <Wrapper {...props.wrapperStyle} data-testid='calendar'>
       {isYearOpen ? (
         <CalendarYear
           date={date}
@@ -83,7 +83,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
       ) : (
         <>
           <YearDisplayWrapper onClick={onToggleShowYear}>
-            <p>{date.format('YYYY')}</p>
+            <p data-testid='year-display'>{date.format('YYYY')}</p>
           </YearDisplayWrapper>
           <Month
             date={date}
