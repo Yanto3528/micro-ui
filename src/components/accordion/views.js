@@ -7,15 +7,21 @@ import { Icon } from '../icon'
 const Wrapper = styled.div.attrs(() => ({
   className: 'aia-accordion-wrapper',
 }))`
-  width: 100%;
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: auto;
-  border: '5px solid red';
-  border-radius: '10px';
+
   ${fontStyles}
   ${({ wrapperCustomStyle }) => wrapperCustomStyle && css(wrapperCustomStyle)};
 `
 
-const Title = styled.div.attrs(() => ({
+const Item = styled.div.attrs(() => ({
+  className: 'aia-accordion-item',
+}))`
+  color: ${resolveColor('color')};
+  margin: ${({ margin }) => margin};
+`
+
+const HeaderWrapper = styled.div.attrs(() => ({
   className: 'aia-accordion-title',
 }))`
   display: flex;
@@ -24,21 +30,9 @@ const Title = styled.div.attrs(() => ({
   align-items: center;
   cursor: pointer;
   padding: ${({ padding }) => padding};
-
-  font-size: ${({ padding }) => padding || '18px'};
-  ${fontStyles}
 `
 
-const TitleText = styled.span.attrs(() => ({
-  className: 'aia-accordion-title-text',
-}))`
-  color: ${({ theme, bg }) => resolveColor(theme, bg)};
-
-  ${fontStyles}
-  ${({ titleCustomStyle }) => titleCustomStyle && css(titleCustomStyle)};
-`
-
-const ArrowIcon = styled(Icon).attrs(() => ({
+const HeaderIconWrapper = styled(Icon).attrs(() => ({
   className: 'aia-accordion-arrow',
   name: 'forward',
   size: 'l',
@@ -55,13 +49,13 @@ const Content = styled.div.attrs(() => ({
 }))`
   width: 100%;
   height: ${({ isExpand }) => (isExpand ? 'auto' : '0px')};
-  overflow: ${({ isExpand }) => (isExpand ? 'visible' : 'hidden')};
 
-  padding: ${({ padding }) => padding || '20px 10px'};
+  /** hidden style for accordion */
   transform-origin: center;
-  transition: all 0.3s ease-out;
-
-  ${({ contentCustomStyle }) => contentCustomStyle && css(contentCustomStyle)};
+  transition: all 0.5s ease-in-out;
+  line-height: ${({ isExpand }) => (isExpand ? '1.5' : '0')};
+  padding: ${({ isExpand, padding }) => (isExpand ? padding : '0')};
+  color: ${({ isExpand }) => (isExpand ? 'black' : 'transparent')};
 `
 
-export { Wrapper, Title, TitleText, Content, ArrowIcon }
+export { Wrapper, Item, HeaderWrapper, HeaderIconWrapper, Content }
