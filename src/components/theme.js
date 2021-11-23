@@ -1,3 +1,4 @@
+import React from 'react'
 import { Icon } from './icon'
 
 export const theme = {
@@ -125,6 +126,15 @@ export const theme = {
           },
         },
       },
+      divider: {
+        bg: 'gray',
+        marginBlock: '10px',
+        fontFamily: 'AIARegular',
+        fontWeight: 'normal',
+        fontSize: '1.4rem',
+        textPaddingInline: '20px',
+        orientation: 'horizontal',
+      },
       input: {
         bg: 'lightGray',
         color: 'secondary',
@@ -150,6 +160,9 @@ export const theme = {
         fontSize: '1.4rem',
         fontFamily: 'AIARegular',
         fontWeight: 'normal',
+        width: 'auto',
+        height: 'auto',
+        fluid: false,
       },
       radio: {
         activeColor: 'primary',
@@ -178,14 +191,6 @@ export const theme = {
         height: '40px',
         iconSpacing: '30px',
         size: '140px',
-      },
-      divider: {
-        bg: 'gray',
-        margin: '10px 0',
-        fontFamily: 'AIARegular',
-        fontWeight: 'normal',
-        fontSize: '1.4rem',
-        textPadding: '0 20px',
       },
       tag: {
         bg: 'primary',
@@ -274,6 +279,19 @@ export const theme = {
         width: '500px',
         resize: 'none',
       },
+      tooltip: {
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+        placement: 'top',
+        padding: '10px',
+        radius: '4px',
+        width: '200px',
+        height: 'auto',
+        bg: 'secondary',
+        color: 'white',
+        hasArrow: true,
+      },
       select: {
         fluid: false,
         width: '335px',
@@ -318,6 +336,23 @@ export const theme = {
           cursor: 'auto',
           lineHeight: '18px',
         },
+      },
+      unitNumber: {
+        bg: 'lightGray',
+        color: 'secondary',
+        padding: '7px 16px',
+        width: '335px',
+        height: '40px',
+        radius: '15px',
+        rounded: false,
+        fluid: false,
+        fontFamily: 'AIARegular',
+        fontSize: '1.4rem',
+        fontWeight: 'normal',
+        variant: 'solid',
+        borderColor: 'primary',
+        focusBorderColor: 'primary',
+        alignment: 'center',
       },
     },
   },

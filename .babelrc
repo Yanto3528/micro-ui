@@ -1,5 +1,8 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": [
+    ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": "3" }],
+    "@babel/preset-react"
+  ],
   "plugins": [
     [
       "module-resolver",
@@ -13,7 +16,8 @@
           "@/utils": "./src/utils",
           "@/styles": "./src/styles",
           "@/assets": "./src/assets",
-          "@/enums": "./src/enums"
+          "@/enums": "./src/enums",
+          "@/test-utils": "./src/test-utils"
         }
       }
     ]

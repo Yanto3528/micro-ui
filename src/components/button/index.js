@@ -7,18 +7,18 @@ import { useTheme } from '@/hooks'
 import { StyledButton, IconContainer, LoadingIcon, LoadingText } from './views'
 
 export const Button = React.forwardRef(
-  ({ icon, disabled, loading, children, loadingText, ...otherProps }, ref) => {
+  ({ icon, disabled, loading, children, loadingText, ...props }, ref) => {
     const theme = useTheme()
     return (
       <StyledButton
+        {...theme.default.component.button}
+        {...props}
         disabled={disabled || loading}
         ref={ref}
-        {...theme.default.component.button}
-        {...otherProps}
       >
         {loading ? (
           <IconContainer>
-            <LoadingIcon />{' '}
+            <LoadingIcon data-testid='spinner' />{' '}
             {loadingText && <LoadingText>{loadingText}</LoadingText>}
           </IconContainer>
         ) : (

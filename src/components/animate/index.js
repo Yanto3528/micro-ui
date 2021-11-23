@@ -47,4 +47,6 @@ Animate.propTypes = {
   repeat: PropTypes.string,
   /** Animation duration */
   duration: PropTypes.number,
+  /** width */
+  width: PropTypes.string,
 }

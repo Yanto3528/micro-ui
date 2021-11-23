@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { getColor } from '@/utils'
 
 const sizeMapper = {
   xs: '1em',
@@ -9,7 +10,7 @@ const sizeMapper = {
 }
 
 export const Component = styled.i`
-  color: ${({ color }) => color || 'inherit'};
+  color: ${({ theme, color }) => getColor(theme, color) || 'inherit'};
   font-size: ${({ size }) => sizeMapper[size] || size};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `

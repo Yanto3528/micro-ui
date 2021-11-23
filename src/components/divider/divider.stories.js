@@ -9,6 +9,11 @@ export default {
 }
 
 const Template = (args) => <Divider {...args} />
+const VerticalTemplate = (args) => (
+  <div style={{ height: args.height }}>
+    <Divider {...args} />
+  </div>
+)
 
 export const Default = Template.bind({})
 Default.args = {
@@ -19,5 +24,17 @@ export const WithText = Template.bind({})
 WithText.args = {
   ...theme.default.component.divider,
   text: 'Today',
-  textPadding: '0 20px',
+}
+
+export const WithVerticalOrientation = VerticalTemplate.bind({})
+WithVerticalOrientation.args = {
+  ...Default.args,
+  height: '200px',
+  orientation: 'vertical',
+}
+
+export const WithVerticalAndText = VerticalTemplate.bind({})
+WithVerticalAndText.args = {
+  ...WithVerticalOrientation.args,
+  text: 'Today',
 }
