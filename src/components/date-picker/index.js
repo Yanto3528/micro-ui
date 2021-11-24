@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
@@ -27,11 +27,20 @@ export const DatePicker = ({
   endDate,
   ...props
 }) => {
-  const [dateValue, setDateValue] = useState(value ? dayjs(value) : dayjs())
+  const [dateValue, setDateValue] = useState(
+    dayjs(value).utc(true).startOf('day')
+  )
   const [inputValue, setInputValue] = useState('')
   const [isOpen, { onOpen, onClose }] = useToggle()
   const theme = useTheme()
   const ref = useClickOutside(onClose)
+
+  useEffect(() => {
+    setDateValue(dayjs(value).utc(true).startOf('day'))
+    if (dayjs.isDayjs(value)) {
+      setInputValue(value.format(dateFormat))
+    }
+  }, [value, dateFormat])
 
   const { datePicker: defaultDatePickerProps } = theme.default.component
 
@@ -49,9 +58,6 @@ export const DatePicker = ({
   }
 
   const handleDateChange = (selectedDate) => {
-    if (!selectedDate) {
-      return
-    }
     // Convert to UTC to match server time
     const utcDate = dayjs(selectedDate).utc(true)
     setInputValue(utcDate.format(dateFormat))
@@ -85,7 +91,7 @@ export const DatePicker = ({
 
       if (!dateResult.isValid()) {
         const utcDate = dateValue.utc(true)
-        onChange?.(utcDate)
+        onChange?.(utcDate.toDate())
         setInputValue(utcDate.format(dateFormat))
         setDateValue(utcDate)
         return
