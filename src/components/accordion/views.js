@@ -11,7 +11,7 @@ const Wrapper = styled.div.attrs(() => ({
   height: auto;
 
   ${fontStyles}
-  ${({ wrapperCustomStyle }) => wrapperCustomStyle && css(wrapperCustomStyle)};
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 const Item = styled.div.attrs(() => ({
@@ -19,6 +19,8 @@ const Item = styled.div.attrs(() => ({
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 const HeaderWrapper = styled.div.attrs(() => ({
@@ -30,15 +32,15 @@ const HeaderWrapper = styled.div.attrs(() => ({
   align-items: center;
   cursor: pointer;
   padding: ${({ padding }) => padding};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 const HeaderIconWrapper = styled(Icon).attrs(() => ({
   className: 'aia-accordion-arrow',
   name: 'forward',
-  size: 'l',
+  size: '1.5em',
 }))`
-  font-size: 1.5em;
-
   transform-origin: center;
   transition: all 0.3s ease-out;
   transform: ${({ isExpand }) => (isExpand ? 'rotate(90deg)' : 'none')};
@@ -56,6 +58,8 @@ const Content = styled.div.attrs(() => ({
   line-height: ${({ isExpand }) => (isExpand ? '1.5' : '0')};
   padding: ${({ isExpand, padding }) => (isExpand ? padding : '0')};
   color: ${({ isExpand }) => (isExpand ? 'black' : 'transparent')};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export { Wrapper, Item, HeaderWrapper, HeaderIconWrapper, Content }

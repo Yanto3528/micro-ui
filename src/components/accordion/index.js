@@ -11,7 +11,7 @@ import { AccordionContent } from './content'
 import { Wrapper } from './views'
 
 export const Accordion = React.forwardRef(
-  ({ children, arrowPosition, defaultOpen, allowMultiple, ...props }, ref) => {
+  ({ children, arrowPosition, allowMultiple, ...props }, ref) => {
     const theme = useTheme()
     const [activeIndex, setActiveIndex] = useState(0)
 
@@ -21,18 +21,21 @@ export const Accordion = React.forwardRef(
         setActiveIndex,
         arrowPosition,
         allowMultiple,
-        defaultOpen,
       }
-    }, [activeIndex, setActiveIndex, arrowPosition, allowMultiple, defaultOpen])
+    }, [activeIndex, setActiveIndex, arrowPosition, allowMultiple])
 
     return (
       <AccordionContext.Provider value={value}>
-        <Wrapper {...theme.default.component.accordion} {...props} ref={ref}>
+        <Wrapper
+          {...theme.default.component.accordion.wrapper}
+          {...props}
+          ref={ref}
+        >
           {React.Children.map(children, (childElement, itemIndex) => {
             return (
               childElement &&
               React.cloneElement(childElement, {
-                dataKey: itemIndex,
+                index: itemIndex,
                 ...childElement.props,
               })
             )
@@ -48,8 +51,6 @@ Accordion.propTypes = {
   arrowPosition: PropTypes.oneOf(['left', 'right']),
   /** Set the behaviour of accordion when multiple tab is opened */
   allowMultiple: PropTypes.bool,
-  /** Set the default for accordion state */
-  defaultOpen: PropTypes.bool,
   /** If true then it width will be 100% */
   fluid: PropTypes.bool,
   /** Font styles */

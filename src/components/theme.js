@@ -30,12 +30,12 @@ export const theme = {
   default: {
     component: {
       accordion: {
-        title: 'Title',
-        arrowPosition: 'left',
-        defaultOpen: false,
-        fontFamily: 'AIARegular',
-        fontSize: '1.4rem',
-        fontWeight: 'normal',
+        wrapper: {
+          arrowPosition: 'left',
+          fontFamily: 'AIARegular',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+        },
         item: {
           padding: '15px',
         },

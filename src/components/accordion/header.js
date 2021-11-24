@@ -11,10 +11,10 @@ export const AccordionHeader = React.forwardRef(
   ({ iconWrapperStyle, children, ...props }, ref) => {
     const theme = useTheme()
     const { arrowPosition, allowMultiple } = useAccordionContext()
-    const { isExpand, activeIndex, dataKey } = useAccordionItemContext()
+    const { isExpand, activeIndex, index } = useAccordionItemContext()
     const isExpandLocal = allowMultiple
       ? isExpand
-      : isExpand && activeIndex === dataKey
+      : isExpand && activeIndex === index
 
     const headerIconProps = theme.default.component.accordion.header
 
@@ -39,6 +39,7 @@ export const AccordionHeader = React.forwardRef(
 )
 
 AccordionHeader.propTypes = {
+  customStyle: PropTypes.object,
   /** Any element for this icon */
   icon: PropTypes.string,
   /** Style for the icon wrapper */

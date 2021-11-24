@@ -41,11 +41,11 @@ export const AccordionOpenOne = () => {
 export const AccordionOpenMultiple = () => {
   return (
     <BaseAccordion allowMultiple>
-      <Accordion.Item>
+      <Accordion.Item defaultOpen>
         <Accordion.Header>Header</Accordion.Header>
         <Accordion.Content>Content</Accordion.Content>
       </Accordion.Item>
-      <Accordion.Item>
+      <Accordion.Item defaultOpen>
         <Accordion.Header>Header</Accordion.Header>
         <Accordion.Content>Content</Accordion.Content>
       </Accordion.Item>

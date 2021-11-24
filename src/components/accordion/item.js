@@ -8,19 +8,19 @@ import { useAccordionContext, AccordionItemContext } from './utils/context'
 import { Item } from './views'
 
 export const AccordionItem = React.forwardRef(
-  ({ children, dataKey, defaultOpen, ...props }, ref) => {
+  ({ children, index, defaultOpen, ...props }, ref) => {
     const theme = useTheme()
     const { activeIndex, setActiveIndex, allowMultiple } = useAccordionContext()
     const [isExpand, setIsExpand] = useState(defaultOpen)
 
     const onExpandClick = () => {
       setIsExpand((prevState) => !prevState)
-      setActiveIndex(dataKey)
+      setActiveIndex(index)
     }
 
     const value = useMemo(() => {
-      return { isExpand, activeIndex, dataKey, allowMultiple }
-    }, [isExpand, activeIndex, dataKey, allowMultiple])
+      return { isExpand, activeIndex, index, allowMultiple }
+    }, [isExpand, activeIndex, index, allowMultiple])
 
     return (
       <AccordionItemContext.Provider value={value}>
@@ -38,8 +38,9 @@ export const AccordionItem = React.forwardRef(
 )
 
 AccordionItem.propTypes = {
+  customStyle: PropTypes.object,
   margin: PropTypes.string,
-  dataKey: PropTypes.number,
+  index: PropTypes.number,
   /* to decide if accordion item is intially open or not */
   defaultOpen: PropTypes.bool,
 }

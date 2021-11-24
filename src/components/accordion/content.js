@@ -12,10 +12,10 @@ export const AccordionContent = React.forwardRef(
     const theme = useTheme()
 
     const { allowMultiple } = useAccordionContext()
-    const { activeIndex, dataKey, isExpand } = useAccordionItemContext()
+    const { activeIndex, index, isExpand } = useAccordionItemContext()
     const isExpandLocal = allowMultiple
       ? isExpand
-      : isExpand && activeIndex === dataKey
+      : isExpand && activeIndex === index
 
     return (
       <Content
@@ -31,6 +31,7 @@ export const AccordionContent = React.forwardRef(
 )
 
 AccordionContent.propTypes = {
+  customStyle: PropTypes.object,
   padding: PropTypes.string,
 }
 
