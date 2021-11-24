@@ -29,6 +29,29 @@ export const theme = {
   },
   default: {
     component: {
+      accordion: {
+        wrapper: {
+          arrowPosition: 'left',
+          fontFamily: 'AIARegular',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+        },
+        item: {
+          padding: '15px',
+        },
+        header: {
+          padding: '15px',
+          icon: 'forward',
+          iconWrapperStyle: {
+            bg: 'white',
+            boxShadow: 'rgb(170 8 54 / 32%) 2px 0px 10px 0px',
+            padding: '15px',
+          },
+        },
+        content: {
+          padding: '15px',
+        },
+      },
       button: {
         bg: 'primary',
         color: 'white',
