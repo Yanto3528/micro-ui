@@ -19,7 +19,7 @@ export const Header = styled.div.attrs(() => ({
 `
 
 export const CurrentMonth = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-current-year',
+  className: 'aia-calendar-year-current-month',
 }))`
   padding: 4px 10px;
   margin: 0 10px;

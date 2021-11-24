@@ -63,7 +63,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
     event.stopPropagation()
 
     setSelectedDate(selectedDate)
-    onChange(selectedDate, event)
+    onChange?.(selectedDate, event)
   }
 
   const onToggleShowYear = (event) => {
@@ -72,24 +72,24 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
   }
 
   return (
-    <Wrapper {...props.wrapperStyle}>
+    <Wrapper {...props.wrapperProps} data-testid='calendar'>
       {isYearOpen ? (
         <CalendarYear
           date={date}
           onToggleOpen={onToggleShowYear}
           onYearSelect={onYearSelect}
-          {...props.yearStyle}
+          {...props.yearProps}
         />
       ) : (
         <>
           <YearDisplayWrapper onClick={onToggleShowYear}>
-            <p>{date.format('YYYY')}</p>
+            <p data-testid='year-display'>{date.format('YYYY')}</p>
           </YearDisplayWrapper>
           <Month
             date={date}
             onMonthAction={onMonthAction}
             disabledMonth={disabledMonth}
-            {...props.monthStyle}
+            {...props.monthProps}
           />
           <WeekDayWrapper>
             {DaysOfWeek.map((day, index) => (
@@ -102,7 +102,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
             onSelectDay={onSelectDay}
             startDate={startDate}
             endDate={endDate}
-            {...props.dayStyle}
+            {...props.dayProps}
           />
         </>
       )}
@@ -112,13 +112,13 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
 
 Calendar.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
+  value: dayjsType.isRequired,
   startDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   endDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
-  wrapperStyle: PropTypes.object,
-  yearStyle: PropTypes.object,
-  monthStyle: PropTypes.object,
-  dayStyle: PropTypes.object,
+  wrapperProps: PropTypes.object,
+  yearProps: PropTypes.object,
+  monthProps: PropTypes.object,
+  dayProps: PropTypes.object,
 }
 
 if (isDev) {

@@ -9,16 +9,7 @@ function checkDayjs(props, propName, componentName) {
 }
 
 function checkDayjsType(isRequired, props, propName, componentName) {
-  if (props[propName] == null) {
-    if (isRequired) {
-      return new Error(
-        `${propName} is marked as required, but received undefined in ${componentName}.`
-      )
-    }
-    return null
-  } else {
-    return checkDayjs(props, propName, componentName)
-  }
+  return checkDayjs(props, propName, componentName)
 }
 
 const dayjsType = checkDayjsType.bind(null, false)

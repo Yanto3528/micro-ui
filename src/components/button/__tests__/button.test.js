@@ -5,6 +5,11 @@ import { theme } from '../../theme'
 import { Icon } from '../../icon'
 import { Button } from '../index'
 
+jest.mock('../../../constants', () => ({ isDev: false }))
+beforeEach(() => {
+  jest.resetModules()
+})
+
 describe('components > button', () => {
   it('should render button with correct text', () => {
     render(<Button>Submit</Button>)

@@ -105,22 +105,22 @@ export const theme = {
         paddingRightElement: '36px',
         dateFormat: 'DD/MM/YYYY',
         calendarProps: {
-          wrapperStyle: {
+          wrapperProps: {
             fontFamily: 'AIARegular',
             fontSize: '1.4rem',
             fontWeight: 'normal',
           },
-          yearStyle: {
+          yearProps: {
             fontFamily: 'AIAMedium',
             fontSize: '1.4rem',
             fontWeight: 'normal',
           },
-          monthStyle: {
+          monthProps: {
             fontFamily: 'AIAMedium',
             fontSize: '1.4rem',
             fontWeight: 'normal',
           },
-          dayStyle: {
+          dayProps: {
             activeBg: 'primary',
             activeColor: 'white',
           },

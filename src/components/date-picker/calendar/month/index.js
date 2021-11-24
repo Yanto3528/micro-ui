@@ -8,12 +8,7 @@ import { dayjsType } from '../utils/types'
 import { NextBackButton, NextIcon, BackIcon } from '../views'
 import { Wrapper, Header, CurrentMonth } from './views'
 
-export const Month = ({
-  date,
-  onMonthAction,
-  disabledMonth = {},
-  ...props
-}) => {
+export const Month = ({ date, onMonthAction, disabledMonth, ...props }) => {
   const onIconClick = (action) => () => {
     onMonthAction(action)
   }
@@ -22,7 +17,7 @@ export const Month = ({
   const currentMonth = date.format('MMMM')
 
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} data-testid='calendar-month'>
       <Header>
         <NextBackButton
           onClick={onIconClick(DateAction.BACK)}
@@ -31,7 +26,7 @@ export const Month = ({
           <BackIcon />
           <BackIcon />
         </NextBackButton>
-        <CurrentMonth>{currentMonth}</CurrentMonth>
+        <CurrentMonth data-testid='current-month'>{currentMonth}</CurrentMonth>
         <NextBackButton
           onClick={onIconClick(DateAction.NEXT)}
           disabled={disableNextMonth}
@@ -49,7 +44,7 @@ Month.propTypes = {
   /** Define the month action, BACK or NEXT */
   onMonthAction: PropTypes.func.isRequired,
   /** Object for disabling prev and/or next month arrow */
-  disabledMonth: PropTypes.object,
+  disabledMonth: PropTypes.object.isRequired,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
