@@ -6,7 +6,7 @@ import { fontStyles } from '@/styles'
 import { ButtonType, Variant } from './utils/constants'
 
 const defaultStyles = css`
-  width: ${({ width }) => width};
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   flex-direction: row;
   .aia-radio-button-icon-container {
@@ -83,8 +83,8 @@ export const Label = styled.label.attrs(() => ({
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   border-radius: ${({ radius }) => radius};
-  cursor: pointer;
   ${fontStyles};
+  cursor: pointer;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -106,6 +106,7 @@ export const Check = styled.input.attrs(() => ({
   position: absolute;
   opacity: 0;
   cursor: pointer;
+  pointer-events: ${({ readOnly }) => (readOnly ? 'none' : 'auto')};
 
   &:checked + .aia-radio-button-label {
     background-color: ${({ theme, bg, variant, activeBGColor }) =>
