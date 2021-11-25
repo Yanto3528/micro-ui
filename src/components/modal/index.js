@@ -33,18 +33,20 @@ export const Modal = React.forwardRef(
       <Portal>
         <Animate show={isOpen} onEnter={fadeIn} onExit={fadeOut} duration={0.5}>
           <ModalContext.Provider value={value}>
-            <Overlay onClick={onClose}>
+            <Overlay onClick={onClose} data-testid='modal-overlay'>
               <Animate
                 show={isOpen}
                 onEnter={slideIn}
                 onExit={slideOut}
                 duration={0.5}
+                data-testid='animate-modal-wrapper'
               >
                 <Wrapper
                   onClick={onStopPropagation}
                   {...theme.default.component.modal.wrapper}
                   {...props}
                   ref={ref}
+                  data-testid='modal-wrapper'
                 >
                   {children}
                 </Wrapper>

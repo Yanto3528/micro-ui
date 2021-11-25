@@ -217,10 +217,16 @@ export const theme = {
         header: {
           bgImage:
             'linear-gradient(to right, rgb(232, 73, 116) 0%, rgb(205, 73, 96) 52%, rgb(193, 55, 91) 100%)',
-          iconWrapperStyle: {
+          color: 'white',
+          padding: '20px',
+          fontFamily: 'AIAMedium',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+          iconWrapperProps: {
             bg: 'white',
             boxShadow: 'rgb(170 8 54 / 32%) 2px 0px 10px 0px',
             padding: '15px',
+            color: 'primary',
           },
         },
         title: {
