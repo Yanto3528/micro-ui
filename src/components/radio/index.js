@@ -71,6 +71,8 @@ Radio.propTypes = {
   variant: PropTypes.oneOf(['check', 'circular']),
   id: PropTypes.string,
   margin: PropTypes.string,
+  /** Give this a full width of the current container */
+  fluid: PropTypes.bool,
   width: PropTypes.string,
   height: PropTypes.string,
   /** Custom style for wrapper */
