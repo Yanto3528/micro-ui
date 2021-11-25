@@ -32,6 +32,7 @@ ModalClose.propTypes = {
   color: PropTypes.string,
   /** Border radius for the icon wrapper */
   radius: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {
