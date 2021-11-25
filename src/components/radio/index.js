@@ -70,6 +70,11 @@ Radio.propTypes = {
   readOnly: PropTypes.bool,
   variant: PropTypes.oneOf(['check', 'circular']),
   id: PropTypes.string,
+  margin: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  /** Custom style for wrapper */
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {
