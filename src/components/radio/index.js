@@ -7,25 +7,39 @@ import { getProps } from '@/utils'
 
 import { Wrapper, Label, Check, Checkmark, LabelText } from './views'
 
+const wrapperData = [
+  'width',
+  'height',
+  'fluid',
+  'fontFamily',
+  'fontSize',
+  'fontWeight',
+  'color',
+  'margin',
+  'customStyle',
+]
+
 export const Radio = React.forwardRef(
-  ({ label, id, disabled, readOnly, ...props }, ref) => {
+  (
+    { label, id = Date.now() + Math.random(), disabled, readOnly, ...props },
+    ref
+  ) => {
     const theme = useTheme()
     const { radio: defaultRadioProps } = theme.default.component
+    const wrapperProps = getProps(props, defaultRadioProps, wrapperData)
     const checkmarkProps = getProps(props, defaultRadioProps, [
       'borderColor',
       'radius',
       'variant',
     ])
 
-    const labelProps = getProps(props, defaultRadioProps, [
-      'fontFamily',
-      'fontSize',
-      'color',
-    ])
-
     return (
-      <Wrapper disabled={disabled || readOnly}>
-        <Label htmlFor={id} {...labelProps} disabled={disabled || readOnly}>
+      <Wrapper
+        {...wrapperProps}
+        disabled={disabled || readOnly}
+        data-testid='radio-wrapper'
+      >
+        <Label htmlFor={id} disabled={disabled || readOnly}>
           <LabelText>{label}</LabelText>
           <Check
             id={id}
@@ -55,7 +69,14 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   variant: PropTypes.oneOf(['check', 'circular']),
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  margin: PropTypes.string,
+  /** Give this a full width of the current container */
+  fluid: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  /** Custom style for wrapper */
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

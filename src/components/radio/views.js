@@ -38,12 +38,18 @@ const resolveCheckedRadioType = ({ variant }) => {
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-radio-wrapper',
 }))`
+  ${fontStyles};
+  color: ${resolveColor('color')};
+  margin: ${({ margin }) => margin};
+  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  height: ${({ height }) => height};
   ${({ disabled }) =>
     disabled &&
     css`
       opacity: 0.7;
       cursor: not-allowed;
     `}
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Label = styled.label.attrs(() => ({
@@ -53,7 +59,6 @@ export const Label = styled.label.attrs(() => ({
   position: relative;
   margin: ${({ margin }) => margin};
   cursor: pointer;
-  ${fontStyles};
   color: ${resolveColor('color')};
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -26,6 +26,7 @@ ModalActions.propTypes = {
   alignment: PropTypes.oneOf(Object.keys(Alignment)),
   /** Spacing for each of the button */
   spacing: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

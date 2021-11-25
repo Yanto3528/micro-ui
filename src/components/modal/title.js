@@ -20,6 +20,7 @@ ModalTitle.propTypes = {
   fontWeight: PropTypes.string,
   fontFamily: PropTypes.string,
   margin: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

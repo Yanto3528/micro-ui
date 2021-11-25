@@ -35,6 +35,8 @@ ModalHeader.propTypes = {
   icon: PropTypes.any,
   /** By default it has linear-gradient color */
   bgImage: PropTypes.string,
+  /** Background color */
+  bg: PropTypes.string,
   /** Style for the icon wrapper */
   iconWrapperProps: PropTypes.shape({
     /** background color for icon wrapper */
@@ -44,6 +46,7 @@ ModalHeader.propTypes = {
     /** padding for icon wrapper */
     padding: PropTypes.string,
   }),
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

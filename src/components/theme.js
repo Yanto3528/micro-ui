@@ -187,6 +187,7 @@ export const theme = {
         fontWeight: 'normal',
         buttonType: 'default',
         padding: '0.8em 2em',
+        fluid: false,
         width: '150px',
         height: '40px',
         iconSpacing: '30px',

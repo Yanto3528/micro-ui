@@ -17,6 +17,7 @@ const labelPropsData = [
   'radius',
   'padding',
   'margin',
+  'fluid',
   'width',
   'height',
   'size',
@@ -27,7 +28,17 @@ const labelPropsData = [
 ]
 
 export const RadioButton = React.forwardRef(
-  ({ label, id, disabled, readOnly, icon, ...props }, ref) => {
+  (
+    {
+      label,
+      id = Date.now() + Math.random(),
+      disabled,
+      readOnly,
+      icon,
+      ...props
+    },
+    ref
+  ) => {
     const theme = useTheme()
     const { radioButton: defaultRadioButtonProps } = theme.default.component
 
@@ -41,6 +52,7 @@ export const RadioButton = React.forwardRef(
           {...props}
           variant={labelProps.variant}
           disabled={disabled}
+          readOnly={readOnly}
           ref={ref}
         />
         <Label
@@ -79,6 +91,8 @@ RadioButton.propTypes = {
   padding: PropTypes.string,
   /** margin for radio button */
   margin: PropTypes.string,
+  /** Give this a full width of the current container (not applicable for square buttonType) */
+  fluid: PropTypes.bool,
   /** width for radio button, does not affect square buttonType */
   width: PropTypes.string,
   /** height for radio button, does not affect square buttonType */
@@ -96,7 +110,7 @@ RadioButton.propTypes = {
   /** Apply custom style for radio button */
   customStyle: PropTypes.object,
   icon: PropTypes.element,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 }
 
 if (isDev) {

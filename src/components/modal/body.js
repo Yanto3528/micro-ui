@@ -21,6 +21,7 @@ ModalBody.propTypes = {
   fontFamily: PropTypes.string,
   fontWeight: PropTypes.string,
   margin: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

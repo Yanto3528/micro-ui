@@ -25,6 +25,7 @@ ModalContent.propTypes = {
   padding: PropTypes.string,
   /** Alignment of the content, left | center | right */
   alignment: PropTypes.oneOf(Object.keys(Alignment)),
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {
