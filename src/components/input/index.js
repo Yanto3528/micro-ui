@@ -26,7 +26,9 @@ export const Input = React.forwardRef(
     )
     return (
       <Wrapper {...wrapperProps}>
-        {leftElement && <LeftElement>{leftElement}</LeftElement>}
+        {leftElement && (
+          <LeftElement data-testid='left-element'>{leftElement}</LeftElement>
+        )}
         <StyledInput
           {...theme.default.component.input}
           {...props}
@@ -34,7 +36,11 @@ export const Input = React.forwardRef(
           rightElement={!!rightElement}
           ref={ref}
         />
-        {rightElement && <RightElement>{rightElement}</RightElement>}
+        {rightElement && (
+          <RightElement data-testid='right-element'>
+            {rightElement}
+          </RightElement>
+        )}
       </Wrapper>
     )
   }
