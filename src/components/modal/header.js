@@ -7,22 +7,24 @@ import { useTheme } from '@/hooks'
 import { HeaderWrapper, HeaderIconWrapper } from './views'
 
 export const ModalHeader = React.forwardRef(
-  ({ icon, iconWrapperStyle, ...props }, ref) => {
+  ({ icon, iconWrapperProps, children, ...props }, ref) => {
     const theme = useTheme()
     const headerIconProps =
-      theme.default.component.modal.header.iconWrapperStyle
+      theme.default.component.modal.header.iconWrapperProps
 
     return (
       <HeaderWrapper
         {...theme.default.component.modal.header}
         {...props}
         ref={ref}
+        data-testid='modal-header'
       >
         {icon && (
-          <HeaderIconWrapper {...headerIconProps} {...iconWrapperStyle}>
+          <HeaderIconWrapper {...headerIconProps} {...iconWrapperProps}>
             {icon}
           </HeaderIconWrapper>
         )}
+        {children}
       </HeaderWrapper>
     )
   }
@@ -30,11 +32,11 @@ export const ModalHeader = React.forwardRef(
 
 ModalHeader.propTypes = {
   /** Any element for this icon */
-  icon: Element,
+  icon: PropTypes.any,
   /** By default it has linear-gradient color */
   bgImage: PropTypes.string,
   /** Style for the icon wrapper */
-  iconWrapperStyle: PropTypes.shape({
+  iconWrapperProps: PropTypes.shape({
     /** background color for icon wrapper */
     bg: PropTypes.string,
     /** box shadow for icon wrapper */

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { resolveColor, resolveFontFamily } from '@/utils'
 import { fontStyles } from '@/styles'
@@ -35,6 +35,8 @@ export const Wrapper = styled.div.attrs(() => ({
   position: relative;
   overflow-x: hidden;
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const HeaderWrapper = styled.div.attrs(() => ({
@@ -44,8 +46,16 @@ export const HeaderWrapper = styled.div.attrs(() => ({
   background-image: ${({ bgImage }) => bgImage};
   background-color: ${resolveColor('bg')};
   position: relative;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${resolveColor('color')};
   margin-bottom: 20px;
+  padding: ${({ padding }) => padding};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  ${fontStyles};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const HeaderIconWrapper = styled.div.attrs(() => ({
@@ -59,6 +69,9 @@ export const HeaderIconWrapper = styled.div.attrs(() => ({
   border-radius: 50%;
   background-color: ${resolveColor('bg')};
   box-shadow: ${({ boxShadow }) => boxShadow};
+  color: ${resolveColor('color')};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const CloseWrapper = styled.div.attrs(() => ({
@@ -84,6 +97,8 @@ export const CloseWrapper = styled.div.attrs(() => ({
       background-color: ${resolveColor('color')};
     }
   }
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const CloseIcon = styled.span.attrs(() => ({
@@ -108,6 +123,8 @@ export const Title = styled.h3.attrs(() => ({
 }))`
   ${fontStyles};
   margin: ${({ margin }) => margin};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Content = styled.div.attrs(() => ({
@@ -118,6 +135,8 @@ export const Content = styled.div.attrs(() => ({
   align-items: ${({ alignment }) => Alignment[alignment]};
   text-align: ${({ alignment }) => alignment};
   padding: ${({ padding }) => padding};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Body = styled.p.attrs(() => ({
@@ -126,6 +145,8 @@ export const Body = styled.p.attrs(() => ({
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
   ${fontStyles};
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const ActionsWrapper = styled.div.attrs(() => ({
@@ -139,4 +160,6 @@ export const ActionsWrapper = styled.div.attrs(() => ({
   > *:not(:last-child) {
     margin-right: ${({ spacing }) => spacing};
   }
+
+  ${({ customStyle }) => customStyle && css(customStyle)};
 `

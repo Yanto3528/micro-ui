@@ -13,9 +13,10 @@ export const ModalClose = React.forwardRef(({ icon, ...props }, ref) => {
   return (
     <CloseWrapper
       {...theme.default.component.modal.close}
-      onClick={onClose}
       {...props}
+      onClick={onClose}
       ref={ref}
+      data-testid='modal-close'
     >
       {icon ? icon : <CloseIcon />}
     </CloseWrapper>
@@ -24,7 +25,7 @@ export const ModalClose = React.forwardRef(({ icon, ...props }, ref) => {
 
 ModalClose.propTypes = {
   /** Any element, svg, span, etc */
-  icon: Element,
+  icon: PropTypes.any,
   /** Background color for icon wrapper */
   bg: PropTypes.string,
   /** The color for default close icon if no icon specified */

@@ -14,6 +14,7 @@ export const ModalActions = React.forwardRef(({ children, ...props }, ref) => {
       {...theme.default.component.modal.actions}
       {...props}
       ref={ref}
+      data-testid='modal-action'
     >
       {children}
     </ActionsWrapper>

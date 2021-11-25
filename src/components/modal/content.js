@@ -10,7 +10,12 @@ import { Content } from './views'
 export const ModalContent = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
   return (
-    <Content {...theme.default.component.modal.content} {...props} ref={ref}>
+    <Content
+      {...theme.default.component.modal.content}
+      {...props}
+      ref={ref}
+      data-testid='modal-content'
+    >
       {children}
     </Content>
   )

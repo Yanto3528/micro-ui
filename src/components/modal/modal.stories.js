@@ -36,7 +36,7 @@ export const Default = () => {
   return (
     <BaseModal>
       <Modal.Close />
-      <Modal.Header icon={<Home />} />
+      <Modal.Header icon={<Home />}>Modal Header</Modal.Header>
       <Modal.Content>
         <Modal.Title>We are sorry</Modal.Title>
         <Modal.Body>
