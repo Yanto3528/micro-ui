@@ -326,11 +326,15 @@ export const theme = {
         header: {
           padding: '12px 15px 14px 15px',
           bg: 'lightGray',
-          fontFamily: 'AIARegular',
+          fontFamily: 'AIAMedium',
           fontSize: '1.4rem',
           fontWeight: 'normal',
           borer: 0,
           cursor: 'auto',
+          alignment: 'left',
+        },
+        row: {
+          stripeColor: 'lightGray2',
         },
         data: {
           padding: '11px 15px',

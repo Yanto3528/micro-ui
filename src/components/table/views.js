@@ -5,7 +5,7 @@ import { fontStyles } from '@/styles'
 
 const stripedStyles = css`
   &:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: ${resolveColor('stripeColor')};
   }
 `
 

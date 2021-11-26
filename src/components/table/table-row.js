@@ -24,6 +24,8 @@ export const TableRow = React.forwardRef(({ children, ...props }, ref) => {
 })
 
 TableRow.propTypes = {
+  /** Background color for when variant is striped */
+  stripeColor: PropTypes.string,
   /** customStyle for TableRow*/
   customStyle: PropTypes.object,
 }
