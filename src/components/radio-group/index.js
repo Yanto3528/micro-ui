@@ -21,6 +21,7 @@ export const RadioGroup = React.forwardRef(
         {...theme.default.component.radioGroup.wrapper}
         {...props}
         ref={ref}
+        role='radio-group'
       >
         <RadioGroupContext.Provider value={contextValue}>
           {children}
@@ -41,6 +42,7 @@ RadioGroup.propTypes = {
   direction: PropTypes.oneOf(['column', 'row']),
   /** The gap between each children radio */
   gap: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {
