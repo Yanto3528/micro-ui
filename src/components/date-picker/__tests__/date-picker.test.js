@@ -342,7 +342,11 @@ describe('components > DatePicker', () => {
       expect(dateInput).toHaveValue('')
 
       const startSelectDate = startDate.add(1, 'day')
-      const startSelectText = screen.getByText(startSelectDate.get('date'))
+      const startSelectElements = screen.getAllByText(
+        startSelectDate.get('date')
+      )
+      const startSelectText =
+        startSelectElements[startSelectElements.length - 1]
       expect(startSelectText).toHaveStyle({
         cursor: 'pointer',
       })
@@ -358,16 +362,19 @@ describe('components > DatePicker', () => {
       userEvent.click(nextMonthButton.children[0])
 
       // Need to add 1 day from endDate to get the disabled date
-      const oneMonthInFuture = screen.getByText(
+      const oneMonthInFutureEl = screen.getAllByText(
         endDate.add(1, 'day').get('date')
       )
+      const oneMonthInFuture = oneMonthInFutureEl[oneMonthInFutureEl.length - 1]
       expect(oneMonthInFuture).toBeInTheDocument()
       expect(oneMonthInFuture).toHaveStyle({
         cursor: 'not-allowed',
       })
 
-      const endChooseableDate = screen.getByText(endDate.get('date'))
-      userEvent.click(endChooseableDate)
+      const endSelectableDateEl = screen.getAllByText(endDate.get('date'))
+      const endSelectableDate =
+        endSelectableDateEl[endSelectableDateEl.length - 1]
+      userEvent.click(endSelectableDate)
       expect(dateInput).toHaveValue(endDate.format(DEFAULT_DATE_FORMAT))
     })
 
