@@ -173,7 +173,6 @@ export const theme = {
         fontFamily: 'AIARegular',
         fontWeight: 'normal',
         variant: 'circular',
-        margin: '0 0 12px 0',
       },
       radioButton: {
         bg: 'primary',
