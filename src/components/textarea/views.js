@@ -39,12 +39,12 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
 }))`
   outline: none;
   color: ${resolveColor('color')};
-  border-radius: ${({ rounded, radius }) => (rounded ? '20px' : radius)};
+  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
   ${fontStyles};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
-  resize: ${({ resize }) => (resize ? resize : 'none')};
+  resize: ${({ resize }) => resize};
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
