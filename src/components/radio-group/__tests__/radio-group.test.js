@@ -36,6 +36,9 @@ describe('components > RadioGroup', () => {
     it('should be able to check male and female back and forth', () => {
       const maleRadio = screen.getByRole('radio', { name: /^male/i })
       const femaleRadio = screen.getByRole('radio', { name: /^female/i })
+      expect(maleRadio).toHaveAttribute('name', 'gender')
+      expect(femaleRadio).toHaveAttribute('name', 'gender')
+
       expect(maleRadio).not.toBeChecked()
       expect(femaleRadio).not.toBeChecked()
 
@@ -67,6 +70,9 @@ describe('components > RadioGroup', () => {
     it('should be able to check male and female back and forth', () => {
       const maleButton = screen.getByRole('radio', { name: /^male/i })
       const femaleButton = screen.getByRole('radio', { name: /^female/i })
+      expect(maleButton).toHaveAttribute('name', 'gender')
+      expect(femaleButton).toHaveAttribute('name', 'gender')
+
       expect(maleButton).not.toBeChecked()
       expect(femaleButton).not.toBeChecked()
 
