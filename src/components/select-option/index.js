@@ -106,6 +106,7 @@ export const Select = React.forwardRef(
         onClick={handleWrapperClick}
         ref={clickRef}
         disabled={disabled || readOnly}
+        data-testid='select-wrapper'
       >
         <StyledInput
           {...defaultSelectProps}
@@ -116,10 +117,11 @@ export const Select = React.forwardRef(
           onBlur={handleInputBlur}
           readOnly={readOnly || !searchable}
           disabled={disabled}
+          autoComplete='false'
         />
         <IconContainer>{iconContainerProps.icon}</IconContainer>
         {isOpen && filteredOptions.length > 0 && (
-          <OptionWrapper>
+          <OptionWrapper data-testid='option-wrapper'>
             {filteredOptions.map((option) => (
               <StyledOption key={option.value} onClick={onSelectItem(option)}>
                 {option.name}
