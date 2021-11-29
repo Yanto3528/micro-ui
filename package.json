@@ -40,6 +40,7 @@
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
+    "core-js": "^3.19.1",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -56,6 +57,7 @@
     "jest-environment-node": "^27.3.1",
     "prettier": "^2.4.0",
     "react-feather": "^2.0.9",
+    "regenerator-runtime": "^0.13.9",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -67,14 +69,12 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
     "axios": "^0.21.4",
-    "core-js": "^3.19.1",
     "dayjs": "^1.10.7",
     "keymirror": "^0.1.1",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "regenerator-runtime": "^0.13.9",
     "styled-components": "^5.3.1"
   },
   "peerDependencies": {
