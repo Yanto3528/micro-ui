@@ -158,6 +158,24 @@ describe('component > Tooltip', () => {
     })
   })
 
+  it('should render with/without arrow', () => {
+    const { rerender } = render(
+      <Tooltip content='tooltip content'>Hover me</Tooltip>
+    )
+    const hoverText = screen.getByText(/hover me/i)
+    userEvent.hover(hoverText)
+    let tooltipArrow = screen.getByTestId('tooltip-arrow')
+    expect(tooltipArrow).toBeInTheDocument()
+
+    rerender(
+      <Tooltip content='tooltip content' hasArrow={false}>
+        Hover me
+      </Tooltip>
+    )
+    tooltipArrow = screen.queryByTestId('tooltip-arrow')
+    expect(tooltipArrow).not.toBeInTheDocument()
+  })
+
   it('should render with style props', () => {
     const { rerender } = render(
       <Tooltip content='tooltip content' rounded>

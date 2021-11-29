@@ -56,7 +56,7 @@ export const Tooltip = React.forwardRef(
           >
             {content}
           </Content>
-          {hasArrow && <Arrow {...arrowProps} />}
+          {hasArrow && <Arrow {...arrowProps} data-testid='tooltip-arrow' />}
         </Animate>
       </Wrapper>
     )
