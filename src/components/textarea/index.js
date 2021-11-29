@@ -45,6 +45,7 @@ Textarea.propTypes = {
   fluid: PropTypes.bool,
   /** Ability to resize a textaerea, put "both" or "vertical" or "horizontal", or "none" */
   resize: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

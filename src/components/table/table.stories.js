@@ -16,22 +16,60 @@ export default {
 
 export const Default = () => {
   return (
-    <Table>
+    <Table variant='default'>
       <Table.Head>
-        <Table.Header>Test</Table.Header>
-        <Table.Header>Test 2</Table.Header>
-        <Table.Header>Test 3</Table.Header>
+        <Table.Row>
+          <Table.Header>No</Table.Header>
+          <Table.Header>Name</Table.Header>
+          <Table.Header>Gender</Table.Header>
+        </Table.Row>
       </Table.Head>
       <Table.Body>
         <Table.Row>
-          <Table.Data>Data Test</Table.Data>
-          <Table.Data>Data Test 2</Table.Data>
-          <Table.Data>Data Test 3</Table.Data>
+          <Table.Data>1</Table.Data>
+          <Table.Data>John Doe</Table.Data>
+          <Table.Data>Male</Table.Data>
         </Table.Row>
         <Table.Row>
-          <Table.Data>Data Test</Table.Data>
-          <Table.Data>Data Test 2</Table.Data>
-          <Table.Data>Data Test 3</Table.Data>
+          <Table.Data>2</Table.Data>
+          <Table.Data>Sarah Smith</Table.Data>
+          <Table.Data>Female</Table.Data>
+        </Table.Row>
+        <Table.Row>
+          <Table.Data>3</Table.Data>
+          <Table.Data>Steve Will</Table.Data>
+          <Table.Data>Male</Table.Data>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  )
+}
+
+export const Striped = () => {
+  return (
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.Header>No</Table.Header>
+          <Table.Header>Name</Table.Header>
+          <Table.Header>Gender</Table.Header>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Data>1</Table.Data>
+          <Table.Data>John Doe</Table.Data>
+          <Table.Data>Male</Table.Data>
+        </Table.Row>
+        <Table.Row>
+          <Table.Data>2</Table.Data>
+          <Table.Data>Sarah Smith</Table.Data>
+          <Table.Data>Female</Table.Data>
+        </Table.Row>
+        <Table.Row>
+          <Table.Data>3</Table.Data>
+          <Table.Data>Steve Will</Table.Data>
+          <Table.Data>Male</Table.Data>
         </Table.Row>
       </Table.Body>
     </Table>
