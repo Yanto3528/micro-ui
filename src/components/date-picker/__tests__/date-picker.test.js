@@ -273,7 +273,8 @@ describe('components > DatePicker', () => {
       const [prevMonthButton] = nextBackWrapper
       userEvent.click(prevMonthButton.children[0])
 
-      const oneMonthAgo = screen.getByText(startDate.get('date'))
+      const oneMonthAgoEl = screen.getAllByText(startDate.get('date'))
+      const oneMonthAgo = oneMonthAgoEl[oneMonthAgoEl.length - 1]
       expect(oneMonthAgo).toBeInTheDocument()
       expect(oneMonthAgo).toHaveStyle({
         cursor: 'not-allowed',
@@ -302,9 +303,10 @@ describe('components > DatePicker', () => {
       userEvent.click(nextMonthButton.children[0])
 
       // Need to add 1 day from endDate to get the disabled date
-      const oneMonthInFuture = screen.getByText(
+      const oneMonthInFutureEl = screen.getAllByText(
         endDate.add(1, 'day').get('date')
       )
+      const oneMonthInFuture = oneMonthInFutureEl[oneMonthInFutureEl.length - 1]
       expect(oneMonthInFuture).toBeInTheDocument()
       expect(oneMonthInFuture).toHaveStyle({
         cursor: 'not-allowed',
@@ -334,7 +336,8 @@ describe('components > DatePicker', () => {
 
       userEvent.click(prevMonthButton.children[0])
 
-      const oneMonthAgo = screen.getByText(startDate.get('date'))
+      const oneMonthAgoEl = screen.getAllByText(startDate.get('date'))
+      const oneMonthAgo = oneMonthAgoEl[oneMonthAgoEl.length - 1]
       expect(oneMonthAgo).toHaveStyle({
         cursor: 'not-allowed',
       })
