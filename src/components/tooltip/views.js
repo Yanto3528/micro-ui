@@ -34,7 +34,7 @@ const PlacementStyles = {
 }
 
 const resolvePlacement = ({ placement }) => {
-  return PlacementStyles[placement] || PlacementStyles.top
+  return PlacementStyles[placement]
 }
 
 export const Wrapper = styled.div.attrs(() => ({
@@ -55,7 +55,7 @@ export const Content = styled.div.attrs(() => ({
   color: ${resolveColor('color')};
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: ${({ padding }) => padding};
-  border-radius: ${({ radius }) => radius};
+  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   white-space: pre-wrap;
   z-index: 8;
   ${resolvePlacement};

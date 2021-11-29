@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { fadeIn, fadeOut } from '@/animations'
 import { useToggle, useTheme } from '@/hooks'
 import { getProps } from '@/utils'
+import { isDev } from '@/constants'
 import { Animate } from '../animate'
 import { Wrapper, Content, Arrow } from './views'
 
@@ -45,8 +46,14 @@ export const Tooltip = React.forwardRef(
           onEnter={fadeIn}
           onExit={fadeOut}
           duration={0.2}
+          data-testid='animate-tooltip-wrapper'
         >
-          <Content {...defaultTooltipProps} {...props} posX={posX.current}>
+          <Content
+            {...defaultTooltipProps}
+            {...props}
+            posX={posX.current}
+            data-testid='tooltip-content'
+          >
             {content}
           </Content>
           {hasArrow && <Arrow {...arrowProps} />}
@@ -76,6 +83,10 @@ Tooltip.propTypes = {
   bg: PropTypes.string,
   /** Text color for tooltip content */
   color: PropTypes.string,
+  /** Determine whether tooltip content will be rounded or not. If true then radius won't have any effect */
+  rounded: PropTypes.bool,
+  /** Border radius for tooltip content */
+  radius: PropTypes.string,
   /** Tooltip placement */
   placement: PropTypes.oneOf([
     'top-start',
@@ -93,4 +104,8 @@ Tooltip.propTypes = {
   ]),
   /** Custom style for tooltip content */
   customStyle: PropTypes.object,
+}
+
+if (isDev) {
+  Tooltip.displayName = 'Tooltip'
 }
