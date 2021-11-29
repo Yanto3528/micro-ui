@@ -8,7 +8,10 @@ export default {
   component: UnitNumber,
 }
 
-const Template = (args) => <UnitNumber {...args} />
+const Template = (args) => {
+  const [value, setValue] = React.useState('')
+  return <UnitNumber {...args} value={value} onChange={setValue} />
+}
 
 export const Default = Template.bind({})
 Default.args = {
