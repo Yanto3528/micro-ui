@@ -16,7 +16,7 @@ export const AccordionContent = React.forwardRef(
 
     const handleClick = (event) => {
       event.stopPropagation()
-      onClick?.()
+      onClick?.(event)
     }
 
     return (
