@@ -51,6 +51,26 @@ describe('components > Select', () => {
     expect(unknownOption).toBeInTheDocument()
   })
 
+  it('should close dropdown menu when clicking outside of select component', () => {
+    render(
+      <>
+        <p>Outside of select</p>
+        <ControlledSelect options={options} />
+      </>
+    )
+    let optionWrapper = screen.queryByTestId('option-wrapper')
+    expect(optionWrapper).not.toBeInTheDocument()
+    const selectWrapper = screen.getByTestId('select-wrapper')
+    userEvent.click(selectWrapper)
+    optionWrapper = screen.getByTestId('option-wrapper')
+    expect(optionWrapper).toBeInTheDocument()
+
+    const selectOutside = screen.getByText(/outside of select/i)
+    userEvent.click(selectOutside)
+    optionWrapper = screen.queryByTestId('option-wrapper')
+    expect(optionWrapper).not.toBeInTheDocument()
+  })
+
   it('should render with number option from start to end property', () => {
     render(<ControlledSelect options={numOptions} />)
     const selectWrapper = screen.getByTestId('select-wrapper')
