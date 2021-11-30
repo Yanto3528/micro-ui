@@ -45,7 +45,12 @@ export const Accordion = React.forwardRef(
 
     return (
       <AccordionContext.Provider value={value}>
-        <Wrapper {...defaultAccordionProps} {...props} ref={ref}>
+        <Wrapper
+          {...defaultAccordionProps}
+          {...props}
+          ref={ref}
+          data-testid='accordion-wrapper'
+        >
           {React.Children.map(children, (childElement, itemIndex) => {
             return (
               childElement &&

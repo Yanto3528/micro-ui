@@ -40,6 +40,7 @@ export const AccordionItem = React.forwardRef(
           {...props}
           onClick={onExpandClick}
           ref={ref}
+          data-testid='accordion-item'
         >
           {children}
         </Item>

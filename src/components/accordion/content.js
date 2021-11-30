@@ -10,9 +10,14 @@ import { useAccordionItemContext } from './utils/context'
 import { Content } from './views'
 
 export const AccordionContent = React.forwardRef(
-  ({ children, ...props }, ref) => {
+  ({ children, onClick, ...props }, ref) => {
     const theme = useTheme()
     const { isExpand } = useAccordionItemContext()
+
+    const handleClick = (event) => {
+      event.stopPropagation()
+      onClick?.(event)
+    }
 
     return (
       <Animate
@@ -20,10 +25,12 @@ export const AccordionContent = React.forwardRef(
         onEnter={collapse.enter}
         onExit={collapse.exit}
         duration={0.4}
+        data-testid='animate-accordion-wrapper'
       >
         <Content
           {...theme.default.component.accordion.content}
           {...props}
+          onClick={handleClick}
           ref={ref}
         >
           {children}
@@ -36,6 +43,7 @@ export const AccordionContent = React.forwardRef(
 AccordionContent.propTypes = {
   customStyle: PropTypes.object,
   padding: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 if (isDev) {

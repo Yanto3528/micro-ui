@@ -20,6 +20,7 @@ export const AccordionHeader = React.forwardRef(
         arrowPosition={arrowPosition}
         isExpand={isExpand}
         ref={ref}
+        data-testid='accordion-header'
       >
         {(!openIcon || !closeIcon) && <HeaderIcon isExpand={isExpand} />}
         {openIcon && isExpand && openIcon}
