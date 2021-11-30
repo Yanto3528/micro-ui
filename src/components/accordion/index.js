@@ -11,32 +11,47 @@ import { AccordionContent } from './content'
 import { Wrapper } from './views'
 
 export const Accordion = React.forwardRef(
-  ({ children, arrowPosition, allowMultiple, ...props }, ref) => {
+  (
+    {
+      children,
+      arrowPosition,
+      allowMultiple,
+      allowToggle,
+      defaultIndex,
+      ...props
+    },
+    ref
+  ) => {
+    const [activeIndex, setActiveIndex] = useState(defaultIndex)
     const theme = useTheme()
-    const [activeIndex, setActiveIndex] = useState(0)
+    const { wrapper: defaultAccordionProps } = theme.default.component.accordion
 
     const value = useMemo(() => {
       return {
         activeIndex,
         setActiveIndex,
-        arrowPosition,
+        arrowPosition: arrowPosition || defaultAccordionProps.arrowPosition,
         allowMultiple,
+        allowToggle,
       }
-    }, [activeIndex, setActiveIndex, arrowPosition, allowMultiple])
+    }, [
+      activeIndex,
+      setActiveIndex,
+      arrowPosition,
+      allowMultiple,
+      allowToggle,
+      defaultAccordionProps,
+    ])
 
     return (
       <AccordionContext.Provider value={value}>
-        <Wrapper
-          {...theme.default.component.accordion.wrapper}
-          {...props}
-          ref={ref}
-        >
+        <Wrapper {...defaultAccordionProps} {...props} ref={ref}>
           {React.Children.map(children, (childElement, itemIndex) => {
             return (
               childElement &&
               React.cloneElement(childElement, {
-                index: itemIndex,
                 ...childElement.props,
+                index: itemIndex,
               })
             )
           })}
@@ -48,11 +63,20 @@ export const Accordion = React.forwardRef(
 
 Accordion.propTypes = {
   customStyle: PropTypes.object,
+  /** Default value for which item to be shown by default */
+  defaultIndex: PropTypes.number,
   arrowPosition: PropTypes.oneOf(['left', 'right']),
-  /** Set the behaviour of accordion when multiple tab is opened */
+  /** Set the behaviour of accordion when multiple tab is opened
+   *
+   * Higher priority than allowToggle
+   */
   allowMultiple: PropTypes.bool,
+  /** Allow open and close for single tab only */
+  allowToggle: PropTypes.bool,
   /** If true then it width will be 100% */
   fluid: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string,
   /** Font styles */
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,

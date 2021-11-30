@@ -1,45 +1,70 @@
 import { keyframes } from 'styled-components'
 
-export const slideIn = keyframes`
-  from {
-    transform: translateY(-40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
+export const slide = {
+  enter: keyframes`
+    from {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  `,
+  exit: keyframes`
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-export const slideOut = keyframes`
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+  `,
+}
 
-  to {
-    transform: translateY(-40px);
-    opacity: 0;
-  }
-`
+export const fade = {
+  enter: keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  `,
+  exit: keyframes`
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  `,
+}
 
-export const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-`
-
-export const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+export const collapse = {
+  enter: keyframes`
+    from {
+      max-height: 0px;
+      overflow: hidden;
+    }
+    to {
+      max-height: 100vh;
+      overflow: initial;
+    }
+  `,
+  exit: keyframes`
+    from {
+      max-height: 100vh;
+      overflow: initial;
+    }
+    to {
+      max-height: 0px;
+      overflow: hidden;
+    }
+  `,
+}
 
 export const spinning = keyframes`
   from {

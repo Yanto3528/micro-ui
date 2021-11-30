@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
-import { fadeIn, fadeOut } from '@/animations'
+import { fade } from '@/animations'
 import { useToggle, useTheme } from '@/hooks'
 import { getProps } from '@/utils'
 import { isDev } from '@/constants'
@@ -43,8 +43,8 @@ export const Tooltip = React.forwardRef(
         <Animate
           width='100%'
           show={isOpen}
-          onEnter={fadeIn}
-          onExit={fadeOut}
+          onEnter={fade.enter}
+          onExit={fade.exit}
           duration={0.2}
           data-testid='animate-tooltip-wrapper'
         >
