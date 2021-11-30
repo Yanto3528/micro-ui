@@ -56,11 +56,11 @@ export const UnitNumber = ({
     const value = firstPartValue + '-' + secondPartValue
 
     if (!firstInputValue.current && !secondInputValue.current) {
-      onChange('')
+      onChange?.('')
       return
     }
 
-    onChange(value)
+    onChange?.(value)
   }
 
   function extractValue(inputValue) {
@@ -74,12 +74,13 @@ export const UnitNumber = ({
   }
 
   return (
-    <Wrapper {...wrapperProps}>
+    <Wrapper {...wrapperProps} data-testid='unit-number-wrapper'>
       <StyledInput
         {...inputProps}
         {...props}
         ref={mergeRefs(firstPartRef, firstInputRef)}
         maxLength={MAX_LENGTH}
+        value={firstInputValue.current}
         onChange={firstPartChange}
       />
       <Separator>-</Separator>
@@ -88,6 +89,7 @@ export const UnitNumber = ({
         {...props}
         ref={mergeRefs(secondPartRef, secondInputRef)}
         maxLength={MAX_LENGTH}
+        value={secondInputValue.current}
         onChange={secondPartChange}
       />
     </Wrapper>
