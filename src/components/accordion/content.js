@@ -3,29 +3,32 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
+import { collapse } from '@/animations'
 
-import { useAccordionContext, useAccordionItemContext } from './utils/context'
+import { Animate } from '../animate'
+import { useAccordionItemContext } from './utils/context'
 import { Content } from './views'
 
 export const AccordionContent = React.forwardRef(
   ({ children, ...props }, ref) => {
     const theme = useTheme()
-
-    const { allowMultiple } = useAccordionContext()
-    const { activeIndex, index, isExpand } = useAccordionItemContext()
-    const isExpandLocal = allowMultiple
-      ? isExpand
-      : isExpand && activeIndex === index
+    const { isExpand } = useAccordionItemContext()
 
     return (
-      <Content
-        {...theme.default.component.accordion.content}
-        {...props}
-        isExpand={isExpandLocal}
-        ref={ref}
+      <Animate
+        show={isExpand}
+        onEnter={collapse.enter}
+        onExit={collapse.exit}
+        duration={0.3}
       >
-        {children}
-      </Content>
+        <Content
+          {...theme.default.component.accordion.content}
+          {...props}
+          ref={ref}
+        >
+          {children}
+        </Content>
+      </Animate>
     )
   }
 )

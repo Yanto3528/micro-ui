@@ -31,25 +31,27 @@ export const theme = {
     component: {
       accordion: {
         wrapper: {
-          arrowPosition: 'left',
+          arrowPosition: 'right',
           fontFamily: 'AIARegular',
           fontSize: '1.4rem',
           fontWeight: 'normal',
+          width: '600px',
+          fluid: false,
+          allowToggle: false,
+          allowMultiple: false,
         },
-        item: {
-          padding: '15px',
-        },
+        item: {},
         header: {
-          padding: '15px',
-          icon: 'forward',
-          iconWrapperStyle: {
-            bg: 'white',
-            boxShadow: 'rgb(170 8 54 / 32%) 2px 0px 10px 0px',
-            padding: '15px',
-          },
+          padding: '10px',
+          borderColor: 'lightGray',
+          fontFamily: 'AIAMedium',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
         },
         content: {
-          padding: '15px',
+          padding: '10px',
+          maxHeight: '500px',
+          color: 'secondary',
         },
       },
       button: {

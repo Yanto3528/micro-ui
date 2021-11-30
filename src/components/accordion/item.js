@@ -8,18 +8,29 @@ import { useAccordionContext, AccordionItemContext } from './utils/context'
 import { Item } from './views'
 
 export const AccordionItem = React.forwardRef(
-  ({ children, index, defaultOpen, ...props }, ref) => {
+  ({ children, index, ...props }, ref) => {
     const theme = useTheme()
-    const { activeIndex, setActiveIndex, allowMultiple } = useAccordionContext()
-    const [isExpand, setIsExpand] = useState(defaultOpen)
+    const { activeIndex, setActiveIndex, allowMultiple, allowToggle } =
+      useAccordionContext()
+    const [isExpand, setIsExpand] = useState(false)
 
     const onExpandClick = () => {
-      setIsExpand((prevState) => !prevState)
-      setActiveIndex(index)
+      if (allowMultiple) {
+        setIsExpand((prevState) => !prevState)
+      }
+      setActiveIndex(allowToggle ? (activeIndex === index ? -1 : index) : index)
     }
 
     const value = useMemo(() => {
-      return { isExpand, activeIndex, index, allowMultiple }
+      let isExpandValue = index === activeIndex
+      if (allowMultiple) {
+        isExpandValue = isExpand
+      }
+      return {
+        isExpand: isExpandValue,
+        activeIndex,
+        index,
+      }
     }, [isExpand, activeIndex, index, allowMultiple])
 
     return (
@@ -40,9 +51,9 @@ export const AccordionItem = React.forwardRef(
 AccordionItem.propTypes = {
   customStyle: PropTypes.object,
   margin: PropTypes.string,
+  padding: PropTypes.string,
+  /** Determine whether it should expand or not based on active index */
   index: PropTypes.number,
-  /* to decide if accordion item is intially open or not */
-  defaultOpen: PropTypes.bool,
 }
 
 if (isDev) {

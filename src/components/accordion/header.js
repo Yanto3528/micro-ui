@@ -5,52 +5,44 @@ import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 
 import { useAccordionContext, useAccordionItemContext } from './utils/context'
-import { HeaderWrapper, HeaderIconWrapper } from './views'
+import { HeaderWrapper, HeaderIcon, HeaderText } from './views'
 
 export const AccordionHeader = React.forwardRef(
-  ({ iconWrapperStyle, children, ...props }, ref) => {
+  ({ children, openIcon, closeIcon, ...props }, ref) => {
     const theme = useTheme()
-    const { arrowPosition, allowMultiple } = useAccordionContext()
-    const { isExpand, activeIndex, index } = useAccordionItemContext()
-    const isExpandLocal = allowMultiple
-      ? isExpand
-      : isExpand && activeIndex === index
-
-    const headerIconProps = theme.default.component.accordion.header
+    const { arrowPosition } = useAccordionContext()
+    const { isExpand } = useAccordionItemContext()
 
     return (
       <HeaderWrapper
         {...theme.default.component.accordion.header}
         {...props}
         arrowPosition={arrowPosition}
+        isExpand={isExpand}
         ref={ref}
       >
-        {headerIconProps && (
-          <HeaderIconWrapper
-            {...headerIconProps}
-            {...iconWrapperStyle}
-            isExpand={isExpandLocal}
-          />
-        )}
-        {children}
+        {(!openIcon || !closeIcon) && <HeaderIcon isExpand={isExpand} />}
+        {openIcon && isExpand && openIcon}
+        {closeIcon && !isExpand && closeIcon}
+        <HeaderText>{children}</HeaderText>
       </HeaderWrapper>
     )
   }
 )
 
 AccordionHeader.propTypes = {
+  /** Custom style for header */
   customStyle: PropTypes.object,
-  /** Any element for this icon */
-  icon: PropTypes.string,
+  /** Icon for when it is expanded */
+  openIcon: PropTypes.string,
+  /** Icon for when it is not expanded */
+  closeIcon: PropTypes.string,
   /** Style for the icon wrapper */
-  iconWrapperStyle: PropTypes.shape({
-    /** background color for icon wrapper */
-    bg: PropTypes.string,
-    /** box shadow for icon wrapper */
-    boxShadow: PropTypes.string,
-    /** padding for icon wrapper */
-    padding: PropTypes.string,
-  }),
+  bg: PropTypes.string,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
+  padding: PropTypes.string,
 }
 
 if (isDev) {

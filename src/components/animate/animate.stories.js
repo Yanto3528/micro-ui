@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { fadeIn, fadeOut, slideIn, slideOut } from '@/animations'
+import { fade, slide } from '@/animations'
 import { Button } from '../button'
 import { Animate } from './index'
 
@@ -18,8 +18,8 @@ export const FadeInOut = () => {
         Toggle Show
       </Button>
       <Animate
-        onEnter={fadeIn}
-        onExit={fadeOut}
+        onEnter={fade.enter}
+        onExit={fade.exit}
         show={show}
         data-testid='animate-wrapper'
       >
@@ -38,8 +38,8 @@ export const SlideInOut = () => {
         Toggle Show
       </Button>
       <Animate
-        onEnter={slideIn}
-        onExit={slideOut}
+        onEnter={slide.enter}
+        onExit={slide.exit}
         show={show}
         duration={0.4}
         data-testid='animate-wrapper'

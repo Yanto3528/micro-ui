@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-import { slideIn, slideOut, fadeIn, fadeOut } from '@/animations'
+import { slide, fade } from '@/animations'
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 
@@ -31,13 +31,18 @@ export const Modal = React.forwardRef(
 
     return (
       <Portal>
-        <Animate show={isOpen} onEnter={fadeIn} onExit={fadeOut} duration={0.5}>
+        <Animate
+          show={isOpen}
+          onEnter={fade.enter}
+          onExit={fade.exit}
+          duration={0.5}
+        >
           <ModalContext.Provider value={value}>
             <Overlay onClick={onClose} data-testid='modal-overlay'>
               <Animate
                 show={isOpen}
-                onEnter={slideIn}
-                onExit={slideOut}
+                onEnter={slide.enter}
+                onExit={slide.exit}
                 duration={0.5}
                 data-testid='animate-modal-wrapper'
               >

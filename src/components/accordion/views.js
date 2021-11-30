@@ -4,26 +4,27 @@ import { fontStyles } from '@/styles'
 
 import { Icon } from '../icon'
 
-const Wrapper = styled.div.attrs(() => ({
+export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-accordion-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
-  height: auto;
+  height: ${({ height }) => height};
 
   ${fontStyles}
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-const Item = styled.div.attrs(() => ({
+export const Item = styled.div.attrs(() => ({
   className: 'aia-accordion-item',
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-const HeaderWrapper = styled.div.attrs(() => ({
+export const HeaderWrapper = styled.div.attrs(() => ({
   className: 'aia-accordion-title',
 }))`
   display: flex;
@@ -32,12 +33,22 @@ const HeaderWrapper = styled.div.attrs(() => ({
   align-items: center;
   cursor: pointer;
   padding: ${({ padding }) => padding};
-
+  background-color: ${resolveColor('bg')};
+  border: 1px solid ${resolveColor('borderColor')};
+  transition: all 0.4s;
+  ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
+  ${({ isExpand, activeStyle }) => isExpand && activeStyle && css(activeStyle)};
 `
 
-const HeaderIconWrapper = styled(Icon).attrs(() => ({
-  className: 'aia-accordion-arrow',
+export const HeaderText = styled.span.attrs(() => ({
+  className: 'aia-accordion-header-text',
+}))`
+  flex: 1;
+`
+
+export const HeaderIcon = styled(Icon).attrs(() => ({
+  className: 'aia-accordion-header-icon',
   name: 'forward',
   size: '1.5em',
 }))`
@@ -46,20 +57,11 @@ const HeaderIconWrapper = styled(Icon).attrs(() => ({
   transform: ${({ isExpand }) => (isExpand ? 'rotate(90deg)' : 'none')};
 `
 
-const Content = styled.div.attrs(() => ({
-  className: 'aia-accordion-container',
+export const Content = styled.div.attrs(() => ({
+  className: 'aia-accordion-content',
 }))`
   width: 100%;
-  height: ${({ isExpand }) => (isExpand ? 'auto' : '0px')};
-
-  /** hidden style for accordion */
-  transform-origin: center;
-  transition: all 0.5s ease-in-out;
-  line-height: ${({ isExpand }) => (isExpand ? '1.5' : '0')};
-  padding: ${({ isExpand, padding }) => (isExpand ? padding : '0')};
-  color: ${({ isExpand }) => (isExpand ? 'black' : 'transparent')};
-
+  padding: ${({ padding }) => padding};
+  color: ${resolveColor('color')};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
-
-export { Wrapper, Item, HeaderWrapper, HeaderIconWrapper, Content }
