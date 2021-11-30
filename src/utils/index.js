@@ -3,8 +3,6 @@ import { css } from 'styled-components'
 
 import { theme as baseTheme } from '../components/theme'
 
-export const noop = () => {}
-
 export const getColor = (theme, color) => theme.colors[color] || color
 
 export const resolveColor = (key) => {
@@ -45,13 +43,15 @@ export const getProps = (componentProps, defaultThemeProps, selectedKeys) => {
 
 export const mergeRefs = (...refs) => {
   const filteredRefs = refs.filter(Boolean)
-  if (!filteredRefs.length) return null
-  if (filteredRefs.length === 0) return filteredRefs[0]
+  if (!filteredRefs.length) {
+    return null
+  }
+
   return (innerRef) => {
     for (const ref of filteredRefs) {
       if (typeof ref === 'function') {
         ref(innerRef)
-      } else if (ref) {
+      } else {
         ref.current = innerRef
       }
     }
@@ -59,6 +59,11 @@ export const mergeRefs = (...refs) => {
 }
 
 export const getMediaQuery = (screenSize) => {
+  if (typeof screenSize !== 'number') {
+    throw new Error(
+      `getMediaQuery: screenSize must be a number but got ${typeof screenSize} instead.`
+    )
+  }
   return (...args) =>
     css`
       @media (max-width: ${screenSize}px) {
