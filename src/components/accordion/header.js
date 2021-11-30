@@ -33,10 +33,10 @@ export const AccordionHeader = React.forwardRef(
 AccordionHeader.propTypes = {
   /** Custom style for header */
   customStyle: PropTypes.object,
-  /** Icon for when it is expanded */
-  openIcon: PropTypes.string,
-  /** Icon for when it is not expanded */
-  closeIcon: PropTypes.string,
+  /** Icon for when it is expanded, can be anything */
+  openIcon: PropTypes.any,
+  /** Icon for when it is not expanded, can be anything*/
+  closeIcon: PropTypes.any,
   /** Style for the icon wrapper */
   bg: PropTypes.string,
   fontFamily: PropTypes.string,

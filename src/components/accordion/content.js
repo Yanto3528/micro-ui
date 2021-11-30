@@ -19,7 +19,7 @@ export const AccordionContent = React.forwardRef(
         show={isExpand}
         onEnter={collapse.enter}
         onExit={collapse.exit}
-        duration={0.3}
+        duration={0.4}
       >
         <Content
           {...theme.default.component.accordion.content}
