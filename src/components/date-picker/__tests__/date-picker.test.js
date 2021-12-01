@@ -124,8 +124,8 @@ describe('components > DatePicker', () => {
         const today = dayjs().format(DEFAULT_DATE_FORMAT)
         const todayDate = dayjs().get('date')
 
-        const todayDateText = screen.getByText(todayDate)
-        userEvent.click(todayDateText)
+        const todayDateTexts = screen.getAllByText(todayDate)
+        userEvent.click(todayDateTexts[0])
 
         const calendar = screen.queryByTestId('calendar')
         expect(calendar).not.toBeInTheDocument()
@@ -247,8 +247,8 @@ describe('components > DatePicker', () => {
       const today = dayjs().format(DEFAULT_DATE_FORMAT)
       const todayDate = dayjs().get('date')
 
-      const todayDateText = screen.getByText(todayDate)
-      userEvent.click(todayDateText)
+      const todayDateTexts = screen.getAllByText(todayDate)
+      userEvent.click(todayDateTexts[0])
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()
@@ -259,7 +259,7 @@ describe('components > DatePicker', () => {
     })
 
     it('should not be able to select date which is older than given startDate', () => {
-      const startDate = dayjs().subtract(1, 'month')
+      const startDate = dayjs().subtract(1, 'month').date(15)
       render(
         <ControlledDatePicker
           placeholder='Enter your date of birth'
@@ -287,7 +287,7 @@ describe('components > DatePicker', () => {
     })
 
     it('should not be able to select date which is newer than given endDate', () => {
-      const endDate = dayjs().add(1, 'month')
+      const endDate = dayjs().add(1, 'month').date(15)
       render(
         <ControlledDatePicker
           placeholder='Enter your date of birth'
@@ -319,8 +319,8 @@ describe('components > DatePicker', () => {
     })
 
     it('should only be able to select date between startDate and endDate', () => {
-      const startDate = dayjs().subtract(1, 'month')
-      const endDate = dayjs().add(1, 'month')
+      const startDate = dayjs().subtract(1, 'month').date(15)
+      const endDate = dayjs().add(1, 'month').date(15)
       render(
         <ControlledDatePicker
           placeholder='Enter your date of birth'

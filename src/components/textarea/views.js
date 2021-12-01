@@ -29,9 +29,9 @@ const resolveVariant = ({ variant }) => {
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-textarea-wrapper',
 }))`
-  position: relative;
   display: inline-block;
-  width: ${({ fluid }) => fluid && '100%'};
+  width: ${({ fluid, width }) => (fluid ? '100%' : width)};
+  max-width: 100%;
 `
 
 export const StyledTextarea = styled.textarea.attrs(() => ({
@@ -45,6 +45,7 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
   resize: ${({ resize }) => resize};
+  max-width: 100%;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */

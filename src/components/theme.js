@@ -212,6 +212,9 @@ export const theme = {
           radius: '15px',
           width: '450px',
         },
+        close: {
+          position: 'right',
+        },
         content: {
           padding: '30px',
           alignment: 'center',
@@ -284,7 +287,7 @@ export const theme = {
         borderColor: 'primary',
         focusBorderColor: 'primary',
         rows: 5,
-        width: '500px',
+        width: '335px',
         resize: 'none',
       },
       tooltip: {
