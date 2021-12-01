@@ -3,13 +3,21 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
+import { getProps } from '@/utils'
 
 import { Wrapper, StyledTextarea } from './views'
 
+const wrapperPropsData = ['width', 'fluid']
+
 export const Textarea = React.forwardRef(({ fluid, ...props }, ref) => {
   const theme = useTheme()
+  const wrapperProps = getProps(
+    props,
+    theme.default.component.textarea,
+    wrapperPropsData
+  )
   return (
-    <Wrapper fluid={fluid}>
+    <Wrapper {...wrapperProps}>
       <StyledTextarea
         {...theme.default.component.textarea}
         {...props}
@@ -37,7 +45,7 @@ Textarea.propTypes = {
   /** Show "danger" color as border color */
   hasError: PropTypes.bool,
   width: PropTypes.string,
-  rows: PropTypes.string,
+  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,

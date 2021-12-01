@@ -8,6 +8,7 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-accordion-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  max-width: 100%;
   height: ${({ height }) => height};
 
   ${fontStyles}

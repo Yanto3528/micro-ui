@@ -39,6 +39,7 @@ export const Wrapper = styled.div.attrs(() => ({
   padding: ${({ padding }) => padding};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  max-width: 100%;
   border-radius: ${({ radius, rounded }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
   cursor: pointer;

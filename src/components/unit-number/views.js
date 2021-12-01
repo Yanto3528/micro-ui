@@ -41,6 +41,7 @@ export const Wrapper = styled.div.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   padding: ${({ padding }) => padding};
+  max-width: 100%;
   ${fontStyles};
   color: ${resolveColor('color')};
   transition: border 0.2s;

@@ -5,6 +5,15 @@ import { fontStyles } from '@/styles'
 
 import { Alignment } from './utils/constants'
 
+const resolveClosePosition = ({ position }) => {
+  switch (position) {
+    case 'left':
+      return css({ left: '10px' })
+    default:
+      return css({ right: '10px' })
+  }
+}
+
 export const Overlay = styled.div.attrs(() => ({
   className: 'aia-modal-overlay',
 }))`
@@ -22,16 +31,12 @@ export const Overlay = styled.div.attrs(() => ({
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-modal-wrapper',
-  initial: 'initial',
-  animate: 'animate',
-  exit: 'exit',
 }))`
-  margin: 0 10px;
   background-color: ${resolveColor('bg')};
   border-radius: ${({ radius }) => radius};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  max-width: 100%;
+  max-width: 90vw;
   position: relative;
   overflow-x: hidden;
   font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
@@ -80,7 +85,6 @@ export const CloseWrapper = styled.div.attrs(() => ({
   position: absolute;
   z-index: 10;
   top: 10px;
-  right: 10px;
   background-color: ${resolveColor('bg')};
   width: 2em;
   height: 2em;
@@ -90,6 +94,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
   justify-content: center;
   border-radius: ${({ radius }) => radius};
   cursor: pointer;
+  ${resolveClosePosition};
 
   .aia-modal-close-icon {
     background-color: ${resolveColor('color')};

@@ -21,8 +21,8 @@ const content =
 const Template = ({ items, ...props }) => {
   return (
     <Accordion {...props}>
-      {items.map((item) => (
-        <Accordion.Item>
+      {items.map((item, index) => (
+        <Accordion.Item key={index}>
           <Accordion.Header {...item.header.props}>
             {item.header.children}
           </Accordion.Header>

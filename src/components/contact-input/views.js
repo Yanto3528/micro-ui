@@ -46,6 +46,7 @@ export const Wrapper = styled.div.attrs(() => ({
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  max-width: 100%;
   padding: ${({ padding }) => padding};
   ${fontStyles};
   color: ${resolveColor('color')};

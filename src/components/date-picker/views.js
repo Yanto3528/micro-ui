@@ -6,4 +6,5 @@ export const Wrapper = styled.div.attrs(() => ({
   position: relative;
   display: inline-block;
   width: ${({ fluid, width }) => (fluid ? '100%' : width)};
+  max-width: 100%;
 `

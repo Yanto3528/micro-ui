@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
-import { Divider } from '@/components'
+import { Divider } from '@/components/divider'
 
 import { dayjsType } from '../utils/types'
 import { NextBackButton, NextIcon, BackIcon } from '../views'

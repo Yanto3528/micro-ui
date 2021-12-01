@@ -65,6 +65,7 @@ export const Wrapper = styled.div.attrs(() => ({
   color: ${resolveColor('color')};
   ${fontStyles};
   width: ${({ fluid }) => fluid && '100%'};
+  max-width: 100%;
 `
 
 export const StyledInput = styled.input.attrs(() => ({
@@ -75,6 +76,7 @@ export const StyledInput = styled.input.attrs(() => ({
   transition: border 0.2s;
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  max-width: 100%;
   font: inherit;
 
   ::-webkit-input-placeholder {
