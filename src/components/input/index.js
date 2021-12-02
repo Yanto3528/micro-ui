@@ -25,7 +25,7 @@ export const Input = React.forwardRef(
       wrapperPropsData
     )
     return (
-      <Wrapper {...wrapperProps}>
+      <Wrapper {...wrapperProps} data-testid='input-wrapper'>
         {leftElement && (
           <LeftElement data-testid='left-element'>{leftElement}</LeftElement>
         )}

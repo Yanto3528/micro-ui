@@ -642,7 +642,7 @@ describe('components > DatePicker', () => {
       dateInputProps: {
         borderColor: 'secondary',
         customStyle: {
-            padding: '10px 15px',
+          padding: '10px 15px',
         },
       },
     }

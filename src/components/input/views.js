@@ -64,7 +64,7 @@ export const Wrapper = styled.div.attrs(() => ({
   display: inline-block;
   color: ${resolveColor('color')};
   ${fontStyles};
-  width: ${({ fluid }) => fluid && '100%'};
+  width: ${({ fluid, width }) => (fluid ? '100%' : width)};
   max-width: 100%;
 `
 
@@ -74,7 +74,7 @@ export const StyledInput = styled.input.attrs(() => ({
   outline: none;
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
-  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  width: 100%;
   height: ${({ height }) => height};
   max-width: 100%;
   font: inherit;
