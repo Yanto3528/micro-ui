@@ -128,6 +128,9 @@ export const theme = {
             activeBg: 'primary',
             activeColor: 'white',
           },
+          dateInputProps: {
+            borderColor: 'primary',
+          },
         },
       },
       divider: {
@@ -202,9 +205,9 @@ export const theme = {
         padding: '3px 10px',
         variant: 'solid',
         radius: '4px',
-        fontSize: '1.4rem',
-        fontFamily: 'AIAMedium',
-        fontWeight: 'bold',
+        fontSize: '1.2rem',
+        fontFamily: 'AIARegular',
+        fontWeight: 'normal',
         textTransform: 'uppercase',
       },
       modal: {
@@ -273,6 +276,9 @@ export const theme = {
           fontFamily: 'AIARegular',
           fontWeight: 'normal',
           variant: 'circular',
+        },
+        radioButton: {
+          width: '100%',
         },
       },
       textarea: {

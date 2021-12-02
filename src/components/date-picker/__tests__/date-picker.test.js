@@ -3,13 +3,15 @@ import userEvent from '@testing-library/user-event'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
-import { render, screen } from '@/test-utils'
+import { render, screen, fireEvent } from '@/test-utils'
 
+import { theme } from '../../theme'
 import { DatePicker } from '../index'
 
 dayjs.extend(utc)
 
 const DEFAULT_DATE_FORMAT = 'DD/MM/YYYY'
+const ENTER_KEY = '{enter}'
 
 const formatDateToValue = (date) => {
   return JSON.stringify(date.utc(true).startOf('day').toDate())
@@ -30,11 +32,11 @@ const ControlledDatePicker = ({ value: propsValue, ...props }) => {
 
 describe('components > DatePicker', () => {
   describe('Uncontrolled DatePicker', () => {
-    let dateInput
+    let dateDisplayInput
     beforeEach(() => {
       render(<DatePicker placeholder='Enter your date of birth' />)
-      dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.click(dateInput)
+      dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      userEvent.click(dateDisplayInput)
     })
 
     it('should render correctly', () => {
@@ -42,7 +44,7 @@ describe('components > DatePicker', () => {
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).toBeInTheDocument()
-      expect(dateInput).toBeInTheDocument()
+      expect(dateDisplayInput).toBeInTheDocument()
       expect(dateWrapper).toBeInTheDocument()
     })
 
@@ -119,126 +121,67 @@ describe('components > DatePicker', () => {
         userEvent.click(nextMonthButton.children[0])
         expect(currentMonthDisplay).toHaveTextContent(nextMonth)
       })
-
-      it('should be able to select today and display that in the input', () => {
-        const today = dayjs().format(DEFAULT_DATE_FORMAT)
-        const todayDate = dayjs().get('date')
-
-        const todayDateTexts = screen.getAllByText(todayDate)
-        userEvent.click(todayDateTexts[0])
-
-        const calendar = screen.queryByTestId('calendar')
-        expect(calendar).not.toBeInTheDocument()
-
-        expect(dateInput).toHaveValue(today)
-      })
-
-      it('should be able to select 11 October 2021 and display that in the input', () => {
-        const date = dayjs().month(9).year(2021)
-        const yearValue = date.format('YYYY')
-
-        let yearText = screen.getByText(yearValue)
-        userEvent.click(yearText)
-        // Need to find year text again and click on it
-        yearText = screen.getByText(yearValue)
-        userEvent.click(yearText)
-
-        const monthToClick = dayjs().diff(date, 'month')
-        const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
-        const [prevMonthButton] = nextBackWrapper
-
-        for (let i = 0; i < monthToClick; i++) {
-          userEvent.click(prevMonthButton.children[0])
-        }
-
-        const dateTexts = screen.getAllByText('11')
-        userEvent.click(dateTexts[0])
-
-        expect(dateInput).toHaveValue('11/10/2021')
-      })
-
-      it('should be able to select 1 year and 2 month on 20th date and display that in the input', () => {
-        const oneYearAgo = dayjs().subtract(1, 'year').format('YYYY')
-        const prev2Month = dayjs().subtract(2, 'month').format('MMMM')
-
-        const yearDisplay = screen.queryByTestId('year-display')
-        userEvent.click(yearDisplay)
-
-        const oneYearAgoText = screen.queryByText(oneYearAgo)
-        userEvent.click(oneYearAgoText)
-
-        const nextYearDisplay = screen.getByTestId('year-display')
-        expect(nextYearDisplay).toHaveTextContent(oneYearAgo)
-
-        const currentMonthDisplay = screen.getByTestId('current-month')
-
-        const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
-        const [prevMonthButton] = nextBackWrapper
-
-        userEvent.click(prevMonthButton.children[0])
-        userEvent.click(prevMonthButton.children[0])
-
-        expect(currentMonthDisplay).toHaveTextContent(prev2Month)
-
-        const date20 = screen.getByText('20')
-        expect(date20).toBeInTheDocument()
-        userEvent.click(date20)
-
-        const calendar = screen.queryByTestId('calendar')
-        expect(calendar).not.toBeInTheDocument()
-
-        const expectedDisplayDate = dayjs()
-          .subtract(1, 'year')
-          .subtract(2, 'month')
-          .date(20)
-          .format(DEFAULT_DATE_FORMAT)
-        expect(dateInput).toHaveValue(expectedDisplayDate)
-      })
-    })
-
-    describe('Key in date from input field', () => {
-      it('should be able to key in valid date for input', () => {
-        const validDate = '20/10/2000'
-        userEvent.type(dateInput, validDate)
-        userEvent.type(dateInput, '{enter}')
-
-        expect(dateInput).toHaveValue(validDate)
-      })
-
-      it('should display default/previous date value when key in invalid date format', () => {
-        const invalidDate = '211/10/2000'
-        const invalidDate2 = 'invalid-date-format'
-        const validDate = '29/09/1999'
-        const currentDateValue = dayjs().format(DEFAULT_DATE_FORMAT)
-
-        // Type invalid date without any value, input will show today instead
-        userEvent.type(dateInput, `${invalidDate}{Enter}`)
-        expect(dateInput).toHaveValue(currentDateValue)
-
-        // Enter valid date and correctly display the date
-        userEvent.clear(dateInput)
-        userEvent.type(dateInput, `${validDate}{Enter}`)
-        expect(dateInput).toHaveValue(validDate)
-
-        // Enter invalid date again, this time it will default to previous date value
-        userEvent.clear(dateInput)
-        userEvent.type(dateInput, `${invalidDate2}{Enter}`)
-        expect(dateInput).toHaveValue(validDate)
-      })
     })
   })
 
   describe('Controlled DatePicker', () => {
+    it('should return the same value when passing in utc date', () => {
+      const utcDate = dayjs().utc(true)
+      render(
+        <ControlledDatePicker
+          placeholder='Enter your date of birth'
+          value={utcDate}
+        />
+      )
+
+      const expectedValue = screen.getByText(JSON.stringify(utcDate))
+      expect(expectedValue).toBeInTheDocument()
+    })
+
     it('should return correct value when key in by input field', () => {
-      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
       const date = '19/10/2000'
-      userEvent.type(dateInput, `${date}{Enter}`)
-      expect(dateInput).toHaveValue(date)
-      const expectedValue = screen.getByText(
+      const invalidDate = '111/11/200'
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+
+      userEvent.click(wrapper)
+      let dateInput = screen.getByTestId('calendar-date-input')
+      userEvent.clear(dateInput)
+      userEvent.type(dateInput, `${date}${ENTER_KEY}`)
+      expect(dateDisplayInput).toHaveValue(date)
+      let expectedValue = screen.getByText(
         formatDateToValue(dayjs('2000-10-19'))
       )
       expect(expectedValue).toBeInTheDocument()
+
+      // Test when entering invalid date (it should return the previous value)
+      userEvent.click(wrapper)
+      dateInput = screen.getByTestId('calendar-date-input')
+      userEvent.clear(dateInput)
+      userEvent.type(dateInput, `${invalidDate}${ENTER_KEY}`)
+      expect(dateDisplayInput).toHaveValue(date)
+      expectedValue = screen.getByText(formatDateToValue(dayjs('2000-10-19')))
+      expect(expectedValue).toBeInTheDocument()
+    })
+
+    it("should be able to click on today button and display today's date in the input", () => {
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+
+      userEvent.click(wrapper)
+      let dateInput = screen.getByTestId('calendar-date-input')
+      userEvent.clear(dateInput)
+      userEvent.type(dateInput, '10/08/2000{enter}')
+      expect(dateDisplayInput).toHaveValue('10/08/2000')
+
+      userEvent.click(wrapper)
+      const todayButton = screen.getByRole('button', { name: /today/i })
+      userEvent.click(todayButton)
+      expect(dateDisplayInput).toHaveValue(dayjs().format(DEFAULT_DATE_FORMAT))
     })
 
     it('should return correct value when passed value props', () => {
@@ -253,20 +196,25 @@ describe('components > DatePicker', () => {
           value={oneMonthAgo}
         />
       )
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
       let expectedValue = screen.getByText(JSON.stringify(oneMonthAgo))
-      expect(dateInput).toHaveValue(oneMonthAgo.format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(
+        oneMonthAgo.format(DEFAULT_DATE_FORMAT)
+      )
       expect(expectedValue).toBeInTheDocument()
 
+      userEvent.click(wrapper)
+      const dateInput = screen.getByTestId('calendar-date-input')
       userEvent.clear(dateInput)
-      userEvent.type(dateInput, `${oneMonthFromNow}{Enter}`)
-      expect(dateInput).toHaveValue(oneMonthFromNow)
+      userEvent.type(dateInput, `${oneMonthFromNow}${ENTER_KEY}`)
+      expect(dateDisplayInput).toHaveValue(oneMonthFromNow)
     })
 
     it('should return correct value choosing from calendar', () => {
       render(<ControlledDatePicker placeholder='Enter your date of birth' />)
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.click(dateInput)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      userEvent.click(dateDisplayInput)
 
       const today = dayjs().format(DEFAULT_DATE_FORMAT)
       const todayDate = dayjs().get('date')
@@ -277,9 +225,99 @@ describe('components > DatePicker', () => {
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()
 
-      expect(dateInput).toHaveValue(today)
+      expect(dateDisplayInput).toHaveValue(today)
       const expectedValue = screen.getByText(formatDateToValue(dayjs()))
       expect(expectedValue).toBeInTheDocument()
+    })
+
+    it('should be able to select today and display that in the input', () => {
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+
+      const today = dayjs().format(DEFAULT_DATE_FORMAT)
+      const todayDate = dayjs().get('date')
+
+      userEvent.click(wrapper)
+      const todayDateTexts = screen.getAllByText(todayDate)
+      userEvent.click(todayDateTexts[0])
+
+      const calendar = screen.queryByTestId('calendar')
+      expect(calendar).not.toBeInTheDocument()
+
+      expect(dateDisplayInput).toHaveValue(today)
+    })
+
+    it('should be able to select 11 October 2021 and display that in the input', () => {
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+
+      const date = dayjs().month(9).year(2021)
+      const yearValue = date.format('YYYY')
+
+      userEvent.click(wrapper)
+      let yearText = screen.getByText(yearValue)
+      userEvent.click(yearText)
+      // Need to find year text again and click on it
+      yearText = screen.getByText(yearValue)
+      userEvent.click(yearText)
+
+      const monthToClick = dayjs().diff(date, 'month')
+      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      const [prevMonthButton] = nextBackWrapper
+
+      for (let i = 0; i < monthToClick; i++) {
+        userEvent.click(prevMonthButton.children[0])
+      }
+
+      const dateTexts = screen.getAllByText('11')
+      userEvent.click(dateTexts[0])
+
+      expect(dateDisplayInput).toHaveValue('11/10/2021')
+    })
+
+    it('should be able to select 1 year and 2 month on 20th date and display that in the input', () => {
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      const oneYearAgo = dayjs().subtract(1, 'year').format('YYYY')
+      const prev2Month = dayjs().subtract(2, 'month').format('MMMM')
+
+      userEvent.click(wrapper)
+      const yearDisplay = screen.queryByTestId('year-display')
+      userEvent.click(yearDisplay)
+
+      const oneYearAgoText = screen.queryByText(oneYearAgo)
+      userEvent.click(oneYearAgoText)
+
+      const nextYearDisplay = screen.getByTestId('year-display')
+      expect(nextYearDisplay).toHaveTextContent(oneYearAgo)
+
+      const currentMonthDisplay = screen.getByTestId('current-month')
+
+      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      const [prevMonthButton] = nextBackWrapper
+
+      userEvent.click(prevMonthButton.children[0])
+      userEvent.click(prevMonthButton.children[0])
+
+      expect(currentMonthDisplay).toHaveTextContent(prev2Month)
+
+      const date20 = screen.getByText('20')
+      expect(date20).toBeInTheDocument()
+      userEvent.click(date20)
+
+      const calendar = screen.queryByTestId('calendar')
+      expect(calendar).not.toBeInTheDocument()
+
+      const expectedDisplayDate = dayjs()
+        .subtract(1, 'year')
+        .subtract(2, 'month')
+        .date(20)
+        .format(DEFAULT_DATE_FORMAT)
+
+      expect(dateDisplayInput).toHaveValue(expectedDisplayDate)
     })
 
     it('should not be able to select date which is older than given startDate', () => {
@@ -290,8 +328,8 @@ describe('components > DatePicker', () => {
           startDate={startDate}
         />
       )
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.click(dateInput)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      userEvent.click(dateDisplayInput)
 
       const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
       const [prevMonthButton] = nextBackWrapper
@@ -307,7 +345,7 @@ describe('components > DatePicker', () => {
       userEvent.click(oneMonthAgo)
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).toBeInTheDocument()
-      expect(dateInput).toHaveValue('')
+      expect(dateDisplayInput).toHaveValue('')
     })
 
     it('should not be able to select date which is newer than given endDate', () => {
@@ -318,8 +356,8 @@ describe('components > DatePicker', () => {
           endDate={endDate}
         />
       )
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.click(dateInput)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      userEvent.click(dateDisplayInput)
 
       const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
       const nextMonthButton = nextBackWrapper[1]
@@ -339,7 +377,7 @@ describe('components > DatePicker', () => {
       userEvent.click(oneMonthInFuture)
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).toBeInTheDocument()
-      expect(dateInput).toHaveValue('')
+      expect(dateDisplayInput).toHaveValue('')
     })
 
     it('should only be able to select date between startDate and endDate', () => {
@@ -352,8 +390,8 @@ describe('components > DatePicker', () => {
           endDate={endDate}
         />
       )
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.click(dateInput)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      userEvent.click(dateDisplayInput)
 
       let nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
       const prevMonthButton = nextBackWrapper[0]
@@ -366,7 +404,7 @@ describe('components > DatePicker', () => {
         cursor: 'not-allowed',
       })
       userEvent.click(oneMonthAgo)
-      expect(dateInput).toHaveValue('')
+      expect(dateDisplayInput).toHaveValue('')
 
       const startSelectDate = startDate.add(1, 'day')
       const startSelectElements = screen.getAllByText(
@@ -380,9 +418,11 @@ describe('components > DatePicker', () => {
       userEvent.click(startSelectText)
       const expectedValue = screen.getByText(formatDateToValue(startSelectDate))
       expect(expectedValue).toBeInTheDocument()
-      expect(dateInput).toHaveValue(startSelectDate.format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(
+        startSelectDate.format(DEFAULT_DATE_FORMAT)
+      )
 
-      userEvent.click(dateInput)
+      userEvent.click(dateDisplayInput)
       nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
       const nextMonthButton = nextBackWrapper[1]
       userEvent.click(nextMonthButton.children[0])
@@ -402,7 +442,7 @@ describe('components > DatePicker', () => {
       const endSelectableDate =
         endSelectableDateEl[endSelectableDateEl.length - 1]
       userEvent.click(endSelectableDate)
-      expect(dateInput).toHaveValue(endDate.format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(endDate.format(DEFAULT_DATE_FORMAT))
     })
 
     it('should only be able to key in date newer than startDate in input field', () => {
@@ -416,23 +456,31 @@ describe('components > DatePicker', () => {
         />
       )
       // If key in disabled date, it will default to today, else will default to previous value
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      userEvent.click(wrapper)
+
+      let dateInput = screen.getByTestId('calendar-date-input')
       userEvent.type(
         dateInput,
-        `${startDate.format(DEFAULT_DATE_FORMAT)}{Enter}`
+        `${startDate.format(DEFAULT_DATE_FORMAT)}${ENTER_KEY}`
       )
       let expectedValue = screen.getByText(formatDateToValue(dayjs()))
-      expect(dateInput).toHaveValue(dayjs().format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(dayjs().format(DEFAULT_DATE_FORMAT))
       expect(expectedValue).toBeInTheDocument()
 
+      userEvent.click(wrapper)
+      dateInput = screen.getByTestId('calendar-date-input')
       userEvent.clear(dateInput)
       userEvent.type(
         dateInput,
-        `${afterStartDate.format(DEFAULT_DATE_FORMAT)}{Enter}`
+        `${afterStartDate.format(DEFAULT_DATE_FORMAT)}${ENTER_KEY}`
       )
       expectedValue = screen.getByText(formatDateToValue(afterStartDate))
       expect(expectedValue).toBeInTheDocument()
-      expect(dateInput).toHaveValue(afterStartDate.format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(
+        afterStartDate.format(DEFAULT_DATE_FORMAT)
+      )
     })
 
     it('should only be able to key in date older than endDate in input field', () => {
@@ -446,25 +494,37 @@ describe('components > DatePicker', () => {
         />
       )
       // If key in disabled date, it will default to today, else will default to previous value
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      userEvent.click(wrapper)
+
+      let dateInput = screen.getByTestId('calendar-date-input')
+      userEvent.clear(dateInput)
       userEvent.type(
         dateInput,
-        `${afterEndDate.format(DEFAULT_DATE_FORMAT)}{Enter}`
+        `${afterEndDate.format(DEFAULT_DATE_FORMAT)}${ENTER_KEY}`
       )
+
       let expectedValue = screen.getByText(formatDateToValue(dayjs()))
-      expect(dateInput).toHaveValue(dayjs().format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(dayjs().format(DEFAULT_DATE_FORMAT))
       expect(expectedValue).toBeInTheDocument()
+      userEvent.click(wrapper)
 
       userEvent.clear(dateInput)
-      userEvent.type(dateInput, `${endDate.format(DEFAULT_DATE_FORMAT)}{Enter}`)
+      dateInput = screen.getByTestId('calendar-date-input')
+      userEvent.type(
+        dateInput,
+        `${endDate.format(DEFAULT_DATE_FORMAT)}${ENTER_KEY}`
+      )
       expectedValue = screen.getByText(formatDateToValue(endDate))
       expect(expectedValue).toBeInTheDocument()
-      expect(dateInput).toHaveValue(endDate.format(DEFAULT_DATE_FORMAT))
+      expect(dateDisplayInput).toHaveValue(endDate.format(DEFAULT_DATE_FORMAT))
     })
 
     it('should only be able to key in date between startDate and endDate in input field', () => {
       const startDate = dayjs().subtract(1, 'month')
       const endDate = dayjs().add(1, 'month')
+
       const validDate = dayjs().add(1, 'day').format(DEFAULT_DATE_FORMAT)
       const beforeStartDate = startDate
         .subtract(1, 'day')
@@ -478,22 +538,33 @@ describe('components > DatePicker', () => {
           endDate={endDate}
         />
       )
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
-      userEvent.type(dateInput, `${validDate}{Enter}`)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      userEvent.click(wrapper)
+      let dateInput = screen.getByTestId('calendar-date-input')
+      fireEvent.change(dateInput, { target: { value: validDate } })
+      fireEvent.keyUp(dateInput, { key: 'Enter' })
+
       const expectedValue = screen.getByText(
         formatDateToValue(dayjs().add(1, 'day'))
       )
-      expect(dateInput).toHaveValue(validDate)
+      expect(dateDisplayInput).toHaveValue(validDate)
       expect(expectedValue).toBeInTheDocument()
 
       // If key in disabled date, it will default to previous value
+      userEvent.click(wrapper)
+      dateInput = screen.getByTestId('calendar-date-input')
       userEvent.clear(dateInput)
-      userEvent.type(dateInput, `${beforeStartDate}{Enter}`)
-      expect(dateInput).toHaveValue(validDate)
+      fireEvent.change(dateInput, { target: { value: beforeStartDate } })
+      fireEvent.keyUp(dateInput, { key: 'Enter' })
+      expect(dateDisplayInput).toHaveValue(validDate)
 
+      userEvent.click(wrapper)
+      dateInput = screen.getByTestId('calendar-date-input')
       userEvent.clear(dateInput)
-      userEvent.type(dateInput, `${afterEndDate}{Enter}`)
-      expect(dateInput).toHaveValue(validDate)
+      fireEvent.change(dateInput, { target: { value: afterEndDate } })
+      fireEvent.keyUp(dateInput, { key: 'Enter' })
+      expect(dateDisplayInput).toHaveValue(validDate)
     })
   })
 
@@ -503,11 +574,11 @@ describe('components > DatePicker', () => {
         <DatePicker placeholder='Enter your date of birth' fluid />
       )
       const wrapper = screen.getByTestId('date-picker-wrapper')
-      const dateInput = screen.getByPlaceholderText(/date of birth/i)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
       expect(wrapper).toHaveStyle({
         width: '100%',
       })
-      expect(dateInput).toHaveStyle({
+      expect(dateDisplayInput).toHaveStyle({
         width: '100%',
       })
 
@@ -522,7 +593,7 @@ describe('components > DatePicker', () => {
       expect(wrapper).toHaveStyle({
         width: '100%',
       })
-      expect(dateInput).toHaveStyle({
+      expect(dateDisplayInput).toHaveStyle({
         width: '100%',
       })
 
@@ -536,8 +607,8 @@ describe('components > DatePicker', () => {
       expect(wrapper).toHaveStyle({
         width: '400px',
       })
-      expect(dateInput).toHaveStyle({
-        width: '400px',
+      expect(dateDisplayInput).toHaveStyle({
+        width: '100%',
         height: '50px',
       })
     })
@@ -568,6 +639,12 @@ describe('components > DatePicker', () => {
           'border-radius': '20px',
         },
       },
+      dateInputProps: {
+        borderColor: 'secondary',
+        customStyle: {
+            padding: '10px 15px',
+        },
+      },
     }
     render(
       <DatePicker
@@ -575,8 +652,8 @@ describe('components > DatePicker', () => {
         calendarProps={calendarProps}
       />
     )
-    const dateInput = screen.getByPlaceholderText(/date of birth/i)
-    userEvent.click(dateInput)
+    const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+    userEvent.click(dateDisplayInput)
 
     const calendar = screen.getByTestId('calendar')
     expect(calendar).toHaveStyle(calendarProps.wrapperProps.customStyle)
@@ -592,5 +669,11 @@ describe('components > DatePicker', () => {
 
     const currentMonthDate = screen.getByText(dayjs().date(20).format('DD'))
     expect(currentMonthDate).toHaveStyle(calendarProps.dayProps.customStyle)
+
+    const dateInput = screen.getByTestId('calendar-date-input')
+    expect(dateInput).toHaveStyle({
+      'border-color': theme.colors.secondary,
+      padding: '10px 15px',
+    })
   })
 })

@@ -21,6 +21,7 @@ export const Wrapper = styled.div.attrs(() => ({
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: 12px;
   width: 100%;
+  background-color: white;
   ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `

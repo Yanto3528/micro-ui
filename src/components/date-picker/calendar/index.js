@@ -12,6 +12,7 @@ import { getDisabledMonthData } from './utils/helpers'
 import { CalendarYear } from './year'
 import { Month } from './month'
 import { Days } from './days'
+import { DateInput } from './date-input'
 import { Wrapper, YearDisplayWrapper, WeekDayWrapper, WeekDay } from './views'
 
 dayjs.extend(utc)
@@ -59,7 +60,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
     })
   }
 
-  const onSelectDay = (selectedDate, event) => {
+  const onDateChange = (selectedDate, event) => {
     event.stopPropagation()
 
     setSelectedDate(selectedDate)
@@ -82,6 +83,13 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
         />
       ) : (
         <>
+          <DateInput
+            {...props.dateInputProps}
+            value={value}
+            startDate={startDate}
+            endDate={endDate}
+            onChange={onDateChange}
+          />
           <YearDisplayWrapper onClick={onToggleShowYear}>
             <p data-testid='year-display'>{date.format('YYYY')}</p>
           </YearDisplayWrapper>
@@ -99,7 +107,7 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
           <Days
             date={date}
             selectedDate={selectedDate}
-            onSelectDay={onSelectDay}
+            onSelectDay={onDateChange}
             startDate={startDate}
             endDate={endDate}
             {...props.dayProps}
@@ -119,6 +127,7 @@ Calendar.propTypes = {
   yearProps: PropTypes.object,
   monthProps: PropTypes.object,
   dayProps: PropTypes.object,
+  dateInputProps: PropTypes.object,
 }
 
 if (isDev) {
