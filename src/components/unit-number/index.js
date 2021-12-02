@@ -5,7 +5,7 @@ import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 import { getProps, mergeRefs } from '@/utils'
 
-import { wrapperPropsData, inputPropsData } from './utils/constant'
+import { wrapperPropsData } from './utils/constant'
 import { Separator, Wrapper, StyledInput } from './views'
 
 const MAX_LENGTH = 4
@@ -28,7 +28,6 @@ export const UnitNumber = ({
   const { unitNumber: defaultInputProps } = theme.default.component
 
   const wrapperProps = getProps(props, defaultInputProps, wrapperPropsData)
-  const inputProps = getProps(props, defaultInputProps, inputPropsData)
 
   const firstPartChange = (event) => {
     firstInputValue.current = event.currentTarget.value.replace(/[^0-9]+/g, '')
@@ -76,7 +75,7 @@ export const UnitNumber = ({
   return (
     <Wrapper {...wrapperProps} data-testid='unit-number-wrapper'>
       <StyledInput
-        {...inputProps}
+        {...defaultInputProps}
         {...props}
         ref={mergeRefs(firstPartRef, firstInputRef)}
         maxLength={MAX_LENGTH}
@@ -85,7 +84,7 @@ export const UnitNumber = ({
       />
       <Separator>-</Separator>
       <StyledInput
-        {...inputProps}
+        {...defaultInputProps}
         {...props}
         ref={mergeRefs(secondPartRef, secondInputRef)}
         maxLength={MAX_LENGTH}

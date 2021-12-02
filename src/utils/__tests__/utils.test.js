@@ -1,14 +1,14 @@
-import { theme } from '../../components/theme'
+import { theme, extendTheme } from '../../components/theme'
 
 import {
   getColor,
   resolveColor,
   resolveFontFamily,
-  extendTheme,
   selectProps,
   getProps,
   mergeRefs,
   getMediaQuery,
+  mergeDeep,
 } from '../index'
 
 describe('utils > getColor', () => {
@@ -144,6 +144,59 @@ describe('utils > getMediaQuery', () => {
     const nonValidValue = [false, undefined, null, '']
     nonValidValue.forEach((value) => {
       expect(() => getMediaQuery(value)).toThrow()
+    })
+  })
+})
+
+describe('utils > mergeDeep', () => {
+  const obj1 = {
+    colors: {
+      primary: 'primary',
+      secondary: 'secondary',
+    },
+    default: {
+      component: {
+        button: {
+          bg: 'primary',
+          color: 'white',
+        },
+      },
+    },
+  }
+  const obj2 = {
+    colors: {
+      secondary: 'lightGray',
+      blue: 'blue',
+    },
+  }
+  const expectedResult = {
+    colors: {
+      primary: 'primary',
+      secondary: 'lightGray',
+      blue: 'blue',
+    },
+    default: {
+      component: {
+        button: {
+          bg: 'primary',
+          color: 'white',
+        },
+      },
+    },
+  }
+
+  it('should return an object which is the result of merging 2 object together', () => {
+    const result = mergeDeep(obj1, obj2)
+    expect(result).toEqual(expectedResult)
+  })
+
+  it('should throw an error if it is not an object', () => {
+    const nonObjectValue = [['color'], true, 'bg', 4, undefined, null]
+    nonObjectValue.forEach((value) => {
+      expect(() => mergeDeep({ color: 'white' }, value)).toThrow()
+    })
+    nonObjectValue.forEach((value) => {
+      expect(() => mergeDeep(value, { color: 'white' })).toThrow()
     })
   })
 })

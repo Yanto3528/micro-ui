@@ -54,11 +54,14 @@ describe('components > Textarea', () => {
       <Textarea placeholder='Enter description' fluid rounded />
     )
     const textarea = screen.getByRole('textbox')
+    const wrapper = screen.getByTestId('textarea-wrapper')
     expect(textarea).toHaveStyle({
-      width: '100%',
       'border-radius': '50px',
       'border-color': theme.colors.lightGray,
       'background-color': theme.colors.lightGray,
+    })
+    expect(wrapper).toHaveStyle({
+      width: '100%',
     })
 
     // Fluid is higher priority than width, so width will not have any effect here
@@ -73,8 +76,10 @@ describe('components > Textarea', () => {
       />
     )
     expect(textarea).toHaveStyle({
-      width: '100%',
       'border-radius': '50px',
+    })
+    expect(wrapper).toHaveStyle({
+      width: '100%',
     })
 
     rerender(
@@ -90,11 +95,13 @@ describe('components > Textarea', () => {
       />
     )
     expect(textarea).toHaveStyle({
-      width: '400px',
       padding: '10px',
       'border-radius': '8px',
       'border-color': theme.colors.primary,
       'margin-bottom': '20px',
+    })
+    expect(wrapper).toHaveStyle({
+      width: '400px',
     })
   })
 

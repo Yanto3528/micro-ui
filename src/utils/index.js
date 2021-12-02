@@ -1,7 +1,23 @@
-import { merge } from 'lodash-es'
 import { css } from 'styled-components'
 
-import { theme as baseTheme } from '../components/theme'
+export const mergeDeep = (target, source) => {
+  if (!isObject(target) || !isObject(source)) {
+    throw new Error('mergeDeep: target and source must be an object')
+  }
+
+  Object.keys(source).forEach((key) => {
+    const targetValue = target[key]
+    const sourceValue = source[key]
+
+    if (isObject(targetValue) && isObject(sourceValue)) {
+      target[key] = mergeDeep(Object.assign({}, targetValue), sourceValue)
+    } else {
+      target[key] = sourceValue
+    }
+  })
+
+  return target
+}
 
 export const getColor = (theme, color) => theme.colors[color] || color
 
@@ -11,10 +27,6 @@ export const resolveColor = (key) => {
 
 export const resolveFontFamily = (fontFamily) => {
   return fontFamily && `${fontFamily}, sans-serif`
-}
-
-export const extendTheme = (newTheme) => {
-  return merge(baseTheme, newTheme)
 }
 
 export const selectProps = (object, selectedKeys) => {
@@ -97,4 +109,9 @@ export const MediaQuery = {
   PHONE: getMediaQuery(375),
   /** @media(max-width: 320px) */
   SMALLEST: getMediaQuery(320),
+}
+
+// Private function
+function isObject(obj) {
+  return obj && typeof obj === 'object' && !Array.isArray(obj)
 }

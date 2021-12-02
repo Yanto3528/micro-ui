@@ -9,7 +9,7 @@ import { Wrapper, StyledTextarea } from './views'
 
 const wrapperPropsData = ['width', 'fluid']
 
-export const Textarea = React.forwardRef(({ fluid, ...props }, ref) => {
+export const Textarea = React.forwardRef((props, ref) => {
   const theme = useTheme()
   const wrapperProps = getProps(
     props,
@@ -17,11 +17,10 @@ export const Textarea = React.forwardRef(({ fluid, ...props }, ref) => {
     wrapperPropsData
   )
   return (
-    <Wrapper {...wrapperProps}>
+    <Wrapper {...wrapperProps} data-testid='textarea-wrapper'>
       <StyledTextarea
         {...theme.default.component.textarea}
         {...props}
-        fluid={fluid}
         ref={ref}
       />
     </Wrapper>

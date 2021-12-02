@@ -108,6 +108,7 @@ describe('components > Modal', () => {
       },
       close: {
         radius: '4px',
+        position: 'left',
         customStyle: {
           margin: '10px',
         },
