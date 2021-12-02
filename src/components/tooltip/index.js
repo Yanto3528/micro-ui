@@ -25,10 +25,8 @@ export const Tooltip = React.forwardRef(
 
     const handleMouseEnter = (event) => {
       onOpen()
-      if (!posX.current) {
-        const rect = event.currentTarget.getBoundingClientRect()
-        posX.current = `${rect.x}px`
-      }
+      const rect = event.currentTarget.getBoundingClientRect()
+      posX.current = `${rect.x}px`
     }
 
     return (
