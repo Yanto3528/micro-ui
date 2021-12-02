@@ -87,12 +87,8 @@ describe('components > RadioGroup', () => {
   })
 
   it('should render with customStyle', () => {
-    render(
-      <ControlledRadioGroup
-        gap='20px'
-        direction='row'
-        customStyle={{ 'margin-bottom': '20px' }}
-      >
+    const { rerender } = render(
+      <ControlledRadioGroup fluid width='400px'>
         <RadioGroup.Button value='M'>Male</RadioGroup.Button>
         <RadioGroup.Button value='F'>Female</RadioGroup.Button>
       </ControlledRadioGroup>
@@ -100,6 +96,22 @@ describe('components > RadioGroup', () => {
 
     const radioGroupWrapper = screen.getByRole('radio-group')
     expect(radioGroupWrapper).toHaveStyle({
+      width: '100%',
+    })
+
+    rerender(
+      <ControlledRadioGroup
+        gap='20px'
+        direction='row'
+        customStyle={{ 'margin-bottom': '20px' }}
+        width='335px'
+      >
+        <RadioGroup.Button value='M'>Male</RadioGroup.Button>
+        <RadioGroup.Button value='F'>Female</RadioGroup.Button>
+      </ControlledRadioGroup>
+    )
+    expect(radioGroupWrapper).toHaveStyle({
+      width: '335px',
       gap: '20px',
       'flex-direction': 'row',
       'margin-bottom': '20px',

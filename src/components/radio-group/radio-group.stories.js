@@ -25,7 +25,12 @@ export const ColumnButton = () => {
   const [value, setValue] = React.useState('Y')
 
   return (
-    <RadioGroup value={value} onChange={setValue} name='goodHealth'>
+    <RadioGroup
+      value={value}
+      onChange={setValue}
+      name='goodHealth'
+      width='160px'
+    >
       <RadioGroup.Button value='Y'>Yes</RadioGroup.Button>
       <RadioGroup.Button value='N'>No</RadioGroup.Button>
     </RadioGroup>
@@ -63,7 +68,13 @@ export const RowButton = () => {
   const [value, setValue] = React.useState('M')
 
   return (
-    <RadioGroup value={value} onChange={setValue} name='gender' direction='row'>
+    <RadioGroup
+      value={value}
+      onChange={setValue}
+      name='gender'
+      direction='row'
+      width='335px'
+    >
       <RadioGroup.Button value='M' icon={<Icon name='male' />}>
         Male
       </RadioGroup.Button>
@@ -84,6 +95,7 @@ export const RowButtonSquare = () => {
       name='gender'
       direction='row'
       gap='30px'
+      width='335px'
     >
       <RadioGroup.Button
         value='M'
@@ -115,6 +127,7 @@ export const RowButtonRounded = () => {
       name='gender'
       direction='row'
       gap='30px'
+      width='335px'
     >
       <RadioGroup.Button
         value='M'

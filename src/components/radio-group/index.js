@@ -42,6 +42,8 @@ RadioGroup.propTypes = {
   direction: PropTypes.oneOf(['column', 'row']),
   /** The gap between each children radio */
   gap: PropTypes.string,
+  width: PropTypes.string,
+  fluid: PropTypes.bool,
   customStyle: PropTypes.object,
 }
 
