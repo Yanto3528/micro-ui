@@ -1,4 +1,6 @@
 import React from 'react'
+import { mergeDeep } from '../utils'
+
 import { Icon } from './icon'
 
 export const theme = {
@@ -371,4 +373,8 @@ export const theme = {
       },
     },
   },
+}
+
+export const extendTheme = (newTheme) => {
+  return mergeDeep(theme, newTheme)
 }

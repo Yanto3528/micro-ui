@@ -133,6 +133,30 @@ describe('components > DatePicker', () => {
         expect(dateInput).toHaveValue(today)
       })
 
+      it('should be able to select 11 October 2021 and display that in the input', () => {
+        const date = dayjs().month(9).year(2021)
+        const yearValue = date.format('YYYY')
+
+        let yearText = screen.getByText(yearValue)
+        userEvent.click(yearText)
+        // Need to find year text again and click on it
+        yearText = screen.getByText(yearValue)
+        userEvent.click(yearText)
+
+        const monthToClick = dayjs().diff(date, 'month')
+        const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+        const [prevMonthButton] = nextBackWrapper
+
+        for (let i = 0; i < monthToClick; i++) {
+          userEvent.click(prevMonthButton.children[0])
+        }
+
+        const dateTexts = screen.getAllByText('11')
+        userEvent.click(dateTexts[0])
+
+        expect(dateInput).toHaveValue('11/10/2021')
+      })
+
       it('should be able to select 1 year and 2 month on 20th date and display that in the input', () => {
         const oneYearAgo = dayjs().subtract(1, 'year').format('YYYY')
         const prev2Month = dayjs().subtract(2, 'month').format('MMMM')

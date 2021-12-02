@@ -42,10 +42,9 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
   border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
   transition: border 0.2s;
   ${fontStyles};
-  width: ${({ width, fluid }) => (fluid ? '100%' : width)};
+  width: 100%;
   padding: ${({ padding }) => padding};
   resize: ${({ resize }) => resize};
-  max-width: 100%;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
