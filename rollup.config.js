@@ -6,23 +6,30 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternalPlugin from 'rollup-plugin-peer-deps-external'
 import alias from '@rollup/plugin-alias'
+import copy from 'rollup-plugin-copy'
 
 // Will use this later on
-// import { terser } from 'rollup-plugin-terser';
+// import { terser } from 'rollup-plugin-terser'
 
 const extensions = ['.js', '.jsx']
 
 const config = defineConfig({
-  input: 'src/index.js',
+  input: {
+    index: 'src/index.js',
+    hooks: 'src/hooks/index.js',
+    utils: 'src/utils/index.js',
+    animations: 'src/animations/index.js',
+  },
   output: [
     {
       dir: 'dist/esm',
       format: 'esm',
       preserveModules: true,
+      preserveModulesRoot: 'src',
       sourcemap: true,
     },
     {
-      file: 'dist/cjs/index.js',
+      dir: 'dist/cjs',
       format: 'cjs',
       sourcemap: true,
     },
@@ -48,6 +55,12 @@ const config = defineConfig({
       entries: {
         '@/*': './src/*',
       },
+    }),
+    copy({
+      targets: [
+        { src: 'src/assets', dest: ['dist/cjs', 'dist/esm'] },
+        { src: 'src/reset.css', dest: ['dist/cjs', 'dist/esm'] },
+      ],
     }),
   ],
 })

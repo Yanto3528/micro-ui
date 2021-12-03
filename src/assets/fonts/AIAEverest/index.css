@@ -1,62 +1,55 @@
-
 @font-face {
   font-family: 'AIABold';
-  src:  url("AIAEverest-Bold.eot");
-  src:  url("AIAEverest-Bold.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-Bold.woff2") format("woff2"),
-        url("AIAEverest-Bold.woff") format("woff"),
-        url("AIAEverest-Bold.otf") format("opentype"),
-        url("AIAEverest-Bold.ttf") format("truetype"),
-        url("AIAEverest-Bold.svg#AIAEverestBold") format("svg");
+  src: url('AIAEverest-Bold.eot');
+  src: url('AIAEverest-Bold.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-Bold.woff2') format('woff2'),
+    url('AIAEverest-Bold.woff') format('woff'),
+    url('AIAEverest-Bold.otf') format('opentype'),
+    url('AIAEverest-Bold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'AIAExtraBold';
-  src:  url("AIAEverest-ExtraBold.eot");
-  src:  url("AIAEverest-ExtraBold.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-ExtraBold.woff2") format("woff2"),
-        url("AIAEverest-ExtraBold.woff") format("woff"),
-        url("AIAEverest-ExtraBold.otf") format("opentype"),
-        url("AIAEverest-ExtraBold.ttf") format("truetype"),
-        url("AIAEverest-ExtraBold.svg#AIAEverestExtraBold") format("svg");
+  src: url('AIAEverest-ExtraBold.eot');
+  src: url('AIAEverest-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-ExtraBold.woff2') format('woff2'),
+    url('AIAEverest-ExtraBold.woff') format('woff'),
+    url('AIAEverest-ExtraBold.otf') format('opentype'),
+    url('AIAEverest-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'AIACondensed';
-  src:  url("AIAEverest-Condensed.eot");
-  src:  url("AIAEverest-Condensed.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-Condensed.woff2") format("woff2"),
-        url("AIAEverest-Condensed.woff") format("woff"),
-        url("AIAEverest-Condensed.otf") format("opentype"),
-        url("AIAEverest-Condensed.ttf") format("truetype"),
-        url("AIAEverest-Condensed.svg#AIAEverestCondensed") format("svg");
+  src: url('AIAEverest-Condensed.eot');
+  src: url('AIAEverest-Condensed.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-Condensed.woff2') format('woff2'),
+    url('AIAEverest-Condensed.woff') format('woff'),
+    url('AIAEverest-Condensed.otf') format('opentype'),
+    url('AIAEverest-Condensed.ttf') format('truetype');
 }
 @font-face {
   font-family: 'AIACondensedMedium';
-  src:  url("AIAEverest-CondensedMedium.eot");
-  src:  url("AIAEverest-CondensedMedium.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-CondensedMedium.woff2") format("woff2"),
-        url("AIAEverest-CondensedMedium.woff") format("woff"),
-        url("AIAEverest-CondensedMedium.otf") format("opentype"),
-        url("AIAEverest-CondensedMedium.ttf") format("truetype"),
-        url("AIAEverest-CondensedMedium.svg#AIAEverestCondensedMedium") format("svg");
+  src: url('AIAEverest-CondensedMedium.eot');
+  src: url('AIAEverest-CondensedMedium.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-CondensedMedium.woff2') format('woff2'),
+    url('AIAEverest-CondensedMedium.woff') format('woff'),
+    url('AIAEverest-CondensedMedium.otf') format('opentype'),
+    url('AIAEverest-CondensedMedium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'AIARegular';
-  src:  url("AIAEverest-Regular.eot");
-  src:  url("AIAEverest-Regular.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-Regular.woff2") format("woff2"),
-        url("AIAEverest-Regular.woff") format("woff"),
-        url("AIAEverest-Regular.otf") format("opentype"),
-        url("AIAEverest-Regular.ttf") format("truetype"),
-        url("AIAEverest-Regular.svg#AIAEverestCondensed") format("svg");
+  src: url('AIAEverest-Regular.eot');
+  src: url('AIAEverest-Regular.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-Regular.woff2') format('woff2'),
+    url('AIAEverest-Regular.woff') format('woff'),
+    url('AIAEverest-Regular.otf') format('opentype'),
+    url('AIAEverest-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'AIAMedium';
-  src:  url("AIAEverest-Medium.eot");
-  src:  url("AIAEverest-Medium.eot?#iefix") format("embedded-opentype"),
-        url("AIAEverest-Medium.woff2") format("woff2"),
-        url("AIAEverest-Medium.woff") format("woff"),
-        url("AIAEverest-Medium.otf") format("opentype"),
-        url("AIAEverest-Medium.ttf") format("truetype"),
-        url("AIAEverest-Medium.svg#AIAEverestCondensed") format("svg");
+  src: url('AIAEverest-Medium.eot');
+  src: url('AIAEverest-Medium.eot?#iefix') format('embedded-opentype'),
+    url('AIAEverest-Medium.woff2') format('woff2'),
+    url('AIAEverest-Medium.woff') format('woff'),
+    url('AIAEverest-Medium.otf') format('opentype'),
+    url('AIAEverest-Medium.ttf') format('truetype');
 }

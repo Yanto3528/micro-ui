@@ -13,7 +13,6 @@
           "@/utils": "./src/utils",
           "@/styles": "./src/styles",
           "@/assets": "./src/assets",
-          "@/enums": "./src/enums",
           "@/test-utils": "./src/test-utils"
         }
       }
