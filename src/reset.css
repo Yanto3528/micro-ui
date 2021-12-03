@@ -6,8 +6,11 @@
 @import './assets/fonts/bubbleplus/style.css';
 @import './assets/fonts/bubblecircular/style.css';
 @import './assets/fonts/bubbleedit/style.css';
+@import '~normalize.css';
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

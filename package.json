@@ -61,6 +61,7 @@
     "regenerator-runtime": "^0.13.9",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-sizes": "^1.0.4",
     "rollup-plugin-terser": "^7.0.2",
@@ -69,10 +70,8 @@
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
-    "axios": "^0.21.4",
     "dayjs": "^1.10.7",
     "keymirror": "^0.1.1",
-    "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -86,5 +85,27 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./reset.css": {
+      "require": "./dist/cjs/reset.css",
+      "default": "./dist/esm/reset.css"
+    },
+    "./utils": {
+      "require": "./dist/cjs/utils.js",
+      "default": "./dist/esm/utils/utils.js"
+    },
+    "./hooks": {
+      "require": "./dist/cjs/hooks.js",
+      "default": "./dist/esm/hooks/hooks.js"
+    },
+    "./animations": {
+      "require": "./dist/cjs/animations.js",
+      "default": "./dist/esm/animations/animations.js"
+    }
+  }
 }

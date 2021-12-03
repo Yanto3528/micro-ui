@@ -5,6 +5,7 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   display: flex;
   flex-direction: ${({ direction }) => direction};
+  width: ${({ fluid, width }) => (fluid ? '100%' : width)};
   flex-wrap: wrap;
   gap: ${({ gap }) => gap};
   max-width: 100%;

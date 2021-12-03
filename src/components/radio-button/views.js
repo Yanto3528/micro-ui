@@ -64,6 +64,7 @@ const resolveVariant = ({ variant }) => {
 export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-radio-button-wrapper',
 }))`
+  flex: 1;
   ${({ disabled }) =>
     disabled &&
     css`
