@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?t5ewzj');
-  src:  url('icomoon.eot?t5ewzj#iefix') format('embedded-opentype'),
+  src: url('icomoon.eot?t5ewzj');
+  src: url('icomoon.eot?t5ewzj#iefix') format('embedded-opentype'),
     url('icomoon.ttf?t5ewzj') format('truetype'),
     url('icomoon.woff?t5ewzj') format('woff'),
     url('icomoon.svg?t5ewzj#icomoon') format('svg');
@@ -10,7 +10,8 @@
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -26,6 +27,5 @@
 }
 
 .icon-circle-arrow:before {
-  content: "\2b88";
-  color: #d31047;
+  content: '\2b88';
 }

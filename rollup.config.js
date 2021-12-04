@@ -19,6 +19,7 @@ const config = defineConfig({
     hooks: 'src/hooks/index.js',
     utils: 'src/utils/index.js',
     animations: 'src/animations/index.js',
+    svg: 'src/svg/index.js',
   },
   output: [
     {

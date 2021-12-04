@@ -10,7 +10,9 @@ export const Icon = (props) => {
 
 Icon.propTypes = {
   className: string,
+  /** Name for the icon */
   name: string.isRequired,
+  /** Size for the icon, can be xs, s, m, l or any valid size like px, em, rem, etc */
   size: string.isRequired,
   color: string,
   customStyle: object,
