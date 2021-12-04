@@ -33,7 +33,7 @@ export const RadioGroup = React.forwardRef(
 
 RadioGroup.propTypes = {
   /** determine which radio is active, value must match the value given to each radio children */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   /** name for the radio group, will also pass this to each children */
   name: PropTypes.string.isRequired,
   /** whenever children radio are clicked, its value will be passed to this function */

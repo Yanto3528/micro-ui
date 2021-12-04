@@ -1,19 +1,21 @@
 {
   "name": "component-library",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "/index.cjs.js",
+  "module": "/index.js",
   "scripts": {
     "test": "jest --ci --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --detectOpenHandles",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write src/**/*.js",
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && rollup -c && cp package.json ./dist",
+    "pack-local": "npm run build && cd dist && set NODE_PATH=/node_modules && npm pack --ignore-scripts",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublishOnly": "cd dist && set NODE_PATH=/node_modules"
   },
   "sideEffects": false,
   "keywords": [],
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/eslint-parser": "^7.15.7",
+    "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@rollup/plugin-alias": "^3.1.8",
@@ -69,7 +72,7 @@
     "storybook-addon-react-docgen": "^1.2.42"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/runtime": "^7.16.3",
     "dayjs": "^1.10.7",
     "keymirror": "^0.1.1",
     "normalize.css": "^8.0.1",
@@ -82,30 +85,5 @@
     "react-dom": "^16.8.0",
     "styled-components": ">=5.0.0",
     "prop-types": ">=15.0.0"
-  },
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "require": "./dist/cjs/index.js",
-      "default": "./dist/esm/index.js"
-    },
-    "./reset.css": {
-      "require": "./dist/cjs/reset.css",
-      "default": "./dist/esm/reset.css"
-    },
-    "./utils": {
-      "require": "./dist/cjs/utils.js",
-      "default": "./dist/esm/utils/utils.js"
-    },
-    "./hooks": {
-      "require": "./dist/cjs/hooks.js",
-      "default": "./dist/esm/hooks/hooks.js"
-    },
-    "./animations": {
-      "require": "./dist/cjs/animations.js",
-      "default": "./dist/esm/animations/animations.js"
-    }
   }
 }

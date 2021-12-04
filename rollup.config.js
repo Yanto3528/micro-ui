@@ -22,19 +22,21 @@ const config = defineConfig({
   },
   output: [
     {
-      dir: 'dist/esm',
+      dir: 'dist',
       format: 'esm',
       preserveModules: true,
       preserveModulesRoot: 'src',
+      entryFileNames: 'index.js',
       sourcemap: true,
     },
     {
-      dir: 'dist/cjs',
+      dir: 'dist',
       format: 'cjs',
+      entryFileNames: '[name].cjs.js',
       sourcemap: true,
     },
   ],
-  external: [/@babel\/runtime/],
+  external: [/@babel\/runtime/, /dayjs/],
   plugins: [
     peerDepsExternalPlugin(),
     babel({
@@ -42,15 +44,7 @@ const config = defineConfig({
       plugins: ['@babel/plugin-transform-runtime'],
       extensions,
     }),
-    nodeResolve({
-      extensions,
-    }),
     commonjs(),
-    visualizer({
-      gzipSize: true,
-      brotliSize: true,
-    }),
-    size(),
     alias({
       entries: {
         '@/*': './src/*',
@@ -62,6 +56,14 @@ const config = defineConfig({
         { src: 'src/reset.css', dest: ['dist/cjs', 'dist/esm'] },
       ],
     }),
+    nodeResolve({
+      extensions,
+    }),
+    visualizer({
+      gzipSize: true,
+      brotliSize: true,
+    }),
+    size(),
   ],
 })
 

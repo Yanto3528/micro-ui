@@ -100,8 +100,13 @@ DatePicker.propTypes = {
   onChange: PropTypes.func,
   /** The date format, defaults to DD/MM/YYYY, for full supported date format, check dayjs documentation */
   dateFormat: PropTypes.string,
-  /** value for the date, must be one of dayjs instance or javascript date object */
-  value: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
+  /** value for the date, must be one of dayjs instance, date object, string or number */
+  value: PropTypes.oneOfType([
+    dayjsType,
+    PropTypes.instanceOf(Date),
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   /** startDate to prevent user to key in date before specified startDate, must be one of dayjs instance or javascript date object */
   startDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   /** endDate to prevent user to key in date after specified endDate, must be one of dayjs instance or javascript date object */
