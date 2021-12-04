@@ -40,7 +40,7 @@ export const IconWrapper = styled.div`
 
 export const IconName = styled.p`
   margin-top: 10px;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: '#333';
   font-family: AIARegular;
   font-weight: normal;
   font-size: 1.4rem;
