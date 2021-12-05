@@ -125,7 +125,12 @@ describe('components > Select', () => {
     userEvent.click(selectWrapper)
 
     const optionWrapper = screen.queryByTestId('option-wrapper')
-    expect(optionWrapper).not.toBeInTheDocument()
+    expect(optionWrapper).toBeInTheDocument()
+    let noOptionFoundText = screen.getByText(/no options found/i)
+    expect(noOptionFoundText).toBeInTheDocument()
+    userEvent.click(noOptionFoundText)
+    noOptionFoundText = screen.queryByText(/no options found/i)
+    expect(noOptionFoundText).not.toBeInTheDocument()
   })
 
   it('should be able to select one of the option', () => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme, useToggle, useClickOutside } from '@/hooks'
-import { getProps } from '@/utils'
+import { getProps, mergeRefs } from '@/utils'
 
 import { wrapperPropsData } from './utils/constants'
 import { normalizeOptionsData, generateOptions } from './utils/helpers'
@@ -40,6 +40,7 @@ export const Select = React.forwardRef(
 
     const optionsRef = useRef(normalizeOptionsData(options))
     const defaultOptionsRef = useRef(generateOptions(options, filter))
+    const inputRef = useRef(null)
 
     const [isOpen, { onClose, onOpen }] = useToggle(false)
     const clickRef = useClickOutside(onClose)
@@ -98,6 +99,15 @@ export const Select = React.forwardRef(
       if (!isOpen) {
         onOpen()
       }
+
+      if (searchable && inputRef.current) {
+        inputRef.current.focus()
+      }
+    }
+
+    const handleNoResultClick = (event) => {
+      event.stopPropagation()
+      onClose()
     }
 
     return (
@@ -111,7 +121,7 @@ export const Select = React.forwardRef(
         <StyledInput
           {...defaultSelectProps}
           {...props}
-          ref={ref}
+          ref={mergeRefs(inputRef, ref)}
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
@@ -120,13 +130,19 @@ export const Select = React.forwardRef(
           autoComplete='false'
         />
         <IconContainer>{iconContainerProps.icon}</IconContainer>
-        {isOpen && filteredOptions.length > 0 && (
+        {isOpen && (
           <OptionWrapper data-testid='option-wrapper'>
-            {filteredOptions.map((option) => (
-              <StyledOption key={option.value} onClick={onSelectItem(option)}>
-                {option.name}
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((option) => (
+                <StyledOption key={option.value} onClick={onSelectItem(option)}>
+                  {option.name}
+                </StyledOption>
+              ))
+            ) : (
+              <StyledOption onClick={handleNoResultClick}>
+                No options found
               </StyledOption>
-            ))}
+            )}
           </OptionWrapper>
         )}
       </Wrapper>
