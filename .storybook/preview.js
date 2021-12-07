@@ -1,8 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { extendTheme } from '../src/utils'
+import { extendTheme } from '../src'
 
-import 'normalize.css'
 import '../src/reset.css'
 
 import { addDecorator } from '@storybook/react'

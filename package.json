@@ -36,6 +36,8 @@
     "@storybook/addon-docs": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
+    "@storybook/builder-webpack5": "^6.4.8",
+    "@storybook/manager-webpack5": "^6.4.8",
     "@storybook/react": "^6.3.8",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
@@ -70,7 +72,8 @@
     "rollup-plugin-sizes": "^1.0.4",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^5.5.2",
-    "storybook-addon-react-docgen": "^1.2.42"
+    "storybook-addon-react-docgen": "^1.2.42",
+    "webpack": "^5.65.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3",
