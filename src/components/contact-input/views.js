@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const outlineFocusStyles = ({ hasError }) => {
@@ -43,7 +43,7 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   display: flex;
   align-items: center;
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   max-width: 100%;
@@ -81,6 +81,7 @@ export const StyledInput = styled.input.attrs(() => ({
   width: 100%;
   height: 100%;
   color: inherit;
+  font: inherit;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -113,6 +114,7 @@ export const CountrySelect = styled.select.attrs(() => ({
   padding-right: 20px;
   outline: none;
   color: inherit;
+  font: inherit;
 
   cursor: pointer;
   -moz-appearance: none;

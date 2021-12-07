@@ -148,7 +148,7 @@ describe('components > Modal', () => {
       },
     }
     const { wrapper, close, header, content, title, body, actions } = modalProps
-    render(
+    const { rerender } = render(
       <Modal isOpen {...modalProps.wrapper}>
         <Modal.Close {...modalProps.close} />
         <Modal.Header icon={<Icon name='home' />} {...modalProps.header}>
@@ -206,6 +206,18 @@ describe('components > Modal', () => {
 
     expect(modalActions).toHaveStyle({
       padding: actions.customStyle.padding,
+    })
+
+    // Test modal header without icon
+    rerender(
+      <Modal isOpen>
+        <Modal.Close />
+        <Modal.Header>Modal Header</Modal.Header>
+      </Modal>
+    )
+
+    expect(modalHeader).toHaveStyle({
+      'margin-bottom': '0px',
     })
   })
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { getColor, resolveColor } from '@/utils'
+import { getColor, resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const solidStyles = css`
@@ -40,12 +40,13 @@ export const Wrapper = styled.div.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   max-width: 100%;
-  border-radius: ${({ radius, rounded }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   transition: border 0.2s;
   cursor: pointer;
   color: ${resolveColor('color')};
   ${resolveVariant};
   ${fontStyles};
+  z-index: 6;
 
   option {
     color: ${resolveColor('color')};

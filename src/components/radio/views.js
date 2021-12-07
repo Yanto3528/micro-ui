@@ -103,8 +103,8 @@ export const Checkmark = styled.span.attrs(() => ({
   height: 1.2em;
   background-color: transparent;
   border: 1px solid ${resolveColor('borderColor')};
-  border-radius: ${({ radius, variant }) =>
-    variant === RadioType.circular ? '50%' : radius};
+  border-radius: ${({ theme, radius, variant }) =>
+    variant === RadioType.circular ? '50%' : theme.radius[radius] || radius};
   transition: all 0.3s ease-out;
 
   &:after {

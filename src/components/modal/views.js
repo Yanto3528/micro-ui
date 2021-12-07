@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor, resolveFontFamily } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 import { Alignment } from './utils/constants'
@@ -33,13 +33,13 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'aia-modal-wrapper',
 }))`
   background-color: ${resolveColor('bg')};
-  border-radius: ${({ radius }) => radius};
+  border-radius: ${getBorderRadius};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   max-width: 90vw;
   position: relative;
   overflow-x: hidden;
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
+  ${fontStyles};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
@@ -47,12 +47,11 @@ export const Wrapper = styled.div.attrs(() => ({
 export const HeaderWrapper = styled.div.attrs(() => ({
   className: 'aia-modal-header-wrapper',
 }))`
-  height: 90px;
-  background-image: ${({ bgImage }) => bgImage};
+  height: ${({ height }) => height};
   background-color: ${resolveColor('bg')};
   position: relative;
   color: ${resolveColor('color')};
-  margin-bottom: 20px;
+  margin-bottom: ${({ hasIcon }) => (hasIcon ? '20px' : '0px')};
   padding: ${({ padding }) => padding};
   display: flex;
   align-items: center;
@@ -92,7 +91,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${({ radius }) => radius};
+  border-radius: ${getBorderRadius};
   cursor: pointer;
   ${resolveClosePosition};
 

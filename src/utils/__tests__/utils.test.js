@@ -3,7 +3,6 @@ import { theme, extendTheme } from '../../components/theme'
 import {
   getColor,
   resolveColor,
-  resolveFontFamily,
   selectProps,
   getProps,
   mergeRefs,
@@ -26,18 +25,6 @@ describe('utils > resolveColor', () => {
     const colorFn = resolveColor('color')
     const resultColor = colorFn({ theme, color: 'secondary' })
     expect(resultColor).toBe(theme.colors.secondary)
-  })
-})
-
-describe('utils > resolveFontFamily', () => {
-  it('should return font family + sans serif if passed in fontFamily', () => {
-    const fontFamily = resolveFontFamily('AIARegular')
-    expect(fontFamily).toBe('AIARegular, sans-serif')
-  })
-
-  it("should return nothing when there's no fontFamily passed in", () => {
-    const fontFamily = resolveFontFamily()
-    expect(fontFamily).toBeUndefined()
   })
 })
 

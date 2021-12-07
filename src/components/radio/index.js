@@ -48,7 +48,7 @@ export const Radio = React.forwardRef(
             disabled={disabled}
             ref={ref}
           />
-          <Checkmark {...checkmarkProps} />
+          <Checkmark {...checkmarkProps} data-testid='radio-checkmark' />
         </Label>
       </Wrapper>
     )

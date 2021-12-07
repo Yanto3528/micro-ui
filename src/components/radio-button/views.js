@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { getColor, resolveColor } from '@/utils'
+import { getColor, resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 import { ButtonType, Variant } from './utils/constants'
@@ -83,7 +83,7 @@ export const Label = styled.label.attrs(() => ({
   text-align: center;
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
-  border-radius: ${({ radius }) => radius};
+  border-radius: ${getBorderRadius};
   ${fontStyles};
   cursor: pointer;
 

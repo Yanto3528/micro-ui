@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const resolveVariant = ({ variant }) => {
@@ -30,7 +30,7 @@ export const StyledTag = styled.span.attrs(() => ({
   display: inline-block;
   text-align: center;
   ${fontStyles};
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   outline: none;
   padding: ${({ padding }) => padding};
   transition: all 0.2s;

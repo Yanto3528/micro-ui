@@ -71,6 +71,9 @@ Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   /** a function that runs when you click on the overlay or close icon */
   onClose: PropTypes.func,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
 }
 
 Modal.Content = ModalContent

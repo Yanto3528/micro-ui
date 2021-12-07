@@ -55,6 +55,19 @@ describe('components > Radio', () => {
     })
   })
 
+  it('should render with check variant', () => {
+    const { rerender } = render(<Radio label='Tick me' variant='check' />)
+    const checkmark = screen.getByTestId('radio-checkmark')
+    expect(checkmark).toHaveStyle({
+      'border-radius': '4px',
+    })
+
+    rerender(<Radio label='Tick me' variant='check' radius='6px' />)
+    expect(checkmark).toHaveStyle({
+      'border-radius': '6px',
+    })
+  })
+
   it('should render radio with customStyle', () => {
     render(<Radio label='Tick me' customStyle={{ 'margin-bottom': '20px' }} />)
     const radioWrapper = screen.getByTestId('radio-wrapper')

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { getColor, resolveColor } from '@/utils'
+import { getColor, resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const solidStyles = css`
@@ -72,7 +72,7 @@ export const StyledInput = styled.input.attrs(() => ({
   className: 'aia-input',
 }))`
   outline: none;
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   transition: border 0.2s;
   width: 100%;
   height: ${({ height }) => height};

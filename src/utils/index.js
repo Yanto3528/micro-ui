@@ -20,13 +20,12 @@ export const mergeDeep = (target, source) => {
 }
 
 export const getColor = (theme, color) => theme.colors[color] || color
+export const getBorderRadius = ({ theme, rounded, radius }) => {
+  return rounded ? '50px' : theme.radius[radius] || radius
+}
 
 export const resolveColor = (key) => {
   return ({ theme, ...props }) => getColor(theme, props[key])
-}
-
-export const resolveFontFamily = (fontFamily) => {
-  return fontFamily && `${fontFamily}, sans-serif`
 }
 
 export const selectProps = (object, selectedKeys) => {

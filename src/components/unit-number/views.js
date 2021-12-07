@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const outlineFocusStyles = ({ hasError }) => {
@@ -37,7 +37,7 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   display: flex;
   align-items: center;
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   padding: ${({ padding }) => padding};

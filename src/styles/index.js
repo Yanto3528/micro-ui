@@ -1,5 +1,4 @@
 import { css } from 'styled-components'
-import { resolveFontFamily } from '../utils'
 
 export const checklistStyles = css`
   width: 0.3em;
@@ -18,7 +17,9 @@ export const checkedChecklistStyles = css`
 `
 
 export const fontStyles = css`
-  font-family: ${({ fontFamily }) => resolveFontFamily(fontFamily)};
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
+  font-family: ${({ theme, fontFamily }) =>
+    `${theme.fontFamily[fontFamily] || fontFamily}, sans-serif`};
+  font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize] || fontSize};
+  font-weight: ${({ theme, fontWeight }) =>
+    theme.fontWeight[fontWeight] || fontWeight};
 `

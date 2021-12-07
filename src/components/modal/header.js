@@ -18,6 +18,7 @@ export const ModalHeader = React.forwardRef(
         {...props}
         ref={ref}
         data-testid='modal-header'
+        hasIcon={!!icon}
       >
         {icon && (
           <HeaderIconWrapper {...headerIconProps} {...iconWrapperProps}>

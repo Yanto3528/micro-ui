@@ -3,7 +3,6 @@ import { Home } from 'react-feather'
 
 import { Modal } from './index'
 import { Button } from '../button'
-import { Divider } from '../divider'
 
 export default {
   title: 'Utils/Modal',
@@ -50,21 +49,26 @@ export const Default = () => {
   )
 }
 
-export const WithoutHeader = () => {
+export const AIA = () => {
   return (
     <BaseModal radius='4px'>
-      <Modal.Close color='secondary' />
-      <Modal.Content alignment='left'>
-        <Modal.Title margin='0'>We are sorry</Modal.Title>
-        <Divider />
+      <Modal.Close position='left' />
+      <Modal.Header bg='primary' height='60px'>
+        Modal Header
+      </Modal.Header>
+      <Modal.Content padding='20px' alignment='left'>
         <Modal.Body>
           We apologise but we can't accept your online application due to
           following condition(s). Please approach your insurance representative
           for other options or call our customer service centre 1800-248-8000.
         </Modal.Body>
-        <Modal.Actions position='right'>
-          <Button bg='secondary'>Cancel</Button>
-          <Button>Confirm</Button>
+        <Modal.Actions alignment='right'>
+          <Button bg='secondary' rounded={false} radius='4px'>
+            Cancel
+          </Button>
+          <Button rounded={false} radius='4px'>
+            Confirm
+          </Button>
         </Modal.Actions>
       </Modal.Content>
     </BaseModal>

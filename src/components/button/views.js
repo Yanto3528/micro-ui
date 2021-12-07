@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { spinning } from '@/animations'
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 import { fontStyles } from '@/styles'
 
 const solidStyles = css`
@@ -46,7 +46,7 @@ export const StyledButton = styled.button.attrs(() => ({
 }))`
   text-align: center;
   border: none;
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   outline: none;
   cursor: pointer;
   padding: ${({ padding }) => padding};

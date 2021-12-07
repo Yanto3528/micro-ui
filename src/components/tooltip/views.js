@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { fontStyles } from '@/styles'
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 
 import {
   topStartStyles,
@@ -55,7 +55,7 @@ export const Content = styled.div.attrs(() => ({
   color: ${resolveColor('color')};
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: ${({ padding }) => padding};
-  border-radius: ${({ rounded, radius }) => (rounded ? '50px' : radius)};
+  border-radius: ${getBorderRadius};
   white-space: pre-wrap;
   z-index: 8;
   ${resolvePlacement};
