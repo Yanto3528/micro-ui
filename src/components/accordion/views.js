@@ -11,7 +11,7 @@ export const Wrapper = styled.div.attrs(() => ({
   max-width: 100%;
   height: ${({ height }) => height};
 
-  ${fontStyles}
+  ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
@@ -54,7 +54,7 @@ export const HeaderIcon = styled(Icon).attrs(() => ({
   size: '1.5em',
 }))`
   transform-origin: center;
-  transition: all 0.3s ease-out;
+  transition: all 0.4s ease-out;
   transform: ${({ isExpand }) => (isExpand ? 'rotate(90deg)' : 'none')};
 `
 

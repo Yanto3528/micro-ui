@@ -9,6 +9,7 @@ export const Wrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   width: 100%;
   margin-bottom: 10px;
 `

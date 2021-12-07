@@ -41,7 +41,11 @@ export const DatePicker = React.forwardRef(
     useEffect(() => {
       const isUtcDate = dayjs(value).isUTC()
       setDateValue(
-        isUtcDate ? value.startOf('day') : dayjs(value).utc(true).startOf('day')
+        isUtcDate
+          ? value.startOf('day')
+          : dayjs(value || undefined)
+              .utc(true)
+              .startOf('day')
       )
     }, [value, dateFormat])
 

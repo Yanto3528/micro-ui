@@ -10,16 +10,27 @@ export default {
 
 const Template = (args) => <Tag {...args} />
 
-export const SolidTag = Template.bind({})
-SolidTag.args = {
+export const Solid = Template.bind({})
+Solid.args = {
   ...theme.default.component.tag,
   children: 'Tag',
   variant: 'solid',
 }
 
-export const OutlineTag = Template.bind({})
-OutlineTag.args = {
-  ...theme.default.component.tag,
-  children: 'Tag',
+export const Rounded = Template.bind({})
+Rounded.args = {
+  ...Solid.args,
+  rounded: true,
+}
+
+export const Outline = Template.bind({})
+Outline.args = {
+  ...Solid.args,
   variant: 'outline',
+}
+
+export const OutlineRounded = Template.bind({})
+OutlineRounded.args = {
+  ...Outline.args,
+  rounded: true,
 }
