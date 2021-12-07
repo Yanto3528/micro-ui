@@ -2,6 +2,7 @@ import { theme, extendTheme } from '../../components/theme'
 
 import {
   getColor,
+  getBorderRadius,
   resolveColor,
   selectProps,
   getProps,
@@ -17,6 +18,21 @@ describe('utils > getColor', () => {
 
     color = getColor(theme, '#ddd')
     expect(color).toBe('#ddd')
+  })
+})
+
+describe('utils > getBorderRadius', () => {
+  it('should return radius from theme if it exists, or whatever the value passed if not exist', () => {
+    let radius = getBorderRadius({ theme, rounded: true, radius: '4px' })
+    expect(radius).toBe('50px')
+
+    // Access theme.radius.md and return it
+    radius = getBorderRadius({ theme, rounded: false, radius: 'md' })
+    expect(radius).toBe(theme.radius.md)
+
+    // If radius not exist in theme.radius then return whatever value pass as radius
+    radius = getBorderRadius({ theme, rounded: false, radius: '20px' })
+    expect(radius).toBe('20px')
   })
 })
 
