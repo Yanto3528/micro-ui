@@ -239,6 +239,9 @@ export const theme = {
         },
         close: {
           position: 'right',
+          bg: 'transparent',
+          color: 'white',
+          radius: 'sm',
         },
         content: {
           padding: '3rem',
@@ -271,11 +274,6 @@ export const theme = {
           fontFamily: 'regular',
           fontSize: 'md',
           fontWeight: 'normal',
-        },
-        close: {
-          bg: 'transparent',
-          color: 'white',
-          radius: 'sm',
         },
         actions: {
           spacing: '10px',

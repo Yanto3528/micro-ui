@@ -39,7 +39,7 @@ export const Default = () => {
       <Modal.Content>
         <Modal.Title>We are sorry</Modal.Title>
         <Modal.Body>
-          We apologise but we can't accept your online application due to
+          We apologise but we can&apos;t accept your online application due to
           following condition(s). Please approach your insurance representative
           for other options or call our customer service centre 1800-248-8000.
         </Modal.Body>
@@ -58,7 +58,7 @@ export const AIA = () => {
       </Modal.Header>
       <Modal.Content padding='20px' alignment='left'>
         <Modal.Body>
-          We apologise but we can't accept your online application due to
+          We apologise but we can&apos;t accept your online application due to
           following condition(s). Please approach your insurance representative
           for other options or call our customer service centre 1800-248-8000.
         </Modal.Body>

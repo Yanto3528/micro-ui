@@ -85,8 +85,6 @@ RadioButton.propTypes = {
   activeBGColor: PropTypes.string,
   /** Background color for radio. For outline variant the color becomes border color and bg color when active */
   bg: PropTypes.string,
-  /** Border radius for radio button */
-  radius: PropTypes.string,
   /** padding for radio button */
   padding: PropTypes.string,
   /** margin for radio button */

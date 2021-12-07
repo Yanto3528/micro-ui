@@ -5,23 +5,13 @@
     "es6": true,
     "node": true
   },
-  "globals": {
-    "__OS__": true,
-    "__ENV__": true,
-    "__ADOBE_ANALYTIC_SCRIPT__": true,
-    "__ADOBE_ANALYTIC_ENV__": true,
-    "__PRODUCT_SERVICE_HOST__": true,
-    "__REFERENCE_SERVICE_HOST__": true,
-    "__CUSTOMER_SERVICE_HOST__": true,
-    "__CONFIG_SERVICE_HOST__": true,
-    "__CAMPAIGN_SERVICE_HOST__": true,
-    "__QUOTATION_SERVICE_HOST__": true,
-    "__PAYMENT_SERVICE_HOST__": true,
-    "__DOCUMENT_SERVICE_HOST__": true,
-    "__ORDER_SERVICE_HOST__": true,
-    "__MYINFO_SERVICE_HOST__": true
-  },
-  "extends": ["prettier", "plugin:jest/recommended"],
+  "extends": [
+    "prettier",
+    "plugin:jest/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "plugins": ["react", "react-hooks", "import", "prettier", "jest"],
   "settings": {
     "react": {
@@ -62,28 +52,7 @@
     "import/imports-first": "error",
     "import/no-duplicates": "error",
     "import/no-unassigned-import": "error",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
 
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-filename-extension": "off",
-    "react/jsx-boolean-value": "error",
-    "react/jsx-no-undef": 2,
-    "react/jsx-closing-bracket-location": [1, "tag-aligned"],
-    "react/jsx-no-bind": [2, { "allowArrowFunctions": true }],
-    "react/jsx-no-duplicate-props": 2,
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-
-    "react/no-did-update-set-state": 2,
-    "react/no-direct-mutation-state": 2,
-    "react/no-unknown-property": 2,
-    "react/no-set-state": 0,
-    "react/prop-types": [2, { "ignore": ["children"] }],
-    "react/self-closing-comp": 2,
-    "react/sort-comp": 2,
-    "react/no-unused-prop-types": 2,
-    "react/no-unused-state": 2
+    "react/prop-types": [2, { "ignore": ["children"] }]
   }
 }

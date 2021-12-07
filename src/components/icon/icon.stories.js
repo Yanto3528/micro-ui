@@ -12,9 +12,9 @@ export default {
 const Template = (args) => {
   return (
     <IconContainer>
-      {allIconNames.map((iconName) => {
+      {allIconNames.map((iconName, iconIndex) => {
         return (
-          <IconWrapper>
+          <IconWrapper key={iconIndex}>
             <Icon {...args} name={iconName} />
             <IconName>{iconName}</IconName>
           </IconWrapper>

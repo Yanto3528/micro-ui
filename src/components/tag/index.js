@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 import { StyledTag } from './views'
 
@@ -32,4 +33,8 @@ Tag.propTypes = {
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   customStyle: PropTypes.object,
+}
+
+if (isDev) {
+  Tag.displayName = 'Tag'
 }

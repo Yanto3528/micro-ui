@@ -44,9 +44,9 @@ export const Days = ({
     const checkMethod =
       !!startDate && !!endDate
         ? 'isBetween'
-        : !!startDate
+        : startDate
         ? 'isAfter'
-        : !!endDate
+        : endDate
         ? 'isBefore'
         : ''
 
