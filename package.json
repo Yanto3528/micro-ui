@@ -86,5 +86,11 @@
     "react-dom": "^16.8.0",
     "styled-components": ">=5.0.0",
     "prop-types": ">=15.0.0"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": [
+      "npm run format",
+      "npm run lint"
+    ]
   }
 }
