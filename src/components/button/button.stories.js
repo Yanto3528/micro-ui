@@ -5,7 +5,7 @@ import { Button } from './index'
 import { theme } from '../theme'
 
 export default {
-  title: 'Forms/Button',
+  title: 'Components/Forms/Button',
   component: Button,
   argTypes: { onClick: { action: 'clicked' } },
 }

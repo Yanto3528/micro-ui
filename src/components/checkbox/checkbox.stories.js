@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { Checkbox } from './index'
 
 export default {
-  title: 'Forms/Checkbox',
+  title: 'Components/Forms/Checkbox',
   component: Checkbox,
 }
 

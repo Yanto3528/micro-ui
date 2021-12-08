@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title='Hooks/useToggle' />
+
+# useToggle
+
+useToggle is a custom hook which return an array of value and function [isOpen, {onOpen, onClose, onToggle}]
+
+## Example
+
+```jsx
+import { useToggle } from 'component-library/hooks'
+
+function TestComponent() {
+  const [isOpen, { onOpen, onClose, onToggle }] = useToggle()
+
+  return (
+    <div onClick={onClose}>
+      <button onClick={onToggle}>
+        Click me to toggle between open and close
+      </button>
+      {isOpen ? <p>I'm here because of isOpen</p> : null}
+    </div>
+  )
+}
+```

@@ -5,7 +5,7 @@ import { Modal } from './index'
 import { Button } from '../button'
 
 export default {
-  title: 'Utils/Modal',
+  title: 'Components/Others/Modal',
   component: Modal,
   subcomponents: {
     Title: Modal.Title,

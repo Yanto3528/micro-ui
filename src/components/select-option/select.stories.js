@@ -21,7 +21,7 @@ const sumOptions = {
 }
 
 export default {
-  title: 'Forms/Select',
+  title: 'Components/Forms/Select',
   component: Select,
 }
 

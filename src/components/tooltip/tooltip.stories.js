@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { Tooltip } from './index'
 
 export default {
-  title: 'Utils/Tooltip',
+  title: 'Components/Others/Tooltip',
   component: Tooltip,
 }
 

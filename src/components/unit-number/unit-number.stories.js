@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { UnitNumber } from './index'
 
 export default {
-  title: 'Forms/UnitNumber',
+  title: 'Components/Forms/UnitNumber',
   component: UnitNumber,
 }
 

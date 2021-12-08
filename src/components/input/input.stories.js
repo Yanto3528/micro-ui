@@ -5,7 +5,7 @@ import { theme } from '../theme'
 import { Input } from './index'
 
 export default {
-  title: 'Forms/Input',
+  title: 'Components/Forms/Input',
   component: Input,
 }
 

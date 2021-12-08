@@ -5,7 +5,7 @@ import { theme } from '../index'
 import { DatePicker } from './index'
 
 export default {
-  title: 'Forms/DatePicker',
+  title: 'Components/Forms/DatePicker',
   component: DatePicker,
 }
 

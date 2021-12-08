@@ -4,7 +4,7 @@ import { ContactInput } from './index'
 import { theme } from '../theme'
 
 export default {
-  title: 'Forms/ContactInput',
+  title: 'Components/Forms/ContactInput',
   component: ContactInput,
 }
 

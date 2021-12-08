@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { Radio } from './index'
 
 export default {
-  title: 'Forms/Radio',
+  title: 'Components/Forms/Radio',
   component: Radio,
 }
 

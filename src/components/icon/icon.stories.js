@@ -5,7 +5,7 @@ import { allIconNames } from './icon-names'
 import { IconContainer, IconWrapper, IconName } from './views'
 
 export default {
-  title: 'Icons/Fonts',
+  title: 'Components/Others/Icons',
   component: Icon,
 }
 
@@ -24,8 +24,8 @@ const Template = (args) => {
   )
 }
 
-export const FontIcons = Template.bind({})
-FontIcons.args = {
+export const All = Template.bind({})
+All.args = {
   size: 's',
   color: 'secondary',
 }

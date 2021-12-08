@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { Textarea } from './index'
 
 export default {
-  title: 'Forms/Textarea',
+  title: 'Components/Forms/Textarea',
   component: Textarea,
 }
 

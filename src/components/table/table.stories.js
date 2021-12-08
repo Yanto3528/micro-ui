@@ -3,7 +3,7 @@ import React from 'react'
 import { Table } from './index'
 
 export default {
-  title: 'Utils/Table',
+  title: 'Components/Others/Table',
   component: Table,
   subcomponents: {
     Head: Table.THead,

@@ -5,7 +5,7 @@ import { RadioButton } from './index'
 import { Icon } from '../icon'
 
 export default {
-  title: 'Forms/RadioButton',
+  title: 'Components/Forms/RadioButton',
   component: RadioButton,
 }
 

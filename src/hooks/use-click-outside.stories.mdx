@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title='Hooks/useClickOutside' />
+
+# useClickOutside
+
+useClickOutside is a custom hook which returns a ref to attach to DOM element and run callback function passed to useClickOutside when clicking outside of that DOM element
+
+## Example
+
+```jsx
+import { useClickOutside, useToggle } from 'component-library/hooks'
+
+function TestComponent() {
+  const [isOpen, { onOpen, onClose }] = useToggle()
+  const ref = useClickOutside(onClose)
+
+  return (
+    <div>
+      {/* Clicking outside of button will trigger onClose function */}
+      <button ref={ref} onClick={onOpen}>
+        Click me to toggle between open and close
+      </button>
+      {isOpen ? <p>I'm here because of isOpen</p> : null}
+    </div>
+  )
+}
+```

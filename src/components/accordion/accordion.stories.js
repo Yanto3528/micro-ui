@@ -5,7 +5,7 @@ import { theme } from '../theme'
 import { Accordion } from './index'
 
 export default {
-  title: 'Utils/Accordion',
+  title: 'Components/Others/Accordion',
   component: Accordion,
   subcomponents: {
     Header: Accordion.Header,

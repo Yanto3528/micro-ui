@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useTheme } from './index'
+
+<Meta title='Hooks/useTheme' />
+
+# useTheme
+
+useTheme is basically a hooks to get the current theme object passed to ThemeProvider
+
+## Example
+
+```jsx
+import { Button } from 'component-library'
+import { useTheme } from 'component-library/hooks'
+
+function TestComponent() {
+  // you can get the theme object passed to ThemeProvider
+  const theme = useTheme()
+
+  return (
+    <Button customStyle={{ 'background-color': theme.colors.secondary }}>
+      Click me
+    </Button>
+  )
+}
+```

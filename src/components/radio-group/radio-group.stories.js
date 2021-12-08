@@ -4,7 +4,7 @@ import { RadioGroup } from './index'
 import { Icon } from '../icon'
 
 export default {
-  title: 'Forms/RadioGroup',
+  title: 'Components/Forms/RadioGroup',
   subcomponents: { Radio: RadioGroup.Radio, Button: RadioGroup.Button },
   component: RadioGroup,
 }

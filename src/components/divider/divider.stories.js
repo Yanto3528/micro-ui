@@ -4,7 +4,7 @@ import { Divider } from './index'
 import { theme } from '../theme'
 
 export default {
-  title: 'Utils/Divider',
+  title: 'Components/Others/Divider',
   component: Divider,
 }
 

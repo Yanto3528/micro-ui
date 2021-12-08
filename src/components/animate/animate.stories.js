@@ -5,7 +5,7 @@ import { Button } from '../button'
 import { Animate } from './index'
 
 export default {
-  title: 'Utils/Animate',
+  title: 'Components/Others/Animate',
   component: Animate,
 }
 

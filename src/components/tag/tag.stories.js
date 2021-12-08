@@ -4,7 +4,7 @@ import { theme } from '../theme'
 import { Tag } from './index'
 
 export default {
-  title: 'Utils/Tag',
+  title: 'Components/Others/Tag',
   component: Tag,
 }
 
