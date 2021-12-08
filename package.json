@@ -91,7 +91,7 @@
     "prop-types": ">=15.0.0"
   },
   "lint-staged": {
-    "*.{js,css,md}": [
+    "*.{js,css}": [
       "npm run format",
       "npm run lint"
     ]

@@ -51,6 +51,6 @@ import {Wrapper} from './views'
 
 - Uses only functional component (unless there's any needs to use class component)
 
-- Writing test for every new components/new features (100% coverage)
+- Writing test for every new components/new features/bug fixing (100% coverage)
+- folder name should follow kebab-case ex. contact-input, radio-group, etc
 - Follow eslint rules guideline
-- Auto formatting with prettier
