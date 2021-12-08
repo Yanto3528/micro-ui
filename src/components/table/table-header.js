@@ -28,6 +28,7 @@ TableHeader.propTypes = {
   customStyle: PropTypes.object,
   /** TableHeader background-color */
   bg: PropTypes.string,
+  color: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,

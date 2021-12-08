@@ -23,6 +23,7 @@ export const StyledInput = styled.input.attrs(() => ({
   border-radius: 4px;
   padding: 6px;
   ${fontStyles};
+  color: ${resolveColor('color')};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `

@@ -44,6 +44,7 @@ AccordionHeader.propTypes = {
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   padding: PropTypes.string,
+  color: PropTypes.string,
 }
 
 if (isDev) {

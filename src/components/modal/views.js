@@ -126,6 +126,7 @@ export const Title = styled.h3.attrs(() => ({
   className: 'aia-modal-title',
 }))`
   ${fontStyles};
+  color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
 
   ${({ customStyle }) => customStyle && css(customStyle)};

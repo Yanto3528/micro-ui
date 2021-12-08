@@ -56,4 +56,5 @@ export const Text = styled.p.attrs(() => ({
 }))`
   padding-inline: ${({ textPaddingInline }) => textPaddingInline};
   ${fontStyles};
+  color: ${resolveColor('color')};
 `

@@ -12,6 +12,7 @@ const textPropsData = [
   'fontFamily',
   'fontWeight',
   'fontSize',
+  'color',
 ]
 const wrapperPropsData = ['orientation']
 

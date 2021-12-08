@@ -78,6 +78,7 @@ export const StyledInput = styled.input.attrs(() => ({
   height: ${({ height }) => height};
   max-width: 100%;
   font: inherit;
+  color: inherit;
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */

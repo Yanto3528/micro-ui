@@ -66,6 +66,7 @@ export const theme = {
           fontFamily: 'medium',
           fontSize: 'md',
           fontWeight: 'normal',
+          color: 'secondary',
         },
         content: {
           padding: '1rem',
@@ -148,11 +149,13 @@ export const theme = {
           },
           dateInputProps: {
             borderColor: 'primary',
+            color: 'secondary',
           },
         },
       },
       divider: {
         bg: 'gray',
+        color: 'secondary',
         marginBlock: '10px',
         fontFamily: 'regular',
         fontSize: 'md',
@@ -267,6 +270,7 @@ export const theme = {
           fontFamily: 'medium',
           fontSize: 'md',
           fontWeight: 'normal',
+          color: 'secondary',
         },
         body: {
           color: 'secondary',
@@ -363,6 +367,7 @@ export const theme = {
           borer: 0,
           cursor: 'auto',
           alignment: 'left',
+          color: 'secondary',
         },
         row: {
           stripeColor: 'lightGray2',
@@ -376,6 +381,7 @@ export const theme = {
           fontWeight: 'normal',
           cursor: 'auto',
           lineHeight: '18px',
+          color: 'secondary',
         },
       },
       unitNumber: {

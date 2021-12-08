@@ -28,7 +28,7 @@ TableData.propTypes = {
   padding: PropTypes.string,
   /** Specify TableData border */
   border: PropTypes.string,
-  /** Centering specifed TableData */
+  color: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,

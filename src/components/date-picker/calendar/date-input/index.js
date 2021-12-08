@@ -110,6 +110,7 @@ DateInput.propTypes = {
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   borderColor: PropTypes.string,
+  color: PropTypes.string,
   /** Custom style for input */
   customStyle: PropTypes.object,
 }

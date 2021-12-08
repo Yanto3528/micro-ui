@@ -36,6 +36,7 @@ export const HeaderWrapper = styled.div.attrs(() => ({
   padding: ${({ padding }) => padding};
   background-color: ${resolveColor('bg')};
   border: 1px solid ${resolveColor('borderColor')};
+  color: ${resolveColor('color')};
   transition: all 0.4s;
   ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};

@@ -33,6 +33,7 @@ export const TableHeaderWrapper = styled.th.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
   background-color: ${resolveColor('bg')};
+  color: ${resolveColor('color')};
   ${fontStyles};
   border: ${({ border }) => border};
   text-align: ${({ alignment }) => alignment};
@@ -53,6 +54,7 @@ export const TableDataWrapper = styled.td.attrs(() => ({
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
   border-color: ${resolveColor('borderColor')};
+  color: ${resolveColor('color')};
   ${fontStyles};
   cursor: ${({ cursor }) => cursor};
   line-height: ${({ lineHeight }) => lineHeight};
