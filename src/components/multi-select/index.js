@@ -58,6 +58,9 @@ export const MultiSelect = React.forwardRef(
     const onSelectItem = (option) => (event) => {
       onChange?.([...value, option], event)
       onClose()
+      if (inputValue) {
+        setInputValue('')
+      }
     }
 
     const onRemoveOption = (selectedName) => {
