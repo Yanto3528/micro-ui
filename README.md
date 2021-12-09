@@ -1,13 +1,17 @@
+# Component Library
+
+Component library is a library of components built with ReactJS which allows customization and theme for all application. It's designed in a way so that it is easily customizable and save a lot of time for new project.
+
 # How to install
 
 Please make sure that your react version is 16.8 or above in order to install component-library.
 
 To install component-library, all you need to do is to install component-library and its peer dependencies:
 
-```
-npm install component-library styled-components
+```bash
+npm install @aia-digital/component-library styled-components
 # or
-yarn add component-library styled-components
+yarn add @aia-digital/component-library styled-components
 ```
 
 #Usage
@@ -17,7 +21,7 @@ To start using the components, please follow these step:
 
 ```jsx
 import { ThemeProvider } from 'styled-components'
-import { theme } from 'component-library'
+import { theme } from '@aia-digital/component-library'
 
 function App({ children }) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>
@@ -27,7 +31,7 @@ function App({ children }) {
 2. Now you can start using your component like this:
 
 ```jsx
-import { Button } from 'component-library'
+import { Button } from '@aia-digital/component-library'
 
 function Example() {
   return <Button>Click me</Button>
@@ -48,7 +52,7 @@ If you want to contribute to this project, you can take a look at [CONTRIBUTING.
 
 To run unit-testing
 
-```
+```bash
 # Test
 npm run test
 # or

@@ -9,7 +9,10 @@ useClickOutside is a custom hook which returns a ref to attach to DOM element an
 ## Example
 
 ```jsx
-import { useClickOutside, useToggle } from 'component-library/hooks'
+import {
+  useClickOutside,
+  useToggle,
+} from '@aia-digital/component-library/hooks'
 
 function TestComponent() {
   const [isOpen, { onOpen, onClose }] = useToggle()
