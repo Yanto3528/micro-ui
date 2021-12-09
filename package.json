@@ -20,8 +20,8 @@
   },
   "sideEffects": false,
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "yanto.lee@aia.com",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/eslint-parser": "^7.15.7",
@@ -95,5 +95,10 @@
       "npm run format",
       "npm run lint"
     ]
-  }
+  },
+  "contributors": [
+    "Yanto Lee <Yanto.Lee@aia.com>",
+    "Steven Theodore <Steven.Theodore@aia.com>",
+    "Hilal Arsa <Hilal.Arsa@aia.com>"
+  ]
 }

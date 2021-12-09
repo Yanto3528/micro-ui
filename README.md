@@ -64,3 +64,11 @@ npm run test:coverage
 # or
 yarn test:coverage
 ```
+
+# Contributors
+
+Thanks to all these amazing people who contribute to this library:
+
+- Yanto Lee - yanto.lee@aia.com
+- Steven Theodore - steven.theodore@aia.com
+- Hilal Arsa - hilal.arsa@aia.com
