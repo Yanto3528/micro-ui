@@ -28,7 +28,6 @@ export const MultiSelect = React.forwardRef(
       readOnly,
       disabled,
       placeholder,
-      selectedOptionProps,
       ...props
     },
     ref
@@ -36,6 +35,9 @@ export const MultiSelect = React.forwardRef(
     const theme = useTheme()
     const { multiSelect: defaultSelectProps } = theme.default.component
     const wrapperProps = getProps(props, defaultSelectProps, wrapperPropsData)
+    const { selectedOptionProps } = getProps(props, defaultSelectProps, [
+      'selectedOptionProps',
+    ])
     const iconContainerProps = getProps(props, defaultSelectProps, ['icon'])
 
     const defaultOptionsRef = useRef(generateOptions(options, filter))
@@ -90,7 +92,9 @@ export const MultiSelect = React.forwardRef(
       onClose()
     }
 
-    const optionValues = value.map((selectedOption) => selectedOption.value)
+    const optionValues = Array.isArray(value)
+      ? value.map((selectedOption) => selectedOption.value)
+      : []
     const displayOptions = defaultOptionsRef.current
       .filter((option) => !optionValues.includes(option.value))
       .filter((option) =>
@@ -107,12 +111,17 @@ export const MultiSelect = React.forwardRef(
       >
         {Array.isArray(value) &&
           value.map((selectedOption, selectedIndex) => (
-            <SelectedWrapper key={selectedIndex} {...selectedOptionProps}>
+            <SelectedWrapper
+              key={selectedIndex}
+              {...selectedOptionProps}
+              data-testid='multi-selected-option'
+            >
               <p>{selectedOption?.name}</p>
               <Icon
                 name='close'
                 size='xs'
                 onClick={onRemoveOption(selectedOption.name)}
+                data-testid='multi-selected-close'
               />
             </SelectedWrapper>
           ))}
