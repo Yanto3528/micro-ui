@@ -19,3 +19,5 @@ stages:
     condition: or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranchName'], 'master'))
     jobs:
       - template: ./az-pipeline/jobs/unit-test-jest.yml@pipeline
+        parameters:
+          generateNPMRC: false
