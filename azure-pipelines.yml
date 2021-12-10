@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: ubuntu-latest
+
+resources:
+  repositories:
+    - repository: pipeline
+      type: git
+      name: pipeline-template
+      ref: refs/heads/master
+      trigger: none
+      
+stages:
+  - stage: Test
+    condition: or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranchName'], 'master'))
+    jobs:
+      - template: ./az-pipeline/jobs/unit-test-jest.yml@pipeline
