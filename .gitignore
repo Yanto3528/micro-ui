@@ -78,7 +78,6 @@ yarn-error.log
 
 # Lock package file
 yarn.lock
-package-lock.json
 
 # Test report
 junit.xml
