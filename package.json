@@ -17,7 +17,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepublishOnly": "cd dist && set NODE_PATH=/node_modules",
-    "chromatic": "npx chromatic --project-token=ec498a99e1bf"
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
   },
   "repository": {
     "type": "git",
