@@ -17,9 +17,6 @@ export const checkedChecklistStyles = css`
 `
 
 export const fontStyles = css`
-  font-family: ${({ theme, fontFamily }) =>
-    `${theme.fontFamily[fontFamily] || fontFamily}, sans-serif`};
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize] || fontSize};
-  font-weight: ${({ theme, fontWeight }) =>
-    theme.fontWeight[fontWeight] || fontWeight};
+  font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
 `

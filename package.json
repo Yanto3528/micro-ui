@@ -104,7 +104,7 @@
     "webpack": "^5.65.0"
   },
   "lint-staged": {
-    "*.{js,css}": [
+    "./src/**/*.{js,jsx,ts,tsx,json}": [
       "npm run format",
       "npm run lint"
     ]
