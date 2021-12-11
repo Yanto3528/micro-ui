@@ -1,6 +1,6 @@
 {
-  "name": "@aia-digital/reactjs-ui-library",
-  "version": "0.0.1",
+  "name": "micro-ui",
+  "version": "0.1.0",
   "description": "Reusable and highly customizable ui component built with ReactJS",
   "main": "/index.cjs.js",
   "module": "/index.js",
@@ -16,39 +16,37 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepublishOnly": "cd dist && set NODE_PATH=/node_modules"
+    "prepublishOnly": "cd dist && set NODE_PATH=/node_modules",
+    "chromatic": "npx chromatic --project-token=ec498a99e1bf"
   },
   "repository": {
     "type": "git",
     "url": "https://AIASingapore@dev.azure.com/AIASingapore/Common%20Library/_git/reactjs-ui-library"
   },
-  "pre-commit": [
-    "lint",
-    "test",
-    "cover"
-  ],
   "sideEffects": false,
   "keywords": [
-    "aia digital",
     "reactjs",
-    "ui library"
+    "ui library",
+    "ui components",
+    "micro",
+    "micro ui"
   ],
-  "author": "AIA Digital",
-  "license": "ISC",
+  "author": "yanto3528@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.16.3",
     "dayjs": "^1.10.7",
     "keymirror": "^0.1.1",
     "normalize.css": "^8.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "styled-components": "^5.3.1"
-  },
-  "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": "^16.8.0",
-    "styled-components": ">=5.0.0",
-    "prop-types": ">=15.0.0"
+    "styled-components": ">=5.0.0"
+  },
+  "peerDependencies": {
+    "prop-types": ">=15.0.0",
+    "react": ">=16.8.0",
+    "react-dom": "^16.8.0",
+    "styled-components": ">=5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -75,6 +73,7 @@
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
+    "chromatic": "^6.2.0",
     "core-js": "^3.19.1",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
@@ -109,10 +108,5 @@
       "npm run format",
       "npm run lint"
     ]
-  },
-  "contributors": [
-    "Yanto Lee <Yanto.Lee@aia.com>",
-    "Steven Theodore <Steven.Theodore@aia.com>",
-    "Hilal Arsa <Hilal.Arsa@aia.com>"
-  ]
+  }
 }

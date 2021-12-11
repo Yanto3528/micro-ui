@@ -1,7 +1,7 @@
 module.exports = {
   displayName: {
-    name: 'ReactJS UI Library',
-    color: 'redBright'
+    name: 'micro ui',
+    color: 'redBright',
   },
   // The root directory that Jest should scan for tests and modules within
   // rootDir: undefined,
@@ -12,10 +12,7 @@ module.exports = {
   // ],
   // An array of regexp pattern strings that are matched against all test paths,
   // matched tests are skipped
-  testPathIgnorePatterns: [
-    '/node_modules/', 
-    '/public/'
-  ],
+  testPathIgnorePatterns: ['/node_modules/', '/public/'],
   // A map from regular expressions to paths to transformers
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
@@ -28,12 +25,6 @@ module.exports = {
   // A list of paths to modules that run some code to configure
   // or set up the testing framework before each test
   setupFilesAfterEnv: ['<rootDir>/src/test-utils/setupTests.js'],
-
-  // A map from regular expressions to module names or to arrays of module names
-  // that allow to stub out resources with a single module
-  moduleNameMapper: {
-    '^lodash-es$': 'lodash',
-  },
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
@@ -52,26 +43,15 @@ module.exports = {
   coverageDirectory: 'coverage',
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    'json',
-    'lcov',
-    'text',
-    'clover',
-    'cobertura'
-  ],
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'cobertura'],
 
   // An array of regexp pattern strings,
   // matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: [
-    'dist'
-  ],
+  modulePathIgnorePatterns: ['dist'],
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: [
-    'default',
-    'jest-junit'
-  ],
-  
+  reporters: ['default', 'jest-junit'],
+
   // This option allows the use of a custom results processor
   testResultsProcessor: 'jest-junit',
 }

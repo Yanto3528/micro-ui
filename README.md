@@ -8,10 +8,10 @@ Inside your React project directory, install AIA Digital reactjs ui library by r
 
 ```bash
 # with npm
-npm install @aia-digital/reactjs-ui-library styled-components
+npm install micro-ui styled-components
 
 # with yarn
-yarn add @aia-digital/reactjs-ui-library styled-components
+yarn add micro-ui styled-components
 ```
 
 Please note that [react](https://www.npmjs.com/package/react) >=16.8.0, [react-dom](https://www.npmjs.com/package/react-dom) >=16.8.0, [styled-components](https://www.npmjs.com/package/styled-components) >=5.0.0 and [prop-types](https://www.npmjs.com/package/prop-types) >=15.0.0 are peer dependencies.
@@ -22,10 +22,10 @@ First, you need to set up the _styled-components_ **ThemeProvider** at the root 
 
 ```jsx
 import { ThemeProvider } from 'styled-components'
-import { theme } from '@aia-digital/reactjs-ui-library'
+import { theme } from 'micro-ui'
 
-function App({ Component }) {
-  return <ThemeProvider theme={theme}>{Component}</ThemeProvider>
+function App({ children }) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 ```
 
