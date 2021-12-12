@@ -4,7 +4,7 @@ The React UI components library based on theme settings are designed to be easy 
 
 ## Installation
 
-Inside your React project directory, install AIA Digital reactjs ui library by running either of the following:
+Inside your React project directory, install Micro UI by running either of the following:
 
 ```bash
 # with npm
@@ -29,10 +29,10 @@ function App({ children }) {
 }
 ```
 
-Now you can start using your component like the following:
+Now you can start using your component like this:
 
 ```jsx
-import { Button } from '@aia-digital/component-library'
+import { Button } from 'micro-ui'
 
 function Example() {
   return <Button>Click me</Button>
@@ -73,13 +73,3 @@ npm run test:coverage
 # or
 yarn test:coverage
 ```
-
----
-
-# Contributors
-
-Thanks to all these amazing people who contribute to this library:
-
-- Yanto Lee - yanto.lee@aia.com
-- Steven Theodore - steven.theodore@aia.com
-- Hilal Arsa - hilal.arsa@aia.com
