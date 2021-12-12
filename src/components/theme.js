@@ -352,7 +352,7 @@ export const theme = {
           color: 'dark',
         },
         row: {
-          stripeColor: 'gray.1002',
+          stripeColor: 'gray.100',
         },
         data: {
           padding: '1.1rem 1.5rem',

@@ -250,7 +250,7 @@ describe('components > Select', () => {
     render(<ControlledSelect options={options} variant='outline' />)
     const selectWrapper = screen.getByTestId('select-wrapper')
     expect(selectWrapper).toHaveStyle({
-      'border-color': theme.colors.primary,
+      'border-color': theme.colors.gray[200],
     })
   })
 })

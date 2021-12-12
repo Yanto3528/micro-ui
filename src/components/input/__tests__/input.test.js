@@ -107,8 +107,8 @@ describe('components > Input', () => {
     const wrapper = screen.getByTestId('input-wrapper')
     expect(input).toHaveStyle({
       'border-radius': '50px',
-      'border-color': theme.colors.lightGray,
-      'background-color': theme.colors.lightGray,
+      'border-color': theme.colors.gray[100],
+      'background-color': theme.colors.gray[100],
     })
     expect(wrapper).toHaveStyle({
       width: '100%',
@@ -149,7 +149,7 @@ describe('components > Input', () => {
       height: '50px',
       padding: '10px',
       'border-radius': '8px',
-      'border-color': theme.colors.primary,
+      'border-color': theme.colors.danger,
       'margin-bottom': '20px',
     })
     expect(wrapper).toHaveStyle({

@@ -115,7 +115,7 @@ describe('components > ContactInput', () => {
 
     rerender(<ContactInput variant='outline' hasError />)
     expect(contactInputWrapper).toHaveStyle({
-      'border-color': theme.colors.primary,
+      'border-color': theme.colors.danger,
     })
   })
 

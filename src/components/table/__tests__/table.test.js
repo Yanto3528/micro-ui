@@ -58,12 +58,12 @@ describe('components > Table', () => {
     )
     const row = screen.getByRole('row', { name: /2 sarah smith female/i })
     expect(row).not.toHaveStyle({
-      'background-color': theme.colors.lightGray2,
+      'background-color': theme.colors.gray[100],
     })
 
     rerender(<TableComponent tableProps={{ variant: 'striped' }} />)
     expect(row).toHaveStyle({
-      'background-color': theme.colors.lightGray2,
+      'background-color': theme.colors.gray[100],
     })
   })
 
