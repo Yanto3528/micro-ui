@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import objectPath from 'object-path'
 
 export const mergeDeep = (target, source) => {
   if (!isObject(target) || !isObject(source)) {
@@ -19,7 +20,9 @@ export const mergeDeep = (target, source) => {
   return target
 }
 
-export const getColor = (theme, color) => theme.colors[color] || color
+export const getColor = (theme, color) => {
+  return objectPath.get(theme, `colors.${color}`, color)
+}
 export const getBorderRadius = ({ theme, rounded, radius }) => {
   return rounded ? '50px' : theme.radius[radius] || radius
 }
