@@ -316,8 +316,8 @@ describe('components > MultiSelect', () => {
       'border-radius': '50px',
     })
     expect(selectedOption).toHaveStyle({
-      'background-color': theme.colors.gray,
-      color: theme.colors.secondary,
+      'background-color': theme.colors.gray[200],
+      color: theme.colors.dark,
       gap: '4px',
       padding: '4px',
     })
@@ -377,7 +377,7 @@ describe('components > MultiSelect', () => {
     render(<ControlledMultiSelect options={options} variant='outline' />)
     const selectWrapper = screen.getByTestId('multi-select-wrapper')
     expect(selectWrapper).toHaveStyle({
-      'border-color': theme.colors.primary,
+      'border-color': theme.colors.gray[200],
     })
   })
 })

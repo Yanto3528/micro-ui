@@ -57,8 +57,8 @@ describe('components > Textarea', () => {
     const wrapper = screen.getByTestId('textarea-wrapper')
     expect(textarea).toHaveStyle({
       'border-radius': '50px',
-      'border-color': theme.colors.lightGray,
-      'background-color': theme.colors.lightGray,
+      'border-color': theme.colors.gray[100],
+      'background-color': theme.colors.gray[100],
     })
     expect(wrapper).toHaveStyle({
       width: '100%',
@@ -97,7 +97,7 @@ describe('components > Textarea', () => {
     expect(textarea).toHaveStyle({
       padding: '10px',
       'border-radius': '8px',
-      'border-color': theme.colors.primary,
+      'border-color': theme.colors.danger,
       'margin-bottom': '20px',
     })
     expect(wrapper).toHaveStyle({
