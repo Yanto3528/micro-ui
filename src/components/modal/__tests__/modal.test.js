@@ -1,11 +1,11 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
+import { X as CloseIcon } from 'react-feather'
 
 import { render, screen, fireEvent, waitFor } from '@/test-utils'
 import { useToggle } from '@/hooks'
 
 import { Button } from '../../button'
-import { Icon } from '../../icon'
 import { Modal } from '../index'
 
 const BaseModal = ({ children, ...props }) => {
@@ -61,7 +61,7 @@ describe('components > Modal', () => {
   it('should be able to open and close modal', async () => {
     render(
       <BaseModal>
-        <Modal.Close icon={<Icon name='close' />} />
+        <Modal.Close icon={<CloseIcon />} />
         <Modal.Content>
           <Modal.Body>Modal body</Modal.Body>
         </Modal.Content>
@@ -88,7 +88,7 @@ describe('components > Modal', () => {
     modalWrapper = screen.getByTestId('modal-wrapper')
     expect(modalWrapper).toBeInTheDocument()
     const modalClose = screen.getByTestId('modal-close')
-    expect(modalClose.children[0]).toHaveClass('icon-close')
+    expect(modalClose.children[0]).toBeInTheDocument()
     userEvent.click(modalClose)
     fireEvent.animationEnd(screen.getByTestId('animate-modal-wrapper'))
     await waitFor(() => {

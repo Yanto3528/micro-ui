@@ -1,8 +1,8 @@
 import React from 'react'
+import { Activity } from 'react-feather'
 
 import { theme } from '../theme'
 import { RadioButton } from './index'
-import { Icon } from '../icon'
 
 export default {
   title: 'Components/Forms/RadioButton',
@@ -37,7 +37,7 @@ Outline.args = {
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   ...Outline.args,
-  icon: <Icon name='male' />,
+  icon: <Activity />,
 }
 
 export const Square = Template.bind({})
@@ -50,7 +50,7 @@ Square.args = {
 export const SquareWithIcon = Template.bind({})
 SquareWithIcon.args = {
   ...Outline.args,
-  icon: <Icon name='male' size='xl' />,
+  icon: <Activity />,
   iconSpacing: '10px',
   buttonType: 'square',
 }

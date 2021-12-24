@@ -1,7 +1,7 @@
 import React from 'react'
-import { mergeDeep } from '../utils'
+import { Calendar, ChevronDown } from 'react-feather'
 
-import { Icon } from './icon'
+import { mergeDeep } from '../utils'
 
 export const theme = {
   colors: {
@@ -134,7 +134,7 @@ export const theme = {
         variant: 'solid',
         borderColor: 'gray.200',
         focusBorderColor: 'gray.200',
-        rightElement: <Icon name='calendar' size='1.3em' />,
+        rightElement: <Calendar size={20} />,
         paddingLeftElement: '3.6rem',
         paddingRightElement: '3.6rem',
         dateFormat: 'DD/MM/YYYY',
@@ -229,7 +229,7 @@ export const theme = {
         rounded: false,
         radius: 'sm',
         fontSize: 'md',
-        icon: <Icon name='down' size='m' />,
+        icon: <ChevronDown size={20} />,
         bg: 'gray.100',
         color: 'dark',
         borderColor: 'gray.200',
@@ -294,7 +294,7 @@ export const theme = {
         rounded: false,
         radius: 'sm',
         fontSize: 'md',
-        icon: <Icon name='down' size='m' />,
+        icon: <ChevronDown size={20} />,
         bg: 'gray.100',
         color: 'dark',
         borderColor: 'gray.200',

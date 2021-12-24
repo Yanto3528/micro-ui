@@ -1,10 +1,10 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
+import { Plus, Minus } from 'react-feather'
 
 import { render, screen, fireEvent, waitFor } from '@/test-utils'
 
 import { theme } from '../../theme'
-import { Icon } from '../../icon'
 import { Accordion } from '../index'
 
 const mockFn = jest.fn()
@@ -48,8 +48,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Icon name='minus' size='1em' />,
-        closeIcon: <Icon name='add' size='1em' />,
+        openIcon: <Minus size='1em' />,
+        closeIcon: <Plus size='1em' />,
       },
     },
     content: { children: 'content' },
@@ -58,8 +58,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Icon name='minus' size='1em' />,
-        closeIcon: <Icon name='add' size='1em' />,
+        openIcon: <Minus size='1em' />,
+        closeIcon: <Plus size='1em' />,
       },
     },
     content: { children: 'content' },
@@ -68,8 +68,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Icon name='minus' size='1em' />,
-        closeIcon: <Icon name='add' size='1em' />,
+        openIcon: <Minus size='1em' />,
+        closeIcon: <Plus size='1em' />,
       },
     },
     content: { children: 'content' },
@@ -235,10 +235,10 @@ describe('components > Accordion', () => {
     const headers = screen.getAllByTestId('accordion-header')
     headers.forEach((headerWrapper) => {
       expect(headerWrapper.children.length).toBe(2)
-      expect(headerWrapper.children[0]).toHaveClass('icon-add')
+      expect(headerWrapper.children[0]).toBeInTheDocument()
 
       userEvent.click(headerWrapper)
-      expect(headerWrapper.children[0]).toHaveClass('icon-minus')
+      expect(headerWrapper.children[0]).toBeInTheDocument()
     })
   })
 

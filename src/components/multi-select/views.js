@@ -160,8 +160,8 @@ export const IconContainer = styled.span.attrs(() => ({
   className: 'micro-multi-select-icon-container',
 }))`
   position: absolute;
-  transform: translateY(20%);
-  top: 0;
+  transform: translateY(-50%);
+  top: 50%;
   right: 10px;
   display: flex;
   align-items: center;

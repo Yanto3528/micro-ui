@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import userEvent from '@testing-library/user-event'
+import { Plus, Calendar } from 'react-feather'
 
 import { render, screen } from '@/test-utils'
 
-import { Icon } from '../../icon'
 import { theme } from '../../theme'
 import { Input } from '../index'
 
@@ -39,12 +39,12 @@ describe('components > Input', () => {
 
   it('should render with left element when specified', () => {
     const { rerender } = render(
-      <Input placeholder='Enter your name' leftElement={<Icon name='add' />} />
+      <Input placeholder='Enter your name' leftElement={<Plus />} />
     )
     const leftElement = screen.queryByTestId('left-element')
     expect(leftElement).toBeInTheDocument()
     expect(leftElement.children.length).toBe(1)
-    expect(leftElement.children[0]).toHaveClass('icon-add')
+    expect(leftElement.children[0]).toBeInTheDocument()
 
     rerender(<Input placeholder='Enter your name' />)
     expect(leftElement).not.toBeInTheDocument()
@@ -52,12 +52,12 @@ describe('components > Input', () => {
 
   it('should render with right element when specified', () => {
     const { rerender } = render(
-      <Input placeholder='Enter your name' rightElement={<Icon name='add' />} />
+      <Input placeholder='Enter your name' rightElement={<Plus />} />
     )
     const rightElement = screen.queryByTestId('right-element')
     expect(rightElement).toBeInTheDocument()
     expect(rightElement.children.length).toBe(1)
-    expect(rightElement.children[0]).toHaveClass('icon-add')
+    expect(rightElement.children[0]).toBeInTheDocument()
 
     rerender(<Input placeholder='Enter your name' />)
     expect(rightElement).not.toBeInTheDocument()
@@ -67,19 +67,19 @@ describe('components > Input', () => {
     const { rerender } = render(
       <Input
         placeholder='Enter your name'
-        leftElement={<Icon name='add' />}
-        rightElement={<Icon name='calendar' />}
+        leftElement={<Plus />}
+        rightElement={<Calendar />}
       />
     )
     const leftElement = screen.queryByTestId('left-element')
     expect(leftElement).toBeInTheDocument()
     expect(leftElement.children.length).toBe(1)
-    expect(leftElement.children[0]).toHaveClass('icon-add')
+    expect(leftElement.children[0]).toBeInTheDocument()
 
     const rightElement = screen.queryByTestId('right-element')
     expect(rightElement).toBeInTheDocument()
     expect(rightElement.children.length).toBe(1)
-    expect(rightElement.children[0]).toHaveClass('icon-calendar')
+    expect(rightElement.children[0]).toBeInTheDocument()
 
     rerender(<Input placeholder='Enter your name' />)
     expect(leftElement).not.toBeInTheDocument()

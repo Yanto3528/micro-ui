@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@/test-utils'
+import { Plus } from 'react-feather'
 
 import { theme } from '../../theme'
-import { Icon } from '../../icon'
 import { Button } from '../index'
 
 jest.mock('../../../constants', () => ({ isDev: false }))
@@ -109,10 +109,10 @@ describe('components > button', () => {
   })
 
   it('should render button with icon', () => {
-    render(<Button icon={<Icon name='add' />}>Add</Button>)
+    render(<Button icon={<Plus />}>Add</Button>)
     const button = screen.getByRole('button', { name: /add/i })
     expect(button).toHaveTextContent('Add')
-    expect(button.children[0]).toHaveClass('icon-add')
+    expect(button.children[0]).toBeInTheDocument()
   })
 
   it('should render button with fluid and width props', () => {
