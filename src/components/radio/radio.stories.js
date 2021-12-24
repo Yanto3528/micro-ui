@@ -18,9 +18,3 @@ Circular.args = {
   disabled: false,
   readOnly: false,
 }
-
-export const Check = Template.bind({})
-Check.args = {
-  ...Circular.args,
-  variant: 'check',
-}

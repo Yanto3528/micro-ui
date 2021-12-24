@@ -1,39 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { resolveColor } from '@/utils'
-import { checklistStyles, checkedChecklistStyles, fontStyles } from '@/styles'
-
-import { RadioType } from './utils/constants'
-
-const circularStyles = css`
-  width: 0.5em;
-  height: 0.5em;
-  background-color: white;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-`
-
-const resolveVariant = ({ variant }) => {
-  switch (variant) {
-    case RadioType.check:
-      return checklistStyles
-    default:
-      return circularStyles
-  }
-}
-
-const resolveCheckedRadioType = ({ variant }) => {
-  switch (variant) {
-    case RadioType.check:
-      return checkedChecklistStyles
-    default:
-      return css`
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-      `
-  }
-}
+import { fontStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-radio-wrapper',
@@ -55,7 +23,8 @@ export const Wrapper = styled.div.attrs(() => ({
 export const Label = styled.label.attrs(() => ({
   className: 'micro-radio-label',
 }))`
-  display: block;
+  display: flex;
+  align-items: center;
   position: relative;
   margin: ${({ margin }) => margin};
   cursor: pointer;
@@ -71,7 +40,7 @@ export const Label = styled.label.attrs(() => ({
 export const LabelText = styled.span.attrs(() => ({
   className: 'micro-radio-label-text',
 }))`
-  padding-left: 1.8em;
+  padding-left: 0.5em;
   display: inline-block;
 `
 
@@ -84,35 +53,40 @@ export const Check = styled.input.attrs(() => ({
   cursor: pointer;
 
   &:checked ~ .micro-radio-checkmark {
-    background-color: ${resolveColor('activeColor')};
+    background-color: ${({ theme }) => theme.colors.white};
     border-color: ${resolveColor('activeColor')};
   }
 
   &:checked ~ .micro-radio-checkmark:after {
-    ${resolveCheckedRadioType};
+    opacity: 1;
   }
 `
 
 export const Checkmark = styled.span.attrs(() => ({
   className: 'micro-radio-checkmark',
 }))`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1.2em;
-  height: 1.2em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
   background-color: transparent;
-  border: 1px solid ${resolveColor('borderColor')};
-  border-radius: ${({ theme, radius, variant }) =>
-    variant === RadioType.circular ? '50%' : theme.radius[radius] || radius};
+  border: 0.2em solid ${resolveColor('borderColor')};
+  border-radius: 50%;
   transition: all 0.3s ease-out;
 
   &:after {
     content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    ${resolveVariant};
+    width: 0.8em;
+    height: 0.8em;
+    background-color: ${resolveColor('activeColor')};
+    border-radius: 50%;
+    opacity: 0;
     transition: all 0.3s ease-out;
+  }
+
+  &:hover {
+    border-color: ${resolveColor('activeColor')};
   }
 `

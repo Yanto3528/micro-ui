@@ -30,12 +30,6 @@ describe('components > Radio', () => {
     expect(radio).not.toBeChecked()
   })
 
-  it('should render with variant check style', () => {
-    render(<Radio label='Tick me' variant='check' />)
-    const radio = screen.getByRole('radio')
-    expect(radio).toBeInTheDocument()
-  })
-
   it('should render radio with width/fluid props', () => {
     const { rerender } = render(<Radio label='Tick me' fluid />)
     const radioWrapper = screen.getByTestId('radio-wrapper')
@@ -52,19 +46,6 @@ describe('components > Radio', () => {
     expect(radioWrapper).toHaveStyle({
       width: '400px',
       height: '100px',
-    })
-  })
-
-  it('should render with check variant', () => {
-    const { rerender } = render(<Radio label='Tick me' variant='check' />)
-    const checkmark = screen.getByTestId('radio-checkmark')
-    expect(checkmark).toHaveStyle({
-      'border-radius': '4px',
-    })
-
-    rerender(<Radio label='Tick me' variant='check' radius='6px' />)
-    expect(checkmark).toHaveStyle({
-      'border-radius': '6px',
     })
   })
 

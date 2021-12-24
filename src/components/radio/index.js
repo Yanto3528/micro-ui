@@ -29,8 +29,7 @@ export const Radio = React.forwardRef(
     const wrapperProps = getProps(props, defaultRadioProps, wrapperData)
     const checkmarkProps = getProps(props, defaultRadioProps, [
       'borderColor',
-      'radius',
-      'variant',
+      'activeColor',
     ])
 
     return (
@@ -40,7 +39,6 @@ export const Radio = React.forwardRef(
         data-testid='radio-wrapper'
       >
         <Label htmlFor={id} disabled={disabled || readOnly}>
-          <LabelText>{label}</LabelText>
           <Check
             id={id}
             {...defaultRadioProps}
@@ -49,6 +47,7 @@ export const Radio = React.forwardRef(
             ref={ref}
           />
           <Checkmark {...checkmarkProps} data-testid='radio-checkmark' />
+          <LabelText>{label}</LabelText>
         </Label>
       </Wrapper>
     )
@@ -60,15 +59,12 @@ Radio.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /** Border color for radio */
   borderColor: PropTypes.string,
-  /** Border radius for radio */
-  radius: PropTypes.string,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  variant: PropTypes.oneOf(['check', 'circular']),
   id: PropTypes.string,
   margin: PropTypes.string,
   /** Give this a full width of the current container */
