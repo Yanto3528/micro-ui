@@ -11,13 +11,13 @@ const verticalStyles = css`
   height: 100%;
   width: fit-content;
   flex-direction: column;
-  .aia-divider-line {
+  .micro-divider-line {
     width: 1px;
     writing-mode: vertical-lr;
     height: 100%;
   }
 
-  .aia-divider-text {
+  .micro-divider-text {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
   }
@@ -33,7 +33,7 @@ const resolveOrientation = ({ orientation }) => {
 }
 
 export const DividerWrapper = styled.div.attrs(() => ({
-  className: 'aia-divider-wrapper',
+  className: 'micro-divider-wrapper',
 }))`
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@ export const DividerWrapper = styled.div.attrs(() => ({
 `
 
 export const Line = styled.span.attrs(() => ({
-  className: 'aia-divider-line',
+  className: 'micro-divider-line',
 }))`
   flex: 1;
   height: 1px;
@@ -52,7 +52,7 @@ export const Line = styled.span.attrs(() => ({
 `
 
 export const Text = styled.p.attrs(() => ({
-  className: 'aia-divider-text',
+  className: 'micro-divider-text',
 }))`
   padding-inline: ${({ textPaddingInline }) => textPaddingInline};
   ${fontStyles};

@@ -9,7 +9,7 @@ const defaultStyles = css`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   flex-direction: row;
-  .aia-radio-button-icon-container {
+  .micro-radio-button-icon-container {
     margin-right: ${({ iconSpacing }) => iconSpacing};
   }
 `
@@ -18,7 +18,7 @@ const squareStyles = css`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   flex-direction: column;
-  .aia-radio-button-icon-container {
+  .micro-radio-button-icon-container {
     margin-bottom: ${({ iconSpacing }) => iconSpacing};
   }
 `
@@ -62,7 +62,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-radio-button-wrapper',
+  className: 'micro-radio-button-wrapper',
 }))`
   flex: 1;
   ${({ disabled }) =>
@@ -74,7 +74,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Label = styled.label.attrs(() => ({
-  className: 'aia-radio-button-label',
+  className: 'micro-radio-button-label',
 }))`
   position: relative;
   display: flex;
@@ -101,7 +101,7 @@ export const Label = styled.label.attrs(() => ({
 `
 
 export const Check = styled.input.attrs(() => ({
-  className: 'aia-radio-button',
+  className: 'micro-radio-button',
   type: 'radio',
 }))`
   position: absolute;
@@ -109,7 +109,7 @@ export const Check = styled.input.attrs(() => ({
   cursor: pointer;
   pointer-events: ${({ readOnly }) => (readOnly ? 'none' : 'auto')};
 
-  &:checked + .aia-radio-button-label {
+  &:checked + .micro-radio-button-label {
     background-color: ${({ theme, bg, variant, activeBGColor }) =>
       variant === Variant.outline
         ? getColor(theme, bg)
@@ -119,7 +119,7 @@ export const Check = styled.input.attrs(() => ({
 `
 
 export const IconContainer = styled.span.attrs(() => ({
-  className: 'aia-radio-button-icon-container',
+  className: 'micro-radio-button-icon-container',
 }))`
   display: inline-block;
 `

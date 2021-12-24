@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Input } from '../input'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-date-picker-wrapper',
+  className: 'micro-date-picker-wrapper',
 }))`
   position: relative;
   display: inline-block;

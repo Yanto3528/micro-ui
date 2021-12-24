@@ -38,7 +38,7 @@ const resolvePlacement = ({ placement }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-tooltip-wrapper',
+  className: 'micro-tooltip-wrapper',
 }))`
   display: inline-block;
   position: relative;
@@ -46,7 +46,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Content = styled.div.attrs(() => ({
-  className: 'aia-tooltip-content',
+  className: 'micro-tooltip-content',
 }))`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -64,7 +64,7 @@ export const Content = styled.div.attrs(() => ({
 `
 
 export const Arrow = styled.span.attrs(() => ({
-  className: 'aia-tooltip-arrow',
+  className: 'micro-tooltip-arrow',
 }))`
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;

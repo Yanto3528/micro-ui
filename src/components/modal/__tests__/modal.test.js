@@ -1,11 +1,11 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
+import { X as CloseIcon } from 'react-feather'
 
 import { render, screen, fireEvent, waitFor } from '@/test-utils'
 import { useToggle } from '@/hooks'
 
 import { Button } from '../../button'
-import { Icon } from '../../icon'
 import { Modal } from '../index'
 
 const BaseModal = ({ children, ...props }) => {
@@ -26,7 +26,7 @@ describe('components > Modal', () => {
     render(
       <BaseModal>
         <Modal.Close />
-        <Modal.Header icon={<Icon name='home' />}>Modal Header</Modal.Header>
+        <Modal.Header>Modal Header</Modal.Header>
         <Modal.Content>
           <Modal.Title>We are sorry</Modal.Title>
           <Modal.Body>Modal body</Modal.Body>
@@ -52,8 +52,6 @@ describe('components > Modal', () => {
     expect(modalClose).toBeInTheDocument()
     expect(modalHeader).toBeInTheDocument()
     expect(modalHeader).toHaveTextContent('Modal Header')
-    expect(modalHeader.children[0]).toBeInTheDocument()
-    expect(modalHeader.children[0].children[0]).toHaveClass('icon-home')
     expect(modalContent).toBeInTheDocument()
     expect(modalTitle).toBeInTheDocument()
     expect(modalBody).toBeInTheDocument()
@@ -63,7 +61,7 @@ describe('components > Modal', () => {
   it('should be able to open and close modal', async () => {
     render(
       <BaseModal>
-        <Modal.Close icon={<Icon name='close' />} />
+        <Modal.Close icon={<CloseIcon />} />
         <Modal.Content>
           <Modal.Body>Modal body</Modal.Body>
         </Modal.Content>
@@ -90,7 +88,7 @@ describe('components > Modal', () => {
     modalWrapper = screen.getByTestId('modal-wrapper')
     expect(modalWrapper).toBeInTheDocument()
     const modalClose = screen.getByTestId('modal-close')
-    expect(modalClose.children[0]).toHaveClass('icon-close')
+    expect(modalClose.children[0]).toBeInTheDocument()
     userEvent.click(modalClose)
     fireEvent.animationEnd(screen.getByTestId('animate-modal-wrapper'))
     await waitFor(() => {
@@ -108,7 +106,6 @@ describe('components > Modal', () => {
       },
       close: {
         radius: '4px',
-        position: 'left',
         customStyle: {
           margin: '10px',
         },
@@ -116,11 +113,6 @@ describe('components > Modal', () => {
       header: {
         customStyle: {
           'margin-bottom': '10px',
-        },
-        iconWrapperProps: {
-          customStyle: {
-            'border-radius': '40%',
-          },
         },
       },
       content: {
@@ -148,12 +140,10 @@ describe('components > Modal', () => {
       },
     }
     const { wrapper, close, header, content, title, body, actions } = modalProps
-    const { rerender } = render(
+    render(
       <Modal isOpen {...modalProps.wrapper}>
         <Modal.Close {...modalProps.close} />
-        <Modal.Header icon={<Icon name='home' />} {...modalProps.header}>
-          Modal Header
-        </Modal.Header>
+        <Modal.Header {...modalProps.header}>Modal Header</Modal.Header>
         <Modal.Content {...modalProps.content}>
           <Modal.Title {...modalProps.title}>We are sorry</Modal.Title>
           <Modal.Body {...modalProps.body}>Modal body</Modal.Body>
@@ -185,9 +175,6 @@ describe('components > Modal', () => {
     expect(modalHeader).toHaveStyle({
       'margin-bottom': header.customStyle['margin-bottom'],
     })
-    expect(modalHeader.children[0]).toHaveStyle({
-      'border-radius': header.iconWrapperProps.customStyle['border-radius'],
-    })
 
     expect(modalContent).toHaveStyle({
       padding: content.padding,
@@ -206,18 +193,6 @@ describe('components > Modal', () => {
 
     expect(modalActions).toHaveStyle({
       padding: actions.customStyle.padding,
-    })
-
-    // Test modal header without icon
-    rerender(
-      <Modal isOpen>
-        <Modal.Close />
-        <Modal.Header>Modal Header</Modal.Header>
-      </Modal>
-    )
-
-    expect(modalHeader).toHaveStyle({
-      'margin-bottom': '0px',
     })
   })
 

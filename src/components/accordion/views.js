@@ -5,7 +5,7 @@ import { fontStyles } from '@/styles'
 import { Icon } from '../icon'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-accordion-wrapper',
+  className: 'micro-accordion-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   max-width: 100%;
@@ -16,7 +16,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Item = styled.div.attrs(() => ({
-  className: 'aia-accordion-item',
+  className: 'micro-accordion-item',
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
@@ -26,7 +26,7 @@ export const Item = styled.div.attrs(() => ({
 `
 
 export const HeaderWrapper = styled.div.attrs(() => ({
-  className: 'aia-accordion-title',
+  className: 'micro-accordion-title',
 }))`
   display: flex;
   flex-direction: ${({ arrowPosition }) =>
@@ -44,13 +44,13 @@ export const HeaderWrapper = styled.div.attrs(() => ({
 `
 
 export const HeaderText = styled.span.attrs(() => ({
-  className: 'aia-accordion-header-text',
+  className: 'micro-accordion-header-text',
 }))`
   flex: 1;
 `
 
 export const HeaderIcon = styled(Icon).attrs(() => ({
-  className: 'aia-accordion-header-icon',
+  className: 'micro-accordion-header-icon',
   name: 'forward',
   size: '1.5em',
 }))`
@@ -60,7 +60,7 @@ export const HeaderIcon = styled(Icon).attrs(() => ({
 `
 
 export const Content = styled.div.attrs(() => ({
-  className: 'aia-accordion-content',
+  className: 'micro-accordion-content',
 }))`
   width: 100%;
   padding: ${({ padding }) => padding};

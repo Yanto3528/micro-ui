@@ -11,7 +11,7 @@ const solidStyles = css`
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
 
-  .aia-multi-select-icon-container {
+  .micro-multi-select-icon-container {
     color: ${resolveColor('borderColor')};
   }
 
@@ -31,7 +31,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-multi-select-wrapper',
+  className: 'micro-multi-select-wrapper',
 }))`
   position: relative;
   display: flex;
@@ -71,7 +71,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-multi-select-input',
+  className: 'micro-multi-select-input',
 }))`
   font: inherit;
   color: inherit;
@@ -110,7 +110,7 @@ export const StyledInput = styled.input.attrs(() => ({
 `
 
 export const SelectedWrapper = styled.div.attrs(() => ({
-  className: 'aia-multi-select-selected-wrapper',
+  className: 'micro-multi-select-selected-wrapper',
 }))`
   display: flex;
   align-items: center;
@@ -127,13 +127,13 @@ export const SelectedWrapper = styled.div.attrs(() => ({
 `
 
 export const OptionWrapper = styled.div.attrs(() => ({
-  className: 'aia-multi-select-option-wrapper',
+  className: 'micro-multi-select-option-wrapper',
 }))`
   display: flex;
   flex-direction: column;
   width: 100%;
   background-color: white;
-  border: 1px solid ${({ theme }) => theme.colors.lightGray};
+  border: 1px solid ${({ theme }) => theme.colors.gray[200]};
   border-radius: 4px;
   position: absolute;
   bottom: 0;
@@ -145,23 +145,23 @@ export const OptionWrapper = styled.div.attrs(() => ({
 `
 
 export const StyledOption = styled.div.attrs(() => ({
-  className: 'aia-multi-select-option',
+  className: 'micro-multi-select-option',
 }))`
   display: inline-block;
   padding: 10px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.lightGray2};
+    background-color: ${({ theme }) => theme.colors.gray[100]};
   }
 `
 
 export const IconContainer = styled.span.attrs(() => ({
-  className: 'aia-multi-select-icon-container',
+  className: 'micro-multi-select-icon-container',
 }))`
   position: absolute;
-  transform: translateY(20%);
-  top: 0;
+  transform: translateY(-50%);
+  top: 50%;
   right: 10px;
   display: flex;
   align-items: center;

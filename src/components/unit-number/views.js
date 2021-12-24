@@ -33,7 +33,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-unit-number-wrapper',
+  className: 'micro-unit-number-wrapper',
 }))`
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@ export const Wrapper = styled.div.attrs(() => ({
     hasError &&
     css`
       border-color: ${({ theme }) => theme.colors.danger};
-      .aia-contact-input-separator {
+      .micro-contact-input-separator {
         background-color: ${({ theme }) => theme.colors.danger};
       }
     `}
@@ -68,13 +68,13 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Separator = styled.span.attrs(() => ({
-  className: 'aia-unit-number-separator',
+  className: 'micro-unit-number-separator',
 }))`
   margin-right: 10px;
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-unit-number-input',
+  className: 'micro-unit-number-input',
 }))`
   outline: none;
   background-color: transparent;

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { fontStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-wrapper',
+  className: 'micro-calendar-year-wrapper',
 }))`
   text-align: center;
   ${fontStyles};
@@ -11,7 +11,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Header = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-header',
+  className: 'micro-calendar-year-header',
 }))`
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@ export const Header = styled.div.attrs(() => ({
 `
 
 export const CurrentMonth = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-current-month',
+  className: 'micro-calendar-year-current-month',
 }))`
   padding: 4px 10px;
   margin: 0 10px;

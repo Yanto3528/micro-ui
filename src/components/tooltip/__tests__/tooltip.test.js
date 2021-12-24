@@ -188,7 +188,7 @@ describe('component > Tooltip', () => {
     const tooltipContent = screen.getByTestId('tooltip-content')
     expect(tooltipContent).toHaveStyle({
       'border-radius': '50px',
-      'background-color': theme.colors.secondary,
+      'background-color': theme.colors.dark,
     })
 
     // Rounded is higher priority than radius, so radius will not have effect here

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Home } from 'react-feather'
 
 import { Modal } from './index'
 import { Button } from '../button'
@@ -34,41 +33,34 @@ const BaseModal = ({ children, ...props }) => {
 export const Default = () => {
   return (
     <BaseModal>
-      <Modal.Close />
-      <Modal.Header icon={<Home />}>Modal Header</Modal.Header>
+      <Modal.Close position='left' />
+      <Modal.Title>Delete Post</Modal.Title>
       <Modal.Content>
-        <Modal.Title>We are sorry</Modal.Title>
-        <Modal.Body>
-          We apologise but we can&apos;t accept your online application due to
-          following condition(s). Please approach your insurance representative
-          for other options or call our customer service centre 1800-248-8000.
-        </Modal.Body>
-        <Button>Back to Home</Button>
+        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
+        <Modal.Actions>
+          <Button bg='gray.200' color='dark'>
+            Cancel
+          </Button>
+          <Button>Confirm</Button>
+        </Modal.Actions>
       </Modal.Content>
     </BaseModal>
   )
 }
 
-export const AIA = () => {
+export const WithHeader = () => {
   return (
-    <BaseModal radius='4px'>
-      <Modal.Close position='left' />
-      <Modal.Header bg='primary' height='60px'>
-        Modal Header
-      </Modal.Header>
-      <Modal.Content padding='20px' alignment='left'>
-        <Modal.Body>
-          We apologise but we can&apos;t accept your online application due to
-          following condition(s). Please approach your insurance representative
-          for other options or call our customer service centre 1800-248-8000.
-        </Modal.Body>
-        <Modal.Actions alignment='right'>
-          <Button bg='secondary' rounded={false} radius='4px'>
+    <BaseModal>
+      <Modal.Close position='left' color='white' />
+      <Modal.Header>Delete Post</Modal.Header>
+      {/* <Modal.Title>Delete Post</Modal.Title> */}
+      <Modal.Content>
+        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
+        <Modal.Actions>
+          <Button bg='gray.200' color='dark'>
             Cancel
           </Button>
-          <Button rounded={false} radius='4px'>
-            Confirm
-          </Button>
+          <Button>Confirm</Button>
         </Modal.Actions>
       </Modal.Content>
     </BaseModal>

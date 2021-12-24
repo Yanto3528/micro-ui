@@ -33,8 +33,6 @@ ModalClose.propTypes = {
   /** Border radius for the icon wrapper */
   radius: PropTypes.string,
   customStyle: PropTypes.object,
-  /** Determine the position of the close icon */
-  position: PropTypes.oneOf(['left', 'right']),
 }
 
 if (isDev) {

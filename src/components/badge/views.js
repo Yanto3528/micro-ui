@@ -24,8 +24,8 @@ const outlineStyles = css`
   border: 1px solid ${resolveColor('bg')};
 `
 
-export const StyledTag = styled.span.attrs(() => ({
-  className: 'aia-tag',
+export const Wrapper = styled.span.attrs(() => ({
+  className: 'micro-badge',
 }))`
   display: inline-block;
   text-align: center;

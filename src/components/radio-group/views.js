@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-radio-group',
+  className: 'micro-radio-group',
 }))`
   display: flex;
   flex-direction: ${({ direction }) => direction};

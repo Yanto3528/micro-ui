@@ -10,8 +10,8 @@ const solidStyles = css`
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
 
-  & + .aia-input-right-element,
-  & + .aia-input-left-element {
+  & + .micro-input-right-element,
+  & + .micro-input-left-element {
     color: ${resolveColor('borderColor')};
   }
 
@@ -19,8 +19,8 @@ const outlineStyles = css`
     border-color: ${({ theme, focusBorderColor, hasError }) =>
       !hasError && getColor(theme, focusBorderColor)};
 
-    & + .aia-input-right-element,
-    & + .aia-input-left-element {
+    & + .micro-input-right-element,
+    & + .micro-input-left-element {
       color: ${({ theme, focusBorderColor, hasError }) =>
         !hasError && getColor(theme, focusBorderColor)};
     }
@@ -58,7 +58,7 @@ const resolvePadding = ({ padding, leftElement, rightElement }) => css`
 `
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-input-wrapper',
+  className: 'micro-input-wrapper',
 }))`
   position: relative;
   display: inline-block;
@@ -69,7 +69,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-input',
+  className: 'micro-input',
 }))`
   outline: none;
   border-radius: ${getBorderRadius};
@@ -115,14 +115,14 @@ export const StyledInput = styled.input.attrs(() => ({
 `
 
 export const LeftElement = styled.span.attrs(() => ({
-  className: 'aia-input-left-element',
+  className: 'micro-input-left-element',
 }))`
   ${iconElementStyles};
   left: 15px;
 `
 
 export const RightElement = styled.span.attrs(() => ({
-  className: 'aia-input-right-element',
+  className: 'micro-input-right-element',
 }))`
   ${iconElementStyles};
   right: 15px;

@@ -1,7 +1,7 @@
 import React from 'react'
+import { Activity, Airplay } from 'react-feather'
 
 import { RadioGroup } from './index'
-import { Icon } from '../icon'
 
 export default {
   title: 'Components/Forms/RadioGroup',
@@ -75,10 +75,10 @@ export const RowButton = () => {
       direction='row'
       width='335px'
     >
-      <RadioGroup.Button value='M' icon={<Icon name='male' />}>
+      <RadioGroup.Button value='M' icon={<Activity />}>
         Male
       </RadioGroup.Button>
-      <RadioGroup.Button value='F' icon={<Icon name='female' />}>
+      <RadioGroup.Button value='F' icon={<Airplay />}>
         Female
       </RadioGroup.Button>
     </RadioGroup>
@@ -100,7 +100,7 @@ export const RowButtonSquare = () => {
       <RadioGroup.Button
         value='M'
         buttonType='square'
-        icon={<Icon name='male' size='xl' />}
+        icon={<Activity />}
         iconSpacing='10px'
       >
         Male
@@ -108,7 +108,7 @@ export const RowButtonSquare = () => {
       <RadioGroup.Button
         value='F'
         buttonType='square'
-        icon={<Icon name='female' size='xl' />}
+        icon={<Airplay />}
         iconSpacing='10px'
       >
         Female
@@ -132,7 +132,7 @@ export const RowButtonRounded = () => {
       <RadioGroup.Button
         value='M'
         buttonType='square'
-        icon={<Icon name='male' size='xl' />}
+        icon={<Activity />}
         iconSpacing='10px'
         radius='50%'
       >
@@ -141,7 +141,7 @@ export const RowButtonRounded = () => {
       <RadioGroup.Button
         value='F'
         buttonType='square'
-        icon={<Icon name='female' size='xl' />}
+        icon={<Airplay />}
         iconSpacing='10px'
         radius='50%'
       >

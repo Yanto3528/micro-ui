@@ -29,6 +29,7 @@ export const Checkbox = React.forwardRef(
     const wrapperProps = getProps(props, defaultCheckboxProps, wrapperData)
     const checkmarkProps = getProps(props, defaultCheckboxProps, [
       'borderColor',
+      'activeColor',
       'radius',
     ])
 
@@ -39,7 +40,6 @@ export const Checkbox = React.forwardRef(
         data-testid='checkbox-wrapper'
       >
         <Label htmlFor={id} disabled={disabled || readOnly}>
-          {label && <LabelText data-testid='checkbox-label'>{label}</LabelText>}
           <Check
             id={id}
             {...defaultCheckboxProps}
@@ -48,6 +48,7 @@ export const Checkbox = React.forwardRef(
             ref={ref}
           />
           <Checkmark {...checkmarkProps} />
+          {label && <LabelText data-testid='checkbox-label'>{label}</LabelText>}
         </Label>
       </Wrapper>
     )

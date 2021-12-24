@@ -94,7 +94,7 @@ describe('components > UnitNumber', () => {
         width: '400px',
         padding: '10px',
         'border-radius': '8px',
-        'border-color': theme.colors.primary,
+        'border-color': theme.colors.danger,
         'margin-bottom': '20px',
       })
     })

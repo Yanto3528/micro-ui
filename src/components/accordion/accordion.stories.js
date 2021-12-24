@@ -1,6 +1,6 @@
 import React from 'react'
+import { Plus, Minus } from 'react-feather'
 
-import { Icon } from '../icon'
 import { theme } from '../theme'
 import { Accordion } from './index'
 
@@ -207,8 +207,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Icon name='minus' size='1em' />,
-          closeIcon: <Icon name='add' size='1em' />,
+          openIcon: <Minus size='1em' />,
+          closeIcon: <Plus size='1em' />,
         },
       },
     },
@@ -216,8 +216,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Icon name='minus' size='1em' />,
-          closeIcon: <Icon name='add' size='1em' />,
+          openIcon: <Minus size='1em' />,
+          closeIcon: <Plus size='1em' />,
         },
       },
     },
@@ -225,8 +225,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Icon name='minus' size='1em' />,
-          closeIcon: <Icon name='add' size='1em' />,
+          openIcon: <Minus size='1em' />,
+          closeIcon: <Plus size='1em' />,
         },
       },
     },
@@ -234,8 +234,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Icon name='minus' size='1em' />,
-          closeIcon: <Icon name='add' size='1em' />,
+          openIcon: <Minus size='1em' />,
+          closeIcon: <Plus size='1em' />,
         },
       },
     },

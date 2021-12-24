@@ -27,7 +27,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-textarea-wrapper',
+  className: 'micro-textarea-wrapper',
 }))`
   display: inline-block;
   width: ${({ fluid, width }) => (fluid ? '100%' : width)};
@@ -35,7 +35,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const StyledTextarea = styled.textarea.attrs(() => ({
-  className: 'aia-textarea',
+  className: 'micro-textarea',
 }))`
   outline: none;
   color: ${resolveColor('color')};

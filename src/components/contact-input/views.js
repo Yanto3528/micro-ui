@@ -7,7 +7,7 @@ const outlineFocusStyles = ({ hasError }) => {
     return css`
       &:focus-within {
         border-color: ${resolveColor('focusBorderColor')};
-        .aia-contact-input-separator {
+        .micro-contact-input-separator {
           background-color: ${resolveColor('focusBorderColor')};
         }
       }
@@ -22,7 +22,7 @@ const solidStyles = css`
 
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
-  .aia-contact-input-separator {
+  .micro-contact-input-separator {
     background-color: ${resolveColor('borderColor')};
   }
 
@@ -39,7 +39,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-contact-input-wrapper',
+  className: 'micro-contact-input-wrapper',
 }))`
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@ export const Wrapper = styled.div.attrs(() => ({
     hasError &&
     css`
       border-color: ${({ theme }) => theme.colors.danger};
-      .aia-contact-input-separator {
+      .micro-contact-input-separator {
         background-color: ${({ theme }) => theme.colors.danger};
       }
     `}
@@ -73,7 +73,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-contact-input',
+  className: 'micro-contact-input',
 }))`
   outline: none;
   background-color: transparent;
@@ -107,7 +107,7 @@ export const StyledInput = styled.input.attrs(() => ({
 `
 
 export const CountrySelect = styled.select.attrs(() => ({
-  className: 'aia-country-select',
+  className: 'micro-country-select',
 }))`
   background: transparent;
   border: none;
@@ -126,7 +126,7 @@ export const CountrySelect = styled.select.attrs(() => ({
 `
 
 export const Separator = styled.div.attrs(() => ({
-  className: 'aia-contact-input-separator',
+  className: 'micro-contact-input-separator',
 }))`
   display: inline-block;
   width: 2px;

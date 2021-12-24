@@ -4,7 +4,7 @@ import { MediaQuery } from '@/utils'
 
 // Arrow Styles
 const topArrowStyles = css`
-  & + .aia-tooltip-arrow {
+  & + .micro-tooltip-arrow {
     top: -10px;
     left: 50%;
     right: auto;
@@ -13,7 +13,7 @@ const topArrowStyles = css`
 `
 
 const bottomArrowStyles = css`
-  & + .aia-tooltip-arrow {
+  & + .micro-tooltip-arrow {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
@@ -21,7 +21,7 @@ const bottomArrowStyles = css`
 `
 
 const leftArrowStyles = css`
-  & + .aia-tooltip-arrow {
+  & + .micro-tooltip-arrow {
     top: 50%;
     left: -10px;
     transform: translate(-20%, -50%) rotate(-90deg);
@@ -29,7 +29,7 @@ const leftArrowStyles = css`
 `
 
 const rightArrowStyles = css`
-  & + .aia-tooltip-arrow {
+  & + .micro-tooltip-arrow {
     top: 50%;
     right: -10px;
     transform: translate(20%, -50%) rotate(90deg);

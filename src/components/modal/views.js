@@ -5,17 +5,8 @@ import { fontStyles } from '@/styles'
 
 import { Alignment } from './utils/constants'
 
-const resolveClosePosition = ({ position }) => {
-  switch (position) {
-    case 'left':
-      return css({ left: '10px' })
-    default:
-      return css({ right: '10px' })
-  }
-}
-
 export const Overlay = styled.div.attrs(() => ({
-  className: 'aia-modal-overlay',
+  className: 'micro-modal-overlay',
 }))`
   position: fixed;
   top: 0;
@@ -30,7 +21,7 @@ export const Overlay = styled.div.attrs(() => ({
 `
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-wrapper',
+  className: 'micro-modal-wrapper',
 }))`
   background-color: ${resolveColor('bg')};
   border-radius: ${getBorderRadius};
@@ -45,45 +36,28 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const HeaderWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-header-wrapper',
+  className: 'micro-modal-header-wrapper',
 }))`
   height: ${({ height }) => height};
   background-color: ${resolveColor('bg')};
   position: relative;
   color: ${resolveColor('color')};
-  margin-bottom: ${({ hasIcon }) => (hasIcon ? '20px' : '0px')};
   padding: ${({ padding }) => padding};
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  text-align: left;
   ${fontStyles};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const HeaderIconWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-header-icon-wrapper',
-}))`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  padding: ${({ padding }) => padding};
-  border-radius: 50%;
-  background-color: ${resolveColor('bg')};
-  box-shadow: ${({ boxShadow }) => boxShadow};
-  color: ${resolveColor('color')};
-
-  ${({ customStyle }) => customStyle && css(customStyle)};
-`
-
 export const CloseWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-close-wrapper',
+  className: 'micro-modal-close-wrapper',
 }))`
   position: absolute;
   z-index: 10;
-  top: 10px;
+  top: 0.5rem;
+  right: 0.5rem;
   background-color: ${resolveColor('bg')};
   width: 2em;
   height: 2em;
@@ -93,9 +67,8 @@ export const CloseWrapper = styled.div.attrs(() => ({
   justify-content: center;
   border-radius: ${getBorderRadius};
   cursor: pointer;
-  ${resolveClosePosition};
 
-  .aia-modal-close-icon {
+  .micro-modal-close-icon {
     background-color: ${resolveColor('color')};
     &:after {
       background-color: ${resolveColor('color')};
@@ -106,9 +79,9 @@ export const CloseWrapper = styled.div.attrs(() => ({
 `
 
 export const CloseIcon = styled.span.attrs(() => ({
-  className: 'aia-modal-close-icon',
+  className: 'micro-modal-close-icon',
 }))`
-  width: 1.3em;
+  width: 1.2em;
   height: 0.15em;
   position: relative;
   transform: rotate(45deg);
@@ -123,17 +96,18 @@ export const CloseIcon = styled.span.attrs(() => ({
 `
 
 export const Title = styled.h3.attrs(() => ({
-  className: 'aia-modal-title',
+  className: 'micro-modal-title',
 }))`
   ${fontStyles};
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Content = styled.div.attrs(() => ({
-  className: 'aia-modal-content',
+  className: 'micro-modal-content',
 }))`
   display: flex;
   flex-direction: column;
@@ -145,7 +119,7 @@ export const Content = styled.div.attrs(() => ({
 `
 
 export const Body = styled.p.attrs(() => ({
-  className: 'aia-modal-body',
+  className: 'micro-modal-body',
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
@@ -161,7 +135,7 @@ export const ActionsWrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: ${({ alignment }) => Alignment[alignment]};
-  margin-top: 20px;
+  margin-top: 30px;
   > *:not(:last-child) {
     margin-right: ${({ spacing }) => spacing};
   }

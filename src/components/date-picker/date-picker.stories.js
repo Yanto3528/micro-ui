@@ -9,7 +9,11 @@ export default {
   component: DatePicker,
 }
 
-const Template = (args) => <DatePicker {...args} />
+const Template = (args) => (
+  <div style={{ width: '335px' }}>
+    <DatePicker {...args} />
+  </div>
+)
 
 export const Default = Template.bind({})
 Default.args = {

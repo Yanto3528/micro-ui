@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 
 import { resolveColor, getBorderRadius } from '@/utils'
-import { checklistStyles, checkedChecklistStyles, fontStyles } from '@/styles'
+import { fontStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-checkbox-wrapper',
+  className: 'micro-checkbox-wrapper',
 }))`
   display: inline-block;
   ${fontStyles};
@@ -22,9 +22,10 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Label = styled.label.attrs(() => ({
-  className: 'aia-checkbox-label',
+  className: 'micro-checkbox-label',
 }))`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
   min-height: 1em;
@@ -39,16 +40,16 @@ export const Label = styled.label.attrs(() => ({
 `
 
 export const LabelText = styled.span.attrs(() => ({
-  className: 'aia-checkbox-label-text',
+  className: 'micro-checkbox-label-text',
 }))`
-  padding-left: 1.8em;
+  padding-left: 0.5em;
   display: inline-block;
   width: 100%;
   height: 100%;
 `
 
 export const Check = styled.input.attrs(() => ({
-  className: 'aia-checkbox',
+  className: 'micro-checkbox',
   type: 'checkbox',
 }))`
   position: absolute;
@@ -57,26 +58,30 @@ export const Check = styled.input.attrs(() => ({
   opacity: 0;
   cursor: pointer;
 
-  &:checked ~ .aia-checkbox-checkmark {
+  &:checked ~ .micro-checkbox-checkmark {
     background-color: ${resolveColor('activeColor')};
     border-color: ${resolveColor('activeColor')};
   }
 
-  &:checked ~ .aia-checkbox-checkmark:after {
-    ${checkedChecklistStyles};
+  &:checked ~ .micro-checkbox-checkmark:after {
+    -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
+    -ms-transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
+    transform: translate(-50%, -60%) rotate(45deg) scale(1, 1);
   }
 `
 
 export const Checkmark = styled.span.attrs(() => ({
-  className: 'aia-checkbox-checkmark',
+  className: 'micro-checkbox-checkmark',
 }))`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1.2em;
-  height: 1.2em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3em;
+  height: 1.3em;
+  aspect-ratio: 1 / 1;
   background-color: transparent;
-  border: 1px solid ${resolveColor('borderColor')};
+  border: 0.1em solid ${resolveColor('borderColor')};
   border-radius: ${getBorderRadius};
   transition: all 0.3s ease-out;
 
@@ -85,7 +90,17 @@ export const Checkmark = styled.span.attrs(() => ({
     position: absolute;
     left: 50%;
     top: 50%;
-    ${checklistStyles};
+    width: 0.35em;
+    height: 0.6em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    -webkit-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
+    -ms-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
+    transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
     transition: all 0.3s ease-out;
+  }
+
+  &:hover {
+    border-color: ${resolveColor('activeColor')};
   }
 `

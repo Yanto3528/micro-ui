@@ -1,10 +1,10 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
+import { Activity } from 'react-feather'
 
 import { render, screen } from '@/test-utils'
 
 import { theme } from '../../theme'
-import { Icon } from '../../icon'
 import { RadioButton } from '../index'
 
 describe('components > RadioButton', () => {
@@ -17,10 +17,10 @@ describe('components > RadioButton', () => {
   })
 
   it('should render with icon', () => {
-    render(<RadioButton label='Click me' icon={<Icon name='male' />} />)
+    render(<RadioButton label='Click me' icon={<Activity />} />)
     const label = screen.getByText(/click me/i)
-    expect(label.children[0]).toHaveClass('aia-radio-button-icon-container')
-    expect(label.children[0].children[0]).toHaveClass('icon-male')
+    expect(label.children[0]).toHaveClass('micro-radio-button-icon-container')
+    expect(label.children[0].children[0]).toBeInTheDocument()
   })
 
   it('should be able to tick the radio button', () => {
