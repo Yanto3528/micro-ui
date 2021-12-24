@@ -9,7 +9,7 @@ const defaultStyles = css`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   flex-direction: row;
-  .aia-radio-button-icon-container {
+  .micro-radio-button-icon-container {
     margin-right: ${({ iconSpacing }) => iconSpacing};
   }
 `
@@ -18,7 +18,7 @@ const squareStyles = css`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   flex-direction: column;
-  .aia-radio-button-icon-container {
+  .micro-radio-button-icon-container {
     margin-bottom: ${({ iconSpacing }) => iconSpacing};
   }
 `
@@ -109,7 +109,7 @@ export const Check = styled.input.attrs(() => ({
   cursor: pointer;
   pointer-events: ${({ readOnly }) => (readOnly ? 'none' : 'auto')};
 
-  &:checked + .aia-radio-button-label {
+  &:checked + .micro-radio-button-label {
     background-color: ${({ theme, bg, variant, activeBGColor }) =>
       variant === Variant.outline
         ? getColor(theme, bg)

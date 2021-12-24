@@ -11,7 +11,7 @@ const solidStyles = css`
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
 
-  .aia-multi-select-icon-container {
+  .micro-multi-select-icon-container {
     color: ${resolveColor('borderColor')};
   }
 

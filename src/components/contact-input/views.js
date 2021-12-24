@@ -7,7 +7,7 @@ const outlineFocusStyles = ({ hasError }) => {
     return css`
       &:focus-within {
         border-color: ${resolveColor('focusBorderColor')};
-        .aia-contact-input-separator {
+        .micro-contact-input-separator {
           background-color: ${resolveColor('focusBorderColor')};
         }
       }
@@ -22,7 +22,7 @@ const solidStyles = css`
 
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
-  .aia-contact-input-separator {
+  .micro-contact-input-separator {
     background-color: ${resolveColor('borderColor')};
   }
 
@@ -57,7 +57,7 @@ export const Wrapper = styled.div.attrs(() => ({
     hasError &&
     css`
       border-color: ${({ theme }) => theme.colors.danger};
-      .aia-contact-input-separator {
+      .micro-contact-input-separator {
         background-color: ${({ theme }) => theme.colors.danger};
       }
     `}

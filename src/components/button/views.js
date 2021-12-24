@@ -8,7 +8,7 @@ const solidStyles = css`
   background-color: ${resolveColor('bg')};
   color: ${resolveColor('color')};
   border: 1px solid ${resolveColor('bg')};
-  .aia-button-spinner {
+  .micro-button-spinner {
     border-color: ${resolveColor('color')};
     border-top-color: transparent;
   }
@@ -21,12 +21,12 @@ const outlineStyles = css`
   &:hover {
     background-color: ${resolveColor('bg')};
     color: ${resolveColor('color')};
-    .aia-button-spinner {
+    .micro-button-spinner {
       border-color: ${resolveColor('color')};
       border-top-color: transparent;
     }
   }
-  .aia-button-spinner {
+  .micro-button-spinner {
     border-color: ${resolveColor('bg')};
     border-top-color: transparent;
   }

@@ -95,7 +95,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
   cursor: pointer;
   ${resolveClosePosition};
 
-  .aia-modal-close-icon {
+  .micro-modal-close-icon {
     background-color: ${resolveColor('color')};
     &:after {
       background-color: ${resolveColor('color')};

@@ -51,7 +51,7 @@ export const Wrapper = styled.div.attrs(() => ({
     hasError &&
     css`
       border-color: ${({ theme }) => theme.colors.danger};
-      .aia-contact-input-separator {
+      .micro-contact-input-separator {
         background-color: ${({ theme }) => theme.colors.danger};
       }
     `}

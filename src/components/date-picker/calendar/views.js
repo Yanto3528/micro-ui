@@ -55,35 +55,35 @@ export const NextBackButton = styled.div.attrs(() => ({
   position: relative;
   font-size: 14px;
 
-  & .aia-calendar-back {
+  & .micro-calendar-back {
     transform-origin: 50%;
     transform: rotate(180deg);
   }
 
-  & .aia-calendar-back:nth-child(2),
-  & .aia-calendar-next:nth-child(2) {
+  & .micro-calendar-back:nth-child(2),
+  & .micro-calendar-next:nth-child(2) {
     transition: all 0.3s ease-out;
     position: absolute;
     top: 0px;
     opacity: 0;
   }
 
-  & .aia-calendar-back:nth-child(2) {
+  & .micro-calendar-back:nth-child(2) {
     left: 0px;
     will-change: opacity, left;
   }
-  & .aia-calendar-next:nth-child(2) {
+  & .micro-calendar-next:nth-child(2) {
     right: 0px;
     will-change: opacity, right;
   }
 
   &:hover {
-    & .aia-calendar-back:nth-child(2) {
+    & .micro-calendar-back:nth-child(2) {
       transition: all 0.3s ease-out;
       opacity: 1;
       left: -10px;
     }
-    & .aia-calendar-next:nth-child(2) {
+    & .micro-calendar-next:nth-child(2) {
       transition: all 0.3s ease-out;
       opacity: 1;
       right: -10px;

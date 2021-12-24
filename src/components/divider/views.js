@@ -11,13 +11,13 @@ const verticalStyles = css`
   height: 100%;
   width: fit-content;
   flex-direction: column;
-  .aia-divider-line {
+  .micro-divider-line {
     width: 1px;
     writing-mode: vertical-lr;
     height: 100%;
   }
 
-  .aia-divider-text {
+  .micro-divider-text {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
   }

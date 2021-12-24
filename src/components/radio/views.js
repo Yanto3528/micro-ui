@@ -83,12 +83,12 @@ export const Check = styled.input.attrs(() => ({
   opacity: 0;
   cursor: pointer;
 
-  &:checked ~ .aia-radio-checkmark {
+  &:checked ~ .micro-radio-checkmark {
     background-color: ${resolveColor('activeColor')};
     border-color: ${resolveColor('activeColor')};
   }
 
-  &:checked ~ .aia-radio-checkmark:after {
+  &:checked ~ .micro-radio-checkmark:after {
     ${resolveCheckedRadioType};
   }
 `

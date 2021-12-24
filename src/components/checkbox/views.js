@@ -57,12 +57,12 @@ export const Check = styled.input.attrs(() => ({
   opacity: 0;
   cursor: pointer;
 
-  &:checked ~ .aia-checkbox-checkmark {
+  &:checked ~ .micro-checkbox-checkmark {
     background-color: ${resolveColor('activeColor')};
     border-color: ${resolveColor('activeColor')};
   }
 
-  &:checked ~ .aia-checkbox-checkmark:after {
+  &:checked ~ .micro-checkbox-checkmark:after {
     ${checkedChecklistStyles};
   }
 `

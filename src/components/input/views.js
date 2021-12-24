@@ -10,8 +10,8 @@ const solidStyles = css`
 const outlineStyles = css`
   border: 1px solid ${resolveColor('borderColor')};
 
-  & + .aia-input-right-element,
-  & + .aia-input-left-element {
+  & + .micro-input-right-element,
+  & + .micro-input-left-element {
     color: ${resolveColor('borderColor')};
   }
 
@@ -19,8 +19,8 @@ const outlineStyles = css`
     border-color: ${({ theme, focusBorderColor, hasError }) =>
       !hasError && getColor(theme, focusBorderColor)};
 
-    & + .aia-input-right-element,
-    & + .aia-input-left-element {
+    & + .micro-input-right-element,
+    & + .micro-input-left-element {
       color: ${({ theme, focusBorderColor, hasError }) =>
         !hasError && getColor(theme, focusBorderColor)};
     }
