@@ -36,7 +36,7 @@ const resolveCheckedRadioType = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-radio-wrapper',
+  className: 'micro-radio-wrapper',
 }))`
   ${fontStyles};
   color: ${resolveColor('color')};
@@ -53,7 +53,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Label = styled.label.attrs(() => ({
-  className: 'aia-radio-label',
+  className: 'micro-radio-label',
 }))`
   display: block;
   position: relative;
@@ -69,14 +69,14 @@ export const Label = styled.label.attrs(() => ({
 `
 
 export const LabelText = styled.span.attrs(() => ({
-  className: 'aia-radio-label-text',
+  className: 'micro-radio-label-text',
 }))`
   padding-left: 1.8em;
   display: inline-block;
 `
 
 export const Check = styled.input.attrs(() => ({
-  className: 'aia-radio',
+  className: 'micro-radio',
   type: 'radio',
 }))`
   position: absolute;
@@ -94,7 +94,7 @@ export const Check = styled.input.attrs(() => ({
 `
 
 export const Checkmark = styled.span.attrs(() => ({
-  className: 'aia-radio-checkmark',
+  className: 'micro-radio-checkmark',
 }))`
   position: absolute;
   top: 0;

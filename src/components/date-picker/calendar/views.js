@@ -10,7 +10,7 @@ const iconStyles = css`
 `
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-wrapper',
+  className: 'micro-calendar-wrapper',
 }))`
   position: absolute;
   bottom: 0;
@@ -27,7 +27,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const YearDisplayWrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-display',
+  className: 'micro-calendar-year-display',
 }))`
   text-align: center;
   font-size: 1.2em;
@@ -45,7 +45,7 @@ export const YearDisplayWrapper = styled.div.attrs(() => ({
 `
 
 export const NextBackButton = styled.div.attrs(() => ({
-  className: 'aia-calendar-next-back-wrapper',
+  className: 'micro-calendar-next-back-wrapper',
   'data-testid': 'next-back-wrapper',
 }))`
   opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
@@ -92,7 +92,7 @@ export const NextBackButton = styled.div.attrs(() => ({
 `
 
 export const NextIcon = styled(Icon).attrs(() => ({
-  className: 'aia-calendar-next',
+  className: 'micro-calendar-next',
   name: 'forward',
   size: 'l',
 }))`
@@ -100,7 +100,7 @@ export const NextIcon = styled(Icon).attrs(() => ({
 `
 
 export const BackIcon = styled(Icon).attrs(() => ({
-  className: 'aia-calendar-back',
+  className: 'micro-calendar-back',
   name: 'forward',
   size: 'l',
 }))`
@@ -110,7 +110,7 @@ export const BackIcon = styled(Icon).attrs(() => ({
 `
 
 export const WeekDayWrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-week-day-wrapper',
+  className: 'micro-calendar-week-day-wrapper',
 }))`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -122,7 +122,7 @@ export const WeekDayWrapper = styled.div.attrs(() => ({
 `
 
 export const WeekDay = styled.span.attrs({
-  className: 'aia-calendar-week-day',
+  className: 'micro-calendar-week-day',
 })`
   display: inline-block;
   font-size: 14px;

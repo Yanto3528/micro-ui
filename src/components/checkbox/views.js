@@ -4,7 +4,7 @@ import { resolveColor, getBorderRadius } from '@/utils'
 import { checklistStyles, checkedChecklistStyles, fontStyles } from '@/styles'
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-checkbox-wrapper',
+  className: 'micro-checkbox-wrapper',
 }))`
   display: inline-block;
   ${fontStyles};
@@ -22,7 +22,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Label = styled.label.attrs(() => ({
-  className: 'aia-checkbox-label',
+  className: 'micro-checkbox-label',
 }))`
   display: inline-block;
   width: 100%;
@@ -39,7 +39,7 @@ export const Label = styled.label.attrs(() => ({
 `
 
 export const LabelText = styled.span.attrs(() => ({
-  className: 'aia-checkbox-label-text',
+  className: 'micro-checkbox-label-text',
 }))`
   padding-left: 1.8em;
   display: inline-block;
@@ -48,7 +48,7 @@ export const LabelText = styled.span.attrs(() => ({
 `
 
 export const Check = styled.input.attrs(() => ({
-  className: 'aia-checkbox',
+  className: 'micro-checkbox',
   type: 'checkbox',
 }))`
   position: absolute;
@@ -68,7 +68,7 @@ export const Check = styled.input.attrs(() => ({
 `
 
 export const Checkmark = styled.span.attrs(() => ({
-  className: 'aia-checkbox-checkmark',
+  className: 'micro-checkbox-checkmark',
 }))`
   position: absolute;
   top: 0;

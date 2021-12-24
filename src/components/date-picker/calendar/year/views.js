@@ -8,7 +8,7 @@ const activeYearStyles = css`
 `
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-wrapper',
+  className: 'micro-calendar-year-wrapper',
 }))`
   text-align: center;
   ${fontStyles};
@@ -16,7 +16,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Header = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-header',
+  className: 'micro-calendar-year-header',
 }))`
   margin-top: 30px;
   display: flex;
@@ -25,7 +25,7 @@ export const Header = styled.div.attrs(() => ({
 `
 
 export const CurrentYear = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-current-year',
+  className: 'micro-calendar-year-current-year',
 }))`
   padding: 4px 10px;
   margin: 0 10px;
@@ -40,7 +40,7 @@ export const CurrentYear = styled.div.attrs(() => ({
 `
 
 export const YearList = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-list',
+  className: 'micro-calendar-year-list',
 }))`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -48,7 +48,7 @@ export const YearList = styled.div.attrs(() => ({
 `
 
 export const Year = styled.div.attrs(() => ({
-  className: 'aia-calendar-year-text',
+  className: 'micro-calendar-year-text',
 }))`
   padding: 10px;
   cursor: pointer;

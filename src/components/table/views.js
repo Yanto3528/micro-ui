@@ -19,7 +19,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const TableWrapper = styled.table.attrs(() => ({
-  className: 'aia-table-wrapper',
+  className: 'micro-table-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   border: ${({ border }) => border};
@@ -28,7 +28,7 @@ export const TableWrapper = styled.table.attrs(() => ({
 `
 
 export const TableHeaderWrapper = styled.th.attrs(() => ({
-  className: 'aia-table-header-wrapper',
+  className: 'micro-table-header-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};
@@ -41,14 +41,14 @@ export const TableHeaderWrapper = styled.th.attrs(() => ({
 `
 
 export const TableRowWrapper = styled.tr.attrs(() => ({
-  className: 'aia-table-row-wrapper',
+  className: 'micro-table-row-wrapper',
 }))`
   ${resolveVariant};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const TableDataWrapper = styled.td.attrs(() => ({
-  className: 'aia-table-data-wrapper',
+  className: 'micro-table-data-wrapper',
 }))`
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   padding: ${({ padding }) => padding};

@@ -31,7 +31,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-select-wrapper',
+  className: 'micro-select-wrapper',
 }))`
   position: relative;
   display: flex;
@@ -69,7 +69,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const StyledInput = styled.input.attrs(() => ({
-  className: 'aia-select-input',
+  className: 'micro-select-input',
 }))`
   font: inherit;
   color: inherit;
@@ -106,7 +106,7 @@ export const StyledInput = styled.input.attrs(() => ({
 `
 
 export const OptionWrapper = styled.div.attrs(() => ({
-  className: 'aia-select-option-wrapper',
+  className: 'micro-select-option-wrapper',
 }))`
   display: flex;
   flex-direction: column;
@@ -124,7 +124,7 @@ export const OptionWrapper = styled.div.attrs(() => ({
 `
 
 export const StyledOption = styled.div.attrs(() => ({
-  className: 'aia-select-option',
+  className: 'micro-select-option',
 }))`
   display: inline-block;
   padding: 10px;
@@ -136,7 +136,7 @@ export const StyledOption = styled.div.attrs(() => ({
 `
 
 export const IconContainer = styled.span.attrs(() => ({
-  className: 'aia-select-icon-container',
+  className: 'micro-select-icon-container',
 }))`
   display: flex;
   align-items: center;

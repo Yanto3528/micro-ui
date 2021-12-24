@@ -25,7 +25,7 @@ const outlineStyles = css`
 `
 
 export const StyledTag = styled.span.attrs(() => ({
-  className: 'aia-tag',
+  className: 'micro-tag',
 }))`
   display: inline-block;
   text-align: center;

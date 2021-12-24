@@ -15,7 +15,7 @@ const resolveClosePosition = ({ position }) => {
 }
 
 export const Overlay = styled.div.attrs(() => ({
-  className: 'aia-modal-overlay',
+  className: 'micro-modal-overlay',
 }))`
   position: fixed;
   top: 0;
@@ -30,7 +30,7 @@ export const Overlay = styled.div.attrs(() => ({
 `
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-wrapper',
+  className: 'micro-modal-wrapper',
 }))`
   background-color: ${resolveColor('bg')};
   border-radius: ${getBorderRadius};
@@ -45,7 +45,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const HeaderWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-header-wrapper',
+  className: 'micro-modal-header-wrapper',
 }))`
   height: ${({ height }) => height};
   background-color: ${resolveColor('bg')};
@@ -63,7 +63,7 @@ export const HeaderWrapper = styled.div.attrs(() => ({
 `
 
 export const HeaderIconWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-header-icon-wrapper',
+  className: 'micro-modal-header-icon-wrapper',
 }))`
   position: absolute;
   bottom: 0;
@@ -79,7 +79,7 @@ export const HeaderIconWrapper = styled.div.attrs(() => ({
 `
 
 export const CloseWrapper = styled.div.attrs(() => ({
-  className: 'aia-modal-close-wrapper',
+  className: 'micro-modal-close-wrapper',
 }))`
   position: absolute;
   z-index: 10;
@@ -106,7 +106,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
 `
 
 export const CloseIcon = styled.span.attrs(() => ({
-  className: 'aia-modal-close-icon',
+  className: 'micro-modal-close-icon',
 }))`
   width: 1.3em;
   height: 0.15em;
@@ -123,7 +123,7 @@ export const CloseIcon = styled.span.attrs(() => ({
 `
 
 export const Title = styled.h3.attrs(() => ({
-  className: 'aia-modal-title',
+  className: 'micro-modal-title',
 }))`
   ${fontStyles};
   color: ${resolveColor('color')};
@@ -133,7 +133,7 @@ export const Title = styled.h3.attrs(() => ({
 `
 
 export const Content = styled.div.attrs(() => ({
-  className: 'aia-modal-content',
+  className: 'micro-modal-content',
 }))`
   display: flex;
   flex-direction: column;
@@ -145,7 +145,7 @@ export const Content = styled.div.attrs(() => ({
 `
 
 export const Body = styled.p.attrs(() => ({
-  className: 'aia-modal-body',
+  className: 'micro-modal-body',
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};

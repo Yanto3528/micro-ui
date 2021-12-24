@@ -42,7 +42,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const StyledButton = styled.button.attrs(() => ({
-  className: 'aia-button',
+  className: 'micro-button',
 }))`
   text-align: center;
   border: none;
@@ -74,7 +74,7 @@ export const StyledButton = styled.button.attrs(() => ({
 `
 
 export const IconContainer = styled.span.attrs(() => ({
-  className: 'aia-button-icon-container',
+  className: 'micro-button-icon-container',
 }))`
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@ export const IconContainer = styled.span.attrs(() => ({
 `
 
 export const LoadingIcon = styled.span.attrs(() => ({
-  className: 'aia-button-spinner',
+  className: 'micro-button-spinner',
 }))`
   height: 1em;
   width: 1em;
@@ -94,7 +94,7 @@ export const LoadingIcon = styled.span.attrs(() => ({
 `
 
 export const LoadingText = styled.span.attrs(() => ({
-  className: 'aia-button-loading-text',
+  className: 'micro-button-loading-text',
 }))`
   display: inline-block;
   margin: 0 5px;

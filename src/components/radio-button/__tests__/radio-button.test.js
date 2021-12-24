@@ -19,7 +19,7 @@ describe('components > RadioButton', () => {
   it('should render with icon', () => {
     render(<RadioButton label='Click me' icon={<Icon name='male' />} />)
     const label = screen.getByText(/click me/i)
-    expect(label.children[0]).toHaveClass('aia-radio-button-icon-container')
+    expect(label.children[0]).toHaveClass('micro-radio-button-icon-container')
     expect(label.children[0].children[0]).toHaveClass('icon-male')
   })
 

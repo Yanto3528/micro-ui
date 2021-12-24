@@ -11,7 +11,7 @@ const activeDayStyles = ({ isDateInRange }) =>
 const daySelectedStyles = ({ isSelected }) => isSelected && activeDayStyles
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-calendar-days-wrapper',
+  className: 'micro-calendar-days-wrapper',
 }))`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -19,7 +19,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const SingleDay = styled.p.attrs(() => ({
-  className: 'aia-calendar-days-single-day',
+  className: 'micro-calendar-days-single-day',
 }))`
   display: flex;
   align-items: center;

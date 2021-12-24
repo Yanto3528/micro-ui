@@ -62,7 +62,7 @@ const resolveVariant = ({ variant }) => {
 }
 
 export const Wrapper = styled.div.attrs(() => ({
-  className: 'aia-radio-button-wrapper',
+  className: 'micro-radio-button-wrapper',
 }))`
   flex: 1;
   ${({ disabled }) =>
@@ -74,7 +74,7 @@ export const Wrapper = styled.div.attrs(() => ({
 `
 
 export const Label = styled.label.attrs(() => ({
-  className: 'aia-radio-button-label',
+  className: 'micro-radio-button-label',
 }))`
   position: relative;
   display: flex;
@@ -101,7 +101,7 @@ export const Label = styled.label.attrs(() => ({
 `
 
 export const Check = styled.input.attrs(() => ({
-  className: 'aia-radio-button',
+  className: 'micro-radio-button',
   type: 'radio',
 }))`
   position: absolute;
@@ -119,7 +119,7 @@ export const Check = styled.input.attrs(() => ({
 `
 
 export const IconContainer = styled.span.attrs(() => ({
-  className: 'aia-radio-button-icon-container',
+  className: 'micro-radio-button-icon-container',
 }))`
   display: inline-block;
 `
