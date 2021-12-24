@@ -5,15 +5,6 @@ import { fontStyles } from '@/styles'
 
 import { Alignment } from './utils/constants'
 
-const resolveClosePosition = ({ position }) => {
-  switch (position) {
-    case 'left':
-      return css({ left: '10px' })
-    default:
-      return css({ right: '10px' })
-  }
-}
-
 export const Overlay = styled.div.attrs(() => ({
   className: 'micro-modal-overlay',
 }))`
@@ -51,29 +42,11 @@ export const HeaderWrapper = styled.div.attrs(() => ({
   background-color: ${resolveColor('bg')};
   position: relative;
   color: ${resolveColor('color')};
-  margin-bottom: ${({ hasIcon }) => (hasIcon ? '20px' : '0px')};
   padding: ${({ padding }) => padding};
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  text-align: left;
   ${fontStyles};
-
-  ${({ customStyle }) => customStyle && css(customStyle)};
-`
-
-export const HeaderIconWrapper = styled.div.attrs(() => ({
-  className: 'micro-modal-header-icon-wrapper',
-}))`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  padding: ${({ padding }) => padding};
-  border-radius: 50%;
-  background-color: ${resolveColor('bg')};
-  box-shadow: ${({ boxShadow }) => boxShadow};
-  color: ${resolveColor('color')};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
@@ -83,7 +56,8 @@ export const CloseWrapper = styled.div.attrs(() => ({
 }))`
   position: absolute;
   z-index: 10;
-  top: 10px;
+  top: 0.5rem;
+  right: 0.5rem;
   background-color: ${resolveColor('bg')};
   width: 2em;
   height: 2em;
@@ -93,7 +67,6 @@ export const CloseWrapper = styled.div.attrs(() => ({
   justify-content: center;
   border-radius: ${getBorderRadius};
   cursor: pointer;
-  ${resolveClosePosition};
 
   .micro-modal-close-icon {
     background-color: ${resolveColor('color')};
@@ -108,7 +81,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
 export const CloseIcon = styled.span.attrs(() => ({
   className: 'micro-modal-close-icon',
 }))`
-  width: 1.3em;
+  width: 1.2em;
   height: 0.15em;
   position: relative;
   transform: rotate(45deg);
@@ -128,6 +101,7 @@ export const Title = styled.h3.attrs(() => ({
   ${fontStyles};
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
 
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
@@ -161,7 +135,7 @@ export const ActionsWrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: ${({ alignment }) => Alignment[alignment]};
-  margin-top: 20px;
+  margin-top: 30px;
   > *:not(:last-child) {
     margin-right: ${({ spacing }) => spacing};
   }
