@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
-import { StyledTag } from './views'
+import { Wrapper } from './views'
 
-export const Tag = React.forwardRef(({ children, ...props }, ref) => {
+export const Badge = React.forwardRef(({ children, ...props }, ref) => {
   const theme = useTheme()
   return (
-    <StyledTag {...theme.default.component.tag} {...props} ref={ref}>
+    <Wrapper {...theme.default.component.badge} {...props} ref={ref}>
       {children}
-    </StyledTag>
+    </Wrapper>
   )
 })
 
-Tag.propTypes = {
+Badge.propTypes = {
   /** Children for Tag */
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /** Background color for Tag */
@@ -36,5 +36,5 @@ Tag.propTypes = {
 }
 
 if (isDev) {
-  Tag.displayName = 'Tag'
+  Badge.displayName = 'Tag'
 }

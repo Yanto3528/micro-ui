@@ -75,6 +75,15 @@ export const theme = {
           color: 'dark',
         },
       },
+      badge: {
+        bg: 'primary',
+        color: 'white',
+        padding: '0.3rem 1rem',
+        variant: 'solid',
+        radius: 'sm',
+        fontSize: 'sm',
+        textTransform: 'uppercase',
+      },
       button: {
         bg: 'primary',
         color: 'white',
@@ -305,8 +314,7 @@ export const theme = {
           bg: 'gray.100',
           fontWeight: 'bold',
           fontSize: 'md',
-
-          borer: 0,
+          border: 0,
           cursor: 'auto',
           alignment: 'left',
           color: 'dark',
@@ -317,21 +325,12 @@ export const theme = {
         data: {
           padding: '1.1rem 1.5rem',
           border: '1px solid',
-          borderColor: 'gray.1002',
+          borderColor: 'gray.100',
           fontSize: 'md',
           cursor: 'auto',
           lineHeight: '18px',
           color: 'dark',
         },
-      },
-      tag: {
-        bg: 'primary',
-        color: 'white',
-        padding: '0.3rem 1rem',
-        variant: 'solid',
-        radius: 'sm',
-        fontSize: 'sm',
-        textTransform: 'uppercase',
       },
       textarea: {
         bg: 'gray.100',

@@ -1,19 +1,19 @@
 import React from 'react'
 
 import { theme } from '../theme'
-import { Tag } from './index'
+import { Badge } from './index'
 
 export default {
-  title: 'Components/Others/Tag',
-  component: Tag,
+  title: 'Components/Others/Badge',
+  component: Badge,
 }
 
-const Template = (args) => <Tag {...args} />
+const Template = (args) => <Badge {...args} />
 
 export const Solid = Template.bind({})
 Solid.args = {
   ...theme.default.component.tag,
-  children: 'Tag',
+  children: 'Technology',
   variant: 'solid',
 }
 
