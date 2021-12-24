@@ -112,7 +112,7 @@ export const OptionWrapper = styled.div.attrs(() => ({
   flex-direction: column;
   width: 100%;
   background-color: white;
-  border: 1px solid ${({ theme }) => theme.colors.lightGray};
+  border: 1px solid ${({ theme }) => theme.colors.gray[200]};
   border-radius: 4px;
   position: absolute;
   bottom: 0;
@@ -131,7 +131,7 @@ export const StyledOption = styled.div.attrs(() => ({
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.lightGray2};
+    background-color: ${({ theme }) => theme.colors.gray[100]};
   }
 `
 

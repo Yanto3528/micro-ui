@@ -14,8 +14,8 @@ const Template = (args) => <RadioButton {...args} />
 export const Solid = Template.bind({})
 Solid.args = {
   ...theme.default.component.radioButton,
-  bg: 'lightGray',
-  color: 'secondary',
+  bg: 'gray.400',
+  color: 'white',
   activeBGColor: 'primary',
   activeTextColor: 'white',
   variant: 'solid',

@@ -168,14 +168,14 @@ describe('utils > mergeDeep', () => {
   }
   const obj2 = {
     colors: {
-      secondary: 'lightGray',
+      secondary: 'gray.200',
       blue: 'blue',
     },
   }
   const expectedResult = {
     colors: {
       primary: 'primary',
-      secondary: 'lightGray',
+      secondary: 'gray.200',
       blue: 'blue',
     },
     default: {
