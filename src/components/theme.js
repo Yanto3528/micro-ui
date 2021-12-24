@@ -96,7 +96,7 @@ export const theme = {
       },
       checkbox: {
         activeColor: 'primary',
-        borderColor: 'gray.400',
+        borderColor: 'gray.300',
         color: 'dark',
         radius: 'sm',
         fontSize: 'md',
@@ -247,7 +247,7 @@ export const theme = {
       },
       radio: {
         activeColor: 'primary',
-        borderColor: 'primary',
+        borderColor: 'gray.300',
         color: 'dark',
         radius: 'sm',
         fontSize: 'md',

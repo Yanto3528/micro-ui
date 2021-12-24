@@ -69,8 +69,9 @@ export const Checkmark = styled.span.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.3em;
+  height: 1.3em;
+  aspect-ratio: 1 / 1;
   background-color: transparent;
   border: 0.2em solid ${resolveColor('borderColor')};
   border-radius: 50%;
@@ -78,8 +79,9 @@ export const Checkmark = styled.span.attrs(() => ({
 
   &:after {
     content: '';
-    width: 0.8em;
-    height: 0.8em;
+    width: 0.6em;
+    height: 0.6em;
+    aspect-ratio: 1 / 1;
     background-color: ${resolveColor('activeColor')};
     border-radius: 50%;
     opacity: 0;
