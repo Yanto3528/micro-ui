@@ -14,6 +14,8 @@ export const CalendarYear = ({
   date,
   onToggleOpen,
   onYearSelect,
+  radius,
+  show,
   ...props
 }) => {
   const currentYear = Number(date.format('YYYY'))
@@ -51,14 +53,17 @@ export const CalendarYear = ({
 
   const generateYear = () => {
     const years = []
+
     for (let i = 0; i < limitYearShown; i++) {
       const nextYear = fromYear + i
       const isSelected = nextYear === Number(date.format('YYYY'))
+
       years.push(
         <Year
           isSelected={isSelected}
           key={`year-${i}`}
           onClick={onSelectYear(nextYear)}
+          radius={radius}
         >
           {nextYear}
         </Year>
@@ -69,16 +74,26 @@ export const CalendarYear = ({
   }
 
   return (
-    <Wrapper {...props} data-testid='calendar-year'>
+    <Wrapper {...props} data-testid='calendar-year' show={show}>
       <Header>
-        <NextBackButton onClick={onClickBack}>
+        <NextBackButton
+          onClick={onClickBack}
+          data-testid='year-next-back-wrapper'
+        >
           <BackIcon />
           <BackIcon />
         </NextBackButton>
-        <CurrentYear onClick={onToggleOpen} data-testid='current-year'>
+        <CurrentYear
+          onClick={onToggleOpen}
+          data-testid='current-year'
+          radius={radius}
+        >
           {`${fromYear}-${toYear}`}
         </CurrentYear>
-        <NextBackButton onClick={onClickNext}>
+        <NextBackButton
+          onClick={onClickNext}
+          data-testid='year-next-back-wrapper'
+        >
           <NextIcon />
           <NextIcon />
         </NextBackButton>
@@ -93,9 +108,12 @@ CalendarYear.propTypes = {
   onToggleOpen: PropTypes.func.isRequired,
   onYearSelect: PropTypes.func.isRequired,
   date: dayjsType.isRequired,
+  /** Determine whether to show the year picker or not */
+  show: PropTypes.bool.isRequired,
   fontFamily: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  radius: PropTypes.string,
   customStyle: PropTypes.object,
 }
 

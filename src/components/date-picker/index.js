@@ -70,9 +70,9 @@ export const DatePicker = React.forwardRef(
 
     return (
       <Wrapper
-        ref={wrapperRef}
-        onClick={onOpen}
         {...wrapperProps}
+        onClick={onOpen}
+        ref={wrapperRef}
         data-testid='date-picker-wrapper'
       >
         <StyledInput
@@ -89,6 +89,7 @@ export const DatePicker = React.forwardRef(
             onChange={handleDateChange}
             startDate={startDate}
             endDate={endDate}
+            onClose={onClose}
             {...calendarProps}
           />
         )}

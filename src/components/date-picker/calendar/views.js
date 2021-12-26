@@ -13,40 +13,22 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-calendar-wrapper',
 }))`
   position: absolute;
-  bottom: 0;
+  bottom: 45px;
   left: 0;
   z-index: 10;
   transform: translateY(100%);
   border-radius: 4px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: 12px;
-  width: 100%;
+  width: 335px;
+  height: 420px;
   background-color: white;
   ${fontStyles};
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const YearDisplayWrapper = styled.div.attrs(() => ({
-  className: 'micro-calendar-year-display',
-}))`
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  p {
-    padding: 10px 30px;
-    display: inline-block;
-  }
-  &:hover > p {
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.primary};
-  }
-`
-
 export const NextBackButton = styled.div.attrs(() => ({
   className: 'micro-calendar-next-back-wrapper',
-  'data-testid': 'next-back-wrapper',
 }))`
   opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
@@ -115,7 +97,7 @@ export const WeekDayWrapper = styled.div.attrs(() => ({
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
-  grid-gap: 5px;
+  grid-gap: 10px;
   background-color: transparent;
   margin-top: 12px;
   margin-bottom: 20px;

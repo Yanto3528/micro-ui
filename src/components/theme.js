@@ -143,16 +143,21 @@ export const theme = {
             fontSize: 'md',
           },
           yearProps: {
+            fontSize: 'md',
+            color: 'dark',
+            radius: 'sm',
+          },
+          yearMonthProps: {
             fontWeight: 'bold',
             fontSize: 'md',
           },
           monthProps: {
-            fontWeight: 'bold',
-            fontSize: 'md',
+            radius: 'sm',
           },
           dayProps: {
             activeBg: 'primary',
             activeColor: 'white',
+            radius: 'sm',
           },
           dateInputProps: {
             borderColor: 'gray.200',

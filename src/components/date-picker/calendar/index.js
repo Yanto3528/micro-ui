@@ -4,21 +4,21 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
 import { isDev } from '@/constants'
-import { useToggle } from '@/hooks'
 
-import { DateAction, DaysOfWeek } from './utils/constant'
+import { DateAction, DaysOfWeek, DateState } from './utils/constant'
 import { dayjsType } from './utils/types'
 import { getDisabledMonthData } from './utils/helpers'
 import { CalendarYear } from './year'
-import { Month } from './month'
+import { YearMonth } from './year-month'
+import { CalendarMonth } from './month'
 import { Days } from './days'
 import { DateInput } from './date-input'
-import { Wrapper, YearDisplayWrapper, WeekDayWrapper, WeekDay } from './views'
+import { Wrapper, WeekDayWrapper, WeekDay } from './views'
 
 dayjs.extend(utc)
 
 export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
-  const [isYearOpen, { onToggle }] = useToggle()
+  const [dateState, setDateState] = useState(DateState.DATE)
   const [date, setDate] = useState(value)
   const [selectedDate, setSelectedDate] = useState(value)
   const [disabledMonth, setDisabledMonth] = useState({
@@ -37,6 +37,13 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
 
     const dateToShow = dayjs(dateValue)
     setDate(dateToShow)
+    onSetDisabledMonth(dateToShow)
+  }
+
+  const onMonthSelect = (selectedDate) => {
+    setDate(selectedDate)
+    setDateState(DateState.DATE)
+    onSetDisabledMonth(selectedDate)
   }
 
   const onMonthAction = (action) => {
@@ -50,10 +57,13 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
         break
     }
 
+    onSetDisabledMonth(newDate)
+    setDate(newDate)
+  }
+
+  const onSetDisabledMonth = (newDate) => {
     const disableNext = getDisabledMonthData(endDate, newDate)
     const disableBack = getDisabledMonthData(startDate, newDate)
-
-    setDate(newDate)
     setDisabledMonth({
       disableNextMonth: disableNext,
       disablePrevMonth: disableBack,
@@ -69,51 +79,53 @@ export const Calendar = ({ value, onChange, startDate, endDate, ...props }) => {
 
   const onToggleShowYear = (event) => {
     event.stopPropagation()
-    onToggle()
+    setDateState(DateState.DATE)
   }
 
   return (
     <Wrapper {...props.wrapperProps} data-testid='calendar'>
-      {isYearOpen ? (
-        <CalendarYear
-          date={date}
-          onToggleOpen={onToggleShowYear}
-          onYearSelect={onYearSelect}
-          {...props.yearProps}
-        />
-      ) : (
-        <>
-          <DateInput
-            {...props.dateInputProps}
-            value={value}
-            startDate={startDate}
-            endDate={endDate}
-            onChange={onDateChange}
-          />
-          <YearDisplayWrapper onClick={onToggleShowYear}>
-            <p data-testid='year-display'>{date.format('YYYY')}</p>
-          </YearDisplayWrapper>
-          <Month
-            date={date}
-            onMonthAction={onMonthAction}
-            disabledMonth={disabledMonth}
-            {...props.monthProps}
-          />
-          <WeekDayWrapper>
-            {DaysOfWeek.map((day, index) => (
-              <WeekDay key={`${day}-${index}`}>{day}</WeekDay>
-            ))}
-          </WeekDayWrapper>
-          <Days
-            date={date}
-            selectedDate={selectedDate}
-            onSelectDay={onDateChange}
-            startDate={startDate}
-            endDate={endDate}
-            {...props.dayProps}
-          />
-        </>
-      )}
+      <CalendarYear
+        date={date}
+        onToggleOpen={onToggleShowYear}
+        onYearSelect={onYearSelect}
+        startDate={startDate}
+        endDate={endDate}
+        show={dateState === DateState.YEAR}
+        {...props.yearProps}
+      />
+      <CalendarMonth
+        date={date}
+        onMonthSelect={onMonthSelect}
+        show={dateState === DateState.MONTH}
+        {...props.monthProps}
+      />
+      <DateInput
+        {...props.dateInputProps}
+        value={value}
+        startDate={startDate}
+        endDate={endDate}
+        onChange={onDateChange}
+      />
+      <YearMonth
+        date={date}
+        onMonthAction={onMonthAction}
+        disabledMonth={disabledMonth}
+        setDateState={setDateState}
+        {...props.yearMonthProps}
+      />
+      <WeekDayWrapper>
+        {DaysOfWeek.map((day, index) => (
+          <WeekDay key={`${day}-${index}`}>{day}</WeekDay>
+        ))}
+      </WeekDayWrapper>
+      <Days
+        date={date}
+        selectedDate={selectedDate}
+        onSelectDay={onDateChange}
+        startDate={startDate}
+        endDate={endDate}
+        {...props.dayProps}
+      />
     </Wrapper>
   )
 }
@@ -125,6 +137,7 @@ Calendar.propTypes = {
   endDate: PropTypes.oneOfType([dayjsType, PropTypes.instanceOf(Date)]),
   wrapperProps: PropTypes.object,
   yearProps: PropTypes.object,
+  yearMonthProps: PropTypes.object,
   monthProps: PropTypes.object,
   dayProps: PropTypes.object,
   dateInputProps: PropTypes.object,

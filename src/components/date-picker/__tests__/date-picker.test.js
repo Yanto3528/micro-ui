@@ -53,7 +53,7 @@ describe('components > DatePicker', () => {
         const thisYear = dayjs().format('YYYY')
         const nextYear = dayjs().add(1, 'year').format('YYYY')
 
-        const yearDisplay = screen.queryByTestId('year-display')
+        const yearDisplay = screen.queryByTestId('current-year-display')
         expect(yearDisplay).toHaveTextContent(thisYear)
         userEvent.click(yearDisplay)
 
@@ -63,9 +63,11 @@ describe('components > DatePicker', () => {
         const nextYearText = screen.queryByText(nextYear)
         expect(nextYearText).toBeInTheDocument()
         userEvent.click(nextYearText)
-        expect(calendarYear).not.toBeInTheDocument()
+        expect(calendarYear).toHaveStyle({
+          display: 'none',
+        })
 
-        const nextYearDisplay = screen.getByTestId('year-display')
+        const nextYearDisplay = screen.getByTestId('current-year-display')
         expect(nextYearDisplay).toHaveTextContent(nextYear)
       })
 
@@ -75,13 +77,13 @@ describe('components > DatePicker', () => {
         const startYear = currentYear - (currentYear % limitYearShown)
         const endYear = startYear + limitYearShown - 1
 
-        const yearDisplay = screen.queryByTestId('year-display')
+        const yearDisplay = screen.queryByTestId('current-year-display')
         userEvent.click(yearDisplay)
 
         const current20YearText = screen.getByTestId('current-year')
         expect(current20YearText).toHaveTextContent(`${startYear}-${endYear}`)
 
-        const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+        const nextBackWrapper = screen.getAllByTestId('year-next-back-wrapper')
         const [prev20YearButton, next20YearButton] = nextBackWrapper
 
         userEvent.click(prev20YearButton.children[0])
@@ -98,19 +100,21 @@ describe('components > DatePicker', () => {
         const next20YearText = screen.getByText(`${startYear + 20}`)
         userEvent.click(next20YearText)
 
-        const next20YearDisplay = screen.getByTestId('year-display')
+        const next20YearDisplay = screen.getByTestId('current-year-display')
         expect(next20YearDisplay).toHaveTextContent(`${startYear + 20}`)
       })
 
       it('should be able to select previous/next month', () => {
-        const currentMonth = dayjs().format('MMMM')
-        const prevMonth = dayjs().subtract(1, 'month').format('MMMM')
-        const nextMonth = dayjs().add(1, 'month').format('MMMM')
+        const currentMonth = dayjs().format('MMM')
+        const prevMonth = dayjs().subtract(1, 'month').format('MMM')
+        const nextMonth = dayjs().add(1, 'month').format('MMM')
 
-        const currentMonthDisplay = screen.getByTestId('current-month')
+        const currentMonthDisplay = screen.getByTestId('current-month-display')
         expect(currentMonthDisplay).toHaveTextContent(currentMonth)
 
-        const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+        const nextBackWrapper = screen.getAllByTestId(
+          'calendar-next-back-wrapper'
+        )
         const [prevMonthButton, nextMonthButton] = nextBackWrapper
 
         userEvent.click(prevMonthButton.children[0])
@@ -254,22 +258,20 @@ describe('components > DatePicker', () => {
       const wrapper = screen.getByTestId('date-picker-wrapper')
 
       const date = dayjs().month(9).year(2021)
-      const yearValue = date.format('YYYY')
+      const yearValues = date.format('YYYY')
 
       userEvent.click(wrapper)
-      let yearText = screen.getByText(yearValue)
+      let yearText = screen.getByTestId('current-year-display')
       userEvent.click(yearText)
       // Need to find year text again and click on it
-      yearText = screen.getByText(yearValue)
+      yearText = screen.getAllByText(yearValues)[0]
       userEvent.click(yearText)
 
-      const monthToClick = dayjs().diff(date, 'month')
-      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
-      const [prevMonthButton] = nextBackWrapper
+      const currentMonth = screen.getByTestId('current-month-display')
+      userEvent.click(currentMonth)
 
-      for (let i = 0; i < monthToClick; i++) {
-        userEvent.click(prevMonthButton.children[0])
-      }
+      const octoberMonthsFormat = screen.getByText(date.format('MMMM'))
+      userEvent.click(octoberMonthsFormat)
 
       const dateTexts = screen.getAllByText('11')
       userEvent.click(dateTexts[0])
@@ -282,21 +284,23 @@ describe('components > DatePicker', () => {
       const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
       const wrapper = screen.getByTestId('date-picker-wrapper')
       const oneYearAgo = dayjs().subtract(1, 'year').format('YYYY')
-      const prev2Month = dayjs().subtract(2, 'month').format('MMMM')
+      const prev2Month = dayjs().subtract(2, 'month').format('MMM')
 
       userEvent.click(wrapper)
-      const yearDisplay = screen.queryByTestId('year-display')
+      const yearDisplay = screen.queryByTestId('current-year-display')
       userEvent.click(yearDisplay)
 
       const oneYearAgoText = screen.queryByText(oneYearAgo)
       userEvent.click(oneYearAgoText)
 
-      const nextYearDisplay = screen.getByTestId('year-display')
+      const nextYearDisplay = screen.getByTestId('current-year-display')
       expect(nextYearDisplay).toHaveTextContent(oneYearAgo)
 
-      const currentMonthDisplay = screen.getByTestId('current-month')
+      const currentMonthDisplay = screen.getByTestId('current-month-display')
 
-      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      const nextBackWrapper = screen.getAllByTestId(
+        'calendar-next-back-wrapper'
+      )
       const [prevMonthButton] = nextBackWrapper
 
       userEvent.click(prevMonthButton.children[0])
@@ -320,6 +324,53 @@ describe('components > DatePicker', () => {
       expect(dateDisplayInput).toHaveValue(expectedDisplayDate)
     })
 
+    it('should be able to select specific months and next year', () => {
+      render(<ControlledDatePicker placeholder='Enter your date of birth' />)
+      const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
+      const wrapper = screen.getByTestId('date-picker-wrapper')
+      userEvent.click(wrapper)
+
+      const nextYear = dayjs().add(1, 'year').format('YYYY')
+
+      const currentMonthDisplay = screen.getByTestId('current-month-display')
+      userEvent.click(currentMonthDisplay)
+
+      const calendarMonth = screen.getByTestId('calendar-month')
+      expect(calendarMonth).toHaveStyle({
+        display: 'block',
+      })
+
+      // Test for clicking prev and next button to select different years for month
+      const nextBackWrapper = screen.getAllByTestId(
+        'month-next-back-year-wrapper'
+      )
+      const monthCurrentYearDisplay = screen.getByTestId(
+        'month-current-year-display'
+      )
+      expect(monthCurrentYearDisplay).toHaveTextContent(dayjs().format('YYYY'))
+
+      const [previousYearButton, nextYearButton] = nextBackWrapper
+      userEvent.click(previousYearButton)
+
+      expect(monthCurrentYearDisplay).toHaveTextContent(
+        dayjs().subtract(1, 'year').format('YYYY')
+      )
+
+      userEvent.click(nextYearButton)
+      userEvent.click(nextYearButton)
+      expect(monthCurrentYearDisplay).toHaveTextContent(nextYear)
+
+      const julyMonth = screen.getByText(/july/i)
+      expect(julyMonth).toBeInTheDocument()
+
+      userEvent.click(julyMonth)
+
+      const date20 = screen.getAllByText('20')[0]
+      userEvent.click(date20)
+
+      expect(dateDisplayInput).toHaveValue(`20/07/${nextYear}`)
+    })
+
     it('should not be able to select date which is older than given startDate', () => {
       const startDate = dayjs().subtract(1, 'month').date(15)
       render(
@@ -331,7 +382,9 @@ describe('components > DatePicker', () => {
       const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
       userEvent.click(dateDisplayInput)
 
-      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      const nextBackWrapper = screen.getAllByTestId(
+        'calendar-next-back-wrapper'
+      )
       const [prevMonthButton] = nextBackWrapper
       userEvent.click(prevMonthButton.children[0])
 
@@ -359,7 +412,9 @@ describe('components > DatePicker', () => {
       const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
       userEvent.click(dateDisplayInput)
 
-      const nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      const nextBackWrapper = screen.getAllByTestId(
+        'calendar-next-back-wrapper'
+      )
       const nextMonthButton = nextBackWrapper[1]
 
       userEvent.click(nextMonthButton.children[0])
@@ -393,7 +448,7 @@ describe('components > DatePicker', () => {
       const dateDisplayInput = screen.getByPlaceholderText(/date of birth/i)
       userEvent.click(dateDisplayInput)
 
-      let nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      let nextBackWrapper = screen.getAllByTestId('calendar-next-back-wrapper')
       const prevMonthButton = nextBackWrapper[0]
 
       userEvent.click(prevMonthButton.children[0])
@@ -423,7 +478,7 @@ describe('components > DatePicker', () => {
       )
 
       userEvent.click(dateDisplayInput)
-      nextBackWrapper = screen.getAllByTestId('next-back-wrapper')
+      nextBackWrapper = screen.getAllByTestId('calendar-next-back-wrapper')
       const nextMonthButton = nextBackWrapper[1]
       userEvent.click(nextMonthButton.children[0])
       userEvent.click(nextMonthButton.children[0])
@@ -658,11 +713,11 @@ describe('components > DatePicker', () => {
     const calendar = screen.getByTestId('calendar')
     expect(calendar).toHaveStyle(calendarProps.wrapperProps.customStyle)
 
-    const currentYear = dayjs().format('YYYY')
-    userEvent.click(screen.getByText(currentYear))
+    const currentYear = screen.getByTestId('current-year-display')
+    userEvent.click(currentYear)
     const calendarYear = screen.getByTestId('calendar-year')
     expect(calendarYear).toHaveStyle(calendarProps.yearProps.customStyle)
-    userEvent.click(screen.getByText(currentYear))
+    userEvent.click(currentYear)
 
     const calendarMonth = screen.getByTestId('calendar-month')
     expect(calendarMonth).toHaveStyle(calendarProps.monthProps.customStyle)

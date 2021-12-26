@@ -10,6 +10,8 @@ import { Wrapper, SingleDay } from './views'
 
 dayjs.extend(isBetween)
 
+const DAYS_COUNT = 6 * 7 // 6 rows and 7 columns
+
 export const Days = ({
   date,
   selectedDate,
@@ -34,12 +36,6 @@ export const Days = ({
       daysOfMonth = daysOfMonth.subtract(1, 'w')
     }
 
-    let endOfMonth = date.endOf('month')
-    const nextMonth = date.add(1, 'M').month()
-
-    const currentMonthEndWeek = endOfMonth.day(0).date()
-    const isCurrentMonthEnd = currentMonthEndWeek === endOfMonth.date()
-
     // Defined the methods to be called by dayjs
     const checkMethod =
       !!startDate && !!endDate
@@ -50,8 +46,8 @@ export const Days = ({
         ? 'isBefore'
         : ''
 
-    let done = false
-    while (!done) {
+    let counter = 0
+    while (counter !== DAYS_COUNT) {
       const dayValue = daysOfMonth.date()
       const isCurrentMonth = daysOfMonth.month() === date.month()
 
@@ -73,16 +69,9 @@ export const Days = ({
       )
 
       const nextDate = daysOfMonth.add(1, 'days')
-      const endOfWeek = nextDate.day(0).date()
-      const isNextMonth = !isCurrentMonthEnd
-        ? nextDate.month() === nextMonth
-        : false
-
-      done = isNextMonth
-        ? nextDate.date() > endOfWeek
-        : daysOfMonth.isSame(endOfMonth, 'day')
 
       daysOfMonth = nextDate
+      counter++
     }
 
     return days

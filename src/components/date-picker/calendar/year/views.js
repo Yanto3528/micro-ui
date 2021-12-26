@@ -1,27 +1,38 @@
 import styled, { css } from 'styled-components'
 
 import { fontStyles } from '@/styles'
+import { getBorderRadius } from '@/utils'
 
 const activeYearStyles = css`
   background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${getBorderRadius};
   color: white;
 `
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-calendar-year-wrapper',
 }))`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   text-align: center;
+  height: 420px;
+  padding: 10px;
   ${fontStyles};
+  display: ${({ show }) => (show ? 'block' : 'none')};
+  background-color: ${({ theme }) => theme.colors.white};
+  z-index: 100;
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
 export const Header = styled.div.attrs(() => ({
   className: 'micro-calendar-year-header',
 }))`
-  margin-top: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `
 
 export const CurrentYear = styled.div.attrs(() => ({
@@ -29,7 +40,8 @@ export const CurrentYear = styled.div.attrs(() => ({
 }))`
   padding: 4px 10px;
   margin: 0 10px;
-  font-size: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   transition: all 0.4s;
@@ -44,7 +56,8 @@ export const YearList = styled.div.attrs(() => ({
 }))`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 30px;
+  margin-top: 10px;
 `
 
 export const Year = styled.div.attrs(() => ({

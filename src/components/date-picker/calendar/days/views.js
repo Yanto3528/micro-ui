@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { resolveColor } from '@/utils'
+import { resolveColor, getBorderRadius } from '@/utils'
 
 const activeDayStyles = ({ isDateInRange }) =>
   isDateInRange &&
@@ -15,7 +15,7 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
+  grid-gap: 10px;
 `
 
 export const SingleDay = styled.p.attrs(() => ({
@@ -28,7 +28,7 @@ export const SingleDay = styled.p.attrs(() => ({
   cursor: ${({ isDateInRange }) => (isDateInRange ? 'pointer' : 'not-allowed')};
   opacity: ${({ isDateInRange }) => (isDateInRange ? '1' : '0.5')};
   user-select: none;
-  border-radius: 50%;
+  border-radius: ${getBorderRadius};
   padding: calc(calc(100% - 1em) / 2) 0;
   line-height: 1;
   transition: background-color 0.4s;
@@ -36,7 +36,7 @@ export const SingleDay = styled.p.attrs(() => ({
   ${({ isDifferentMonth, isDateInRange }) =>
     (isDifferentMonth || !isDateInRange) &&
     css`
-      color: ${({ theme }) => theme.colors.darkGray};
+      color: ${({ theme }) => theme.colors.gray[500]};
     `}
 
   ${daySelectedStyles};

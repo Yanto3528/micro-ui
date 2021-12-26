@@ -4,3 +4,9 @@ export const DateAction = {
 }
 
 export const DaysOfWeek = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+
+export const DateState = {
+  DATE: 'date',
+  MONTH: 'month',
+  YEAR: 'year',
+}

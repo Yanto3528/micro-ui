@@ -24,6 +24,11 @@ export const StyledInput = styled.input.attrs(() => ({
   padding: 6px;
   ${fontStyles};
   color: ${resolveColor('color')};
+  transition: all 0.4s;
 
   ${({ customStyle }) => customStyle && css(customStyle)};
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
 `

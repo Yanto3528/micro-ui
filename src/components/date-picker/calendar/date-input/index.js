@@ -41,8 +41,6 @@ export const DateInput = ({
   const handleKeyUp = (event) => {
     if (event.key === 'Enter') {
       const formattedDate = dayjs(inputValue, DATE_FORMAT)
-      // console.log('KeyUp InputValue: ', inputValue)
-      // console.log('formattedDate: ', formattedDate)
       const checkMethod =
         !!startDate && !!endDate
           ? 'isBetween'
@@ -56,9 +54,6 @@ export const DateInput = ({
         ? checkDateRange[checkMethod](formattedDate, startDate, endDate)
         : true
       const dateResult = inDateRange ? formattedDate : value
-
-      // console.log('inDateRange: ', inDateRange)
-      // console.log('dateResult: ', dateResult)
 
       if (!dateResult.isValid()) {
         onChange?.(value, event)
