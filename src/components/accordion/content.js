@@ -24,7 +24,7 @@ export const AccordionContent = React.forwardRef(
         show={isExpand}
         onEnter={collapse.enter}
         onExit={collapse.exit}
-        duration={0.4}
+        duration={0.2}
         data-testid='animate-accordion-wrapper'
       >
         <Content

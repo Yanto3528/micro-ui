@@ -48,8 +48,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Minus size='1em' />,
-        closeIcon: <Plus size='1em' />,
+        openIcon: <Plus size='1em' />,
+        closeIcon: <Minus size='1em' />,
       },
     },
     content: { children: 'content' },
@@ -58,8 +58,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Minus size='1em' />,
-        closeIcon: <Plus size='1em' />,
+        openIcon: <Plus size='1em' />,
+        closeIcon: <Minus size='1em' />,
       },
     },
     content: { children: 'content' },
@@ -68,8 +68,8 @@ const itemsHeaderIcon = [
     header: {
       children: 'header',
       props: {
-        openIcon: <Minus size='1em' />,
-        closeIcon: <Plus size='1em' />,
+        openIcon: <Plus size='1em' />,
+        closeIcon: <Minus size='1em' />,
       },
     },
     content: { children: 'content' },

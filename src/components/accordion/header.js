@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ChevronDown } from 'react-feather'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 
 import { useAccordionContext, useAccordionItemContext } from './utils/context'
-import { HeaderWrapper, HeaderIcon, HeaderText } from './views'
+import { HeaderWrapper, HeaderIconContainer, HeaderText } from './views'
 
 export const AccordionHeader = React.forwardRef(
   ({ children, openIcon, closeIcon, ...props }, ref) => {
@@ -22,9 +23,13 @@ export const AccordionHeader = React.forwardRef(
         ref={ref}
         data-testid='accordion-header'
       >
-        {(!openIcon || !closeIcon) && <HeaderIcon isExpand={isExpand} />}
-        {openIcon && isExpand && openIcon}
-        {closeIcon && !isExpand && closeIcon}
+        {(!openIcon || !closeIcon) && (
+          <HeaderIconContainer isExpand={isExpand}>
+            <ChevronDown size='1.4em' />
+          </HeaderIconContainer>
+        )}
+        {openIcon && !isExpand && openIcon}
+        {closeIcon && isExpand && closeIcon}
         <HeaderText>{children}</HeaderText>
       </HeaderWrapper>
     )

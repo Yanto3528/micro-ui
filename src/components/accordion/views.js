@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { ChevronRight } from 'react-feather'
 
 import { resolveColor } from '@/utils'
 import { fontStyles } from '@/styles'
@@ -49,13 +48,14 @@ export const HeaderText = styled.span.attrs(() => ({
   flex: 1;
 `
 
-export const HeaderIcon = styled(ChevronRight).attrs(() => ({
-  className: 'micro-accordion-header-icon',
-  size: '1.5em',
+export const HeaderIconContainer = styled.div.attrs(() => ({
+  className: 'micro-accordion-header-icon-container',
 }))`
-  transform-origin: center;
-  transition: all 0.4s ease-out;
-  transform: ${({ isExpand }) => (isExpand ? 'rotate(90deg)' : 'none')};
+  > svg {
+    transform-origin: center;
+    transition: all 0.2s ease-out;
+    transform: ${({ isExpand }) => (isExpand ? 'rotate(180deg)' : 'none')};
+  }
 `
 
 export const Content = styled.div.attrs(() => ({

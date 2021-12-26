@@ -207,8 +207,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Minus size='1em' />,
-          closeIcon: <Plus size='1em' />,
+          openIcon: <Plus size='1em' />,
+          closeIcon: <Minus size='1em' />,
         },
       },
     },
@@ -216,8 +216,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Minus size='1em' />,
-          closeIcon: <Plus size='1em' />,
+          openIcon: <Plus size='1em' />,
+          closeIcon: <Minus size='1em' />,
         },
       },
     },
@@ -225,8 +225,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Minus size='1em' />,
-          closeIcon: <Plus size='1em' />,
+          openIcon: <Plus size='1em' />,
+          closeIcon: <Minus size='1em' />,
         },
       },
     },
@@ -234,8 +234,8 @@ WithCustomIcon.args = {
       header: {
         children: 'Header',
         props: {
-          openIcon: <Minus size='1em' />,
-          closeIcon: <Plus size='1em' />,
+          openIcon: <Plus size='1em' />,
+          closeIcon: <Minus size='1em' />,
         },
       },
     },
