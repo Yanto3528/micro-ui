@@ -45,7 +45,7 @@ import React from 'react'
 
 import { useTheme } from '@/hooks'
 
-import {Icon} from '../../icon'
+import {Button} from '../../button'
 import {Wrapper} from './views'
 ```
 

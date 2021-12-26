@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
+import { ChevronRight } from 'react-feather'
+
 import { resolveColor } from '@/utils'
 import { fontStyles } from '@/styles'
-
-import { Icon } from '../icon'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-accordion-wrapper',
@@ -49,9 +49,8 @@ export const HeaderText = styled.span.attrs(() => ({
   flex: 1;
 `
 
-export const HeaderIcon = styled(Icon).attrs(() => ({
+export const HeaderIcon = styled(ChevronRight).attrs(() => ({
   className: 'micro-accordion-header-icon',
-  name: 'forward',
   size: '1.5em',
 }))`
   transform-origin: center;

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
+import { ChevronRight, ChevronLeft } from 'react-feather'
 
 import { fontStyles } from '@/styles'
-import { Icon } from '../../icon'
 
 const iconStyles = css`
   color: ${({ theme }) => theme.colors.primary};
@@ -37,11 +37,6 @@ export const NextBackButton = styled.div.attrs(() => ({
   position: relative;
   font-size: 14px;
 
-  & .micro-calendar-back {
-    transform-origin: 50%;
-    transform: rotate(180deg);
-  }
-
   & .micro-calendar-back:nth-child(2),
   & .micro-calendar-next:nth-child(2) {
     transition: all 0.3s ease-out;
@@ -73,22 +68,18 @@ export const NextBackButton = styled.div.attrs(() => ({
   }
 `
 
-export const NextIcon = styled(Icon).attrs(() => ({
+export const NextIcon = styled(ChevronRight).attrs(() => ({
   className: 'micro-calendar-next',
-  name: 'forward',
-  size: 'l',
+  size: '2em',
 }))`
   ${iconStyles};
 `
 
-export const BackIcon = styled(Icon).attrs(() => ({
+export const BackIcon = styled(ChevronLeft).attrs(() => ({
   className: 'micro-calendar-back',
-  name: 'forward',
-  size: 'l',
+  size: '2em',
 }))`
   ${iconStyles};
-  transform-origin: 50%;
-  transform: rotate(180deg);
 `
 
 export const WeekDayWrapper = styled.div.attrs(() => ({

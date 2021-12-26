@@ -30,12 +30,6 @@ export const theme = {
     white: '#fff',
     black: '#000',
   },
-  fontFamily: {
-    regular: 'AIARegular',
-    medium: 'AIAMedium',
-    condensed: 'AIACondensed',
-    condensedMedium: 'AIACondensedMedium',
-  },
   fontSize: {
     xs: '1rem',
     sm: '1.2rem',

@@ -1,8 +1,4 @@
 module.exports = {
-  displayName: {
-    name: 'micro ui',
-    color: 'redBright',
-  },
   // The root directory that Jest should scan for tests and modules within
   // rootDir: undefined,
 

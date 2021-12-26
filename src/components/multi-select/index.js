@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import { X as CloseIcon } from 'react-feather'
 
 import { isDev } from '@/constants'
 import { useTheme, useToggle, useClickOutside } from '@/hooks'
 import { getProps, mergeRefs } from '@/utils'
 
-import { Icon } from '../icon'
 import { wrapperPropsData } from '../select-option/utils/constants'
 import { generateOptions } from '../select-option/utils/helpers'
 import {
@@ -120,9 +120,8 @@ export const MultiSelect = React.forwardRef(
               data-testid='multi-selected-option'
             >
               <p>{selectedOption?.name}</p>
-              <Icon
-                name='close'
-                size='xs'
+              <CloseIcon
+                size='1em'
                 onClick={onRemoveOption(selectedOption.name)}
                 data-testid='multi-selected-close'
               />
