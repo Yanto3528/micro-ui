@@ -302,6 +302,14 @@ export const theme = {
         variant: 'solid',
         searchable: false,
       },
+      skeleton: {
+        width: '100%',
+        height: '2rem',
+        radius: 'sm',
+        bg: 'gray.300',
+        spacing: '0.5rem',
+        duration: '1.5s',
+      },
       table: {
         wrapper: {
           width: '100%',
