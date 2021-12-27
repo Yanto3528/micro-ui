@@ -40,6 +40,7 @@ describe('components > Skeleton', () => {
         width='100px'
         height='30px'
         bg='primary'
+        radius='6px'
         customStyle={skeletonCustomStyle}
       />
     )
@@ -50,6 +51,7 @@ describe('components > Skeleton', () => {
       height: '30px',
       'background-color': theme.colors.primary,
       padding: '20px',
+      'border-radius': '6px',
     })
   })
 })
