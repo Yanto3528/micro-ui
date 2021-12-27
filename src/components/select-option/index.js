@@ -127,7 +127,7 @@ export const Select = React.forwardRef(
           onBlur={handleInputBlur}
           readOnly={readOnly || !searchable}
           disabled={disabled}
-          autoComplete='false'
+          autoComplete='off'
         />
         <IconContainer>{iconContainerProps.icon}</IconContainer>
         {isOpen && (

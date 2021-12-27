@@ -21,7 +21,7 @@ export const RadioGroup = React.forwardRef(
         {...theme.default.component.radioGroup.wrapper}
         {...props}
         ref={ref}
-        role='radio-group'
+        role='radiogroup'
       >
         <RadioGroupContext.Provider value={contextValue}>
           {children}

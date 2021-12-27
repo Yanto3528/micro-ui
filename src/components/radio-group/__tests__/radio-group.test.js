@@ -94,7 +94,7 @@ describe('components > RadioGroup', () => {
       </ControlledRadioGroup>
     )
 
-    const radioGroupWrapper = screen.getByRole('radio-group')
+    const radioGroupWrapper = screen.getByRole('radiogroup')
     expect(radioGroupWrapper).toHaveStyle({
       width: '100%',
     })
