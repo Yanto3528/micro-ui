@@ -30,7 +30,7 @@ export const Wrapper = styled.span.attrs(() => ({
   display: inline-block;
   text-align: center;
   ${fontStyles};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   outline: none;
   padding: ${({ padding }) => padding};
   transition: all 0.2s;
