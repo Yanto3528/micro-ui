@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@/test-utils'
-import { Plus } from 'react-feather'
+import { FaCog } from 'react-icons/fa'
 
 import { theme } from '../../theme'
 import { Button } from '../index'
@@ -109,10 +109,24 @@ describe('components > button', () => {
   })
 
   it('should render button with icon', () => {
-    render(<Button icon={<Plus />}>Add</Button>)
-    const button = screen.getByRole('button', { name: /add/i })
-    expect(button).toHaveTextContent('Add')
-    expect(button.children[0]).toBeInTheDocument()
+    // With Left Icon
+    const { rerender } = render(<Button leftIcon={<FaCog />}>Settings</Button>)
+    const button = screen.getByRole('button', { name: /settings/i })
+    expect(button).toHaveTextContent('Settings')
+    expect(button.children[0]).toHaveClass('micro-button-icon-container')
+
+    // With right Icon
+    rerender(<Button rightIcon={<FaCog />}>Settings</Button>)
+    expect(button.children[0]).toHaveClass('micro-button-icon-container')
+
+    // With Both Left and Right Icon
+    rerender(
+      <Button leftIcon={<FaCog />} rightIcon={<FaCog />}>
+        Settings
+      </Button>
+    )
+    expect(button.children[0]).toHaveClass('micro-button-icon-container')
+    expect(button.children[1]).toHaveClass('micro-button-icon-container')
   })
 
   it('should render button with fluid and width props', () => {

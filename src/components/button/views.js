@@ -44,7 +44,11 @@ const resolveVariant = ({ variant }) => {
 export const StyledButton = styled.button.attrs(() => ({
   className: 'micro-button',
 }))`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  gap: 5px;
   border: none;
   border-radius: ${getBorderRadius};
   outline: none;
@@ -73,15 +77,6 @@ export const StyledButton = styled.button.attrs(() => ({
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const IconContainer = styled.span.attrs(() => ({
-  className: 'micro-button-icon-container',
-}))`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`
-
 export const LoadingIcon = styled.span.attrs(() => ({
   className: 'micro-button-spinner',
 }))`
@@ -93,9 +88,10 @@ export const LoadingIcon = styled.span.attrs(() => ({
   animation: ${spinning} 1s infinite linear;
 `
 
-export const LoadingText = styled.span.attrs(() => ({
-  className: 'micro-button-loading-text',
+export const IconContainer = styled.span.attrs(() => ({
+  className: 'micro-button-icon-container',
 }))`
-  display: inline-block;
-  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

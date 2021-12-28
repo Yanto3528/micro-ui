@@ -29,6 +29,13 @@ export const theme = {
     },
     white: '#fff',
     black: '#000',
+    facebook: '#3b5998',
+    twitter: '#1da1f2',
+    youtube: '#ff0000',
+    instagram: '#c32aa3',
+    pinterest: '#bd081c',
+    linkedin: '#0a66c2',
+    google: '#4285f4',
   },
   fontSize: {
     xs: '1rem',
@@ -38,7 +45,7 @@ export const theme = {
   },
   fontWeight: {
     normal: 'normal',
-    'semi-bold': 'semi-bold',
+    'semi-bold': '500',
     bold: 'bold',
   },
   radius: {
@@ -82,11 +89,12 @@ export const theme = {
         bg: 'primary',
         color: 'white',
         rounded: false,
-        padding: '1.2rem 3rem',
+        padding: '1.2rem 1.6rem',
         radius: 'sm',
         fluid: false,
         variant: 'solid',
         fontSize: 'md',
+        fontWeight: '600',
       },
       checkbox: {
         activeColor: 'primary',

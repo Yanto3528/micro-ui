@@ -4,10 +4,13 @@ import PropTypes from 'prop-types'
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 
-import { StyledButton, IconContainer, LoadingIcon, LoadingText } from './views'
+import { StyledButton, LoadingIcon, IconContainer } from './views'
 
 export const Button = React.forwardRef(
-  ({ icon, disabled, loading, children, loadingText, ...props }, ref) => {
+  (
+    { leftIcon, rightIcon, disabled, loading, children, loadingText, ...props },
+    ref
+  ) => {
     const theme = useTheme()
     return (
       <StyledButton
@@ -17,14 +20,14 @@ export const Button = React.forwardRef(
         ref={ref}
       >
         {loading ? (
-          <IconContainer>
-            <LoadingIcon data-testid='spinner' />{' '}
-            {loadingText && <LoadingText>{loadingText}</LoadingText>}
-          </IconContainer>
+          <>
+            <LoadingIcon data-testid='spinner' /> {loadingText && loadingText}
+          </>
         ) : (
           <>
-            {icon && icon}
+            {leftIcon && <IconContainer>{leftIcon}</IconContainer>}
             {children}
+            {rightIcon && <IconContainer>{rightIcon}</IconContainer>}
           </>
         )}
       </StyledButton>
@@ -46,7 +49,8 @@ Button.propTypes = {
   fluid: PropTypes.bool,
   /** Variant for the button */
   variant: PropTypes.oneOf(['solid', 'outline']),
-  icon: PropTypes.element,
+  leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
   /** Determine whether button will be rounded or not. If true then radius won't have any effect */
   rounded: PropTypes.bool,
   /** Disabled the button */
