@@ -23,12 +23,10 @@ export const Avatar = ({ name, src, ...props }) => {
   const colorRef = useRef(null)
 
   useEffect(() => {
-    if (!colorRef.current) {
-      colorRef.current =
-        backgroundColorList[
-          Math.floor(Math.random() * backgroundColorList.length)
-        ]
-    }
+    colorRef.current =
+      backgroundColorList[
+        Math.floor(Math.random() * backgroundColorList.length)
+      ]
   }, [])
 
   const onError = (event) => {
@@ -49,6 +47,7 @@ export const Avatar = ({ name, src, ...props }) => {
       {...theme.default.component.avatar}
       {...props}
       bg={colorRef.current}
+      data-testid='avatar-container'
     >
       {nameInitial}
     </AvatarContainer>
@@ -66,9 +65,9 @@ Avatar.propTypes = {
   size: PropTypes.string,
   rounded: PropTypes.bool,
   radius: PropTypes.string,
-  showBorder: PropTypes.bool,
   src: PropTypes.string,
   name: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

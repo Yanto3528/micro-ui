@@ -23,15 +23,18 @@ describe('utils > getColor', () => {
 
 describe('utils > getBorderRadius', () => {
   it('should return radius from theme if it exists, or whatever the value passed if not exist', () => {
-    let radius = getBorderRadius({ theme, rounded: true, radius: '4px' })
+    let borderRadiusFn = getBorderRadius()
+    let radius = borderRadiusFn({ theme, rounded: true, radius: '4px' })
     expect(radius).toBe('50px')
 
     // Access theme.radius.md and return it
-    radius = getBorderRadius({ theme, rounded: false, radius: 'md' })
+    borderRadiusFn = getBorderRadius()
+    radius = borderRadiusFn({ theme, rounded: false, radius: 'md' })
     expect(radius).toBe(theme.radius.md)
 
     // If radius not exist in theme.radius then return whatever value pass as radius
-    radius = getBorderRadius({ theme, rounded: false, radius: '20px' })
+    borderRadiusFn = getBorderRadius()
+    radius = borderRadiusFn({ theme, rounded: false, radius: '20px' })
     expect(radius).toBe('20px')
   })
 })
