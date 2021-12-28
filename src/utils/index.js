@@ -23,8 +23,10 @@ export const mergeDeep = (target, source) => {
 export const getColor = (theme, color) => {
   return objectPath.get(theme, `colors.${color}`, color)
 }
-export const getBorderRadius = ({ theme, rounded, radius }) => {
-  return rounded ? '50px' : theme.radius[radius] || radius
+export const getBorderRadius = (roundedValue = '50px') => {
+  return ({ theme, rounded, radius }) => {
+    return rounded ? roundedValue : theme.radius[radius] || radius
+  }
 }
 
 export const resolveColor = (key) => {

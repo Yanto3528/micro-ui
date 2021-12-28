@@ -5,7 +5,7 @@ import { getBorderRadius } from '@/utils'
 
 const activeMonthStyles = css`
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   color: white;
 `
 

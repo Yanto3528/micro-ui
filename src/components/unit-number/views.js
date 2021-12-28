@@ -37,7 +37,7 @@ export const Wrapper = styled.div.attrs(() => ({
 }))`
   display: flex;
   align-items: center;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   padding: ${({ padding }) => padding};

@@ -39,7 +39,7 @@ export const StyledTextarea = styled.textarea.attrs(() => ({
 }))`
   outline: none;
   color: ${resolveColor('color')};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   transition: border 0.2s;
   ${fontStyles};
   width: 100%;

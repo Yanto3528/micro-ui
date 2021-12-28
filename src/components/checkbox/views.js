@@ -82,7 +82,7 @@ export const Checkmark = styled.span.attrs(() => ({
   aspect-ratio: 1 / 1;
   background-color: transparent;
   border: 0.1em solid ${resolveColor('borderColor')};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   transition: all 0.3s ease-out;
 
   &:after {

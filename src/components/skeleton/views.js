@@ -23,7 +23,7 @@ export const SkeletonLoading = styled.div.attrs(() => ({
   overflow: hidden;
   &:before {
     content: '';
-    border-radius: ${getBorderRadius};
+    border-radius: ${getBorderRadius()};
     position: absolute;
     top: 0;
     left: 0;

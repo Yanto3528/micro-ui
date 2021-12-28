@@ -24,7 +24,7 @@ export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-modal-wrapper',
 }))`
   background-color: ${resolveColor('bg')};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   max-width: 90vw;
@@ -65,7 +65,7 @@ export const CloseWrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   cursor: pointer;
 
   .micro-modal-close-icon {

@@ -40,7 +40,7 @@ export const Wrapper = styled.div.attrs(() => ({
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
   max-width: 100%;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   transition: border 0.2s;
   cursor: pointer;
   color: ${resolveColor('color')};

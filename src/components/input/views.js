@@ -72,7 +72,7 @@ export const StyledInput = styled.input.attrs(() => ({
   className: 'micro-input',
 }))`
   outline: none;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   transition: border 0.2s;
   width: 100%;
   height: ${({ height }) => height};

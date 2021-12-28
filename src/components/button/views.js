@@ -50,7 +50,7 @@ export const StyledButton = styled.button.attrs(() => ({
   text-align: center;
   gap: 5px;
   border: none;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   outline: none;
   cursor: pointer;
   padding: ${({ padding }) => padding};

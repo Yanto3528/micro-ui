@@ -28,7 +28,7 @@ export const SingleDay = styled.p.attrs(() => ({
   cursor: ${({ isDateInRange }) => (isDateInRange ? 'pointer' : 'not-allowed')};
   opacity: ${({ isDateInRange }) => (isDateInRange ? '1' : '0.5')};
   user-select: none;
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   padding: calc(calc(100% - 1em) / 2) 0;
   line-height: 1;
   transition: background-color 0.4s;

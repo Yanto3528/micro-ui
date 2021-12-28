@@ -5,7 +5,7 @@ import { getBorderRadius } from '@/utils'
 
 const activeYearStyles = css`
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   color: white;
 `
 

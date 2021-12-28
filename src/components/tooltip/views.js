@@ -55,7 +55,7 @@ export const Content = styled.div.attrs(() => ({
   color: ${resolveColor('color')};
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   padding: ${({ padding }) => padding};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   white-space: pre-wrap;
   z-index: 8;
   ${resolvePlacement};

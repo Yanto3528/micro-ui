@@ -83,7 +83,7 @@ export const Label = styled.label.attrs(() => ({
   text-align: center;
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
-  border-radius: ${getBorderRadius};
+  border-radius: ${getBorderRadius()};
   ${fontStyles};
   cursor: pointer;
 
