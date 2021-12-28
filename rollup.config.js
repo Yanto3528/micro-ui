@@ -7,6 +7,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternalPlugin from 'rollup-plugin-peer-deps-external'
 import alias from '@rollup/plugin-alias'
 import copy from 'rollup-plugin-copy'
+import image from '@rollup/plugin-image'
 
 // Will use this later on
 // import { terser } from 'rollup-plugin-terser'
@@ -64,6 +65,7 @@ const config = defineConfig({
       brotliSize: true,
     }),
     size(),
+    image(),
   ],
 })
 
