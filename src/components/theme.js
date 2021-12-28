@@ -76,6 +76,11 @@ export const theme = {
           color: 'dark',
         },
       },
+      avatar: {
+        size: '4rem',
+        rounded: true,
+        showBorder: false,
+      },
       badge: {
         bg: 'primary',
         color: 'white',
