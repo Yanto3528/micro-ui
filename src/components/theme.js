@@ -15,6 +15,7 @@ export const theme = {
     darkBlue: '#16192C',
     dark: '#424242',
     dark1: '#292825',
+    lightGray: '#718096',
     gray: {
       50: '#f9fafb',
       100: '#f3f4f6',
@@ -100,6 +101,34 @@ export const theme = {
         variant: 'solid',
         fontSize: 'md',
         fontWeight: '600',
+      },
+      card: {
+        wrapper: {
+          radius: 'md',
+          direction: 'column',
+          width: '33.5rem',
+        },
+        body: {
+          padding: '1.5rem',
+        },
+        title: {
+          fontWeight: '600',
+          fontSize: '1.6rem',
+          color: 'dark',
+        },
+        text: {
+          fontSize: '1.4rem',
+          color: 'gray.600',
+          marginBottom: '2rem',
+        },
+        group: {
+          marginBottom: '2rem',
+        },
+        image: {
+          width: '100%',
+          height: 'auto',
+          radius: '0px',
+        },
       },
       checkbox: {
         activeColor: 'primary',
