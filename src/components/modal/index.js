@@ -9,11 +9,11 @@ import { Portal } from '../portal'
 import { Animate } from '../animate'
 
 import { ModalContext } from './utils/context'
-import { ModalContent } from './content'
+import { ModalBody } from './body'
 import { ModalHeader } from './header'
 import { ModalTitle } from './title'
 import { ModalClose } from './close'
-import { ModalBody } from './body'
+import { ModalText } from './text'
 import { ModalActions } from './actions'
 import { Wrapper, Overlay } from './views'
 
@@ -76,11 +76,11 @@ Modal.propTypes = {
   fontWeight: PropTypes.string,
 }
 
-Modal.Content = ModalContent
+Modal.Body = ModalBody
 Modal.Header = ModalHeader
 Modal.Title = ModalTitle
 Modal.Close = ModalClose
-Modal.Body = ModalBody
+Modal.Text = ModalText
 Modal.Actions = ModalActions
 
 if (isDev) {

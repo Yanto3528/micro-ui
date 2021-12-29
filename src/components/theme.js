@@ -207,7 +207,7 @@ export const theme = {
           color: 'gray.500',
           radius: 'sm',
         },
-        content: {
+        body: {
           padding: '1rem 2rem',
           alignment: 'left',
         },
@@ -225,7 +225,7 @@ export const theme = {
           fontSize: 'md',
           color: 'dark',
         },
-        body: {
+        text: {
           color: 'dark',
           margin: '10px 0 0 0',
           fontSize: 'md',

@@ -10,12 +10,17 @@ export default {
     Title: Modal.Title,
     Close: Modal.Close,
     Body: Modal.Body,
-    Content: Modal.Content,
+    Text: Modal.Text,
     Actions: Modal.Actions,
   },
 }
 
-const BaseModal = ({ children, ...props }) => {
+const UI = {
+  Button: Button,
+}
+
+/* eslint-disable */
+const Template = ({ components, ...args }) => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
@@ -23,46 +28,154 @@ const BaseModal = ({ children, ...props }) => {
   return (
     <>
       <Button onClick={onOpen}>Open Modal</Button>
-      <Modal isOpen={isOpen} onClose={onClose} {...props}>
-        {children}
+      <Modal {...args} isOpen={isOpen} onClose={onClose}>
+        {components.map((component, componentIndex) => {
+          const ChildComponent = component.type.includes('Modal')
+            ? Modal[component.type.split('.')[1]]
+            : UI[component.type]
+
+          if (ChildComponent) {
+            return component.components ? (
+              <ChildComponent key={componentIndex}>
+                {component.components.map((nestedChild, nestedChildIndex) => {
+                  const NestedChildComponent = nestedChild.type.includes(
+                    'Modal'
+                  )
+                    ? Modal[nestedChild.type.split('.')[1]]
+                    : UI[nestedChild.type]
+
+                  if (NestedChildComponent) {
+                    return nestedChild.components ? (
+                      <NestedChildComponent key={nestedChildIndex}>
+                        {nestedChild.components.map(
+                          (descendantChild, descendantChildIndex) => {
+                            const DescendantChildComponent =
+                              descendantChild.type.includes('Modal')
+                                ? Modal[descendantChild.type.split('.')[1]]
+                                : UI[descendantChild.type]
+
+                            return (
+                              DescendantChildComponent && (
+                                <DescendantChildComponent
+                                  key={descendantChildIndex}
+                                  {...descendantChild.props}
+                                />
+                              )
+                            )
+                          }
+                        )}
+                      </NestedChildComponent>
+                    ) : (
+                      <NestedChildComponent
+                        key={nestedChildIndex}
+                        {...nestedChild.props}
+                      />
+                    )
+                  }
+                })}
+              </ChildComponent>
+            ) : (
+              <ChildComponent key={componentIndex} {...component.props} />
+            )
+          } else {
+            return null
+          }
+        })}
       </Modal>
     </>
   )
 }
+/* eslint-enable */
 
-export const Default = () => {
-  return (
-    <BaseModal>
-      <Modal.Close position='left' />
-      <Modal.Title>Delete Post</Modal.Title>
-      <Modal.Content>
-        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
-        <Modal.Actions>
-          <Button bg='gray.200' color='dark'>
-            Cancel
-          </Button>
-          <Button>Confirm</Button>
-        </Modal.Actions>
-      </Modal.Content>
-    </BaseModal>
-  )
+export const Default = Template.bind({})
+Default.args = {
+  components: [
+    {
+      type: 'Modal.Close',
+    },
+    {
+      type: 'Modal.Title',
+      props: {
+        children: 'Delete Post',
+      },
+    },
+    {
+      type: 'Modal.Body',
+      components: [
+        {
+          type: 'Modal.Text',
+          props: {
+            children: 'Are you sure you want to delete this?',
+          },
+        },
+        {
+          type: 'Modal.Actions',
+          components: [
+            {
+              type: 'Button',
+              props: {
+                bg: 'gray.200',
+                color: 'dark',
+                children: 'Cancel',
+              },
+            },
+            {
+              type: 'Button',
+              props: {
+                children: 'Confirm',
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }
 
-export const WithHeader = () => {
-  return (
-    <BaseModal>
-      <Modal.Close position='left' color='white' />
-      <Modal.Header>Delete Post</Modal.Header>
-      {/* <Modal.Title>Delete Post</Modal.Title> */}
-      <Modal.Content>
-        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
-        <Modal.Actions>
-          <Button bg='gray.200' color='dark'>
-            Cancel
-          </Button>
-          <Button>Confirm</Button>
-        </Modal.Actions>
-      </Modal.Content>
-    </BaseModal>
-  )
+export const WithHeader = Template.bind({})
+WithHeader.args = {
+  components: [
+    {
+      type: 'Modal.Close',
+      props: {
+        color: 'white',
+      },
+    },
+    {
+      type: 'Modal.Header',
+      props: {
+        children: 'Delete Post',
+      },
+    },
+    {
+      type: 'Modal.Body',
+      components: [
+        {
+          type: 'Modal.Text',
+          props: {
+            children: 'Are you sure you want to delete this?',
+          },
+        },
+        {
+          type: 'Modal.Actions',
+          components: [
+            {
+              type: 'Button',
+              props: {
+                bg: 'gray.200',
+                color: 'dark',
+                children: 'Cancel',
+              },
+            },
+            {
+              type: 'Button',
+              props: {
+                children: 'Confirm',
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }

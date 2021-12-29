@@ -27,13 +27,13 @@ describe('components > Modal', () => {
       <BaseModal>
         <Modal.Close />
         <Modal.Header>Modal Header</Modal.Header>
-        <Modal.Content>
+        <Modal.Body>
           <Modal.Title>We are sorry</Modal.Title>
-          <Modal.Body>Modal body</Modal.Body>
+          <Modal.Text>Modal text</Modal.Text>
           <Modal.Actions>
             <Button>Back to Home</Button>
           </Modal.Actions>
-        </Modal.Content>
+        </Modal.Body>
       </BaseModal>
     )
 
@@ -43,18 +43,18 @@ describe('components > Modal', () => {
     const modalWrapper = screen.getByTestId('modal-wrapper')
     const modalClose = screen.getByTestId('modal-close')
     const modalHeader = screen.getByTestId('modal-header')
-    const modalContent = screen.getByTestId('modal-content')
+    const modalBody = screen.getByTestId('modal-body')
     const modalTitle = screen.getByText(/we are sorry/i)
-    const modalBody = screen.getByText(/modal body/i)
+    const modalText = screen.getByText(/modal text/i)
     const modalActions = screen.getByTestId('modal-action')
 
     expect(modalWrapper).toBeInTheDocument()
     expect(modalClose).toBeInTheDocument()
     expect(modalHeader).toBeInTheDocument()
     expect(modalHeader).toHaveTextContent('Modal Header')
-    expect(modalContent).toBeInTheDocument()
-    expect(modalTitle).toBeInTheDocument()
     expect(modalBody).toBeInTheDocument()
+    expect(modalTitle).toBeInTheDocument()
+    expect(modalText).toBeInTheDocument()
     expect(modalActions).toBeInTheDocument()
   })
 
@@ -62,9 +62,9 @@ describe('components > Modal', () => {
     render(
       <BaseModal>
         <Modal.Close icon={<CloseIcon />} />
-        <Modal.Content>
-          <Modal.Body>Modal body</Modal.Body>
-        </Modal.Content>
+        <Modal.Body>
+          <Modal.Text>Modal text</Modal.Text>
+        </Modal.Body>
       </BaseModal>
     )
 
@@ -115,7 +115,7 @@ describe('components > Modal', () => {
           'margin-bottom': '10px',
         },
       },
-      content: {
+      body: {
         padding: '20px',
         customStyle: {
           margin: '10px',
@@ -127,7 +127,7 @@ describe('components > Modal', () => {
           'text-transform': 'uppercase',
         },
       },
-      body: {
+      text: {
         margin: '20px',
         customStyle: {
           padding: '10px',
@@ -139,27 +139,27 @@ describe('components > Modal', () => {
         },
       },
     }
-    const { wrapper, close, header, content, title, body, actions } = modalProps
+    const { wrapper, close, header, body, title, text, actions } = modalProps
     render(
       <Modal isOpen {...modalProps.wrapper}>
         <Modal.Close {...modalProps.close} />
         <Modal.Header {...modalProps.header}>Modal Header</Modal.Header>
-        <Modal.Content {...modalProps.content}>
+        <Modal.Body {...modalProps.body}>
           <Modal.Title {...modalProps.title}>We are sorry</Modal.Title>
-          <Modal.Body {...modalProps.body}>Modal body</Modal.Body>
+          <Modal.Text {...modalProps.text}>Modal text</Modal.Text>
           <Modal.Actions {...modalProps.actions}>
             <Button>Back to Home</Button>
           </Modal.Actions>
-        </Modal.Content>
+        </Modal.Body>
       </Modal>
     )
 
     const modalWrapper = screen.getByTestId('modal-wrapper')
     const modalClose = screen.getByTestId('modal-close')
     const modalHeader = screen.getByTestId('modal-header')
-    const modalContent = screen.getByTestId('modal-content')
+    const modalBody = screen.getByTestId('modal-body')
     const modalTitle = screen.getByText(/we are sorry/i)
-    const modalBody = screen.getByText(/modal body/i)
+    const modalText = screen.getByText(/modal text/i)
     const modalActions = screen.getByTestId('modal-action')
 
     expect(modalWrapper).toHaveStyle({
@@ -176,9 +176,9 @@ describe('components > Modal', () => {
       'margin-bottom': header.customStyle['margin-bottom'],
     })
 
-    expect(modalContent).toHaveStyle({
-      padding: content.padding,
-      margin: content.customStyle.margin,
+    expect(modalBody).toHaveStyle({
+      padding: body.padding,
+      margin: body.customStyle.margin,
     })
 
     expect(modalTitle).toHaveStyle({
@@ -186,9 +186,9 @@ describe('components > Modal', () => {
       'text-transform': title.customStyle['text-transform'],
     })
 
-    expect(modalBody).toHaveStyle({
-      margin: body.margin,
-      padding: body.customStyle.padding,
+    expect(modalText).toHaveStyle({
+      margin: text.margin,
+      padding: text.customStyle.padding,
     })
 
     expect(modalActions).toHaveStyle({

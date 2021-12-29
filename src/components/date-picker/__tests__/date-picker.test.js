@@ -224,7 +224,7 @@ describe('components > DatePicker', () => {
       const todayDate = dayjs().get('date')
 
       const todayDateTexts = screen.getAllByText(todayDate)
-      userEvent.click(todayDateTexts[0])
+      userEvent.click(todayDateTexts[todayDateTexts.length - 1])
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()
@@ -244,7 +244,7 @@ describe('components > DatePicker', () => {
 
       userEvent.click(wrapper)
       const todayDateTexts = screen.getAllByText(todayDate)
-      userEvent.click(todayDateTexts[0])
+      userEvent.click(todayDateTexts[todayDateTexts.length - 1])
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()

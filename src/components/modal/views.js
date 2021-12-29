@@ -106,8 +106,8 @@ export const Title = styled.h3.attrs(() => ({
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const Content = styled.div.attrs(() => ({
-  className: 'micro-modal-content',
+export const Body = styled.div.attrs(() => ({
+  className: 'micro-modal-body',
 }))`
   display: flex;
   flex-direction: column;
@@ -118,8 +118,8 @@ export const Content = styled.div.attrs(() => ({
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const Body = styled.p.attrs(() => ({
-  className: 'micro-modal-body',
+export const Text = styled.p.attrs(() => ({
+  className: 'micro-modal-text',
 }))`
   color: ${resolveColor('color')};
   margin: ${({ margin }) => margin};
