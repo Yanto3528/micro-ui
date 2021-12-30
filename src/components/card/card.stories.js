@@ -2,6 +2,7 @@ import React from 'react'
 
 import { RenderComponent } from '../../storybook-helpers'
 import { defaultCard, horizontalCard } from './utils/constant'
+import { theme } from '../theme'
 import { Card } from './index'
 
 export default {
@@ -21,13 +22,14 @@ const Template = ({ components, ...args }) => {
 
 export const Default = Template.bind({})
 Default.args = {
+  ...theme.default.component.card.wrapper,
   components: defaultCard,
 }
 
 export const Horizontal = Template.bind({})
 Horizontal.args = {
+  ...Default.args,
   direction: 'row',
-  gap: '1rem',
   width: '60rem',
   components: horizontalCard,
 }

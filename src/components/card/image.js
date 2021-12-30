@@ -4,11 +4,15 @@ import PropTypes from 'prop-types'
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 
-import { Image } from './views'
+import { ImageContainer, Image } from './views'
 
 export const CardImage = (props) => {
   const theme = useTheme()
-  return <Image {...theme.default.component.card.image} {...props} />
+  return (
+    <ImageContainer width={props.width} height={props.height}>
+      <Image {...theme.default.component.card.image} {...props} />
+    </ImageContainer>
+  )
 }
 
 CardImage.propTypes = {

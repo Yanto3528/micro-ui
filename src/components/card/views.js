@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { fontStyles } from '@/styles'
-import { getBorderRadius, resolveColor } from '@/utils'
+import { getBorderRadius, resolveColor, MediaQuery } from '@/utils'
 
 export const Wrapper = styled.div.attrs(() => ({
   className: 'micro-card-wrapper',
@@ -15,16 +15,24 @@ export const Wrapper = styled.div.attrs(() => ({
   border-radius: ${getBorderRadius()};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  max-width: 100%;
 
   ${({ direction }) =>
     direction === 'row' &&
     css`
-      > .micro-card-image,
-      > .micro-card-body,
-      > * {
+      > *,
+      > .micro-card-body {
         width: 50%;
         height: 100%;
       }
+
+      ${MediaQuery.PHABLET`
+        flex-direction: column;
+        > *, > .micro-card-body {
+          width: 100%;
+          height: auto;
+        }
+      `}
     `}
 
   ${({ customStyle }) => customStyle && css(customStyle)};
@@ -70,11 +78,17 @@ export const Group = styled.div.attrs(() => ({
   ${({ customStyle }) => customStyle && css(customStyle)};
 `
 
-export const Image = styled.img.attrs(() => ({
-  className: 'micro-card-image',
+export const ImageContainer = styled.div.attrs(() => ({
+  className: 'micro-card-image-container',
 }))`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+`
+
+export const Image = styled.img.attrs(() => ({
+  className: 'micro-card-image',
+}))`
+  width: 100%;
   object-fit: cover;
   display: block;
   border-radius: ${getBorderRadius('50%')};
