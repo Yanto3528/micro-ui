@@ -38,7 +38,7 @@ const rightArrowStyles = css`
 
 // Responsive Styles
 const topResponsiveStyles = css`
-  ${MediaQuery.PHABLET`
+  ${MediaQuery.PHABLET(css`
     width: calc(100vw - 20px);
     top: -10px;
     right: auto;
@@ -46,16 +46,16 @@ const topResponsiveStyles = css`
     left: ${({ posX }) => `calc(-${posX} + 10px)`};
     transform: translate(0, -100%);
     ${topArrowStyles};
-  `}
+  `)}
 `
 
 const bottomResponsiveStyles = css`
-  ${MediaQuery.PHABLET`
+  ${MediaQuery.PHABLET(css`
     width: calc(100vw - 20px);
     bottom: -10px;
     left: ${({ posX }) => `calc(-${posX} + 10px)`};
     transform: translate(0, 100%);
-  `}
+  `)}
 `
 
 // Top styles

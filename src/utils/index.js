@@ -83,7 +83,7 @@ export const getMediaQuery = (screenSize) => {
   return (...args) =>
     css`
       @media (max-width: ${screenSize}px) {
-        ${css(...args)}
+        ${args}
       }
     `
 }

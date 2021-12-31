@@ -26,13 +26,14 @@ export const Wrapper = styled.div.attrs(() => ({
         height: 100%;
       }
 
-      ${MediaQuery.PHABLET`
+      ${MediaQuery.PHABLET(css`
         flex-direction: column;
-        > *, > .micro-card-body {
+        > *,
+        > .micro-card-body {
           width: 100%;
           height: auto;
         }
-      `}
+      `)}
     `}
 
   ${({ customStyle }) => customStyle && css(customStyle)};
