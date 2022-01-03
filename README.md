@@ -1,6 +1,6 @@
 # Getting Started
 
-The React UI components library based on theme settings are designed to be easy to customize and save a lot of time for new AIA projects.
+Micro UI are a ReactJS component library built to be customizable and easy to use which saves a lot of time when starting a new project.
 
 ## Installation
 
