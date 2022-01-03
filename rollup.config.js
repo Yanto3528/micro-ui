@@ -37,7 +37,7 @@ const config = defineConfig({
       sourcemap: true,
     },
   ],
-  external: [/@babel\/runtime/, /dayjs/],
+  external: [/@babel\/runtime/, /dayjs/, /react-feather/, /object-path/],
   plugins: [
     peerDepsExternalPlugin(),
     babel({
