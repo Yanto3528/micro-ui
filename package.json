@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://AIASingapore@dev.azure.com/AIASingapore/Common%20Library/_git/reactjs-ui-library"
+    "url": "https://github.com/Yanto3528/micro-ui"
   },
   "sideEffects": false,
   "keywords": [
@@ -32,7 +32,7 @@
     "micro ui"
   ],
   "author": "yanto3528@gmail.com",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.16.3",
     "dayjs": "^1.10.7",

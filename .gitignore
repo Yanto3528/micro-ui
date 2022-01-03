@@ -81,3 +81,5 @@ yarn.lock
 
 # Test report
 junit.xml
+
+storybook-static
