@@ -56,7 +56,7 @@ export const collapse = {
   `,
   exit: keyframes`
     from {
-      max-height: 100vh;
+      max-height: 50vh;
       overflow: initial;
     }
     to {
