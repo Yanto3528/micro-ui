@@ -1,10 +1,6 @@
 import React from 'react'
 
-import { Button } from '../components'
-
-const UI = {
-  Button: Button,
-}
+import * as UI from '../components'
 
 export const RenderComponent = ({ components, parentComponent }) => {
   return (

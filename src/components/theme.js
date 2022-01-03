@@ -286,6 +286,19 @@ export const theme = {
           fontSize: 'sm',
         },
       },
+      navMenu: {
+        wrapper: {},
+        list: {
+          gap: '1rem',
+        },
+        item: {
+          padding: '1rem',
+          gap: '0.5rem',
+          color: 'dark',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+        },
+      },
       radio: {
         activeColor: 'primary',
         borderColor: 'gray.300',
