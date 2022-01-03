@@ -224,7 +224,8 @@ describe('components > DatePicker', () => {
       const todayDate = dayjs().get('date')
 
       const todayDateTexts = screen.getAllByText(todayDate)
-      userEvent.click(todayDateTexts[todayDateTexts.length - 1])
+      const dateIndex = todayDate > 15 ? todayDateTexts.length - 1 : 0
+      userEvent.click(todayDateTexts[dateIndex])
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()
@@ -240,11 +241,10 @@ describe('components > DatePicker', () => {
       const wrapper = screen.getByTestId('date-picker-wrapper')
 
       const today = dayjs().format(DEFAULT_DATE_FORMAT)
-      const todayDate = dayjs().get('date')
 
       userEvent.click(wrapper)
-      const todayDateTexts = screen.getAllByText(todayDate)
-      userEvent.click(todayDateTexts[todayDateTexts.length - 1])
+      const todayButton = screen.getByRole('button', { name: /today/i })
+      userEvent.click(todayButton)
 
       const calendar = screen.queryByTestId('calendar')
       expect(calendar).not.toBeInTheDocument()
