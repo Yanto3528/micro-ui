@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { isDev } from '@/constants'
 import { useTheme, useToggle } from '@/hooks'
@@ -41,6 +42,11 @@ export const NavMenuList = ({ children, ...props }) => {
       />
     </>
   )
+}
+
+NavMenuList.propTypes = {
+  gap: PropTypes.string,
+  customStyle: PropTypes.object,
 }
 
 if (isDev) {

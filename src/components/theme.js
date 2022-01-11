@@ -287,11 +287,20 @@ export const theme = {
         },
       },
       navMenu: {
-        wrapper: {},
+        wrapper: {
+          position: 'relative',
+        },
         list: {
           gap: '1rem',
         },
         item: {
+          padding: '1rem',
+          gap: '0.5rem',
+          color: 'dark',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+        },
+        subMenu: {
           padding: '1rem',
           gap: '0.5rem',
           color: 'dark',

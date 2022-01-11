@@ -15,7 +15,12 @@ module.exports = {
   // An array of regexp pattern strings that are matched against all test paths,
   // matched tests are skipped
   testPathIgnorePatterns: ['/node_modules/', '/public/', '/storybook-helpers/'],
-  coveragePathIgnorePatterns: ['node_modules', 'public', 'storybook-helpers'],
+  coveragePathIgnorePatterns: [
+    'node_modules',
+    'public',
+    'storybook-helpers',
+    'styles',
+  ],
   // A map from regular expressions to paths to transformers
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
