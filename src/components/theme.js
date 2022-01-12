@@ -209,6 +209,13 @@ export const theme = {
         textPaddingInline: '20px',
         orientation: 'horizontal',
       },
+      flex: {
+        alignItems: 'center',
+        justify: 'flex-start',
+        wrap: 'nowrap',
+        direction: 'row',
+        gap: '2rem',
+      },
       input: {
         bg: 'gray.100',
         color: 'dark',
