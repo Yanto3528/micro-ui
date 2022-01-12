@@ -289,12 +289,13 @@ export const theme = {
       navMenu: {
         wrapper: {
           position: 'relative',
+          height: '50px',
         },
         list: {
           gap: '1rem',
         },
         item: {
-          padding: '1rem',
+          padding: '1.5rem',
           gap: '0.5rem',
           color: 'dark',
           fontSize: '1.4rem',

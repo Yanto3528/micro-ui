@@ -31,6 +31,10 @@ const Template = ({ components, children, ...args }) => {
 export const Default = Template.bind({})
 Default.args = {
   position: 'sticky',
+  bg: 'white',
+  customStyle: {
+    'box-shadow': '0 1px 5px rgba(0,0,0,0.15)',
+  },
   components: defaultMenu,
 }
 

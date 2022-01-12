@@ -103,6 +103,7 @@ export const withSubMenu = [
         props: {
           title: 'Products',
           icon: <FiSettings />,
+          active: true,
         },
         components: [
           {
@@ -126,31 +127,11 @@ export const withSubMenu = [
         ],
       },
       {
-        type: 'NavMenu.SubMenu',
+        type: 'NavMenu.Item',
         props: {
-          title: 'About',
+          children: 'About',
           icon: <FiMail />,
         },
-        components: [
-          {
-            type: 'NavMenu.Item',
-            props: {
-              children: 'Car',
-            },
-          },
-          {
-            type: 'NavMenu.Item',
-            props: {
-              children: 'House',
-            },
-          },
-          {
-            type: 'NavMenu.Item',
-            props: {
-              children: 'Airplane',
-            },
-          },
-        ],
       },
     ],
   },

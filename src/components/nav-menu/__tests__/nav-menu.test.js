@@ -1,11 +1,16 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
 
-import { render, screen } from '@/test-utils'
+import { render, screen, within } from '@/test-utils'
 
 import { RenderComponent } from '../../../storybook-helpers'
 import { theme } from '../../theme'
-import { defaultMenu, withIconMenu, withCustomStyle } from '../utils/constant'
+import {
+  defaultMenu,
+  withIconMenu,
+  withCustomStyle,
+  withSubMenu,
+} from '../utils/constant'
 import { NavMenu } from '../index'
 
 /* eslint-disable */
@@ -43,6 +48,19 @@ describe('components > NavMenu', () => {
     expect(homeMenu.children[0]).toHaveAttribute('fill', 'none')
     expect(productMenu.children[0]).toHaveAttribute('fill', 'none')
     expect(aboutMenu.children[0]).toHaveAttribute('fill', 'none')
+  })
+
+  it('should render with sub menu', async () => {
+    render(<BaseMenu components={withSubMenu} />)
+
+    const productSubMenuWrapper = screen.getByTestId('sub-menu-wrapper')
+    const subMenuContainer = within(productSubMenuWrapper).getByTestId(
+      'sub-menu-container'
+    )
+    expect(productSubMenuWrapper.children[0]).toHaveStyle({
+      color: theme.colors.primary,
+    })
+    expect(subMenuContainer.children.length).toBe(3)
   })
 
   it('should render hamburger menu on max 640px screen', async () => {
@@ -89,7 +107,7 @@ describe('components > NavMenu', () => {
     expect(navWrapper).toHaveStyle({
       'margin-bottom': '40px',
       position: 'sticky',
-      top: '10px',
+      top: '0',
       left: '0',
     })
     expect(homeMenu).toHaveStyle({

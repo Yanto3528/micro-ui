@@ -3,19 +3,22 @@ import styled, { css } from 'styled-components'
 import { fontStyles, customStyles } from '@/styles'
 import { MediaQuery, resolveColor } from '@/utils'
 
+const stickyStyles = css`
+  position: sticky;
+  top: 0;
+  left: 0;
+`
+
+const relativeStyles = css`
+  position: relative;
+`
+
+const positions = {
+  sticky: stickyStyles,
+}
+
 const resolvePosition = ({ position }) => {
-  switch (position) {
-    case 'sticky':
-      return css`
-        position: sticky;
-        top: 10px;
-        left: 0;
-      `
-    default:
-      return css`
-        position: relative;
-      `
-  }
+  return positions[position] || relativeStyles
 }
 
 const mobileActiveItemStyles = css`
@@ -33,9 +36,14 @@ export const Wrapper = styled.nav.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: ${({ height }) => height};
   background-color: ${resolveColor('bg')};
   ${resolvePosition};
   z-index: 5;
+
+  ${MediaQuery.DOUBLE_SMALLEST(css`
+    ${stickyStyles};
+  `)}
 
   ${customStyles};
 `
@@ -62,15 +70,6 @@ export const List = styled.div.attrs(() => ({
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
     transform: ${({ isOpen }) =>
       isOpen ? 'translateX(0)' : 'translateX(calc(-100vw - 100%))'};
-
-    .micro-nav-menu-item {
-      padding: 14px;
-      font-weight: 600;
-      color: ${({ theme }) => theme.colors.dark};
-      &:hover {
-        ${mobileActiveItemStyles};
-      }
-    }
   `)}
 
   ${customStyles};
@@ -83,7 +82,7 @@ export const HamburgerContainer = styled.div.attrs(() => ({
   width: 25px;
   height: 25px;
   position: absolute;
-  right: 0;
+  right: 10px;
   cursor: pointer;
   z-index: 11;
 
@@ -202,6 +201,12 @@ export const Item = styled.div.attrs(() => ({
   ${({ active }) => active && activeItemStyles}
 
   ${MediaQuery.DOUBLE_SMALLEST(css`
+    padding: 14px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.dark};
+    &:hover {
+      ${mobileActiveItemStyles};
+    }
     ${({ active }) => active && mobileActiveItemStyles}
   `)}
 
@@ -224,19 +229,12 @@ export const SubMenuWrapper = styled.div.attrs(() => ({
     gap: ${({ gap }) => gap};
     padding: ${({ padding }) => padding};
 
-    &:hover {
-      ${activeItemStyles};
-    }
-
     ${({ active }) => active && activeItemStyles}
 
     ${MediaQuery.DOUBLE_SMALLEST(css`
       padding: 14px;
       font-weight: 600;
       color: ${({ theme }) => theme.colors.dark};
-      &:hover {
-        ${mobileActiveItemStyles};
-      }
 
       ${({ active }) => active && mobileActiveItemStyles}
     `)}
@@ -248,11 +246,20 @@ export const SubMenuWrapper = styled.div.attrs(() => ({
       opacity: 1;
     }
 
+    > div:first-child {
+      ${activeItemStyles};
+    }
+
     ${MediaQuery.DOUBLE_SMALLEST(css`
       > .micro-nav-menu-sub-menu-container {
         max-height: 100vh;
         transform: translateY(0);
+        background-color: ${({ theme }) => `${theme.colors.gray[100]}`};
         transition: max-height 0.8s;
+      }
+
+      > div:first-child {
+        ${mobileActiveItemStyles};
       }
     `)}
   }
@@ -276,7 +283,8 @@ export const SubMenuContainer = styled.div.attrs(() => ({
   > ${Item} {
     border-radius: 4px;
     &:hover {
-      ${mobileActiveItemStyles};
+      background-color: ${({ theme }) => `${theme.colors.gray[100]}`};
+      color: ${({ theme }) => theme.colors.dark};
     }
   }
 
@@ -288,9 +296,16 @@ export const SubMenuContainer = styled.div.attrs(() => ({
     max-height: 0px;
     opacity: 1;
     overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
     transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
     & > div.micro-nav-menu-item {
       padding-left: 30px;
+      border-radius: 0;
+      &:hover {
+        background-color: ${({ theme }) => `${theme.colors.gray[200]}`};
+        color: ${({ theme }) => theme.colors.dark};
+      }
     }
   `)}
 `

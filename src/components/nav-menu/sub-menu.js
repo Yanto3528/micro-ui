@@ -10,12 +10,18 @@ export const NavMenuSubMenu = ({ children, icon, title, ...props }) => {
   const theme = useTheme()
 
   return (
-    <SubMenuWrapper {...theme.default.component.navMenu.subMenu} {...props}>
+    <SubMenuWrapper
+      {...theme.default.component.navMenu.subMenu}
+      {...props}
+      data-testid='sub-menu-wrapper'
+    >
       <div>
         {icon && icon}
         <p>{title}</p>
       </div>
-      <SubMenuContainer>{children}</SubMenuContainer>
+      <SubMenuContainer data-testid='sub-menu-container'>
+        {children}
+      </SubMenuContainer>
     </SubMenuWrapper>
   )
 }
