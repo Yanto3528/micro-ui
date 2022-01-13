@@ -216,6 +216,9 @@ export const theme = {
         direction: 'row',
         gap: '2rem',
       },
+      grid: {
+        gap: '2rem',
+      },
       input: {
         bg: 'gray.100',
         color: 'dark',
