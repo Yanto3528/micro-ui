@@ -20,6 +20,13 @@ export const Flex = ({ children, ...props }) => {
 }
 
 Flex.propTypes = {
+  /** align-items property */
+  alignItems: PropTypes.string,
+  /** justify-content property */
+  justify: PropTypes.string,
+  gap: PropTypes.string,
+  /** flex-wrap property */
+  wrap: PropTypes.string,
   customStyle: PropTypes.object,
 }
 
