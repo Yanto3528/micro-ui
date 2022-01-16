@@ -10,7 +10,7 @@ export const theme = {
     tertiary: '#FF92AE',
     success: '#66CB9F',
     warning: '#F7936F',
-    danger: '#F16063',
+    error: '#F16063',
     info: '#68DBF2',
     darkBlue: '#16192C',
     dark: '#424242',
@@ -427,6 +427,13 @@ export const theme = {
         focusBorderColor: 'primary',
         rows: 5,
         resize: 'none',
+      },
+      toaster: {
+        position: 'top',
+        status: 'success',
+        isCloseable: true,
+        duration: 4000,
+        gap: '2rem',
       },
       tooltip: {
         fontSize: 'md',
