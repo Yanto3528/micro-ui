@@ -10,7 +10,7 @@ export const theme = {
     tertiary: '#FF92AE',
     success: '#66CB9F',
     warning: '#F7936F',
-    error: '#F16063',
+    danger: '#F16063',
     info: '#68DBF2',
     darkBlue: '#16192C',
     dark: '#424242',

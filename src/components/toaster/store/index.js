@@ -47,8 +47,6 @@ const reducer = (state, action) => {
         ...state,
         toasts: state.toasts.filter((toast) => toast.id !== action.payload),
       }
-    default:
-      return state
   }
 }
 
@@ -68,17 +66,13 @@ export const useToast = (defaultOptions) => {
     }
   }, [])
 
-  const onSetState = (data) => {
-    setState(data)
-    subscribers.publish(data)
-  }
-
   const mergedToasts = state.toasts.map((toast) => {
     return {
       ...defaultOptions,
       ...toast,
+      duration: toast.duration ?? defaultOptions.duration,
     }
   })
 
-  return [{ ...state, toasts: mergedToasts }, onSetState]
+  return [{ ...state, toasts: mergedToasts }]
 }

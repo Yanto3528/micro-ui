@@ -1,34 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  FaCheckCircle,
-  FaExclamationCircle,
-  FaInfoCircle,
-} from 'react-icons/fa'
-import { AiOutlineClose } from 'react-icons/ai'
 
 import { isDev } from '@/constants'
 import { useTheme } from '@/hooks'
 import { getProps } from '@/utils'
 
 import { Portal } from '../portal'
-import { useToast, dispatch } from './store'
-import {
-  Wrapper,
-  AlertWrapper,
-  AlertContentContainer,
-  AlertTitle,
-  AlertBar,
-  AlertCloseContainer,
-} from './views'
-import { actionTypes } from './store/actions'
-
-const ToastIcons = {
-  info: FaInfoCircle,
-  success: FaCheckCircle,
-  error: FaExclamationCircle,
-  warning: FaExclamationCircle,
-}
+import { useToast } from './store'
+import { toast } from './toast'
+import { Alert } from './alert'
+import { Wrapper } from './views'
 
 export const Toaster = (props) => {
   const theme = useTheme()
@@ -42,12 +23,6 @@ export const Toaster = (props) => {
 
   const [{ toasts }] = useToast(defaultToastOptions)
 
-  const onRemoveAlert = (id) => {
-    return () => {
-      dispatch({ type: actionTypes.REMOVE, payload: id })
-    }
-  }
-
   return (
     <Portal>
       <Wrapper
@@ -55,27 +30,9 @@ export const Toaster = (props) => {
         {...props}
         data-testid='toaster-container'
       >
-        {toasts.map((toast) => {
-          const { id, title, description, isCloseable, render, status } = toast
-          const Icon = ToastIcons[status]
-          return render ? (
-            <React.Fragment key={toast.id}>{render(toast)}</React.Fragment>
-          ) : (
-            <AlertWrapper key={id} color={status}>
-              <AlertBar bg={status} />
-              {Icon && <Icon size='1.5em' />}
-              <AlertContentContainer>
-                {title && <AlertTitle>{title}</AlertTitle>}
-                {description && <p>{description}</p>}
-              </AlertContentContainer>
-              {isCloseable && (
-                <AlertCloseContainer onClick={onRemoveAlert(id)}>
-                  <AiOutlineClose />
-                </AlertCloseContainer>
-              )}
-            </AlertWrapper>
-          )
-        })}
+        {toasts.map((toast) => (
+          <Alert key={toast.id} toast={toast} />
+        ))}
       </Wrapper>
     </Portal>
   )
@@ -84,7 +41,7 @@ export const Toaster = (props) => {
 Toaster.propTypes = {
   customStyle: PropTypes.object,
   /** Determine the status of toast, it affects the color of icon and alert bar */
-  status: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
+  status: PropTypes.oneOf(['success', 'danger', 'info', 'warning']),
   /** Determine how long the toast stay before deleting itself */
   duration: PropTypes.number,
   /** Determine the position of the toast */
@@ -105,3 +62,5 @@ Toaster.propTypes = {
 if (isDev) {
   Toaster.displayName = 'Toaster'
 }
+
+export { toast }
