@@ -33,42 +33,33 @@ const Template = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
+  ...theme.default.component.toaster,
   title: 'Success',
   description: 'Successfully saved data',
-  position: 'top',
-  status: 'success',
-  duration: 4000,
-  isCloseable: true,
 }
 
 export const Error = Template.bind({})
 Error.args = {
+  ...Default.args,
   title: 'Error',
   description: 'Something went wrong when retrieving data',
-  position: 'top',
-  status: 'error',
-  duration: 4000,
-  isCloseable: true,
+  status: 'danger',
 }
 
 export const Info = Template.bind({})
 Info.args = {
+  ...Default.args,
   title: 'Info',
   description: 'You have new mail in your inbox',
-  position: 'top',
   status: 'info',
-  duration: 4000,
-  isCloseable: true,
 }
 
 export const Warning = Template.bind({})
 Warning.args = {
+  ...Default.args,
   title: 'Warning',
   description: 'Please update your software to latest version',
-  position: 'top',
   status: 'warning',
-  duration: 4000,
-  isCloseable: true,
 }
 
 export const WithTitleOnly = Template.bind({})
