@@ -16,10 +16,16 @@ export const NavMenuItem = ({ children, icon, ...props }) => {
   )
 }
 
-if (isDev) {
-  NavMenuItem.displayName = 'NavMenuItem'
-}
-
 NavMenuItem.propTypes = {
   icon: PropTypes.element,
+  fontSize: PropTypes.string,
+  fontWeight: PropTypes.string,
+  fontFamily: PropTypes.string,
+  /** Determined whether it is active or not */
+  active: PropTypes.bool,
+  customStyle: PropTypes.object,
+}
+
+if (isDev) {
+  NavMenuItem.displayName = 'NavMenuItem'
 }

@@ -1,7 +1,34 @@
 import styled, { css } from 'styled-components'
 
-import { fontStyles } from '@/styles'
+import { fontStyles, customStyles } from '@/styles'
 import { MediaQuery, resolveColor } from '@/utils'
+
+const stickyStyles = css`
+  position: sticky;
+  top: 0;
+  left: 0;
+`
+
+const relativeStyles = css`
+  position: relative;
+`
+
+const positions = {
+  sticky: stickyStyles,
+}
+
+const resolvePosition = ({ position }) => {
+  return positions[position] || relativeStyles
+}
+
+const mobileActiveItemStyles = css`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+`
+
+const activeItemStyles = css`
+  color: ${({ theme }) => theme.colors.primary};
+`
 
 export const Wrapper = styled.nav.attrs(() => ({
   className: 'micro-nav-menu-wrapper',
@@ -9,7 +36,16 @@ export const Wrapper = styled.nav.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  height: ${({ height }) => height};
+  background-color: ${resolveColor('bg')};
+  ${resolvePosition};
+  z-index: 5;
+
+  ${MediaQuery.DOUBLE_SMALLEST(css`
+    ${stickyStyles};
+  `)}
+
+  ${customStyles};
 `
 
 export const List = styled.div.attrs(() => ({
@@ -34,17 +70,9 @@ export const List = styled.div.attrs(() => ({
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
     transform: ${({ isOpen }) =>
       isOpen ? 'translateX(0)' : 'translateX(calc(-100vw - 100%))'};
-    gap: 0;
-
-    > .micro-nav-menu-item {
-      padding: 14px;
-      font-weight: 600;
-    }
-    > .micro-nav-menu-item:hover {
-      background-color: ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.white};
-    }
   `)}
+
+  ${customStyles};
 `
 
 export const HamburgerContainer = styled.div.attrs(() => ({
@@ -54,7 +82,7 @@ export const HamburgerContainer = styled.div.attrs(() => ({
   width: 25px;
   height: 25px;
   position: absolute;
-  right: 0;
+  right: 10px;
   cursor: pointer;
   z-index: 11;
 
@@ -99,10 +127,12 @@ export const Hamburger = styled.div.attrs(() => ({
     isOpen &&
     css`
       transform: translateY(-50%) rotate(45deg);
-      &:before,
-      &:after {
-        transform: rotate(90deg);
+      &:before {
         top: 0;
+      }
+      &:after {
+        top: 0;
+        transform: rotate(-90deg);
       }
     `};
 `
@@ -156,9 +186,126 @@ export const Item = styled.div.attrs(() => ({
   padding: ${({ padding }) => padding};
   gap: ${({ gap }) => gap};
   color: ${resolveColor('color')};
+  position: relative;
   transition: all 0.2s;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+  a {
+    text-decoration: none;
+    color: inherit;
   }
+
+  &:hover {
+    ${activeItemStyles};
+  }
+
+  ${({ active }) => active && activeItemStyles}
+
+  ${MediaQuery.DOUBLE_SMALLEST(css`
+    padding: 14px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.dark};
+    &:hover {
+      ${mobileActiveItemStyles};
+    }
+    ${({ active }) => active && mobileActiveItemStyles}
+  `)}
+
+  ${customStyles};
+`
+
+export const SubMenuWrapper = styled.div.attrs(() => ({
+  className: 'micro-nav-menu-sub-menu-wrapper',
+}))`
+  ${fontStyles};
+  cursor: pointer;
+  display: block;
+  color: ${resolveColor('color')};
+  position: relative;
+  transition: all 0.2s;
+
+  & > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: ${({ gap }) => gap};
+    padding: ${({ padding }) => padding};
+
+    ${({ active }) => active && activeItemStyles}
+
+    ${MediaQuery.DOUBLE_SMALLEST(css`
+      padding: 14px;
+      font-weight: 600;
+      color: ${({ theme }) => theme.colors.dark};
+
+      ${({ active }) => active && mobileActiveItemStyles}
+    `)}
+  }
+
+  &:hover {
+    > .micro-nav-menu-sub-menu-container {
+      transform: translateY(100%) scaleY(1);
+      opacity: 1;
+    }
+
+    > div:first-child {
+      ${activeItemStyles};
+    }
+
+    ${MediaQuery.DOUBLE_SMALLEST(css`
+      > .micro-nav-menu-sub-menu-container {
+        max-height: 100vh;
+        transform: translateY(0);
+        background-color: ${({ theme }) => `${theme.colors.gray[100]}`};
+        transition: max-height 0.8s;
+      }
+
+      > div:first-child {
+        ${mobileActiveItemStyles};
+      }
+    `)}
+  }
+`
+
+export const SubMenuContainer = styled.div.attrs(() => ({
+  className: 'micro-nav-menu-sub-menu-container',
+}))`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  z-index: 0;
+  transform: translateY(100%) scaleY(0);
+  transform-origin: top;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  > ${Item} {
+    border-radius: 4px;
+    &:hover {
+      background-color: ${({ theme }) => `${theme.colors.gray[100]}`};
+      color: ${({ theme }) => theme.colors.dark};
+    }
+  }
+
+  ${MediaQuery.DOUBLE_SMALLEST(css`
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    transform: translateY(0);
+    max-height: 0px;
+    opacity: 1;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
+    & > div.micro-nav-menu-item {
+      padding-left: 30px;
+      border-radius: 0;
+      &:hover {
+        background-color: ${({ theme }) => `${theme.colors.gray[200]}`};
+        color: ${({ theme }) => theme.colors.dark};
+      }
+    }
+  `)}
 `

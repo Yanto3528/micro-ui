@@ -209,6 +209,16 @@ export const theme = {
         textPaddingInline: '20px',
         orientation: 'horizontal',
       },
+      flex: {
+        alignItems: 'center',
+        justify: 'flex-start',
+        wrap: 'nowrap',
+        direction: 'row',
+        gap: '2rem',
+      },
+      grid: {
+        gap: '2rem',
+      },
       input: {
         bg: 'gray.100',
         color: 'dark',
@@ -287,11 +297,21 @@ export const theme = {
         },
       },
       navMenu: {
-        wrapper: {},
+        wrapper: {
+          position: 'relative',
+          height: '50px',
+        },
         list: {
           gap: '1rem',
         },
         item: {
+          padding: '1.5rem',
+          gap: '0.5rem',
+          color: 'dark',
+          fontSize: '1.4rem',
+          fontWeight: 'normal',
+        },
+        subMenu: {
           padding: '1rem',
           gap: '0.5rem',
           color: 'dark',
@@ -407,6 +427,13 @@ export const theme = {
         focusBorderColor: 'primary',
         rows: 5,
         resize: 'none',
+      },
+      toaster: {
+        position: 'top',
+        status: 'success',
+        isCloseable: true,
+        duration: 4000,
+        gap: '2rem',
       },
       tooltip: {
         fontSize: 'md',

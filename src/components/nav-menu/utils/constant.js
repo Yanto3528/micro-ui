@@ -18,6 +18,7 @@ export const defaultMenu = [
       {
         type: 'NavMenu.Item',
         props: {
+          active: true,
           children: 'Home',
         },
       },
@@ -70,6 +71,117 @@ export const withIconMenu = [
         props: {
           children: 'About',
           icon: <FiMail />,
+        },
+      },
+    ],
+  },
+]
+
+export const withSubMenu = [
+  {
+    type: 'NavMenu.Item',
+    props: {
+      children: (
+        <>
+          <FiActivity /> Micro UI
+        </>
+      ),
+    },
+  },
+  {
+    type: 'NavMenu.List',
+    components: [
+      {
+        type: 'NavMenu.Item',
+        props: {
+          children: 'Home',
+          icon: <FiHome />,
+        },
+      },
+      {
+        type: 'NavMenu.SubMenu',
+        props: {
+          title: 'Products',
+          icon: <FiSettings />,
+          active: true,
+        },
+        components: [
+          {
+            type: 'NavMenu.Item',
+            props: {
+              children: 'Car',
+            },
+          },
+          {
+            type: 'NavMenu.Item',
+            props: {
+              children: 'House',
+            },
+          },
+          {
+            type: 'NavMenu.Item',
+            props: {
+              children: 'Airplane',
+            },
+          },
+        ],
+      },
+      {
+        type: 'NavMenu.Item',
+        props: {
+          children: 'About',
+          icon: <FiMail />,
+        },
+      },
+    ],
+  },
+]
+
+export const withCustomStyle = [
+  {
+    type: 'NavMenu.Item',
+    props: {
+      children: (
+        <>
+          <FiActivity /> Micro UI
+        </>
+      ),
+    },
+  },
+  {
+    type: 'NavMenu.List',
+    props: {
+      customStyle: {
+        'margin-top': '20px',
+      },
+    },
+    components: [
+      {
+        type: 'NavMenu.Item',
+        props: {
+          active: true,
+          children: 'Home',
+          customStyle: {
+            padding: '20px',
+          },
+        },
+      },
+      {
+        type: 'NavMenu.Item',
+        props: {
+          children: 'Products',
+          customStyle: {
+            padding: '20px',
+          },
+        },
+      },
+      {
+        type: 'NavMenu.Item',
+        props: {
+          children: 'About',
+          customStyle: {
+            padding: '20px',
+          },
         },
       },
     ],
