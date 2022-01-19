@@ -12,6 +12,9 @@ export const Wrapper = styled.div.attrs(() => ({
   margin: ${({ margin }) => margin};
   width: ${({ width, fluid }) => (fluid ? '100%' : width)};
   height: ${({ height }) => height};
+  &:hover .micro-checkbox-checkmark {
+    border-color: ${resolveColor('activeColor')};
+  }
   ${({ customStyle }) => customStyle && css(customStyle)};
   ${({ disabled }) =>
     disabled &&
@@ -25,7 +28,7 @@ export const Label = styled.label.attrs(() => ({
   className: 'micro-checkbox-label',
 }))`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
   min-height: 1em;
@@ -44,6 +47,7 @@ export const LabelText = styled.span.attrs(() => ({
 }))`
   padding-left: 0.5em;
   display: inline-block;
+  line-height: 1.3;
   width: 100%;
   height: 100%;
 `
@@ -98,9 +102,5 @@ export const Checkmark = styled.span.attrs(() => ({
     -ms-transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
     transform: translate(-50%, -60%) rotate(45deg) scale(0, 0);
     transition: all 0.3s ease-out;
-  }
-
-  &:hover {
-    border-color: ${resolveColor('activeColor')};
   }
 `
