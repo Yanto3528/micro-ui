@@ -1,6 +1,6 @@
 {
   "name": "micro-ui-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Reusable and highly customizable ui component built with ReactJS",
   "main": "/index.cjs.js",
   "module": "/index.js",

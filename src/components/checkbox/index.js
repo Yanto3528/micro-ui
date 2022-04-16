@@ -17,6 +17,7 @@ const wrapperData = [
   'color',
   'margin',
   'customStyle',
+  'activeColor',
 ]
 
 export const Checkbox = React.forwardRef(
