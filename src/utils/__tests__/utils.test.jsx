@@ -119,7 +119,7 @@ describe('utils > getProps', () => {
 
 describe('components > mergeRefs', () => {
   it('should return a function to call refs that has been merged', () => {
-    const refFn = jest.fn()
+    const refFn = vi.fn()
     const refObj = {}
 
     const resultFn = mergeRefs(refFn, refObj)

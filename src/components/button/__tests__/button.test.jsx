@@ -5,9 +5,9 @@ import { FaCog } from 'react-icons/fa'
 import { theme } from '../../theme'
 import { Button } from '../index'
 
-jest.mock('../../../constants', () => ({ isDev: false }))
+vi.mock('../../../constants', () => ({ isDev: false }))
 beforeEach(() => {
-  jest.resetModules()
+  vi.resetModules()
 })
 
 describe('components > button', () => {

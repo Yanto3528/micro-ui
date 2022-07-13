@@ -127,8 +127,8 @@ describe('components > Table', () => {
   })
 
   it('should throw an error when using <Table.Row /> outside of Table component', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<Table.Row />)).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })

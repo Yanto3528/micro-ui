@@ -197,8 +197,8 @@ describe('components > Modal', () => {
   })
 
   it('should throw an error when using <Modal.Close /> outside of Modal component', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<Modal.Close />)).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })

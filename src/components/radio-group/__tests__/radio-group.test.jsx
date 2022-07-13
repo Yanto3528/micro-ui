@@ -119,11 +119,11 @@ describe('components > RadioGroup', () => {
   })
 
   it('should throw an error when using <RadioGroup.Radio /> or <RadioGroup.Button /> outside of RadioGroup', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<RadioGroup.Radio>Male</RadioGroup.Radio>)).toThrow()
     expect(() =>
       render(<RadioGroup.Button>Female</RadioGroup.Button>)
     ).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })

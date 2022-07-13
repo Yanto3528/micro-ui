@@ -7,7 +7,7 @@ import { render, screen, fireEvent, waitFor } from '@/test-utils'
 import { theme } from '../../theme'
 import { Accordion } from '../index'
 
-const mockFn = jest.fn()
+const mockFn = vi.fn()
 
 /* eslint-disable */
 const BaseAccordion = ({ items, ...props }) => {
@@ -305,17 +305,17 @@ describe('components > Accordion', () => {
   })
 
   it('should throw an error when using <Accordion.Item /> outside of Accordion', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<Accordion.Item>Item</Accordion.Item>)).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('should throw an error when using <Accordion.Header /> or <Accordiont.Content outside of Accordion.Item', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<Accordion.Header>Header</Accordion.Header>)).toThrow()
     expect(() =>
       render(<Accordion.Content>Content</Accordion.Content>)
     ).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })

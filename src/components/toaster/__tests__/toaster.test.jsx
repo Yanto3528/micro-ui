@@ -223,7 +223,7 @@ describe('components > Toaster', () => {
   })
 
   it('should not show icon if wrong status is passed in', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     render(<BaseToast title='' status='non-existent-status' />)
 
     const button = screen.getByRole('button', { name: /show toast/i })
@@ -232,6 +232,6 @@ describe('components > Toaster', () => {
 
     const alert = screen.queryByTestId('toaster-alert')
     expect(alert.children.length).toBe(3)
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })

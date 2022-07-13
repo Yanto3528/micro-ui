@@ -20,5 +20,5 @@ const renderWithProvider = (component, options) => {
   }
 }
 
-export { renderWithProvider as render }
 export * from '@testing-library/react'
+export { renderWithProvider as render }

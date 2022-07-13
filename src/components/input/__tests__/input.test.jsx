@@ -166,10 +166,13 @@ describe('components > Input', () => {
       />
     )
     const input = screen.getByPlaceholderText(/name/i)
+    expect(input).toHaveStyle({
+      'border-color': theme.colors.secondary,
+    })
     userEvent.type(input, 'Sarah')
     expect(input).toHaveValue('Sarah')
     expect(input).toHaveStyle({
-      'border-color': theme.colors.secondary,
+      'border-color': theme.colors.primary,
     })
   })
 })

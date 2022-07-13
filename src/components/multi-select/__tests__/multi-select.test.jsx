@@ -201,11 +201,11 @@ describe('components > MultiSelect', () => {
   })
 
   it('should not display option value when passed in value props is not valid', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     render(<ControlledMultiSelect options={options} value='not-valid-value' />)
     const selectedOption = screen.queryAllByTestId('multi-selected-option')
     expect(selectedOption.length).toBe(0)
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('should be able to search options by typing in the input field', () => {

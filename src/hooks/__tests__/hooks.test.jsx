@@ -29,9 +29,9 @@ describe('hooks > useTheme', () => {
   })
 
   it('should throw error when calling useTheme outside of ThemeProvider', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => render(<Button>Submit</Button>)).toThrow()
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 })
 

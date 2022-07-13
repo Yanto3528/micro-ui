@@ -131,9 +131,9 @@ describe('components > UnitNumber', () => {
     })
 
     it('should throw error when value is not of type string', () => {
-      jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+      vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
       expect(() => render(<ControlledUnitNumber value={true} />)).toThrow() //eslint-disable-line
-      jest.restoreAllMocks()
+      vi.restoreAllMocks()
     })
   })
 })

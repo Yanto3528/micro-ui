@@ -111,13 +111,17 @@ describe('components > Textarea', () => {
         placeholder='Enter description'
         variant='outline'
         borderColor='secondary'
+        bg='secondary'
       />
     )
     const textarea = screen.getByRole('textbox')
+    expect(textarea).toHaveStyle({
+      'border-color': theme.colors.secondary,
+    })
     userEvent.type(textarea, 'Sarah')
     expect(textarea).toHaveValue('Sarah')
     expect(textarea).toHaveStyle({
-      'border-color': theme.colors.secondary,
+      'border-color': theme.colors.primary,
     })
   })
 })

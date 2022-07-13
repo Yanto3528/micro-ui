@@ -26,7 +26,7 @@ export const ContactInput = ({
 }) => {
   const inputData = extractValue(value)
   const [countryCode, setCountryCode] = useState(
-    value ? inputData.countryCode : supportedCode?.[0]?.value
+    value ? inputData?.countryCode : supportedCode?.[0]?.value
   )
 
   const theme = useTheme()
@@ -54,7 +54,7 @@ export const ContactInput = ({
   function extractValue(inputValue) {
     if (!inputValue) {
       return {
-        countryCode,
+        countryCode: '',
         phoneNumber: typeof inputValue === 'string' ? '' : undefined,
       }
     }
@@ -63,14 +63,14 @@ export const ContactInput = ({
     const countryCodeValue = inputValue.substr(0, countryCodeLength)
     const phoneNumber = inputValue.substr(countryCodeLength, inputValue.length)
     const isSupportedCountryCode = supportedCode.some(
-      (countryCode) => countryCode.value === countryCodeValue
+      (countryCodeObj) => countryCodeObj.value === countryCodeValue
     )
 
     if (isSupportedCountryCode) {
       return { countryCode: countryCodeValue, phoneNumber }
     }
 
-    return { countryCode, phoneNumber: '' }
+    return { countryCode: '', phoneNumber: '' }
   }
 
   return (
